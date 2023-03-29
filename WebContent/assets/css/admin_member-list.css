@@ -1,0 +1,252 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Pretendard";
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo-wrap img {
+  width: 170px;
+  height: 80px;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.logout-btn a {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.logout-btn a:hover {
+  opacity: 0.8;
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* -------------------- 왼쪽 고정 nav ------------------- */
+.left-nav {
+  position: fixed;
+  top: 84px;
+  left: 0;
+  height: 100vh;
+  padding: 20px;
+}
+
+.left-nav ul li {
+  list-style-type: none;
+  margin-bottom: 30px;
+}
+
+.left-nav .change-page-report {
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.left-nav .change-page-report:focus {
+  background-color: #1bcad3;
+}
+
+.left-nav .change-page-member {
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.left-nav .change-page-member:focus {
+  background-color: #1bcad3;
+}
+
+/* -------------- 게시글 목록 ----------------- */
+.board-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.board-contents-title {
+  font-weight: bold;
+  background-color: rgba(200, 200, 200, 0.4);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding-bottom: 5px 0;
+}
+
+.board-list-number,
+.board-number {
+  width: 10%;
+}
+
+.board-list-id,
+.board-id {
+  width: 30%;
+}
+
+.board-list-id {
+  color: black;
+}
+
+.board-list-author,
+.board-author {
+  width: 20%;
+}
+
+.board-list-status,
+.board-status {
+  width: 20%;
+}
+
+.board-list-control,
+.board-control {
+  width: 20%;
+}
+
+.board-list {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding-bottom: 5px 0;
+}
+
+/* 제제 버튼 */
+.control-btn {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.control-btn:hover {
+  background-color: rgb(250, 70, 70);
+  border: none;
+}
+
+/* 검색 창 */
+.search-wrap {
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+/* 검색 버튼 */
+.search-btn {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+/* -------------- 페이징 처리 -------------- */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.pagination > ul {
+  display: flex;
+  list-style: none;
+}
+
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: #1bcad3;
+  border-color: #1bcad3;
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}
+/* ------------ Footer ---------------- */
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  /* background-color: ; */
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.name {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.footer-container p {
+  margin: 10px;
+}
+
+.information {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+}
