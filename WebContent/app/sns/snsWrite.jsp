@@ -20,34 +20,35 @@
   </head>
   <body>
     <div class="header-container">
-      <!-- 헤더 영역 시작  -->
-      <div class="start-container">
-        <a href="#"><img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" class="logo-img" /></a>
-        <a href="#">판당</a>
-        <font>·</font>
-        <a href="#">산당</a>
-        <font>·</font>
-        <a href="#">sns</a>
+        <!-- 헤더 영역 시작  -->
+        <div class="start-container">
+          <a href="#"><img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" class="logo-img" /></a>
+          <a href="#" class="header-list">판당</a>
+          <font>·</font>
+          <a href="#" class="header-list">산당</a>
+          <font>·</font>
+          <a href="#" class="header-list">sns</a>
+        </div>
+        <div class="search">
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="어떤 창작물을 찾으시나요?"
+          />
+          <a href="#">
+            <button type="button" class="material-symbols-outlined">
+              search
+            </button>
+          </a>
+        </div>
+        <div class="login-container">
+          <a href="#" class="login">로그인</a>
+          <a href="#" class="join">회원가입</a>
+          <a href="#" class="my-page">마이페이지</a>
+          <a href="#" class="logout">로그아웃</a>
+        </div>
+        <!— 헤더 영역 종료 —>
       </div>
-      <div class="search">
-        <input
-          type="text"
-          class="search-bar"
-          placeholder="어떤 창작물을 찾으시나요?"
-        />
-        <a href="#">
-          <button type="button" class="material-symbols-outlined">
-            search
-          </button>
-        </a>
-      </div>
-      <div class="login-container">
-        <a href="#" class="login">로그인</a>
-        <a href="#" class="join">회원가입</a>
-        <a href="#" class="my-page">마이페이지</a>
-      </div>
-      <!-- 헤더 영역 종료 -->
-    </div>
 
     <main>
       <div class="main-container">
