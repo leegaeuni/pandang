@@ -22,6 +22,12 @@ public class BuyFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 
 		switch(target) {
+		case "/buy/orderOk.bu":
+			req.getRequestDispatcher("/app/buy/order.jsp").forward(req, resp);
+		break;
+		case "/buy/payOk.bu":
+			req.getRequestDispatcher("/app/pay/pay.jsp").forward(req, resp);
+			break;
 		
 		}
 	}
