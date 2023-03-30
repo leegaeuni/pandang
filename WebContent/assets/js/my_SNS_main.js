@@ -74,7 +74,7 @@ function changeContent() {
       }
     }
   };
-  xhr.open("GET", "Store_main.html", true);
+  xhr.open("GET", "<%= request.getContextPath() %>/assets/html/Store_main.html", true);
   xhr.send();
   $(document).ready(function () {
     var currentIndex = 0;

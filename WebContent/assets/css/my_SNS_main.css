@@ -666,8 +666,7 @@ li {
   background-color: white;
 }
 
-.delete {
-  background-image: url("./img/23.png");
+.delete-img {
   background-repeat: no-repeat;
   background-size: contain;
   width: 25px;

@@ -27,7 +27,7 @@
     <div class="header-container">
       <!-- 헤더 영역 시작  -->
       <div class="start-container">
-        <a href="#"><img src="${pageContext.request.contextPath}/assets/img/main_logo.jpg" alt="" class="logo-img" /></a>
+        <a href="#"><img src="${pageContext.request.contextPath}/assets/img/SNSPage/main_logo.jpg" alt="" class="logo-img" /></a>
         <a href="#" class="header-list">판당</a>
         <font>·</font>
         <a href="#" class="header-list">산당</a>
@@ -62,7 +62,7 @@
           <div class="pic-space">
             <span class="proflie-pic">
               <!-- 사진 누르면 프로필 사진 수정할수 있도록 버튼으로 수정(필요없음 없애도됨) -->
-              <button type = "button" class="modify-profile"><img class="profile-img" src="${pageContext.request.contextPath}/assets/img/01.jpeg" /></button>
+              <button type = "button" class="modify-profile"><img class="profile-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" /></button>
             </span>
           </div>
         </div>
@@ -71,7 +71,7 @@
             <h2 class="info-name">홍길동</h2>
             <!-- 인증마크는 없애거나 다른 이미지로 대체해도됨 -->
             <span class="sign-mark">
-              <img class="sign-img" src="${pageContext.request.contextPath}/assets/img/02.png" />
+              <img class="sign-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/02.png" />
             </span>
             <div class="button-sidebar">
             </div>
@@ -131,19 +131,19 @@
           <div class="slides-wrap">
             <ul class="slide-box">
               <li>
-                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/01.jpeg"></img>
+                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg"></img>
               </li>
               <li>
-                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/01.jpeg"></img>
+                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg"></img>
               </li>
               <li>
-                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/01.jpeg"></img>
+                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg"></img>
               </li>
               <li>
-                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/01.jpeg"></img>
+                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg"></img>
               </li>
               <li>
-                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/01.jpeg"></img>
+                <img class="modal-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg"></img>
               </li>
             </ul>
             <div class="btn-box">
@@ -157,10 +157,10 @@
             <div class = "mini-host-profile">
             <div class="profile">
               <div class="tooltip-container">
-                <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt=""></a>
+                <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt=""></a>
                 <div class="tooltip">
                   <div class = top-box>
-                  <img src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt="mini-user-profile">
+                  <img src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt="mini-user-profile">
                     <div class = "middle-box">
                   <span userId = "#아이디">userId</span>
                   <span username = "#유저이름">username</span>
@@ -195,10 +195,10 @@
               <div class = "mini-user-profile">
                 <div class="profile">
                   <div class="tooltip-container">
-                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt=""></a>
+                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt=""></a>
                     <div class="tooltip">
                       <div class = top-box>
-                        <img src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt="mini-user-profile">
+                        <img src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt="mini-user-profile">
                         <div class = "middle-box">
                       <span userId = "#아이디">userId</span>
                       <span username = "#유저이름">username</span>
@@ -230,9 +230,9 @@
                   </div>
             <span class = "comment-write">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
             <div class ="option">
-              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/22.png" alt=""></a>
-              <button class = "delete" type="button"></button>
-                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/24.png" alt=""></a>
+              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/22.png" alt=""></a>
+               <a class = "delete" href="#삭제"><img class= "delete-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/23.png" alt=""></a>
+                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/24.png" alt=""></a>
             </div>
             <div class ="comment-line"></div>
             </li>
@@ -240,10 +240,10 @@
               <div class = "mini-user-profile">
                 <div class="profile">
                   <div class="tooltip-container">
-                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt=""></a>
+                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt=""></a>
                     <div class="tooltip">
                       <div class = top-box>
-                      <img src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt="mini-user-profile">
+                      <img src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt="mini-user-profile">
                         <div class = "middle-box">
                       <span userId = "#아이디">userId</span>
                       <span username = "#유저이름">username</span>
@@ -275,19 +275,19 @@
                   </div>
             <span class = "comment-write">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
             <div class ="option">
-              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/22.png" alt=""></a>
-              <button class = "delete" type="button"></button>
-                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/24.png" alt=""></a>
+              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/22.png" alt=""></a>
+               <a class = "delete" href="#삭제"><img class= "delete-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/23.png" alt=""></a>
+                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/24.png" alt=""></a>
             </div>
             <div class ="comment-line"></div>
             </li>
             <div class = "mini-user-profile">
               <div class="profile">
                 <div class="tooltip-container">
-                  <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt=""></a>
+                  <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt=""></a>
                   <div class="tooltip">
                     <div class = top-box>
-                    <img src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt="mini-user-profile">
+                    <img src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt="mini-user-profile">
                       <div class = "middle-box">
                     <span userId = "#아이디">userId</span>
                     <span username = "#유저이름">username</span>
@@ -319,9 +319,9 @@
                 </div>
           <span class = "comment-write">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
           <div class ="option">
-            <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/22.png" alt=""></a>
-            <button class = "delete" type="button"></button>
-                <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/24.png" alt=""></a>
+            <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/22.png" alt=""></a>
+             <a class = "delete" href="#삭제"><img class= "delete-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/23.png" alt=""></a>
+                <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/24.png" alt=""></a>
           </div>
           <div class ="comment-line"></div>
             </li>
@@ -329,10 +329,10 @@
               <div class = "mini-user-profile">
                 <div class="profile">
                   <div class="tooltip-container">
-                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt=""></a>
+                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt=""></a>
                     <div class="tooltip">
                       <div class = top-box>
-                      <img src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt="mini-user-profile">
+                      <img src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt="mini-user-profile">
                         <div class = "middle-box">
                       <span userId = "#아이디">userId</span>
                       <span username = "#유저이름">username</span>
@@ -364,9 +364,9 @@
                   </div>
             <span class = "comment-write">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
             <div class ="option">
-              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/22.png" alt=""></a>
-              <button class = "delete" type="button"></button>
-                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/24.png" alt=""></a>
+              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/22.png" alt=""></a>
+              <a class = "delete" href="#삭제"><img class= "delete-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/23.png" alt=""></a>
+                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/24.png" alt=""></a>
             </div>
             <div class ="comment-line"></div>
             </li>
@@ -374,10 +374,10 @@
               <div class = "mini-user-profile">
                 <div class="profile">
                   <div class="tooltip-container">
-                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt=""></a>
+                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt=""></a>
                     <div class="tooltip">
                       <div class = top-box>
-                      <img src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt="mini-user-profile">
+                      <img src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt="mini-user-profile">
                         <div class = "middle-box">
                       <span userId = "#아이디">userId</span>
                       <span username = "#유저이름">username</span>
@@ -409,9 +409,9 @@
                   </div>
             <span class = "comment-write">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
             <div class ="option">
-              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/22.png" alt=""></a>
-              <button class = "delete" type="button"></button>
-                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/24.png" alt=""></a>
+              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/22.png" alt=""></a>
+              <a class = "delete" href="#삭제"><img class= "delete-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/23.png" alt=""></a>
+                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/24.png" alt=""></a>
             </div>
             <div class ="comment-line"></div>
             </li>
@@ -419,10 +419,10 @@
               <div class = "mini-user-profile">
                 <div class="profile">
                   <div class="tooltip-container">
-                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt=""></a>
+                    <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt=""></a>
                     <div class="tooltip">
                       <div class = top-box>
-                      <img src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt="mini-user-profile">
+                      <img src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt="mini-user-profile">
                         <div class = "middle-box">
                       <span userId = "#아이디">userId</span>
                       <span username = "#유저이름">username</span>
@@ -454,9 +454,9 @@
                   </div>
             <span class = "comment-write">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
             <div class ="option">
-              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/22.png" alt=""></a>
-              <button class = "delete" type="button"></button>
-                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/24.png" alt=""></a>
+              <a class = "modify" href="#수정"><img class= "modify-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/22.png" alt=""></a>
+              <a class = "delete" href="#삭제"><img class= "delete-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/23.png" alt=""></a>
+                  <a class = "report" href="#신고"><img class= "report-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/24.png" alt=""></a>
             </div>
             <div class ="comment-line"></div>
             </li>
@@ -475,10 +475,10 @@
             <section id = "modal-btn-box">
         <div class="modal-btn-profile">
           <div class="tooltip-container">
-            <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic2" src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt=""></a>
+            <a href="#유저 SNS페이지" class="tooltip-trigger"><img class= "mini-pic2" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt=""></a>
             <div class="tooltip">
               <div class = top-box>
-              <img src="${pageContext.request.contextPath}/assets/img/01.jpeg" alt="mini-user-profile">
+              <img src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" alt="mini-user-profile">
                 <div class = "middle-box">
               <span userId = "#아이디">userId</span>
               <span username = "#유저이름">username</span>
@@ -506,11 +506,11 @@
           <span userID = "#프로필">프로필</span>       
         </div>
         <div class="post-modify">
-          <img class= "mini-pic3" src= "${pageContext.request.contextPath}/assets/img/22.png" alt="mini-user-profile">
+          <img class= "mini-pic3" src= "${pageContext.request.contextPath}/assets/img/SNSPage/22.png" alt="mini-user-profile">
           <span modify = "#게시물 수정">수정</span>
         </div>
         <div class="post-delete">
-          <img class= "mini-pic4" src= "${pageContext.request.contextPath}/assets/img/23.png" alt="mini-user-profile">
+          <img class= "mini-pic4" src= "${pageContext.request.contextPath}/assets/img/SNSPage/23.png" alt="mini-user-profile">
           <span modify = "#게시물 삭제">삭제</span>
         </div>                
        </section>        
@@ -524,7 +524,7 @@
           <li class = "silde-part">
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/03.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/03.jpg">
             <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -532,7 +532,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/04.jpeg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/04.jpeg">
             <span class="post-info"><span class = "post-name">게시물 명</span>
             <span class = "date-like">
             <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -540,7 +540,7 @@
           </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/05.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/05.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -550,7 +550,7 @@
         </div>
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/06.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/06.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -558,7 +558,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/07.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/07.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -566,33 +566,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/08.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/09.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/10.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/11.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/08.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -602,7 +576,7 @@
         </div>
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/12.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/09.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -610,7 +584,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/13.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/10.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -618,35 +592,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/14.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-      </li>
-      <li class = "silde-part">
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/15.png">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/04.jpeg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/05.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/11.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -656,7 +602,7 @@
         </div>
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/06.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/12.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -664,7 +610,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/07.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/13.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -672,59 +618,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/08.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/09.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/10.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/11.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/12.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/13.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/14.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/14.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -736,7 +630,7 @@
       <li class = "silde-part">
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/16.png">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/15.png">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -744,7 +638,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/04.jpeg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/04.jpeg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -752,33 +646,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/05.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/06.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/07.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/08.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/05.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -788,7 +656,7 @@
         </div>
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/09.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/06.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -796,7 +664,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/10.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/07.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -804,61 +672,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/11.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/12.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/13.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/14.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-      </li>
-      <li class = "silde-part">
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/17.png">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/04.jpeg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/05.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/08.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -868,7 +682,7 @@
         </div>
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/06.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/09.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -876,7 +690,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/07.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/10.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -884,33 +698,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/08.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/09.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/10.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/11.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/11.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -920,7 +708,7 @@
         </div>
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/12.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/12.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -928,7 +716,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/13.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/13.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -936,7 +724,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/14.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/14.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -948,7 +736,7 @@
       <li class = "silde-part">
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/18.png">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/16.png">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -956,7 +744,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/04.jpeg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/04.jpeg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -964,33 +752,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/05.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-        </div>
-        <div class="post-section">
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/06.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/07.jpg">
-                <span class="post-info"><span class = "post-name">게시물 명</span>
-              <span class = "date-like">
-              <time class = "post-date" datetime="">2023년 3월 28일</time>
-              <div class = "like-count">♥<span>#좋아요 개수</span></div>
-            </span></span>
-          </div>
-          <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/08.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/05.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -1000,7 +762,7 @@
         </div>
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/09.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/06.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -1008,7 +770,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/10.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/07.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -1016,7 +778,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/11.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/08.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -1026,7 +788,7 @@
         </div>
         <div class="post-section">
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/12.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/09.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -1034,7 +796,7 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/13.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/10.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
@@ -1042,7 +804,245 @@
             </span></span>
           </div>
           <div class="post-part">
-            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/14.jpg">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/11.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/12.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/13.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/14.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+      </li>
+      <li class = "silde-part">
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/17.png">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/04.jpeg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/05.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/06.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/07.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/08.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/09.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/10.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/11.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/12.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/13.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/14.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+      </li>
+      <li class = "silde-part">
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/18.png">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/04.jpeg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/05.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/06.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/07.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/08.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/09.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/10.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/11.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+        </div>
+        <div class="post-section">
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/12.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/13.jpg">
+                <span class="post-info"><span class = "post-name">게시물 명</span>
+              <span class = "date-like">
+              <time class = "post-date" datetime="">2023년 3월 28일</time>
+              <div class = "like-count">♥<span>#좋아요 개수</span></div>
+            </span></span>
+          </div>
+          <div class="post-part">
+            <img class = "post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/14.jpg">
                 <span class="post-info"><span class = "post-name">게시물 명</span>
               <span class = "date-like">
               <time class = "post-date" datetime="">2023년 3월 28일</time>
