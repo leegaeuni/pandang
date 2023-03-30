@@ -22,7 +22,9 @@ public class MemberFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 
 		switch(target) {
-		
+		case "/member/mypageOk.me":
+			req.getRequestDispatcher("/app/mypage/myPage.jsp").forward(req, resp);
+		break;
 		}
 	}
 }

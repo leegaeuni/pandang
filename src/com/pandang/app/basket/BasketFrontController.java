@@ -22,7 +22,9 @@ public class BasketFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 		
 		switch(target) {
-		
+		case "/basket/basketOk.ba":
+			req.getRequestDispatcher("/app/buy/basket.jsp").forward(req, resp);
+			break;			
 		}
 	}
 }
