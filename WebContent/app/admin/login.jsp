@@ -35,7 +35,7 @@
                     class="login-form__box"
                     type="text"
                     id="id_info"
-                    name="id_info"
+                    name="idInfo"
                   />
                 </div>
                 <div class="login-form__input-box">
@@ -44,7 +44,7 @@
                     class="login-form__box"
                     type="password"
                     id="pw_info"
-                    name="pw_info"
+                    name="pwInfo"
                   />
                 </div>
                 <button class="login_btn" type="button">로그인</button>
