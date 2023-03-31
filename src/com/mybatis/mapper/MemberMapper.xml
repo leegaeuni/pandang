@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
-	<insert id="join" parameterType="MemberDTO">
-		insert into tbl_member
-		(member_id, member_password, member_name, member_age, member_gender, member_email, member_address)
-		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberGender}, #{memberEmail}, #{memberAddress})
-	</insert>
+	
+	<select id="adminLogin" parameterType="MemberDTO" resultType="_int">
+		select member_number from tbl_member
+		where member_number=0 and member_id=#{memberId} and member_password=#{memberPassword}
+	</select>
 	
 </mapper>

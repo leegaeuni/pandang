@@ -24,8 +24,7 @@
             <div class="login-form__container">
               <form
                 class="login-form"
-                action="#"
-                name="login-form"
+                action="${pageContext.request.contextPath}/admin/loginOk.ad"
                 method="POST"
               >
                 <div class="login-form__input-box">
@@ -35,7 +34,7 @@
                     class="login-form__box"
                     type="text"
                     id="id_info"
-                    name="idInfo"
+                    name="memberId"
                   />
                 </div>
                 <div class="login-form__input-box">
@@ -44,10 +43,10 @@
                     class="login-form__box"
                     type="password"
                     id="pw_info"
-                    name="pwInfo"
+                    name="memberPassword"
                   />
                 </div>
-                <button class="login_btn" type="button">로그인</button>
+                <button class="login_btn" type="submit">로그인</button>
               </form>
             </div>
           </div>
