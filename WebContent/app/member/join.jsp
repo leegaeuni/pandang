@@ -19,7 +19,7 @@
       <div class="main-wrapper">
         <div class="main-container">
           <!-- form 태그 action 지정하기 -->
-          <form action="" method="post">
+          <form action="joinOk.me" method="post">
             <div class="logo-pandang">
               <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" />
             </div>
