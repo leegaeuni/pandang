@@ -285,11 +285,13 @@ button {
 
 .modify-wrap{
   margin-left: 12px;
+  display: none;
 }
 
 .modify-btn{
   width: 40px;
   height: 26px;
+  display: none;
 }
 
 

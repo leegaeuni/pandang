@@ -22,6 +22,7 @@ public class MemberFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 		System.out.println(target);
 		switch(target) {
+
 		case "/member/join.me":
 			req.getRequestDispatcher("/app/member/join.jsp").forward(req, resp);
 			break;
@@ -35,6 +36,11 @@ public class MemberFrontController extends HttpServlet{
 			break;
 		case "/member/loginOk.me":
 		
+
+		case "/member/mypageOk.me":
+			req.getRequestDispatcher("/app/mypage/myPage.jsp").forward(req, resp);
+		break;
+
 		}
 	}
 }
