@@ -71,8 +71,14 @@
     <!-- Main -->
     <div class="main-container">
       <div class="write-wrap">
-        <div class="write-title">
-          <input type="text" placeholder="제목을 입력하세요" />
+        <div class="title">
+          <div class="write-title">
+            <input type="text" placeholder="상품명을 입력하세요" />
+          </div>
+          <div class="write-price">
+            <input type="number" placeholder="가격을 입력하세요" />
+            <span>원</span>
+          </div>
         </div>
         <div class="write-content__wrap">
           <div class="contents">
