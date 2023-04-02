@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>pandang</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  	<servlet>
+  		<servlet-name>Admin</servlet-name>
+  		<servlet-class>com.pandang.app.admin.AdminFrontController</servlet-class>
+  	</servlet>
+  	
+  	<servlet-mapping>
+  		<servlet-name>Admin</servlet-name>
+  		<url-pattern>*.ad</url-pattern>
+  	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>Basket</servlet-name>
+		<servlet-class>com.pandang.app.basket.BasketFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Basket</servlet-name>
+		<url-pattern>*.ba</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>Buy</servlet-name>
+		<servlet-class>com.pandang.app.buy.BuyFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Buy</servlet-name>
+		<url-pattern>*.bu</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>Channel</servlet-name>
+		<servlet-class>com.pandang.app.channel.ChannelFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Channel</servlet-name>
+		<url-pattern>*.ch</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>ChannelFile</servlet-name>
+		<servlet-class>com.pandang.app.channel.file.ChannelFileFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ChannelFile</servlet-name>
+		<url-pattern>*.cf</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>Follow</servlet-name>
+		<servlet-class>com.pandang.app.follow.FollowFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Follow</servlet-name>
+		<url-pattern>*.fo</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>Hashtag</servlet-name>
+		<servlet-class>com.pandang.app.hashtag.HashtagFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Hashtag</servlet-name>
+		<url-pattern>*.ha</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>Member</servlet-name>
+		<servlet-class>com.pandang.app.member.MemberFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Member</servlet-name>
+		<url-pattern>*.me</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>Sns</servlet-name>
+		<servlet-class>com.pandang.app.sns.SnsFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Sns</servlet-name>
+		<url-pattern>*.sn</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SnsComment</servlet-name>
+		<servlet-class>com.pandang.app.sns.comment.BasketFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SnsComment</servlet-name>
+		<url-pattern>*.snc</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>SnsFile</servlet-name>
+		<servlet-class>com.pandang.app.sns.file.SnsFileFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SnsFile</servlet-name>
+		<url-pattern>*.snf</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>SnsLike</servlet-name>
+		<servlet-class>com.pandang.app.sns.like.SnsLikeFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SnsLike</servlet-name>
+		<url-pattern>*.snl</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>Store</servlet-name>
+		<servlet-class>com.pandang.app.store.StoreFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Store</servlet-name>
+		<url-pattern>*.st</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>StoreComment</servlet-name>
+		<servlet-class>com.pandang.app.store.comment.StoreCommentFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StoreComment</servlet-name>
+		<url-pattern>*.stc</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>StoreFile</servlet-name>
+		<servlet-class>com.pandang.app.store.file.StoreFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StoreFile</servlet-name>
+		<url-pattern>*.stf</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<servlet-name>StoreLike</servlet-name>
+		<servlet-class>com.pandang.app.store.like.StoreLikeFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StoreLike</servlet-name>
+		<url-pattern>*.stl</url-pattern>
+	</servlet-mapping>
+  
+
+  
+</web-app>

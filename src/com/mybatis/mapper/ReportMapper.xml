@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="report">
+	<select id="selectSnsAll" resultType="ReportSnsVO" parameterType="map">
+		select r.report_number, r.report_title, r.report_content, r.report_date, r.report_member_number
+		, r.report_sns_number, m.member_id, me.member_id reported_member_id
+		from tbl_member m 
+		join tbl_report_sns r on m.member_number = r.report_member_number
+		join tbl_sns s on r.report_sns_number = s.sns_number
+		join tbl_member me on s.member_number = me.member_number 
+		order by report_number desc
+		limit #{startRow}, #{rowCount}
+	</select>	
+	
+	<select id="getSnsTotal" resultType="_int">
+		select count(report_number) from tbl_report_sns
+	</select>
+	
+	<select id="selectStoreAll" resultType="ReportStoreVO" parameterType="map">
+		select r.report_number, r.report_title, r.report_content, r.report_date, r.report_member_number
+		, r.report_store_number, m.member_id, me.member_id reported_member_id
+		from tbl_member m 
+		join tbl_report_store r on m.member_number = r.report_member_number
+		join tbl_store s on r.report_store_number = s.store_number
+		join tbl_member me on s.member_number = me.member_number 
+		order by report_number desc
+		limit #{startRow}, #{rowCount}
+	</select>	
+	
+	<select id="getStoreTotal" resultType="_int">
+		select count(report_number) from tbl_report_store
+	</select>
+
+</mapper>

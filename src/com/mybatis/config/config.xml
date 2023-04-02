@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.pandang.app.basket.dto.BasketDTO" alias="BasketDTO"/>
+		<typeAlias type="com.pandang.app.buy.dto.BuyDTO" alias="BuyDTO"/>
+		<typeAlias type="com.pandang.app.channel.dto.ChannelDTO" alias="ChannelDTO"/>
+		<typeAlias type="com.pandang.app.channel.file.dto.ChannelFileDTO" alias="ChannelFileDTO"/>
+		<typeAlias type="com.pandang.app.follow.dto.FollowDTO" alias="FollowDTO"/>
+		<typeAlias type="com.pandang.app.hashtag.dto.HashtagDTO" alias="HashtagDTO"/>
+		<typeAlias type="com.pandang.app.member.dto.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.pandang.app.sns.dto.SnsDTO" alias="SnsDTO"/>
+		<typeAlias type="com.pandang.app.sns.comment.dto.SnsCommentDTO" alias="SnsCommentDTO"/>
+		<typeAlias type="com.pandang.app.sns.file.dto.SnsFileDTO" alias="SnsFileDTO"/>
+		<typeAlias type="com.pandang.app.sns.like.dto.SnsLikeDTO" alias="SnsLikeDTO"/>
+		<typeAlias type="com.pandang.app.store.dto.StoreDTO" alias="StoreDTO"/>
+		<typeAlias type="com.pandang.app.store.comment.dto.StoreCommentDTO" alias="StoreCommentDTO"/>
+		<typeAlias type="com.pandang.app.store.file.dto.StoreFileDTO" alias="StoreFileDTO"/>
+		<typeAlias type="com.pandang.app.store.like.dto.StoreLikeDTO" alias="StoreLikeDTO"/>
+		<typeAlias type="com.pandang.app.report.sns.dto.ReportSnsDTO" alias="ReportSnsDTO"/>
+		<typeAlias type="com.pandang.app.report.sns.vo.ReportSnsVO" alias="ReportSnsVO"/>
+		<typeAlias type="com.pandang.app.report.store.dto.ReportStoreDTO" alias="ReportStoreDTO"/>
+		<typeAlias type="com.pandang.app.report.store.vo.ReportStoreVO" alias="ReportStoreVO"/>
+	</typeAliases>
+
+	<environments default="mysql">
+		<environment id="mysql">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/pandang"/>
+				<!-- jsp_am 프로젝트명 변경 -->
+				<property name="username" value="root"/>
+				<property name="password" value="1234"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/mybatis/mapper/BasketMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/BuyMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/ChannelMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/ChannelFileMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/FollowMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/HashtagMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/MemberMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/SnsMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/SnsCommentMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/SnsLikeMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/SnsFileMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/StoreMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/StoreCommentMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/StoreFileMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/StoreLikeMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/ReportMapper.xml"/>
+	</mappers>
+	
+</configuration>

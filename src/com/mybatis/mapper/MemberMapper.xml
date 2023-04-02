@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	
+	<select id="adminLogin" parameterType="MemberDTO" resultType="_int">
+		select member_number from tbl_member
+		where member_number=0 and member_id=#{memberId} and member_password=#{memberPassword}
+	</select>
+	
+</mapper>
