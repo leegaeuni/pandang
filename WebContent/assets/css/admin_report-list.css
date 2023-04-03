@@ -135,6 +135,46 @@ a {
   padding-bottom: 5px 0;
 }
 
+.member-contents-title {
+  font-weight: bold;
+  background-color: rgba(200, 200, 200, 0.4);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding-bottom: 5px 0;
+}
+
+.member-list-number,
+.member-number {
+  width: 10%;
+}
+
+.member-list-id,
+.member-id {
+  width: 30%;
+}
+
+.member-list-id {
+  color: black;
+}
+
+.member-list-author,
+.member-author {
+  width: 20%;
+}
+
+.member-list-status,
+.member-status {
+  width: 20%;
+}
+
+.member-list-control,
+.member-control {
+  width: 20%;
+}
+
 .report-contents-wrap {
   display: none;
 }
@@ -243,7 +283,11 @@ a {
 	/* display:none; */
 }
 
-.change-sns{
-	background: gray;
-    color: white;
+.click{
+	background : gray;
+	color : white;
+}
+
+li{
+	list-style : none;
 }

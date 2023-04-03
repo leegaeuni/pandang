@@ -1,6 +1,7 @@
 package com.pandang.app.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,16 +10,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 import com.pandang.app.Execute;
-import com.pandang.app.report.sns.dao.ReportSnsDAO;
-import com.pandang.app.report.sns.vo.ReportSnsVO;
+import com.pandang.app.report.store.dao.ReportStoreDAO;
+import com.pandang.app.report.store.vo.ReportStoreVO;
 
 public class ReportStoreListOkController implements Execute{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ReportSnsDAO reportDAO = new ReportSnsDAO();
-		int total = reportDAO.getTotal();
 		
+		ReportStoreDAO reportStoreDAO = new ReportStoreDAO();
+		int total = reportStoreDAO.getTotal();
 //      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
 //      그러므로 temp에는 null이 들어가게 된다.
       String temp = req.getParameter("page");
@@ -61,15 +65,23 @@ public class ReportStoreListOkController implements Execute{
       pageMap.put("startRow", startRow);
       pageMap.put("rowCount", rowCount);
       
-      List<ReportSnsVO> reports = reportDAO.selectAll(pageMap);
       
-      req.setAttribute("reportList", reports);
-      req.setAttribute("page", page);
-      req.setAttribute("startPage", startPage);
-      req.setAttribute("endPage", endPage);
-      req.setAttribute("prev", prev);
-      req.setAttribute("next", next);
       
-      req.getRequestDispatcher("/app/admin/reportList.jsp").forward(req, resp);
+      List<ReportStoreVO> reports = reportStoreDAO.selectAll(pageMap);
+      Gson gson = new Gson();
+      JsonArray reportList = new JsonArray();
+      
+      
+      reports.stream()
+      .map(gson::toJson)
+      .map(JsonParser::parseString)
+      .forEach(reportList::add);
+      
+      resp.setContentType("application/json; charset=utf-8");
+      PrintWriter out = resp.getWriter();
+      out.print(reportList.toString());
+      out.close();
+      
+      
 	}
 }

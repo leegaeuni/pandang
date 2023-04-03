@@ -49,22 +49,22 @@
 
       <!-- 게시글 목록 -->
       <div class="board-wrap">
-        <div class="board-contents-title">
-          <div class="board-number">번호</div>
-          <div class="board-id">ID</div>
-          <div class="board-author">이름</div>
-          <div class="board-status">회원 상태</div>
-          <div class="board-control">제재</div>
+        <div class="member-contents-title">
+          <div class="member-number">번호</div>
+          <div class="member-id">ID</div>
+          <div class="member-author">이름</div>
+          <div class="member-status">회원 상태</div>
+          <div class="member-control">제재</div>
         </div>
 
-        <div class="board-list">
-          <div class="board-list-number">1</div>
-          <div class="board-list-id">sanghoon</div>
-          <div class="board-list-author">문상훈</div>
+        <div class="member-list">
+          <div class="member-list-number">1</div>
+          <div class="member-list-id">sanghoon</div>
+          <div class="member-list-author">문상훈</div>
           <!-- 관리자가 부여한 상태에 따라 텍스트 변환
               ex) 활동, 정지 등 -->
-          <div class="board-list-status">활동</div>
-          <div class="board-list-control">
+          <div class="member-list-status">활동</div>
+          <div class="member-list-control">
             <button class="control-btn">탈퇴</button>
           </div>
         </div>

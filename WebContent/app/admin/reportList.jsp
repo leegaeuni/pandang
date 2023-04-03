@@ -26,7 +26,7 @@
       </div>
       <!-- 로그아웃 버튼 -->
       <div class="logout-btn">
-        <a href="#">로그아웃</a>
+        <a href="${pageContext.request.contextPath}/admin/logoutOk.ad">로그아웃</a>
       </div>
     </header>
 
@@ -41,7 +41,7 @@
               <a href="#" class="change-page-report">신고 내역</a>
             </li>
             <div>
-	            <li class="change-sns">
+	            <li class="change-sns click">
 	            sns
 	            </li>
 	            <li class="change-store">
@@ -66,61 +66,73 @@
           <div class="board-date">생성일</div>
         </div>
         
-      <c:choose>
-      	<c:when test="${not empty reportSnsList}">
-      		<c:forEach var="report" items="${reportSnsList}">
-      			
-		        <div class="board-list">
-		          <div class="board-list-number">${report.getReportNumber() }</div>
-		          <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
-		          <a href="#" class="board-list-title">${report.getReportTitle() }</a>
-		          <div class="board-list-author">${report.getMemberId() }</div>
-		          <div class="board-list-date">${report.getReportDate() }</div>
-		        </div>
-		
-		        <!-- 게시물 제목 클릭 시 신고내용이 보여진다. -->
-		        <div class="report-contents-wrap">
-		          <div class="report-content">
-		            <p>
-		              ${report.getReportContent()}
-		            </p>
-		          </div>
-		          <div class="report-btn-wrap">
-		            <!-- 클릭 시 해당 회원정보로 이동 -->
-		            <a href="#">${report.getReportedMemberId()}</a>
-		            <!-- 클릭 시 해당 게시물로 이동 -->
-		            <button class="go-post-btn">게시물 보기</button>
-		          </div>
-		        </div>
-        
-      		</c:forEach>
-      	</c:when>
-      	<c:otherwise>
-                  <tr>
-                     <td colspan="5" align="center">등록된 게시물이 없습니다.</td>
-                  </tr>
-        </c:otherwise>
-      </c:choose>
-
-
-        <!-- 게시물 제목 클릭하면 신고내용이 보이게 한다. -->
-        <!-- <div class="report-content">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div> -->
+        <div class="report-list">
+	      <c:choose>
+	      	<c:when test="${not empty reportList}">
+	      		<c:forEach var="report" items="${reportList}">
+	      			
+			        <div class="board-list">
+			          <div class="board-list-number">${report.getReportNumber() }</div>
+			          <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
+			          <a href="#" class="board-list-title">${report.getReportTitle() }</a>
+			          <div class="board-list-author">${report.getMemberId() }</div>
+			          <div class="board-list-date">${report.getReportDate() }</div>
+			        </div>
+			
+			        <!-- 게시물 제목 클릭 시 신고내용이 보여진다. -->
+			        <div class="report-contents-wrap">
+			          <div class="report-content">
+			            <p>
+			              ${report.getReportContent()}
+			            </p>
+			          </div>
+			          <div class="report-btn-wrap">
+			            <!-- 클릭 시 해당 회원정보로 이동 -->
+			            <a href="#">${report.getReportedMemberId()}</a>
+			            <!-- 클릭 시 해당 게시물로 이동 -->
+			            <button class="go-post-btn">게시물 보기</button>
+			          </div>
+			        </div>
+	        
+	      		</c:forEach>
+	      	</c:when>
+	      	<c:otherwise>
+	                  <tr>
+	                     <td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+	                  </tr>
+	        </c:otherwise>
+	      </c:choose>
+      	</div>
 
         <!-- 페이징 처리 -->
         <div class="pagination">
-          <ul>
-            <li><a href="#" class="prev">&lt;</a></li>
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#" class="next">&gt;</a></li>
-          </ul>
+          
+          <c:if test="${prev}">
+               <li><a href="" class="prev-btn">&lt;</a></li>
+            </c:if>
+            
+            <c:forEach var="i" begin="${startPage}" end="${endPage}">
+               <c:choose>
+                  <c:when test="${!(i == page) }">
+                     <li>
+                        <a href="" class='number-btn'>
+                           <c:out value="${i}"/>
+                        </a>
+                     </li>
+                  </c:when>
+                  <c:otherwise>
+                     <li>
+                        <a href="#" class="active number-btn">
+                           <c:out value="${i}"/>
+                        </a>
+                     </li>
+                  </c:otherwise>
+               </c:choose>
+            </c:forEach>
+            
+            <c:if test="${next}">
+               <li><a href="" class="next">&gt;</a></li>
+            </c:if>
         </div>
       </div>
     </section>

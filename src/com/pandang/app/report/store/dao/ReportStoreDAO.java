@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
-import com.pandang.app.report.sns.vo.ReportSnsVO;
+import com.pandang.app.report.store.vo.ReportStoreVO;
 
 public class ReportStoreDAO {
 	public SqlSession sqlSession;
@@ -15,7 +15,7 @@ public class ReportStoreDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-	public List<ReportSnsVO> selectAll(Map<String, Integer> pageMap) {
+	public List<ReportStoreVO> selectAll(Map<String, Integer> pageMap) {
 		return sqlSession.selectList("report.selectStoreAll", pageMap);
 	}
 	

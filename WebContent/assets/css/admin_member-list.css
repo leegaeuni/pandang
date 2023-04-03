@@ -69,20 +69,12 @@ a {
   border-radius: 10px;
 }
 
-.left-nav .change-page-report:focus {
-  background-color: #1bcad3;
-}
-
 .left-nav .change-page-member {
   color: white;
   font-weight: bold;
   padding: 10px 20px;
-  background-color: black;
-  border-radius: 10px;
-}
-
-.left-nav .change-page-member:focus {
   background-color: #1bcad3;
+  border-radius: 10px;
 }
 
 /* -------------- 게시글 목록 ----------------- */
@@ -96,7 +88,7 @@ a {
   margin-top: 10px;
 }
 
-.board-contents-title {
+.member-contents-title {
   font-weight: bold;
   background-color: rgba(200, 200, 200, 0.4);
   width: 100%;
@@ -107,32 +99,32 @@ a {
   padding-bottom: 5px 0;
 }
 
-.board-list-number,
-.board-number {
+.member-list-number,
+.member-number {
   width: 10%;
 }
 
-.board-list-id,
-.board-id {
+.member-list-id,
+.member-id {
   width: 30%;
 }
 
-.board-list-id {
+.member-list-id {
   color: black;
 }
 
-.board-list-author,
-.board-author {
+.member-list-author,
+.member-author {
   width: 20%;
 }
 
-.board-list-status,
-.board-status {
+.member-list-status,
+.member-status {
   width: 20%;
 }
 
-.board-list-control,
-.board-control {
+.member-list-control,
+.member-control {
   width: 20%;
 }
 

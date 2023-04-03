@@ -31,6 +31,15 @@ public class AdminFrontController extends HttpServlet{
 		case "/admin/reportSnsListOk.ad" :
 			new ReportSnsListOkController().execute(req, resp);
 			break;
+		case "/admin/reportSnsAjaxListOk.ad" :
+			new ReportSnsListAjaxOkController().execute(req,resp);
+			break;
+		case "/admin/reportStoreListOk.ad" :
+			new ReportStoreListOkController().execute(req, resp);
+			break;
+		case "/admin/logoutOk.ad" :
+			new LogoutOkController().execute(req, resp);
+			break;
 		}
 	}
 }
