@@ -22,11 +22,14 @@ public class AdminFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 		
 		switch(target) {
+		case "/admin.ad" :
+			req.getRequestDispatcher("/app/admin/login.jsp").forward(req, resp);
+			break;
 		case "/admin/loginOk.ad" : 
 			new LoginOkController().execute(req, resp);
 			break;
-		case "/admin/reportListOk.ad" :
-			new ReportListOkController().execute(req, resp);
+		case "/admin/reportSnsListOk.ad" :
+			new ReportSnsListOkController().execute(req, resp);
 			break;
 		}
 	}

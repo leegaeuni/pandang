@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,6 +40,14 @@
               <!-- 클릭하면 신고내역을 띄워준다.(관리자 페이지 로그인 시 기본화면) -->
               <a href="#" class="change-page-report">신고 내역</a>
             </li>
+            <div>
+	            <li class="change-sns">
+	            sns
+	            </li>
+	            <li class="change-store">
+	            store
+	            </li>
+            </div>
             <li>
               <!-- 클릭하면 회원목록 페이지로 이동. -->
               <a href="#" class="change-page-member">회원 목록</a>
@@ -56,33 +65,43 @@
           <div class="board-author">작성자</div>
           <div class="board-date">생성일</div>
         </div>
+        
+      <c:choose>
+      	<c:when test="${not empty reportSnsList}">
+      		<c:forEach var="report" items="${reportSnsList}">
+      			
+		        <div class="board-list">
+		          <div class="board-list-number">${report.getReportNumber() }</div>
+		          <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
+		          <a href="#" class="board-list-title">${report.getReportTitle() }</a>
+		          <div class="board-list-author">${report.getMemberId() }</div>
+		          <div class="board-list-date">${report.getReportDate() }</div>
+		        </div>
+		
+		        <!-- 게시물 제목 클릭 시 신고내용이 보여진다. -->
+		        <div class="report-contents-wrap">
+		          <div class="report-content">
+		            <p>
+		              ${report.getReportContent()}
+		            </p>
+		          </div>
+		          <div class="report-btn-wrap">
+		            <!-- 클릭 시 해당 회원정보로 이동 -->
+		            <a href="#">${report.getReportedMemberId()}</a>
+		            <!-- 클릭 시 해당 게시물로 이동 -->
+		            <button class="go-post-btn">게시물 보기</button>
+		          </div>
+		        </div>
+        
+      		</c:forEach>
+      	</c:when>
+      	<c:otherwise>
+                  <tr>
+                     <td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+                  </tr>
+        </c:otherwise>
+      </c:choose>
 
-        <div class="board-list">
-          <div class="board-list-number">1</div>
-          <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
-          <a href="#" class="board-list-title">결제 했는데 배송이 안와요.</a>
-          <div class="board-list-author">박광인</div>
-          <div class="board-list-date">2023-03-28</div>
-        </div>
-
-        <!-- 게시물 제목 클릭 시 신고내용이 보여진다. -->
-        <div class="report-contents-wrap">
-          <div class="report-content">
-            <p>
-              "신고시에는 정확한 신고 내용과, 그에 해당되는 게시물내 문제되는
-              부분을 정확하게 함께 남겨주셔야 확인 후 조치 가능하오니 참고
-              부탁드립니다. 감사합니다." "지나친 욕설, 지나친 비방, 음란물, 이용
-              방해할 정도의 도배, 불법광고 등 명확한 사유가 있는 경우
-              신고해주시기 바랍니다. 감사합니다."
-            </p>
-          </div>
-          <div class="report-btn-wrap">
-            <!-- 클릭 시 해당 회원정보로 이동 -->
-            <a href="#">kwangin</a>
-            <!-- 클릭 시 해당 게시물로 이동 -->
-            <button class="go-post-btn">게시물 보기</button>
-          </div>
-        </div>
 
         <!-- 게시물 제목 클릭하면 신고내용이 보이게 한다. -->
         <!-- <div class="report-content">

@@ -65,13 +65,10 @@ a {
   color: white;
   font-weight: bold;
   padding: 10px 20px;
-  background-color: black;
+  background-color: #1bcad3;
   border-radius: 10px;
 }
 
-.left-nav .change-page-report:focus {
-  background-color: #1bcad3;
-}
 
 .left-nav .change-page-member {
   color: white;
@@ -81,9 +78,6 @@ a {
   border-radius: 10px;
 }
 
-.left-nav .change-page-member:focus {
-  background-color: #1bcad3;
-}
 
 /* -------------- 게시글 목록 ----------------- */
 .board-wrap {
@@ -240,4 +234,16 @@ a {
   display: flex;
   justify-content: center;
   font-size: 10px;
+}
+
+.change-store,
+.change-sns{
+	cursor:pointer;
+	width: fit-content;
+	/* display:none; */
+}
+
+.change-sns{
+	background: gray;
+    color: white;
 }

@@ -26,12 +26,13 @@ public class LoginOkController implements Execute {
 		String path = null;
 		HttpSession session = req.getSession();
 		
+		
 		memberDTO.setMemberId(memberId);
 		memberDTO.setMemberPassword(memberPassword);
 		
 		try {
 			memberNumber = adminDAO.login(memberDTO);
-			path = "/admin/reportListOk.ad";
+			path = "/admin/reportSnsListOk.ad";
 			session.setAttribute("memberNumber", memberNumber);
 		} catch (NullPointerException e) {
 			path = "/app/admin/login.jsp";

@@ -1,15 +1,14 @@
-package com.pandang.app.report.dto;
+package com.pandang.app.report.sns.dto;
 
-public class ReportDTO {
+public class ReportSnsDTO {
 	private int reportNumber;
 	private String reportTitle;
 	private String reportContent;
 	private String reportDate;
 	private int reportMemberNumber;
-	private int reportStoreNumber;
 	private int reportSnsNumber;
 	
-	public ReportDTO() {}
+	public ReportSnsDTO() {}
 
 	public int getReportNumber() {
 		return reportNumber;
@@ -51,14 +50,6 @@ public class ReportDTO {
 		this.reportMemberNumber = reportMemberNumber;
 	}
 
-	public int getReportStoreNumber() {
-		return reportStoreNumber;
-	}
-
-	public void setReportStoreNumber(int reportStoreNumber) {
-		this.reportStoreNumber = reportStoreNumber;
-	}
-
 	public int getReportSnsNumber() {
 		return reportSnsNumber;
 	}
@@ -69,10 +60,11 @@ public class ReportDTO {
 
 	@Override
 	public String toString() {
-		return "ReportDTO [reportNumber=" + reportNumber + ", reportTitle=" + reportTitle + ", reportContent="
+		return "ReportSnsDTO [reportNumber=" + reportNumber + ", reportTitle=" + reportTitle + ", reportContent="
 				+ reportContent + ", reportDate=" + reportDate + ", reportMemberNumber=" + reportMemberNumber
-				+ ", reportStoreNumber=" + reportStoreNumber + ", reportSnsNumber=" + reportSnsNumber + "]";
+				+ ", reportSnsNumber=" + reportSnsNumber + "]";
 	}
-	
+
+		
 	
 }

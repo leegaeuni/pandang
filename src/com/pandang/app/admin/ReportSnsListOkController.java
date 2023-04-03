@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pandang.app.Execute;
-import com.pandang.app.report.dao.ReportDAO;
-import com.pandang.app.report.vo.ReportVO;
+import com.pandang.app.report.sns.dao.ReportSnsDAO;
+import com.pandang.app.report.sns.vo.ReportSnsVO;
 
-public class ReportListOkController implements Execute{
+public class ReportSnsListOkController implements Execute{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ReportDAO reportDAO = new ReportDAO();
-		int total = reportDAO.getTotal();
+		ReportSnsDAO reportSnsDAO = new ReportSnsDAO();
+		int total = reportSnsDAO.getTotal();
 		
 //      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
 //      그러므로 temp에는 null이 들어가게 된다.
@@ -61,9 +61,9 @@ public class ReportListOkController implements Execute{
       pageMap.put("startRow", startRow);
       pageMap.put("rowCount", rowCount);
       
-      List<ReportVO> reports = reportDAO.selectAll(pageMap);
-      
-      req.setAttribute("reportList", reports);
+      List<ReportSnsVO> reports = reportSnsDAO.selectAll(pageMap);
+      System.out.println(reports);
+      req.setAttribute("reportSnsList", reports);
       req.setAttribute("page", page);
       req.setAttribute("startPage", startPage);
       req.setAttribute("endPage", endPage);
