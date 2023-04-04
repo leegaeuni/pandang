@@ -1,0 +1,1036 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard";
+}
+
+/* 헤더 파트 시작 html = 17~45 */
+.header-container {
+  background-color: white;
+  width: 100%;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  position: sticky;
+  z-index: 1;
+  top: 0px;
+}
+
+.start-container {
+  width: 400px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.start-container a:hover {
+  color: rgb(42, 197, 198);
+}
+
+.logo-img {
+  width: 140px;
+  height: 40px;
+}
+
+.search {
+  display: flex;
+  width: 370px;
+  align-items: center;
+  height: 46px;
+  background-color: #f5f6f7;
+  margin-right: 40px;
+  border-radius: 30px;
+  position: relative;
+}
+.search button {
+  position: absolute;
+  right: 30px; /* 우측 공간 조절 */
+  top: 50%; /* 세로 중앙 정렬 */
+  transform: translateY(-50%); /* 세로 중앙 정렬 */
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.search-bar {
+  width: 200px;
+  height: 30px;
+  border: none;
+  padding-left: 15px;
+  color: #5b696f;
+  background: #f5f6f7;
+  padding-right: 30px;
+  margin-left: 10px;
+}
+
+.login-container {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  height: 56px;
+  color: #5b696f;
+  margin-right: 30px;
+}
+
+.login:hover {
+  color: rgb(42, 197, 198);
+}
+
+.join {
+  width: 70px;
+  height: 40px;
+  background-color: rgb(50, 50, 50);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.logout {
+  width: 70px;
+  height: 40px;
+  background-color: rgb(50, 50, 50);
+  border-radius: 30px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.my-page {
+  display: none;
+}
+/* 헤더 파트 끝 */
+
+/* 메인 파트 html = 49~97 */
+#main-part {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-part {
+  width: 800px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-img-wrap {
+  width: 30%;
+  height: 200px;
+}
+
+.profile-img-box {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+}
+
+.profile-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+}
+
+/* 유저 프로필 소개  */
+.info-user {
+  width: 70%;
+  height: 100%;
+  display: flex;
+
+  justify-content: center;
+  flex-direction: column;
+}
+
+.member-name-box {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.name-follow {
+  width: 80%;
+  height: 100%;
+  display: flex;
+}
+.info-name {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin-right: 10px;
+}
+/* @@@@@ 팔로우 버튼 @@@@@ */
+.follow-btn-box {
+  width: 100px;
+  height: 100%;
+  display: none;
+}
+
+.follow-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: rgb(42, 197, 198);
+  color: white;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.following-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #f5f6f7;
+  color: #5b696f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  cursor: pointer;
+}
+
+.following-btn span {
+  font-size: 15px;
+}
+
+.profile-edit-path-box {
+  width: 100px;
+  height: 100%;
+  display: none;
+}
+
+.profile-edit-path-btn {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f6f7;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+  font-size: 15px;
+  color: #5b696f;
+  cursor: pointer;
+}
+
+.member-cnt {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.member-cnt span {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.post-cnt-box {
+  width: 25%;
+}
+
+.follower-cnt-box {
+  width: 25%;
+}
+
+.following-cnt-box {
+  width: 25%;
+}
+
+.member-info-msg-box {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-all;
+}
+
+/* 메인 파트 끝 */
+
+/* @@@@ 네비 바 @@@@ */
+.nav-line {
+  margin: auto;
+  width: 940px;
+  border-top: 1px solid rgb(200, 200, 200);
+}
+
+.navbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sns-post-tab,
+.store-post-tab {
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev,
+.next {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  color: #5b696f;
+  font-weight: 300;
+  font-size: 17px;
+  border: none;
+  background-color: white;
+}
+
+.prev:hover,
+.next:hover {
+  color: rgb(42, 197, 198);
+}
+
+.prev {
+  margin-right: 245px;
+}
+
+.next {
+  margin-left: 245px;
+}
+
+#store,
+#post {
+  border: none;
+  background-color: white;
+  font-size: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5b696f;
+  cursor: pointer;
+}
+
+#store:hover,
+#post:hover {
+  color: rgb(42, 197, 198);
+}
+
+/* 네비 파트 끝 */
+
+/* 모달 파트 시작 html = 112~216 */
+#modal {
+  width: 70%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.modal-box {
+  display: none;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+.modal-background {
+  /* display: flex; */
+  display: none;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-img {
+  background-color: aliceblue;
+  color: black;
+  height: 600px;
+  width: 600px;
+  position: relative;
+}
+
+li {
+  list-style-type: none;
+}
+/* 모달창 사진 이전, 다음버튼  */
+.post-img-prev,
+.post-img-next {
+  position: absolute;
+  top: 50%;
+  background-color: rgb(200, 200, 200);
+  color: black;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 100%;
+  border: 0;
+  opacity: 0.7;
+}
+
+.post-img-prev:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: rgb(42, 197, 198);
+  opacity: 0.7;
+}
+
+.post-img-next:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: rgb(42, 197, 198);
+  opacity: 0.7;
+}
+
+.post-img-prev {
+  left: 10px;
+}
+
+.post-img-next {
+  right: 10px;
+}
+
+/* @@@@ 게시글 이전, 다음 버튼 @@@@ */
+.post-prev,
+.post-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  background-color: white;
+  color: black;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 100%;
+  border: 0;
+  z-index: 1;
+}
+
+.post-prev:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: rgb(42, 197, 198);
+}
+
+.post-next:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: rgb(42, 197, 198);
+}
+
+.post-prev {
+  left: 20px;
+}
+
+.post-next {
+  right: 20px;
+}
+
+/* 슬라이드 박스 영역 */
+
+.slide-box {
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+}
+
+.slides-wrap {
+  width: 600px;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* 모달 댓글 영역 게시글 작성자 뜨는곳  */
+
+.host-profile {
+  width: 100%;
+  height: 10%;
+  border-bottom: 1px solid rgb(241, 241, 241);
+  display: flex;
+}
+
+.host-profile-img-box {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.host-profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.host-name-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.host-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* 모달 댓글 영역 게시글 작성자 뜨는 곳 끝 */
+
+#modal-btn-box-wrap {
+  position: fixed;
+  z-index: 2;
+  right: 70px;
+  height: 700px;
+  margin-top: 80px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 모달 프로필 이미지  */
+.author-info:hover .author-img-back {
+  display: block;
+}
+
+.author-img-back {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.author-profile-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.modal-btn-list {
+  color: white;
+}
+
+.modal-btn-box {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#modal-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+#modal-btn > span {
+  font-size: 30px;
+}
+
+.report-btn {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.report-btn button {
+  background-color: white;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 15px;
+  border-style: none;
+  border: 1px solid rgb(200, 200, 200);
+  color: rgb(44, 48, 48);
+  cursor: pointer;
+}
+
+.add {
+  display: block;
+}
+
+.done {
+  display: none;
+  color: rgb(42, 197, 198);
+}
+
+.report-btn-color:hover {
+  color: rgb(255, 0, 0);
+}
+
+.btn-color:hover {
+  color: rgb(42, 197, 198);
+}
+
+.like-btn-color:hover {
+  color: rgb(255, 0, 0);
+}
+
+/* @@@@@@ 댓글 영역 @@@@@@@@@ */
+
+.comment-container {
+  background-color: white;
+  color: black;
+  width: 40%;
+  height: 600px;
+  position: relative;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.comment-wrap {
+  width: 100%;
+  margin-top: 5px;
+  border-bottom: 1px solid rgb(241, 241, 241);
+  min-height: 20%;
+  height: max-content;
+}
+
+.comment-list {
+  height: 75%;
+  overflow-y: scroll;
+  background-color: white;
+  border-bottom: 1px solid rgb(241, 241, 241);
+}
+
+/* 댓글 영역 스크롤바 안보이게 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.comment-member-info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+.comment-member-info {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.comment-content-wrap {
+  width: 90%;
+
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0 10px;
+  min-height: 50%;
+  height: max-content;
+  word-break: break-all;
+  padding: 5px;
+}
+
+.comment-member-profile {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-member-name {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.comment-option {
+  width: 30%;
+  height: 100%;
+  /* display: flex; */
+  align-items: center;
+  justify-content: space-evenly;
+  display: none;
+}
+
+.comment-edit,
+.comment-delete {
+  background-color: white;
+  border: none;
+  color: #5b696f;
+  cursor: pointer;
+}
+
+.comment-write {
+  font-size: 20px;
+  margin-left: 10px;
+  word-wrap: break-word;
+  background-color: white;
+  color: black;
+}
+
+.comment-profile-img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-like-date {
+  width: 100%;
+  height: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.like-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.before-like-btn {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.after-like-btn {
+  width: 35px;
+  height: 35px;
+  display: none;
+}
+
+.like-cnt {
+  margin: 3px;
+  font-weight: 500;
+}
+
+.post-date {
+  margin-right: 5px;
+}
+
+.mini-post-content {
+  display: flex;
+  height: 7%;
+  border-top: 1px solid rgb(241, 241, 241);
+}
+
+.submit {
+  background-color: white;
+  width: 20%;
+  color: #5b696f;
+  border: none;
+
+  border-bottom-right-radius: 5px;
+  height: 107%;
+  cursor: pointer;
+}
+
+.comment-box {
+  width: 100%;
+  border: none;
+  text-indent: 10px;
+}
+
+/* @@@@@@ 댓글 영역 끝 @@@@@@@@@ */
+
+.modal-profile-btn-box {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-profile-btn-box span {
+  margin-top: 5px;
+  color: white;
+}
+
+/* 모달 파트 끝 */
+
+/* 게시물 파트 시작 html = 220~513 */
+.post-image {
+  width: 293px;
+  height: 293px;
+  margin: 15px;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+#post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+}
+
+.post-section {
+  align-items: stretch;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.post-part {
+  position: relative;
+  display: inline-block;
+}
+
+.post-info {
+  margin: 15px;
+  width: 289px;
+  height: 289px;
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 20px;
+  padding: 2px;
+  text-align: center;
+  opacity: 0;
+  border-radius: 5%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.post-part:hover img {
+  opacity: 1;
+}
+
+.post-part:hover .post-info {
+  opacity: 0.9;
+}
+
+input:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #5b696f;
+}
+
+font {
+  color: #5b696f;
+  cursor: default;
+}
+
+.list-box li {
+  float: left;
+  list-style-type: none;
+}
+
+.list-box li:not(:first-child) {
+  display: none; /* 첫 번째 li 요소를 제외한 모든 li 요소를 숨김 */
+}
+
+.list-box li:first-child {
+  display: list-item; /* 첫 번째 li 요소를 보이도록 설정 */
+}
+/* 게시물 파트 끝 */
+
+/*푸터 파트 시작 html = 517~535 */
+#footer-container {
+  width: 100%;
+  margin-top: 50px;
+  height: 200px;
+}
+
+.footer-logo {
+  border-top: 1px solid rgb(200, 200, 200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin: 0 20px;
+}
+.name {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+.name > p {
+  margin: 0 15px;
+}
+.footer-container p {
+  margin: 10px;
+}
+
+.information {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.information > p {
+  margin: 0 15px;
+}
+/* 푸터 파트 끝 */
+
+/* @@@@@ 모달 버튼 테스트 @@@@ */
+/* @@@@@@@ 신고 모달 @@@@@@@@ */
+.report-path {
+  width: 60%;
+  height: 350px;
+  padding: 20px;
+  position: fixed;
+  z-index: 3;
+  background-color: white;
+  bottom: 30px;
+  right: 170px;
+  border-radius: 5px;
+  border: 1px solid rgb(200, 200, 200);
+  display: none;
+}
+
+.report-msg {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-msg h1 {
+  font-size: 25px;
+}
+
+.report-path form {
+  width: 100%;
+  height: 84%;
+}
+
+.report-content-box {
+  width: 100%;
+  height: 100%;
+}
+
+.report-title {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.report-title input {
+  width: 95%;
+  height: 20%;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 10px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.report-content {
+  display: flex;
+  width: 100%;
+  height: 60%;
+  justify-content: center;
+}
+
+.report-content textarea {
+  width: 95%;
+  height: 80%;
+  padding: 10px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.53;
+  letter-spacing: -0.5px;
+  outline-style: none;
+}
+
+.report-btn {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.report-btn button {
+  background-color: white;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 15px;
+  border-style: none;
+  border: 1px solid rgb(200, 200, 200);
+  color: rgb(44, 48, 48);
+  cursor: pointer;
+}
+
+/* @@@@@@ 신고 모달 끝 @@@@@@ */
