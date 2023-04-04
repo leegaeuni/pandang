@@ -40,6 +40,9 @@ public class AdminFrontController extends HttpServlet{
 		case "/admin/logoutOk.ad" :
 			new LogoutOkController().execute(req, resp);
 			break;
+		case "/admin/memberListOk.ad" :
+			new MemberListOkController().execute(req, resp);
+			break;
 		}
 	}
 }

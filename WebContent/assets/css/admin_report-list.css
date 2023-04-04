@@ -291,3 +291,24 @@ a {
 li{
 	list-style : none;
 }
+
+/* 검색 창 */
+.search-wrap {
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+/* 검색 버튼 */
+.search-btn {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}

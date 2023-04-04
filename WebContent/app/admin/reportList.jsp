@@ -104,11 +104,21 @@
 	      </c:choose>
       	</div>
 
+		<div class="search-wrap">
+          <input
+            class="search-input"
+            type="text"
+            placeholder="검색할 제목을 입력하세요."
+          />
+          <button class="search-btn">검색</button>
+        </div>
+		
         <!-- 페이징 처리 -->
         <div class="pagination">
-          
+          <input class="startPage" type="hidden" name="startPage" value="${startPage }">
+          <input class="endPage" type="hidden" name="endPage" value="${endPage }">
           <c:if test="${prev}">
-               <li><a href="" class="prev-btn">&lt;</a></li>
+               <li><a href="" class="prev">&lt;</a></li>
             </c:if>
             
             <c:forEach var="i" begin="${startPage}" end="${endPage}">

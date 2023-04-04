@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.pandang.app.Execute;
 import com.pandang.app.report.sns.dao.ReportSnsDAO;
@@ -58,28 +59,32 @@ public class ReportSnsListAjaxOkController implements Execute{
       boolean prev = startPage > 1;
       boolean next = endPage != realEndPage;
       
-      
-      
-      
       Map<String, Integer> pageMap = new HashMap<>();
       pageMap.put("startRow", startRow);
       pageMap.put("rowCount", rowCount);
-      
       
       
       List<ReportSnsVO> reports = reportSnsDAO.selectAll(pageMap);
       Gson gson = new Gson();
       JsonArray reportList = new JsonArray();
       
-      
       reports.stream()
       .map(gson::toJson)
       .map(JsonParser::parseString)
       .forEach(reportList::add);
       
+      
+      JsonObject result = new JsonObject();
+      result.add("list", JsonParser.parseString(reportList.toString()));
+      result.addProperty("startPage", startPage);
+      result.addProperty("endPage", endPage);
+      result.addProperty("page", page);
+      result.addProperty("prev", prev);
+      result.addProperty("next", next);
+      
       resp.setContentType("application/json; charset=utf-8");
       PrintWriter out = resp.getWriter();
-      out.print(reportList.toString());
+      out.print(result.toString());
       out.close();
       
       

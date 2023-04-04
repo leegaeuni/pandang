@@ -1,25 +1,25 @@
 function showReport(result){
 	$(".report-list").html('');
-			for(let i=0; i<result.length; i++){
+			for(let i=0; i<result.list.length; i++){
 				
 				$('.report-list').append(`<div class="board-list">
-		          <div class="board-list-number">${result[i].reportNumber}</div>
+		          <div class="board-list-number">${result.list[i].reportNumber}</div>
 		          <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
-		          <a href="#" class="board-list-title">${result[i].reportTitle}</a>
-		          <div class="board-list-author">${result[i].memberId}</div>
-		          <div class="board-list-date">${result[i].reportDate}</div>
+		          <a href="#" class="board-list-title">${result.list[i].reportTitle}</a>
+		          <div class="board-list-author">${result.list[i].memberId}</div>
+		          <div class="board-list-date">${result.list[i].reportDate}</div>
 		        </div>
 		
 		        <!-- 게시물 제목 클릭 시 신고내용이 보여진다. -->
 		        <div class="report-contents-wrap">
 		          <div class="report-content">
 		            <p>
-		              ${result[i].reportContent}
+		              ${result.list[i].reportContent}
 		            </p>
 		          </div>
 		          <div class="report-btn-wrap">
 		            <!-- 클릭 시 해당 회원정보로 이동 -->
-		            <a href="#">${result[i].reportedMemberId}</a>
+		            <a href="#">${result.list[i].reportedMemberId}</a>
 		            <!-- 클릭 시 해당 게시물로 이동 -->
 		            <button class="go-post-btn">게시물 보기</button>
 		          </div>
@@ -46,6 +46,7 @@ $(".change-page-report").on('click',function(){
           <div class="board-date">생성일</div>`);
 	$('.change-store').removeClass('click');
 	$('.change-sns').addClass('click');
+	$('.search-input').attr('placeholder', '검색할 제목을 입력하세요.');
 	$.ajax({
 		url : '/admin/reportSnsAjaxListOk.ad',
 		type : 'get',
@@ -66,7 +67,31 @@ $(".change-page-member").on('click', function(){
           <div class="member-author">이름</div>
           <div class="member-status">회원 상태</div>
           <div class="member-control">제재</div>`);
-	$ajax.
+	$('.search-input').attr('placeholder', '검색할 ID를 입력하세요.');
+	$ajax({
+		url : '/admin/memberListOk.ad',
+		type : 'get',
+		dataType : 'json',
+		success : function(result){
+			console.log('*');
+			$('.report-list').html('');
+			for(let i=0; i<result.list.length; i++){
+				if(result.list[i].memberStatus==1){
+					$('.report-list').append(`<div class="member-list">
+				          <div class="member-list-number">${result.list[i].memberNumber}</div>
+				          <div class="member-list-id">${result.list[i].memberId}</div>
+				          <div class="member-list-author">${result.list[i].memberName}</div>
+				          <!-- 관리자가 부여한 상태에 따라 텍스트 변환
+				              ex) 활동, 정지 등 -->
+				          <div class="member-list-status">활동</div>
+				          <div class="member-list-control">
+				            <button class="control-btn">탈퇴</button>
+				          </div>
+				        </div>`);
+				}
+			}
+		}
+	});
 });
 
 $(".change-sns").on('click', function(){
@@ -132,3 +157,86 @@ $('.change-page-member').on('click', function(){
           <div class="member-status">회원 상태</div>
           <div class="member-control">제재</div>`);
 });
+
+$(".pagination").on('click', '.next', function(e){
+	e.preventDefault();
+	console.log($('.endPage').val());
+	params.data = {page : Number($('.endPage').val())+1};
+	$.ajax({
+		url : params.url,
+		data : params.data,
+		type : 'get',
+		dataType : 'json',
+		success : function(result){
+			$('.pagination').html('');
+			$('.pagination').append(`<input class="startPage" type="hidden" name="startPage" value="${result.startPage }">`)
+			$('.pagination').append(`<input class="endPage" type="hidden" name="endPage" value="${result.endPage }">`)
+			if(result.prev){
+			$('.pagination').append(`<li><a href="" class="prev">&lt;</a></li>`);
+			};
+			for(let i=result.startPage; i<result.endPage+1; i++){
+				if(!(i==result.page)){
+					$('.pagination').append(`<li>
+	                        <a href="" class='number-btn'>
+	                           ${i}
+	                        </a>
+	                     </li>`);
+				}else{
+					$('.pagination').append(`<li>
+	                        <a href="#" class="active number-btn">
+	                           ${i}
+	                        </a>
+	                     </li>`);
+				}
+			};
+			
+			if(result.next){
+				$('.pagination').append(`<li><a href="" class="next">&gt;</a></li>`);
+			};
+			
+			showReport(result);
+		}
+	});
+});
+
+$(".pagination").on('click', '.prev', function(e){
+	e.preventDefault();
+	console.log($('.endPage').val());
+	params.data = {page : Number($('.startPage').val())-1};
+	$.ajax({
+		url : params.url,
+		data : params.data,
+		type : 'get',
+		dataType : 'json',
+		success : function(result){
+			$('.pagination').html('');
+			$('.pagination').append(`<input class="startPage" type="hidden" name="startPage" value="${result.startPage }">`)
+			$('.pagination').append(`<input class="endPage" type="hidden" name="endPage" value="${result.endPage }">`)
+			if(result.prev){
+			$('.pagination').append(`<li><a href="" class="prev">&lt;</a></li>`);
+			};
+			for(let i=result.startPage; i<result.endPage+1; i++){
+				if(!(i==result.page)){
+					$('.pagination').append(`<li>
+	                        <a href="" class='number-btn'>
+	                           ${i}
+	                        </a>
+	                     </li>`);
+				}else{
+					$('.pagination').append(`<li>
+	                        <a href="#" class="active number-btn">
+	                           ${i}
+	                        </a>
+	                     </li>`);
+				}
+			};
+			
+			if(result.next){
+				$('.pagination').append(`<li><a href="" class="next">&gt;</a></li>`);
+			};
+			
+			showReport(result);
+		}
+	});
+});
+

@@ -15,15 +15,16 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.pandang.app.Execute;
-import com.pandang.app.report.store.dao.ReportStoreDAO;
-import com.pandang.app.report.store.vo.ReportStoreVO;
+import com.pandang.app.admin.dao.AdminDAO;
+import com.pandang.app.member.dto.MemberDTO;
 
-public class ReportStoreListOkController implements Execute{
+public class MemberListOkController implements Execute {
+
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		AdminDAO adminDAO = new AdminDAO();
 		
-		ReportStoreDAO reportStoreDAO = new ReportStoreDAO();
-		int total = reportStoreDAO.getTotal();
+		int total = adminDAO.getTotal();
 //      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
 //      그러므로 temp에는 null이 들어가게 된다.
       String temp = req.getParameter("page");
@@ -59,35 +60,36 @@ public class ReportStoreListOkController implements Execute{
       boolean prev = startPage > 1;
       boolean next = endPage != realEndPage;
       
-      
-      
-      
       Map<String, Integer> pageMap = new HashMap<>();
       pageMap.put("startRow", startRow);
       pageMap.put("rowCount", rowCount);
-      
-      
-      
-      List<ReportStoreVO> reports = reportStoreDAO.selectAll(pageMap);
+		
+      List<MemberDTO> members = adminDAO.getAllMember(pageMap);
       Gson gson = new Gson();
-      JsonArray reportList = new JsonArray();
+      JsonArray memberList = new JsonArray();
       
-      
-      reports.stream()
+      System.out.println(members.toString());
+		
+      members.stream()
       .map(gson::toJson)
       .map(JsonParser::parseString)
-      .forEach(reportList::add);
+      .forEach(memberList::add);
       
       JsonObject result = new JsonObject();
-      result.add("list", JsonParser.parseString(reportList.toString()));
+      result.add("list", JsonParser.parseString(memberList.toString()));
       result.addProperty("startPage", startPage);
       result.addProperty("endPage", endPage);
+      result.addProperty("page", page);
+      result.addProperty("prev", prev);
+      result.addProperty("next", next);
+      
+      System.out.println(result);
       
       resp.setContentType("application/json; charset=utf-8");
       PrintWriter out = resp.getWriter();
       out.print(result.toString());
       out.close();
       
-      
 	}
+
 }

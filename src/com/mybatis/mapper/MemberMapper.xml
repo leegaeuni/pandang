@@ -3,9 +3,26 @@
 
 <mapper namespace="member">
 	
-	<select id="adminLogin" parameterType="MemberDTO" resultType="_int">
+	<select id="adminLogin" parameterType="MemberDTO" resultType="_int" >
 		select member_number from tbl_member
 		where member_number=0 and member_id=#{memberId} and member_password=#{memberPassword}
+	</select>
+	
+	<select id="adminAllMember" resultType="MemberDTO" parameterType="map">
+		select member_number, member_id, member_name, member_status
+		from tbl_member
+		where member_number != 0
+		limit #{startRow}, #{rowCount}
+	</select>
+	
+	<select id="adminGetTotal" resultType='_int'>
+		select count(member_number) from tbl_member
+		where member_number != 0
+	</select>
+	
+	<select id="adminFindMember" resultType = "MemberDTO" parameterType="string">
+		select member_number, member_id, member_name, member_status
+		from tbl_member where member_id = #{memberId}
 	</select>
 	
 </mapper>
