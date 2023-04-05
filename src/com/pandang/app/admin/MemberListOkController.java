@@ -68,8 +68,6 @@ public class MemberListOkController implements Execute {
       Gson gson = new Gson();
       JsonArray memberList = new JsonArray();
       
-      System.out.println(members.toString());
-		
       members.stream()
       .map(gson::toJson)
       .map(JsonParser::parseString)
@@ -82,8 +80,6 @@ public class MemberListOkController implements Execute {
       result.addProperty("page", page);
       result.addProperty("prev", prev);
       result.addProperty("next", next);
-      
-      System.out.println(result);
       
       resp.setContentType("application/json; charset=utf-8");
       PrintWriter out = resp.getWriter();

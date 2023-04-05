@@ -3,7 +3,6 @@ package com.pandang.app.admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,22 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.pandang.app.Execute;
-import com.pandang.app.report.store.dao.ReportStoreDAO;
-import com.pandang.app.report.store.vo.ReportStoreVO;
+import com.pandang.app.admin.dao.AdminDAO;
+import com.pandang.app.member.dto.MemberDTO;
 
-public class ReportStoreListOkController implements Execute{
+public class FindMemberOkController implements Execute {
+
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		ReportStoreDAO reportStoreDAO = new ReportStoreDAO();
-		int total = reportStoreDAO.getTotal();
+		AdminDAO adminDAO = new AdminDAO();
+		MemberDTO memberDTO = new MemberDTO();
+		Gson gson = new Gson();
+		int total =adminDAO.getTotal();
 //      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
 //      그러므로 temp에는 null이 들어가게 된다.
-      String temp = req.getParameter("page");
+		String temp = req.getParameter("page");
       
 //      null인 경우는 게시판에 처음 이동하는 것이므로 1페이지를 띄워주면 된다.
       int page = temp == null ? 1 : Integer.valueOf(temp);
@@ -59,38 +58,17 @@ public class ReportStoreListOkController implements Execute{
       boolean prev = startPage > 1;
       boolean next = endPage != realEndPage;
       
-      
-      
-      
       Map<String, Integer> pageMap = new HashMap<>();
       pageMap.put("startRow", startRow);
       pageMap.put("rowCount", rowCount);
-      
-      
-      
-      List<ReportStoreVO> reports = reportStoreDAO.selectAll(pageMap);
-      Gson gson = new Gson();
-      JsonArray reportList = new JsonArray();
-      
-      
-      reports.stream()
-      .map(gson::toJson)
-      .map(JsonParser::parseString)
-      .forEach(reportList::add);
-      
-      JsonObject result = new JsonObject();
-      result.add("list", JsonParser.parseString(reportList.toString()));
-      result.addProperty("startPage", startPage);
-      result.addProperty("endPage", endPage);
-      result.addProperty("page", page);
-      result.addProperty("prev", prev);
-      result.addProperty("next", next);
-      
-      resp.setContentType("application/json; charset=utf-8");
-      PrintWriter out = resp.getWriter();
-      out.print(result.toString());
-      out.close();
-      
-      
+		
+		memberDTO = adminDAO.findMember(req.getParameter("input"));
+		System.out.println(JsonParser.parseString(gson.toJson(memberDTO)).toString());
+		
+		resp.setContentType("application/json; charset=utf-8");
+	    PrintWriter out = resp.getWriter();
+	    out.print(JsonParser.parseString(gson.toJson(memberDTO)).toString());
+	    out.close();
 	}
+
 }

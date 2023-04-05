@@ -27,4 +27,20 @@ public class AdminDAO {
 		return sqlSession.selectOne("member.adminGetTotal");
 	}
 	
+	public void banMember(int memberNumber) {
+		sqlSession.update("member.adminBanMember", memberNumber);
+	}
+	
+	public void restoreMember(int memberNumber) {
+		sqlSession.update("member.adminRestoreMember", memberNumber);
+	}
+	
+	public MemberDTO findMember(String memberId) {
+		return sqlSession.selectOne("member.adminFindMember", memberId);
+	}
+	
+	public int findGetTotal() {
+		return sqlSession.selectOne("member.adminFindGetTotal");
+	}
+	
 }

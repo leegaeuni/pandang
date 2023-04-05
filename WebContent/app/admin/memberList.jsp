@@ -57,7 +57,17 @@
           <div class="member-status">회원 상태</div>
           <div class="member-control">제재</div>
         </div>
-
+<div class="member-list">
+			          <div class="member-list-number">1</div>
+			          <div class="member-list-id">sanghoon</div>
+			          <div class="member-list-author">문상훈</div>
+			          <!-- 관리자가 부여한 상태에 따라 텍스트 변환
+			              ex) 활동, 정지 등 -->
+			          <div class="member-list-status">활동</div>
+			          <div class="member-list-control">
+			            <button class="control-btn">탈퇴</button>
+			          </div>
+			        </div>
 		<c:choose>
 			<c:when test="${not empty memberList }">
 				<c:forEach var="member" items="${memberList }">

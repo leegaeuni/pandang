@@ -41,7 +41,7 @@
               <a href="#" class="change-page-report">신고 내역</a>
             </li>
             <div>
-	            <li class="change-sns click">
+	            <li class="change-sns click find">
 	            sns
 	            </li>
 	            <li class="change-store">

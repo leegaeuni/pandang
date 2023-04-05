@@ -28,11 +28,102 @@ function showReport(result){
 			}
 };
 
-$(".board-list-title").on("click", function () {
-  if ($(this).parent().next().css("display") == "none") {
-    $(this).parent().next().css("display", "block");
+function showPagination(result){
+			$('.pagination').html('');
+			$('.pagination').append(`<input class="startPage" type="hidden" name="startPage" value="${result.startPage }">`)
+			$('.pagination').append(`<input class="endPage" type="hidden" name="endPage" value="${result.endPage }">`)
+			if(result.prev){
+			$('.pagination').append(`<li><a href="" class="prev">&lt;</a></li>`);
+			};
+			for(let i=result.startPage; i<result.endPage+1; i++){
+				if(!(i==result.page)){
+					$('.pagination').append(`<li>
+	                        <a href="" class='number-btn'>
+	                           ${i}
+	                        </a>
+	                     </li>`);
+				}else{
+					$('.pagination').append(`<li>
+	                        <a href="#" class="active number-btn">
+	                           ${i}
+	                        </a>
+	                     </li>`);
+				}
+			};
+			
+			if(result.next){
+				$('.pagination').append(`<li><a href="" class="next">&gt;</a></li>`);
+			};
+			
+};
+
+function showMember(result){
+	$('.report-list').html('');
+			for(let i=0; i<result.list.length; i++){
+				if(result.list[i].memberStatus==1){
+					$('.report-list').append(`<div class="member-list">
+				          <div class="member-list-number">${result.list[i].memberNumber}</div>
+				          <div class="member-list-id">${result.list[i].memberId}</div>
+				          <div class="member-list-author">${result.list[i].memberName}</div>
+				          <!-- 관리자가 부여한 상태에 따라 텍스트 변환
+				              ex) 활동, 정지 등 -->
+				          <div class="member-list-status">활동</div>
+				          <div class="member-list-control">
+				            <button class="control-btn">정지</button>
+				          </div>
+				        </div>`);
+				}else if(result.list[i].memberStatus==2){
+					$('.report-list').append(`<div class="member-list">
+				          <div class="member-list-number">${result.list[i].memberNumber}</div>
+				          <div class="member-list-id">${result.list[i].memberId}</div>
+				          <div class="member-list-author">${result.list[i].memberName}</div>
+				          <!-- 관리자가 부여한 상태에 따라 텍스트 변환
+				              ex) 활동, 정지 등 -->
+				          <div class="member-list-status">정지</div>
+				          <div class="member-list-control">
+				            <button class="control-btn">복구</button>
+				          </div>
+				        </div>`);
+				}else if(result.list[i].memberStatus==3){
+					$('.report-list').append(`<div class="member-list">
+				          <div class="member-list-number">${result.list[i].memberNumber}</div>
+				          <div class="member-list-id">${result.list[i].memberId}</div>
+				          <div class="member-list-author">${result.list[i].memberName}</div>
+				          <!-- 관리자가 부여한 상태에 따라 텍스트 변환
+				              ex) 활동, 정지 등 -->
+				          <div class="member-list-status">탈퇴</div>
+				          <div class="member-list-control">
+				            <button class="control-btn">복구</button>
+				          </div>
+				        </div>`);
+				}
+			}
+};
+
+let params = {
+	type : 'get',
+	dataType : 'json',
+	data : {page : $('.active').text().trim()},
+	url : '/admin/reportSnsAjaxListOk.ad',
+	success : showReport
+};
+
+let findParams = {
+	type : 'get',
+	dataType : 'json',
+	data : {page : 1,
+				input : $('.search-input').val().trim()
+	},
+	success : function(result){
+		showReport
+	}
+};
+
+$(".report-list").on("click", ".board-list-title", function (e) {
+  if ($(e.target).parent().next().css("display") == "none") {
+    $(e.target).parent().next().css("display", "block");
   } else {
-    $(this).parent().next().css("display", "none");
+    $(e.target).parent().next().css("display", "none");
   }
 });
 
@@ -44,14 +135,19 @@ $(".change-page-report").on('click',function(){
           <div class="board-title">제목</div>
           <div class="board-author">작성자</div>
           <div class="board-date">생성일</div>`);
-	$('.change-store').removeClass('click');
-	$('.change-sns').addClass('click');
+	$('.change-store').removeClass('click find');
+	$('.change-sns').addClass('click find');
+	$('.change-page-member').removeClass('find');
 	$('.search-input').attr('placeholder', '검색할 제목을 입력하세요.');
 	$.ajax({
 		url : '/admin/reportSnsAjaxListOk.ad',
 		type : 'get',
 		dataType : 'json',
-		success : showReport,
+		data : {page : 1},
+		success : function(result){
+			showReport(result);
+			showPagination(result);
+		},
 		error: function(a,b,c){
 			console.log(c);
 		}
@@ -68,41 +164,41 @@ $(".change-page-member").on('click', function(){
           <div class="member-status">회원 상태</div>
           <div class="member-control">제재</div>`);
 	$('.search-input').attr('placeholder', '검색할 ID를 입력하세요.');
-	$ajax({
+	$('.change-sns').removeClass('find');
+	$('.change-store').removeClass('find');
+	$(this).addClass('find');
+	$('.board-contents-title').html(`<div class="member-number">번호</div>
+          <div class="member-id">ID</div>
+          <div class="member-author">이름</div>
+          <div class="member-status">회원 상태</div>
+          <div class="member-control">제재</div>`);
+	params.url = '/admin/memberListOk.ad';
+	$.ajax({
 		url : '/admin/memberListOk.ad',
 		type : 'get',
+		data : {page : 1},
 		dataType : 'json',
 		success : function(result){
-			console.log('*');
-			$('.report-list').html('');
-			for(let i=0; i<result.list.length; i++){
-				if(result.list[i].memberStatus==1){
-					$('.report-list').append(`<div class="member-list">
-				          <div class="member-list-number">${result.list[i].memberNumber}</div>
-				          <div class="member-list-id">${result.list[i].memberId}</div>
-				          <div class="member-list-author">${result.list[i].memberName}</div>
-				          <!-- 관리자가 부여한 상태에 따라 텍스트 변환
-				              ex) 활동, 정지 등 -->
-				          <div class="member-list-status">활동</div>
-				          <div class="member-list-control">
-				            <button class="control-btn">탈퇴</button>
-				          </div>
-				        </div>`);
-				}
-			}
+			showMember(result);
+			showPagination(result);
 		}
 	});
 });
 
 $(".change-sns").on('click', function(){
-	$('.change-sns').addClass('click');
-	$('.change-store').removeClass('click');
+	$('.change-sns').addClass('click find');
+	$('.change-store').removeClass('click find');
+	$('.change-page-member').removeClass('find');
 	params.url = '/admin/reportSnsAjaxListOk.ad';
 	$.ajax({
 		url : '/admin/reportSnsAjaxListOk.ad',
 		type : 'get',
+		data : {page : 1},
 		dataType : 'json',
-		success : showReport,
+		success : function(result){
+			showReport(result);
+			showPagination(result);
+		},
 		error: function(a,b,c){
 			console.log(c);
 		}
@@ -112,27 +208,27 @@ $(".change-sns").on('click', function(){
 
 
 $(".change-store").on('click', function(){
-	$('.change-store').addClass('click');
-	$('.change-sns').removeClass('click');
+	$('.change-store').addClass('click find');
+	$('.change-sns').removeClass('click find');
+	$('.change-page-member').removeClass('find');
 	params.url = '/admin/reportStoreListOk.ad';
 	$.ajax({
 		url : '/admin/reportStoreListOk.ad',
 		type : 'get',
+		data : {page : 1},
 		dataType : 'json',
-		success : showReport,
+		success : function(result){
+			showReport(result);
+			showPagination(result);
+		},
 		error: function(a,b,c){	
 			console.log(c);
 		}
 	});
 });
 
-var params = {
-	type : 'get',
-	dataType : 'json',
-	data : {page : $('.active').text().trim()},
-	url : '/admin/reportSnsAjaxListOk.ad',
-	success : showReport
-};
+
+
 
 
 $('.pagination').on('click', '.number-btn', function(e){
@@ -143,24 +239,8 @@ $('.pagination').on('click', '.number-btn', function(e){
 	$.ajax(params);
 });
 
-/*var stylesheet = $("<link>", {
-    rel: "stylesheet",
-    type: "text/css",
-    href: "${pageContext.request.contextPath}/assets/css/admin_member-list.css"
-});
-stylesheet.appendTo("head");*/
-
-$('.change-page-member').on('click', function(){
-	$('.board-contents-title').html(`<div class="member-number">번호</div>
-          <div class="member-id">ID</div>
-          <div class="member-author">이름</div>
-          <div class="member-status">회원 상태</div>
-          <div class="member-control">제재</div>`);
-});
-
 $(".pagination").on('click', '.next', function(e){
 	e.preventDefault();
-	console.log($('.endPage').val());
 	params.data = {page : Number($('.endPage').val())+1};
 	$.ajax({
 		url : params.url,
@@ -168,33 +248,8 @@ $(".pagination").on('click', '.next', function(e){
 		type : 'get',
 		dataType : 'json',
 		success : function(result){
-			$('.pagination').html('');
-			$('.pagination').append(`<input class="startPage" type="hidden" name="startPage" value="${result.startPage }">`)
-			$('.pagination').append(`<input class="endPage" type="hidden" name="endPage" value="${result.endPage }">`)
-			if(result.prev){
-			$('.pagination').append(`<li><a href="" class="prev">&lt;</a></li>`);
-			};
-			for(let i=result.startPage; i<result.endPage+1; i++){
-				if(!(i==result.page)){
-					$('.pagination').append(`<li>
-	                        <a href="" class='number-btn'>
-	                           ${i}
-	                        </a>
-	                     </li>`);
-				}else{
-					$('.pagination').append(`<li>
-	                        <a href="#" class="active number-btn">
-	                           ${i}
-	                        </a>
-	                     </li>`);
-				}
-			};
-			
-			if(result.next){
-				$('.pagination').append(`<li><a href="" class="next">&gt;</a></li>`);
-			};
-			
 			showReport(result);
+			showPagination(result);
 		}
 	});
 });
@@ -209,34 +264,48 @@ $(".pagination").on('click', '.prev', function(e){
 		type : 'get',
 		dataType : 'json',
 		success : function(result){
-			$('.pagination').html('');
-			$('.pagination').append(`<input class="startPage" type="hidden" name="startPage" value="${result.startPage }">`)
-			$('.pagination').append(`<input class="endPage" type="hidden" name="endPage" value="${result.endPage }">`)
-			if(result.prev){
-			$('.pagination').append(`<li><a href="" class="prev">&lt;</a></li>`);
-			};
-			for(let i=result.startPage; i<result.endPage+1; i++){
-				if(!(i==result.page)){
-					$('.pagination').append(`<li>
-	                        <a href="" class='number-btn'>
-	                           ${i}
-	                        </a>
-	                     </li>`);
-				}else{
-					$('.pagination').append(`<li>
-	                        <a href="#" class="active number-btn">
-	                           ${i}
-	                        </a>
-	                     </li>`);
-				}
-			};
-			
-			if(result.next){
-				$('.pagination').append(`<li><a href="" class="next">&gt;</a></li>`);
-			};
-			
 			showReport(result);
+			showPagination(result);
 		}
 	});
 });
 
+$('.report-list').on('click', '.control-btn', function(e){
+	if($(e.target).text() == '정지'){
+		$.ajax({
+			url : '/admin/memberBanOk.ad',
+			type : 'get',
+			data : {memberNumber : $(e.target).parent().parent().children().first().text()},
+			success : function(){
+				$(e.target).parent().prev().text('정지');
+				$(e.target).text('복구');
+			},
+			error : function(a,b,c){
+				console.log(c);
+			}
+		});
+	}else if($(e.target).text() == '복구'){
+		$.ajax({
+			url : '/admin/memberRestoreOk.ad',
+			type : 'get',
+			data : {memberNumber : $(e.target).parent().parent().children().first().text()},
+			success : function(){
+				$(e.target).parent().prev().text('활동');
+				$(e.target).text('정지');
+			},
+			error : function(a,b,c){
+				console.log(c);
+			}
+		});
+	}
+});
+let findUrl = '';
+$('.search-btn').on('click', function(){
+	$.ajax({
+		url : '/admin/findMemberOk.ad',
+		type : 'get',
+		data : {page : 1, input : $('.search-input').val().trim()},
+		success
+	});
+	/*$('.search-input').val('');*/
+});

@@ -25,4 +25,21 @@
 		from tbl_member where member_id = #{memberId}
 	</select>
 	
+	<select id="adminFindGetTotal">
+		select count(member_number) from tbl_member
+		where member_id
+	</select>
+	
+	<update id="adminBanMember" parameterType="_int">
+		update tbl_member
+		set member_status=2
+		where member_number=#{memberNumber}
+	</update>
+	
+	<update id="adminRestoreMember" parameterType="_int">
+		update tbl_member
+		set member_status=1
+		where member_number=#{memberNumber}
+	</update>
+	
 </mapper>
