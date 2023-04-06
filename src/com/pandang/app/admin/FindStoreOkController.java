@@ -15,17 +15,18 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.pandang.app.Execute;
-import com.pandang.app.admin.dao.AdminDAO;
-import com.pandang.app.member.dto.MemberDTO;
+import com.pandang.app.report.store.dao.ReportStoreDAO;
+import com.pandang.app.report.store.dto.ReportStoreDTO;
+import com.pandang.app.report.store.vo.ReportStoreVO;
 
-public class FindMemberOkController implements Execute {
+public class FindStoreOkController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		AdminDAO adminDAO = new AdminDAO();
-		MemberDTO memberDTO = new MemberDTO();
+		ReportStoreDAO reportStoreDAO = new ReportStoreDAO();
+		ReportStoreDTO reportStoreDTO = new ReportStoreDTO();
 		Gson gson = new Gson();
-		int total =adminDAO.findGetTotal(req.getParameter("input"));
+		int total =reportStoreDAO.findStoreGetTotal(req.getParameter("input"));
 //      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
 //      그러므로 temp에는 null이 들어가게 된다.
 		String temp = req.getParameter("page");
@@ -64,19 +65,19 @@ public class FindMemberOkController implements Execute {
       Map<String, Object> pageMap = new HashMap<>();
       pageMap.put("startRow", startRow);
       pageMap.put("rowCount", rowCount);
-      pageMap.put("memberId", req.getParameter("input"));
+      pageMap.put("reportTitle", req.getParameter("input"));
       
-      List<MemberDTO> members = adminDAO.findMember(pageMap);
-      JsonArray memberList = new JsonArray();
+      List<ReportStoreVO> reports = reportStoreDAO.findStore(pageMap);
+      JsonArray reportList = new JsonArray();
       
-      members.stream()
+      reports.stream()
       .map(gson::toJson)
       .map(JsonParser::parseString)
-      .forEach(memberList::add);
+      .forEach(reportList::add);
       
       
       JsonObject result = new JsonObject();
-      result.add("list", JsonParser.parseString(memberList.toString()));
+      result.add("list", JsonParser.parseString(reportList.toString()));
       result.addProperty("startPage", startPage);
       result.addProperty("endPage", endPage);
       result.addProperty("page", page);

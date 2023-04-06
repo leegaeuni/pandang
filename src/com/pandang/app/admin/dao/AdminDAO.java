@@ -35,12 +35,12 @@ public class AdminDAO {
 		sqlSession.update("member.adminRestoreMember", memberNumber);
 	}
 	
-	public MemberDTO findMember(String memberId) {
-		return sqlSession.selectOne("member.adminFindMember", memberId);
+	public List<MemberDTO> findMember(Map<String, Object> pageMap) {
+		return sqlSession.selectList("member.adminFindMember", pageMap);
 	}
 	
-	public int findGetTotal() {
-		return sqlSession.selectOne("member.adminFindGetTotal");
+	public int findGetTotal(String memberId) {
+		return sqlSession.selectOne("member.adminFindGetTotal", memberId);
 	}
 	
 }

@@ -301,11 +301,53 @@ $('.report-list').on('click', '.control-btn', function(e){
 });
 let findUrl = '';
 $('.search-btn').on('click', function(){
-	$.ajax({
-		url : '/admin/findMemberOk.ad',
-		type : 'get',
-		data : {page : 1, input : $('.search-input').val().trim()},
-		success
-	});
-	/*$('.search-input').val('');*/
+	if($('.change-page-member').hasClass('find')){
+		$.ajax({
+			url : '/admin/findMemberOk.ad',
+			type : 'get',
+			data : {page : 1, input : $('.search-input').val().trim()},
+			dataType : 'json',
+			success : function(result){
+				showMember(result);
+				showPagination(result);
+				$('.search-input').val('');
+			},
+			error : function(a,b,c){
+				console.log(c);
+			}
+		});
+		
+	}else if($('.change-sns').hasClass('find')){
+		$.ajax({
+			url : '/admin/findSnsOk.ad',
+			type : 'get',
+			data : {page : 1, input : $('.search-input').val().trim()},
+			dataType : 'json',
+			success : function(result){
+				showReport(result);
+				showPagination(result);
+				$('.search-input').val('');
+			},
+			error : function(a,b,c){
+				console.log(c);
+			}
+		});
+		
+	}else if($('.change-store').hasClass('find')){
+		$.ajax({
+			url : '/admin/findStoreOk.ad',
+			type : 'get',
+			data : {page : 1, input : $('.search-input').val().trim()},
+			dataType : 'json',
+			success : function(result){
+				showReport(result);
+				showPagination(result);
+				$('.search-input').val('');
+			},
+			error : function(a,b,c){
+				console.log(c);
+			}
+		});
+		
+	}
 });

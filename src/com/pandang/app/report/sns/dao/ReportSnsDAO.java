@@ -22,5 +22,14 @@ public class ReportSnsDAO {
 	public int getTotal() {
 		return sqlSession.selectOne("report.getSnsTotal");
 	}
+	
+	public List<ReportSnsVO> findSns(Map<String, Object> pageMap) {
+		return sqlSession.selectList("report.findSns", pageMap);
+	}
+	
+	public int findSnsGetTotal(String reportTitle) {
+		return sqlSession.selectOne("report.findSnsGetTotal", reportTitle);
+	}
+	
 
 }

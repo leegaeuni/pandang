@@ -20,14 +20,16 @@
 		where member_number != 0
 	</select>
 	
-	<select id="adminFindMember" resultType = "MemberDTO" parameterType="string">
-		select member_number, member_id, member_name, member_status
-		from tbl_member where member_id = #{memberId}
+	<select id="adminFindMember" resultType = "MemberDTO" parameterType="map">
+		select member_number, member_id, member_name, member_status 
+		from tbl_member 
+		where member_id like concat('%', #{memberId}, '%') and member_number != 0 
+		limit #{startRow}, #{rowCount}
 	</select>
 	
-	<select id="adminFindGetTotal">
+	<select id="adminFindGetTotal" parameterType="string" resultType="_int">
 		select count(member_number) from tbl_member
-		where member_id
+		where member_id like concat('%', #{memberId}, '%') and member_number != 0
 	</select>
 	
 	<update id="adminBanMember" parameterType="_int">

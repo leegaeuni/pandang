@@ -52,6 +52,12 @@ public class AdminFrontController extends HttpServlet{
 		case "/admin/findMemberOk.ad" :
 			new FindMemberOkController().execute(req, resp);
 			break;
+		case "/admin/findSnsOk.ad" :
+			new FindSnsOkController().execute(req, resp);
+			break;
+		case "/admin/findStoreOk.ad" :
+			new FindStoreOkController().execute(req, resp);
+			break;
 		}
 	}
 }
