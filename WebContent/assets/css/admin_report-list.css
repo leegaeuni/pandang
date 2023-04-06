@@ -65,13 +65,10 @@ a {
   color: white;
   font-weight: bold;
   padding: 10px 20px;
-  background-color: black;
+  background-color: #1bcad3;
   border-radius: 10px;
 }
 
-.left-nav .change-page-report:focus {
-  background-color: #1bcad3;
-}
 
 .left-nav .change-page-member {
   color: white;
@@ -81,9 +78,6 @@ a {
   border-radius: 10px;
 }
 
-.left-nav .change-page-member:focus {
-  background-color: #1bcad3;
-}
 
 /* -------------- 게시글 목록 ----------------- */
 .board-wrap {
@@ -139,6 +133,65 @@ a {
   align-items: center;
   border-bottom: 1px solid rgb(200, 200, 200);
   padding-bottom: 5px 0;
+}
+
+.member-contents-title {
+  font-weight: bold;
+  background-color: rgba(200, 200, 200, 0.4);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding-bottom: 5px 0;
+}
+
+.member-list-number,
+.member-number {
+  width: 10%;
+}
+
+.member-list-id,
+.member-id {
+  width: 30%;
+}
+
+.member-list-id {
+  color: black;
+}
+
+.member-list-author,
+.member-author {
+  width: 20%;
+}
+
+.member-list-status,
+.member-status {
+  width: 20%;
+}
+
+.member-list-control,
+.member-control {
+  width: 20%;
+}
+
+.member-list {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  padding-bottom: 5px 0;
+}
+
+.control-btn {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }
 
 .report-contents-wrap {
@@ -240,4 +293,41 @@ a {
   display: flex;
   justify-content: center;
   font-size: 10px;
+}
+
+.change-store,
+.change-sns{
+	cursor:pointer;
+	width: fit-content;
+	/* display:none; */
+}
+
+.click{
+	background : gray;
+	color : white;
+}
+
+li{
+	list-style : none;
+}
+
+/* 검색 창 */
+.search-wrap {
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+/* 검색 버튼 */
+.search-btn {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }
