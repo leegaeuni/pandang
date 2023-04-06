@@ -27,6 +27,10 @@
 		<typeAlias type="com.pandang.app.sns.vo.SnsHeaderVO" alias="SnsHeaderVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsPostInfoVO" alias="SnsPostInfoVO"/>
 		<typeAlias type="com.pandang.app.sns.comment.vo.SnsCommentVO" alias="SnsCommentVO"/>
+		<typeAlias type="com.pandang.app.report.sns.dto.ReportSnsDTO" alias="ReportSnsDTO"/>
+		<typeAlias type="com.pandang.app.report.sns.vo.ReportSnsVO" alias="ReportSnsVO"/>
+		<typeAlias type="com.pandang.app.report.store.dto.ReportStoreDTO" alias="ReportStoreDTO"/>
+		<typeAlias type="com.pandang.app.report.store.vo.ReportStoreVO" alias="ReportStoreVO"/>
 	</typeAliases>
 
 	<environments default="mysql">
@@ -58,6 +62,7 @@
 		<mapper resource="com/mybatis/mapper/StoreCommentMapper.xml"/>
 		<mapper resource="com/mybatis/mapper/StoreFileMapper.xml"/>
 		<mapper resource="com/mybatis/mapper/StoreLikeMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/ReportMapper.xml"/>
 	</mappers>
 	
 </configuration>
