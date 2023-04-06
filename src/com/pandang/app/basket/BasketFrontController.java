@@ -23,7 +23,8 @@ public class BasketFrontController extends HttpServlet{
 		
 		switch(target) {
 		case "/basket/basketOk.ba":
-			req.getRequestDispatcher("/app/buy/basket.jsp").forward(req, resp);
+//			req.getRequestDispatcher("/app/buy/basket.jsp").forward(req, resp);
+			new BasketController().execute(req,resp);
 			break;			
 		}
 	}

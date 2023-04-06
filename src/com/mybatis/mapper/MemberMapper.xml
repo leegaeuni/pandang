@@ -12,8 +12,42 @@
 		#{memberPassword}, #{memberName}, #{memberNickname}, #{memberBirth},
 		#{memberGender}, #{memberPhoneNumber}, #{memberEmail}, #{memberAsk},
 		#{memberAnswer},
-		#{memberStatus}, #{memberAddress}, #{memberAddressDetail}, #{memberZoneCode})
-
+		#{memberStatus}, #{memberAddress},
+		#{memberAddressDetail}, #{memberZoneCode})
 	</insert>
+
+
+	<select id="myPageSelectAll" resultType="MemberVO"
+		parameterType="_int">
+		select c.channel_name , c.channel_comment ,
+		cf.channel_file_system_name,
+		m.member_number, m.member_password ,
+		m.member_nickname , m.member_phone_number ,
+		m.member_address ,
+		m.member_address_detail , m.member_zone_code
+		from tbl_member m join
+		tbl_channel c
+		on m.member_number = #{memberNumber}
+		and m.member_number =
+		c.member_number
+		left outer join tbl_channel_file cf
+		on c.channel_number
+		= cf.channel_number
+	</select>
+
+	<update id="mypageEdit" parameterType="MemberVO">
+		update tbl_member m join tbl_channel c 
+		on m.member_number = c.member_number
+		set 
+		c.channel_name = #{channelName},
+		c.channel_comment = #{channelComment},
+		m.member_password = #{memberPassword},
+		m.member_nickname = #{memberNickname},
+		m.member_phone_number = #{memberPhoneNumber},
+		m.member_address = #{memberAddress},
+		m.member_address_detail = #{memberAddressDetail},
+		m.member_zone_code = #{memberZoneCode}
+		where m.member_number = #{memberNumber}
+	</update>
 
 </mapper>

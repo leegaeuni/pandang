@@ -38,7 +38,12 @@ public class MemberFrontController extends HttpServlet{
 		
 
 		case "/member/mypageOk.me":
-			req.getRequestDispatcher("/app/mypage/myPage.jsp").forward(req, resp);
+//			req.getRequestDispatcher("/app/mypage/myPage.jsp").forward(req, resp);
+			new MyPageOkController().execute(req, resp);
+		break;
+		
+		case "/member/mypageEditOk.me":
+			new MyPageEditOkController().execute(req, resp);
 		break;
 
 		}

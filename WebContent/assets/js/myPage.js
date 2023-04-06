@@ -8,8 +8,30 @@ window.onload = function () {
         //선택시 입력값 세팅
         document.getElementById("zoneCode").value = data.zonecode; //우편번호 넣기
         document.getElementById("addressKakao").value = data.address; // 주소 넣기
-        document.querySelector("input[name=addressDetail]").focus(); //상세입력 포커싱
+        document.querySelector("input[name=memberAddressDetail]").focus(); //상세입력 포커싱
       },
     }).open();
   });
 };
+
+
+// 이미지 넣기
+let $fileInput = $('#avatarImage');
+let $fileProfile = $('.myProfileImg');
+
+console.log($fileInput);
+
+// 파일을 변경 시 원래 선택된 파일 미리보기 제거하기
+$fileProfile.html('');
+
+console.log('aaa')
+console.log($fileProfile.prop('src'))
+
+$fileInput.on('change', function(){
+	let files = this.files;
+	console.log(this.files)
+	
+	let src = URL.createObjectURL(files[0]);
+	$fileProfile.prop('src', src)
+
+})

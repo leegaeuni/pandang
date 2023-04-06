@@ -8,13 +8,15 @@
 	
 	<typeAliases>
 		<typeAlias type="com.pandang.app.basket.dto.BasketDTO" alias="BasketDTO"/>
-		<typeAlias type="com.pandang.app.basket.dto.BasketVO" alias="BasketVO"/>		
+		<typeAlias type="com.pandang.app.basket.vo.BasketVO" alias="BasketVO"/>		
 		<typeAlias type="com.pandang.app.buy.dto.BuyDTO" alias="BuyDTO"/>
 		<typeAlias type="com.pandang.app.channel.dto.ChannelDTO" alias="ChannelDTO"/>
 		<typeAlias type="com.pandang.app.channel.file.dto.ChannelFileDTO" alias="ChannelFileDTO"/>
 		<typeAlias type="com.pandang.app.follow.dto.FollowDTO" alias="FollowDTO"/>
 		<typeAlias type="com.pandang.app.hashtag.dto.HashtagDTO" alias="HashtagDTO"/>
 		<typeAlias type="com.pandang.app.member.dto.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.pandang.app.member.vo.MemberVO" alias="MemberVO"/>
+		
 		<typeAlias type="com.pandang.app.sns.dto.SnsDTO" alias="SnsDTO"/>
 		<typeAlias type="com.pandang.app.sns.comment.dto.SnsCommentDTO" alias="SnsCommentDTO"/>
 		<typeAlias type="com.pandang.app.sns.file.dto.SnsFileDTO" alias="SnsFileDTO"/>
