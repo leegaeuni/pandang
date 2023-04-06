@@ -2,10 +2,83 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sns">
+
 	<insert id="join" parameterType="MemberDTO">
 		insert into tbl_member
-		(member_id, member_password, member_name, member_age, member_gender, member_email, member_address)
-		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberGender}, #{memberEmail}, #{memberAddress})
+		(member_id, member_password, member_name, member_age, member_gender,
+		member_email, member_address)
+		values(#{memberId}, #{memberPassword},
+		#{memberName}, #{memberAge}, #{memberGender}, #{memberEmail},
+		#{memberAddress})
 	</insert>
 	
+	<select id="selectAll" resultType="SnsVO" parameterType="_int">
+	select ts.sns_number, ts.sns_title, ts.sns_content, ts.sns_date,
+	ts.sns_view_cnt,
+	count(tsl.sns_number) as like_cnt, tsf.sns_file_system_name
+	from tbl_member tm
+	join tbl_sns ts on tm.member_number = ts.member_number
+	left join tbl_sns_like tsl on ts.sns_number = tsl.sns_number
+	left join tbl_sns_file tsf on tsl.sns_number = tsf.sns_number
+	where tm.member_number = #{memberNumber}
+	group by ts.sns_number, ts.sns_title, ts.sns_content, ts.sns_date,
+	ts.sns_view_cnt, tsf.sns_file_system_name
+	order by ts.sns_date desc
+	</select>
+
+	<select id="memberInfo" resultType="SnsHeaderVO" parameterType="_int">
+		select
+		m.member_number,
+		m.member_nickname,
+		c.channel_name ,
+		(select count(*) from tbl_follow where member_number_from = m.member_number)
+		as from_count,
+		(select count(*) from tbl_follow where member_number_to = m.member_number) as
+		to_count,
+		count(distinct s.sns_number) as sns_count,
+		c.channel_comment
+		from
+		tbl_member m
+		join tbl_follow f on m.member_number = f.member_number_from
+		left join tbl_sns s on m.member_number = s.member_number
+		join tbl_channel c on m.member_number = c.member_number
+		where
+		m.member_number = #{memberNumber}
+		group by
+		m.member_number,
+		m.member_nickname,
+		c.channel_name ,
+		from_count,
+		to_count,
+		channel_comment
+	</select>
+	
+	<select id="snsPostInfo" resultType="SnsPostInfoVO" parameterType="_int">
+    select ts.sns_title as snsTitle, ts.sns_date as snsDate, ts.sns_view_cnt as snsViewCnt,
+    count(tsl.sns_number) as likeCnt
+    from tbl_sns ts
+    left join tbl_sns_like tsl
+    on ts.sns_number = tsl.sns_number
+    where ts.member_number = #{memberNumber}
+    group by ts.sns_number, ts.sns_title, ts.sns_date, ts.sns_view_cnt
+	</select>
+	
+	<select id="snsCommentList" parameterType="_int"
+		resultType="SnsCommentVO">
+		select ts.sns_number , tsc.sns_comment_number , tsc.sns_comment_content ,
+		tm.member_nickname , tc.channel_name , tcf.channel_file_system_name ,
+		tsc.sns_comment_date
+		from tbl_sns ts join tbl_sns_comment tsc
+		on ts.sns_number = ts.sns_number
+		left join tbl_member tm
+		on tsc.member_number = tm.member_number
+		left join tbl_channel tc
+		on tm.member_number = tc.member_number
+		left join tbl_channel_file tcf
+		on tc.channel_number = tcf.channel_number
+		where ts.sns_number = #{snsNumber}
+	</select>
+
+	
+
 </mapper>

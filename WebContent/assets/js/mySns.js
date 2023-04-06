@@ -133,3 +133,34 @@ $(".post-img-prev").on("click", function () {
   console.log("currentIdx : " + currentIdx);
   checkEnd();
 });
+
+
+
+console.log('gggggggg');
+
+console.log($('.snsNumber'));
+
+
+// post 클릭했을 때 snsNubmer 뽑아오기 
+$('.post-part').on('click', function(){
+	console.log($(this).children('.snsNumber').val());
+});
+
+
+
+console.log($('.memberNumber').val());
+
+let $commentMemberNubmer = $('.commentMemberNumber');
+let $commentMemberName = $('.comment-member-name');
+
+
+
+let memberNumber = $('.commentMemberNumber').val();
+console.log(memberNumber);
+
+
+$commentMemberName.on('click', () => {
+	window.location.href = '/sns/snsOk.sn?memberNumber=' + memberNumber;
+});
+
+
