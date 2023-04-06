@@ -23,6 +23,9 @@
 		<typeAlias type="com.pandang.app.store.comment.dto.StoreCommentDTO" alias="StoreCommentDTO"/>
 		<typeAlias type="com.pandang.app.store.file.dto.StoreFileDTO" alias="StoreFileDTO"/>
 		<typeAlias type="com.pandang.app.store.like.dto.StoreLikeDTO" alias="StoreLikeDTO"/>
+		<typeAlias type="com.pandang.app.main.vo.MainVO" alias="MainVO"/>
+		<!-- <typeAlias type="com.pandang.app.main.dto.MainDTO" alias="MainDTO"/> -->
+		<typeAlias type="com.pandan.app.mainLikeView.vo.MainLikeViewVO" alias="MainLikeViewVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsVO" alias="SnsVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsHeaderVO" alias="SnsHeaderVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsPostInfoVO" alias="SnsPostInfoVO"/>
@@ -62,6 +65,7 @@
 		<mapper resource="com/mybatis/mapper/StoreCommentMapper.xml"/>
 		<mapper resource="com/mybatis/mapper/StoreFileMapper.xml"/>
 		<mapper resource="com/mybatis/mapper/StoreLikeMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/MainMapper.xml"/>
 		<mapper resource="com/mybatis/mapper/ReportMapper.xml"/>
 	</mappers>
 	
