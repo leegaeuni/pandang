@@ -99,14 +99,14 @@
   height: 40px;
   background-color: rgb(50, 50, 50);
   border-radius: 30px;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 }
 
 .my-page {
-  display: none;
+  display: flex;
 }
 /* 헤더 파트 끝 */
 
@@ -761,6 +761,15 @@ li {
   margin: 3px;
   font-weight: 500;
 }
+.post-view-cnt-box{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-cnt{
+	margin-left: 5px;
+}
 
 .post-date {
   margin-right: 5px;
@@ -787,6 +796,13 @@ li {
   width: 100%;
   border: none;
   text-indent: 10px;
+}
+
+.comment-date {
+	width: 90%;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 /* @@@@@@ 댓글 영역 끝 @@@@@@@@@ */
