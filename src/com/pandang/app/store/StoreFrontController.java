@@ -22,7 +22,15 @@ public class StoreFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 
 		switch(target) {
-		
+		case "/store/storeOk.st":
+			new StoreOkController().execute(req, resp);
+			break;
+		case "/store/storeWrite.sw":
+			new StoreWriteController().execute(req, resp);
+			break;
+		case "/store/storeWriteOk.sw":
+			new StoreWriteOkController().execute(req, resp);
+			break;
 		}
 	}
 }

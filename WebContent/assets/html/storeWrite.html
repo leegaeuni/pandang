@@ -14,7 +14,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="../Pandang_store_post_write/style.css" />
+    <link rel="stylesheet" href="../assets/css/pandang-store_post-write.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="header-container">
@@ -22,7 +25,7 @@
       <div class="start-container">
         <a href="#"
           ><img
-            src="../Pandang_store_post_write/img/logo.jpg"
+            src="../assets/img/logo.jpg"
             alt=""
             class="logo-img"
         /></a>
@@ -80,29 +83,33 @@
         </div>
         <div class="write-content__wrap">
           <div class="contents">
+          <div id="text-area">
+        <textarea id="text-box" style="display:none"></textarea>
             <p>콘텐츠를 선택하여 업로드를 시작하세요.</p>
             <div class="tools">
               <div class="tool-wrap">
-                <div class="image">
-                  <img src="../Pandang_store_post_write/img/add_image.png" />
-                </div>
+               <input type="file" id="img-file" name="boardFile"
+         accept=".jpg, .jpeg, .png" multiple />
+                <label for="img-file" class="custom-file-upload"><div class="image">
+                  <img src="../assets/img/add_image.png" />
+                </div></label>
                 <div class="text">이미지</div>
               </div>
               <div class="tool-wrap">
-                <div class="image">
-                  <img src="../Pandang_store_post_write/img/add_text.png" />
-                </div>
+                 <button onclick="toggleTextBox()"><div class="image">
+                 <img src="../assets/img/add_text.png" />
+                </div></button>
                 <div class="text">텍스트</div>
               </div>
               <div class="tool-wrap">
                 <div class="image">
-                  <img src="../Pandang_store_post_write/img/add_video.png" />
+                  <img src="../assets/img/add_video.png" />
                 </div>
                 <div class="text">동영상</div>
               </div>
               <div class="tool-wrap">
                 <div class="image">
-                  <img src="../Pandang_store_post_write/img/add_grid.png" />
+                  <img src="../assets/img/add_grid.png" />
                 </div>
                 <div class="text">이미지 그리드</div>
               </div>
@@ -110,23 +117,24 @@
           </div>
         </div>
       </div>
+      </div>
       <!-- 오른쪽 버튼 박스 -->
       <div class="add-btn__container">
         <div class="add-btn__wrap">
-          <div class="images">
-            <img src="../Pandang_store_post_write/img/add_image.png" />
+             <label for="img-file" class="custom-file-upload"><div class="images">
+            <img src="../assets/img/add_image.png" />
             <div class="text">이미지 추가</div>
-          </div>
-          <div class="images">
-            <img src="../Pandang_store_post_write/img/add_text.png" />
+          </div></label>
+            <button onclick="toggleTextBox()"><div class="images">
+         <img src="../assets/img/add_text.png" />
             <div class="text">텍스트 추가</div>
-          </div>
+          </div></button>
           <div class="images">
-            <img src="../Pandang_store_post_write/img/add_video.png" />
+            <img src="../assets/img/add_video.png" />
             <div class="text">동영상 추가</div>
           </div>
           <div class="images">
-            <img src="../Pandang_store_post_write/img/add_grid.png" />
+            <img src="../assets/img/add_grid.png" />
             <div class="text">이미지 그리드 추가</div>
           </div>
         </div>
@@ -164,6 +172,7 @@
       src="https://kit.fontawesome.com/9df4873843.js"
       crossorigin="anonymous"
     ></script>
-    <script src="../Pandang_store_post_write/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/pandang-store_post-write.js"></script>
   </body>
 </html>

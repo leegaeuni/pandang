@@ -129,6 +129,16 @@
 		<servlet-name>Store</servlet-name>
 		<url-pattern>*.st</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>StoreWrite</servlet-name>
+		<servlet-class>com.pandang.app.store.StoreWriteFrontController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>StoreWrite</servlet-name>
+		<url-pattern>*.sw</url-pattern>
+	</servlet-mapping>
   
 	<servlet>
 		<servlet-name>StoreComment</servlet-name>
