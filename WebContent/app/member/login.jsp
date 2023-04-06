@@ -19,7 +19,8 @@
       <div class="main-wrapper">
         <div class="main-container">
           <!-- form 태그 action 지정하기 -->
-          <form action="" method="post">
+          <!-- 로그인하면 어떤 경로로 갈건지 적어주세요. -->
+          <form action="${pageContext.request.contextPath}/member/loginOk.me" method="post">
             <div class="logo-pandang">
               <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" />
             </div>
@@ -45,7 +46,11 @@
               />
             </div>
 
-            <div class="login-find-container">
+			<div class="login-btn">
+				<button type="submit">로그인</button>
+			</div>
+
+					<div class="login-find-container">
               <div class="login-keep-container">
                 <input type="checkbox" id="login-keep" name="loginKeep" />
                 <label for="login-keep">로그인 유지</label>
