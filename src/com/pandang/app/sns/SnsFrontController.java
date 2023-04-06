@@ -22,7 +22,12 @@ public class SnsFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 
 		switch(target) {
-		
+		case "/sns/snsOk.sn":
+//			req.getRequestDispatcher("/app/sns/mySns.jsp").forward(req, resp);
+			new SnsOkController().execute(req,resp);
+			break;
+			
+	
 		}
 	}
 }

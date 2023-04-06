@@ -35,4 +35,21 @@ public class MemberDAO {
 		return sqlSession.selectOne("member.getSequence");
 	}
 
+	public void join(MemberDTO memberDTO) {
+		sqlSession.insert("member.join", memberDTO);
+	}
+	
+	public boolean checkId(String memberId) {
+		return (Integer)sqlSession.selectOne("member.checkId", memberId) < 1;
+	}
+	
+	public boolean checkNickname(String memberNickname) {
+		return (Integer)sqlSession.selectOne("member.checkNickname", memberNickname) < 1;
+	}
+	
+	public int login(MemberDTO memberDTO) {
+		Integer memberNumber = sqlSession.selectOne("member.login", memberDTO);
+		return memberNumber == null ? -1 : memberNumber;
+	}
+	
 }

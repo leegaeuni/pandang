@@ -10,6 +10,24 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  	<servlet>
+  		<servlet-name>Main</servlet-name>
+  		<servlet-class>com.pandang.app.main.MainFrontController</servlet-class>
+  	</servlet>
+  	
+	<servlet-mapping>
+		<servlet-name>Main</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>	
+
+  		<servlet-name>Admin</servlet-name>
+  		<servlet-class>com.pandang.app.admin.AdminFrontController</servlet-class>
+  	</servlet>
+  	
+  	<servlet-mapping>
+  		<servlet-name>Admin</servlet-name>
+  		<url-pattern>*.ad</url-pattern>
+  	</servlet-mapping>
 	<servlet>
 		<servlet-name>Basket</servlet-name>
 		<servlet-class>com.pandang.app.basket.BasketFrontController</servlet-class>

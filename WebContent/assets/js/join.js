@@ -14,6 +14,8 @@ window.onload = function () {
   });
 };
 
+// 주소입력창에 주소를 입력하면 입력창 사라지게 만들기. @@@@@@@@@@@@@@@@@@@@@
+
 let $checkId = $("#check-id-msg");
 let $checkPw = $("#check-pw-msg");
 let $checkPw2 = $("#check-pw-msg2");
@@ -24,13 +26,30 @@ let $pwInput = $("#password");
 let $pwInput2 = $("#password2");
 let $nicknameInput = $("#nickname");
 
+let $prevBtn = $(".button1");
+
 // 아이디 검사
 $idInput.on("blur", function () {
   if ($(this).val() == "") {
     $checkId.text("아이디를 입력하세요.");
-  } else {
-    // ajax 아이디 중복검사 처리하기
   }
+});
+
+// 아이디 중복 체크
+$idInput.on('change', function() {
+	let id = $idInput.val();
+	
+	$.ajax({
+		url : '/member/checkIdOk.me',
+		type : 'get',
+		data : {memberId : id},
+		success : function(result) {
+			$checkId.text(result);
+		},
+		error : function(a, b, c) {
+			console.log(c);
+		}
+	});
 });
 
 // 비빌번호 검사
@@ -64,11 +83,29 @@ $pwInput.on("blur", function () {
 //   }
 // });
 
-// 닉네임 중복 검사
+// 닉네임 검사
 $nicknameInput.on("blur", function () {
   if ($(this).val() == "") {
     $checkNickname.text("닉네임을 입력하세요.");
-  } else {
-    // ajax 사용해서 닉네임 중복검사
   }
 });
+
+// 닉네임 중복 검사
+$nicknameInput.on('change', function() {
+	let nickname = $nicknameInput.val();
+	
+	$.ajax({
+		url : '/member/checkNicknameOk.me',
+		type : 'get',
+		data : {memberNickname : nickname},
+		success : function(result) {
+			$checkNickname.text(result);
+		},
+		error : function(a, b, c) {
+			console.log(c);
+		}
+	});
+});
+
+// '이전' 버튼 누르면 메인페이지로 이동
+

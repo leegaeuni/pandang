@@ -25,6 +25,17 @@
 		<typeAlias type="com.pandang.app.store.comment.dto.StoreCommentDTO" alias="StoreCommentDTO"/>
 		<typeAlias type="com.pandang.app.store.file.dto.StoreFileDTO" alias="StoreFileDTO"/>
 		<typeAlias type="com.pandang.app.store.like.dto.StoreLikeDTO" alias="StoreLikeDTO"/>
+		<typeAlias type="com.pandang.app.main.vo.MainVO" alias="MainVO"/>
+		<!-- <typeAlias type="com.pandang.app.main.dto.MainDTO" alias="MainDTO"/> -->
+		<typeAlias type="com.pandan.app.mainLikeView.vo.MainLikeViewVO" alias="MainLikeViewVO"/>
+		<typeAlias type="com.pandang.app.sns.vo.SnsVO" alias="SnsVO"/>
+		<typeAlias type="com.pandang.app.sns.vo.SnsHeaderVO" alias="SnsHeaderVO"/>
+		<typeAlias type="com.pandang.app.sns.vo.SnsPostInfoVO" alias="SnsPostInfoVO"/>
+		<typeAlias type="com.pandang.app.sns.comment.vo.SnsCommentVO" alias="SnsCommentVO"/>
+		<typeAlias type="com.pandang.app.report.sns.dto.ReportSnsDTO" alias="ReportSnsDTO"/>
+		<typeAlias type="com.pandang.app.report.sns.vo.ReportSnsVO" alias="ReportSnsVO"/>
+		<typeAlias type="com.pandang.app.report.store.dto.ReportStoreDTO" alias="ReportStoreDTO"/>
+		<typeAlias type="com.pandang.app.report.store.vo.ReportStoreVO" alias="ReportStoreVO"/>
 	</typeAliases>
 
 	<environments default="mysql">
@@ -56,6 +67,8 @@
 		<mapper resource="com/mybatis/mapper/StoreCommentMapper.xml"/>
 		<mapper resource="com/mybatis/mapper/StoreFileMapper.xml"/>
 		<mapper resource="com/mybatis/mapper/StoreLikeMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/MainMapper.xml"/>
+		<mapper resource="com/mybatis/mapper/ReportMapper.xml"/>
 	</mappers>
 	
 </configuration>
