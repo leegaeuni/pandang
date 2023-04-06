@@ -16,7 +16,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/pandang-store_post-write.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/storeWrite.css" />
   </head>
   <body>
     <div class="header-container">
@@ -72,9 +72,25 @@
     <div class="main-container">
       <div class="write-wrap">
         <div class="title">
+          <!-- 카테고리 설정 -->
+          <div class="write-category">
+            <button class="dropdown-btn" type="button">카테고리</button>
+            <ul class="menu-list">
+              <li class="list"><button type="button">디자인</button></li>
+              <li class="list"><button type="button">문구/완구</button></li>
+              <li class="list"><button type="button">악세사리</button></li>
+              <li class="list"><button type="button">패션</button></li>
+              <li class="list"><button type="button">뷰티</button></li>
+              <li class="list"><button type="button">애완용품</button></li>
+              <li class="list"><button type="button">리빙/홈</button></li>
+              <li class="list"><button type="button">음식</button></li>
+            </ul>
+          </div>
+          <!-- 가격 입력 -->
           <div class="write-title">
             <input type="text" placeholder="상품명을 입력하세요" />
           </div>
+          <!-- 상품 입력 -->
           <div class="write-price">
             <input type="number" placeholder="가격을 입력하세요" />
             <span>원</span>
@@ -166,6 +182,11 @@
       src="https://kit.fontawesome.com/9df4873843.js"
       crossorigin="anonymous"
     ></script>
-    <script src="${pageContext.request.contextPath}/assets/js/pandang-store_post-write.js"></script>
+        <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
+    <script src="${pageContext.request.contextPath}/assets/js/storeWrite.js"></script>
   </body>
 </html>
