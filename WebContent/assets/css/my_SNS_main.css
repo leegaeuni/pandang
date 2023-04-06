@@ -1,0 +1,1031 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard";
+}
+
+/* 헤더 파트 시작 html = 17~45 */
+.header-container {
+  background-color: white;
+  width: 100%;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  position: sticky;
+  z-index: 1;
+  top: 0px;
+}
+
+.start-container {
+  width: 400px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.start-container a:hover {
+  color: rgb(42, 197, 198);
+}
+
+.logo-img {
+  width: 140px;
+  height: 40px;
+}
+
+.search {
+  display: flex;
+  width: 370px;
+  align-items: center;
+  height: 46px;
+  background-color: #f5f6f7;
+  margin-right: 40px;
+  border-radius: 30px;
+  position: relative;
+}
+.search button {
+  position: absolute;
+  right: 30px; /* 우측 공간 조절 */
+  top: 50%; /* 세로 중앙 정렬 */
+  transform: translateY(-50%); /* 세로 중앙 정렬 */
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.search-bar {
+  width: 200px;
+  height: 30px;
+  border: none;
+  padding-left: 15px;
+  color: #5b696f;
+  background: #f5f6f7;
+  padding-right: 30px;
+  margin-left: 10px;
+}
+
+.login-container {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  height: 56px;
+  color: #5b696f;
+  margin-right: 30px;
+}
+
+.login:hover {
+  color: rgb(42, 197, 198);
+}
+
+.join {
+  width: 70px;
+  height: 40px;
+  background-color: rgb(50, 50, 50);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.logout {
+  width: 70px;
+  height: 40px;
+  background-color: rgb(50, 50, 50);
+  border-radius: 30px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.my-page {
+  display: none;
+}
+/* 헤더 파트 끝 */
+
+/* 메인 파트 html = 49~97 */
+#main-part {
+  margin: 0;
+  padding: 0;
+}
+
+.info-part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0px 20px 0px;
+}
+
+.pic-part {
+  margin-right: 100px;
+  flex-basis: 0;
+  justify-content: center;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.pic-space {
+  align-items: center;
+  align-self: center;
+  flex: none;
+  justify-content: center;
+  position: relative;
+}
+
+.profile-pic {
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 168px;
+  height: 168px;
+}
+
+.profile-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+}
+
+.info-user {
+  position: relative;
+}
+
+.info-name {
+  display: flex;
+  align-items: center;
+}
+
+.first-block {
+  display: flex;
+}
+
+.sign-mark {
+  margin: 7px;
+}
+
+.sign-img {
+  display: block;
+  overflow: hidden;
+  text-indent: 110%;
+  white-space: nowrap;
+  border: 0;
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: 0 -369px;
+  height: 18px;
+  width: 18px;
+}
+
+.modify2 {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.modify-img2 {
+  height: 20px;
+  width: 20px;
+}
+
+.modify-profile {
+  background-color: white;
+}
+
+.button-sidebar {
+  display: flex;
+}
+
+.fallow-button {
+  background-color: white;
+  color: #5b696f;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-family-system);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 7px 16px !important;
+  pointer-events: auto;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: inherit;
+  width: auto;
+}
+
+.fallow-button:hover {
+  background-color: white;
+  color: rgb(42, 197, 198);
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-family-system);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 7px 16px !important;
+  pointer-events: auto;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: inherit;
+  width: auto;
+}
+
+.second-block {
+  display: flex;
+  margin: 20px 0px 20px 0px;
+}
+
+.post-part2 {
+  margin-right: 50px;
+}
+
+.cost {
+  margin-left: 30px;
+}
+
+.fallower-part {
+  margin-right: 50px;
+}
+
+.cost {
+  margin-left: 30px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.intro-post {
+  font-size: 15px;
+}
+
+.site-link {
+  text-decoration: none;
+  color: rgb(200, 200, 200);
+}
+
+.site-link:hover {
+  text-decoration: underline;
+  color: rgb(42, 197, 198);
+}
+/* 메인 파트 끝 */
+
+/* 네비 파트 시작 html = 101~108 */
+.nav-line {
+  margin: auto;
+  width: 940px;
+  border-top: 1px solid rgb(200, 200, 200);
+}
+.navbar {
+  display: flex;
+  vertical-align: middle;
+  width: 100%;
+  list-style: none;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  justify-content: center;
+  text-decoration: none;
+  margin: 0 auto;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+.nav-button {
+  font-size: 15px;
+  cursor: pointer;
+  height: 30px;
+  width: 75px;
+  display: flex;
+  margin: 0 50px 0 50px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: #5b696f;
+  background-color: white;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+}
+
+.nav-button:hover {
+  cursor: pointer;
+  height: 30px;
+  width: 75px;
+  display: flex;
+  margin: 0 50px 0 50px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+
+  color: rgb(42, 197, 198);
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+}
+
+.prev {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #5b696f;
+  width: 50px;
+  height: 30px;
+  font-weight: bold;
+  margin-right: 245px;
+  border-radius: 20%;
+  border: 0;
+}
+
+.prev:hover {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(42, 197, 198);
+  width: 50px;
+  height: 30px;
+  font-weight: bold;
+  margin-right: 245px;
+  border-radius: 20%;
+  border: 0;
+}
+
+.next {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #5b696f;
+  width: 50px;
+  height: 30px;
+  font-weight: bold;
+  margin-left: 245px;
+  border-radius: 20%;
+  border: 0;
+}
+
+.next:hover {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(42, 197, 198);
+  width: 50px;
+  height: 30px;
+  font-weight: bold;
+  margin-left: 245px;
+  border-radius: 20%;
+  border: 0;
+}
+/* 네비 파트 끝 */
+
+/* 모달 파트 시작 html = 112~216 */
+#modal {
+  background-color: aliceblue;
+  width: 70%;
+  height: 80%;
+  margin: auto 0 auto 0%;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.modal-box {
+  display: none;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-img {
+  background-color: aliceblue;
+  color: black;
+  height: 100%;
+  width: 800px;
+  position: relative;
+}
+
+.comment {
+  background-color: white;
+  color: black;
+  width: 40%;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.prev2,
+.next2 {
+  position: absolute;
+  top: 50%;
+  background-color: rgb(200, 200, 200);
+  color: black;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 100%;
+  border: 0;
+  opacity: 0.7;
+}
+
+.prev2:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: rgb(42, 197, 198);
+  opacity: 0.7;
+}
+
+.next2:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: rgb(42, 197, 198);
+  opacity: 0.7;
+}
+
+.prev2 {
+  left: 0;
+}
+
+.next2 {
+  right: 0;
+}
+
+.prev3,
+.next3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  background-color: white;
+  color: black;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 100%;
+  border: 0;
+}
+
+.prev3:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: rgb(42, 197, 198);
+}
+
+.next3:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: rgb(42, 197, 198);
+}
+
+.prev3 {
+  left: 0;
+}
+
+.next3 {
+  right: 0;
+}
+
+.slide-box {
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+}
+
+.slides-wrap {
+  width: 60%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.comment-list {
+  height: 66.5%;
+  overflow-y: scroll;
+  background-color: white;
+  padding: 16px;
+}
+
+.comment-list > li {
+  margin-bottom: 40px;
+  background-color: white;
+}
+
+.comment-box {
+  border-width: thin;
+  background-color: white;
+  width: 99%;
+  font-weight: bold;
+  font-size: 1vw;
+  text-align: left;
+  vertical-align: top;
+}
+
+.comment-box::placeholder {
+  font-weight: bold;
+  font-size: 15px;
+  text-align: left;
+  vertical-align: top;
+  color: #5b696f;
+}
+
+.modify-profile {
+  border: none;
+  cursor: pointer;
+}
+
+.mini-host-profile {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 16px;
+}
+
+.mini-user-profile {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+.mini-user-info {
+  border: none;
+  background-color: white;
+}
+
+.modal-btn-box {
+  height: 100%;
+  width: 10%;
+}
+
+.mini-pic {
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.mini-pic2 {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.mini-pic3 {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.mini-pic4 {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.modal-btn-profile {
+  margin-top: 100px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-btn-profile span {
+  margin-top: 5px;
+  color: white;
+}
+
+.mini-user-name {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.comment-write {
+  font-size: 20px;
+  margin-left: 10px;
+  word-wrap: break-word;
+  background-color: white;
+  color: black;
+}
+
+.modify-img {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+}
+
+.modify {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  background-color: white;
+}
+
+.delete-img {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 25px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  margin-left: 5px;
+  background-color: white;
+}
+
+.like {
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 20px;
+  width: 15px;
+  height: 15px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  margin-left: 5px;
+  background-color: white;
+  color: red;
+}
+
+.like2 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 40px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  margin-left: 5px;
+  background-color: white;
+  color: red;
+}
+
+.like-count {
+  margin: 15px 10px;
+}
+
+.option {
+  display: flex;
+  background-color: white;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.comment-line {
+  margin: 10px auto;
+  border: 0.1px solid #5b696f;
+}
+
+.mini-user-box {
+  display: flex;
+  align-items: center;
+}
+
+.mini-post-info {
+  height: 6%;
+  display: flex;
+}
+
+.post-date {
+  margin-left: 10px;
+}
+
+.mini-post-content {
+  display: flex;
+  height: 8%;
+}
+
+.submit {
+  border-width: thin;
+  background-color: white;
+  width: 70px;
+  color: #5b696f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.fallow-button2 {
+  background-color: white;
+  color: #5b696f;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-family-system);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 7px 16px !important;
+  pointer-events: auto;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: inherit;
+  width: auto;
+}
+
+.fallow-button2:hover {
+  background-color: white;
+  color: rgb(42, 197, 198);
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-family-system);
+  font-size: 14px;
+  font-weight: bold;
+  padding: 7px 16px !important;
+  pointer-events: auto;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: inherit;
+  width: auto;
+}
+
+.report {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  margin-left: 5px;
+}
+
+input[type="text"] {
+  text-indent: 10px;
+}
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 300px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.tooltip img {
+  width: 30%;
+  height: 30%;
+  margin-bottom: 10px;
+  border-radius: 100%;
+}
+
+.tooltip-trigger:hover + .tooltip {
+  display: block;
+}
+
+.top-box {
+  display: flex;
+}
+
+.middle-box {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.buttom-box {
+  display: flex;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+#modal-btn-box {
+  background-color: transparent;
+  margin-left: 3%;
+}
+
+.post-modify {
+  margin-top: 50px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.post-modify span {
+  margin-top: 5px;
+  color: white;
+}
+
+.post-delete {
+  margin-top: 50px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.post-delete span {
+  margin-top: 5px;
+  color: white;
+}
+/* 모달 파트 끝 */
+
+/* 게시물 파트 시작 html = 220~513 */
+.post-image {
+  width: 293px;
+  height: 293px;
+  margin: 15px;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+#post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+}
+
+.post-section {
+  align-items: stretch;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.post-part {
+  position: relative;
+  display: inline-block;
+}
+
+.post-info {
+  margin: 15px;
+  width: 289px;
+  height: 289px;
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 20px;
+  padding: 2px;
+  text-align: center;
+  opacity: 0;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+.post-name {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.date-like {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  align-items: stretch;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-top: 150px;
+  margin-left: 65px;
+}
+
+.post-part:hover img {
+  opacity: 1;
+}
+
+.post-part:hover .post-info {
+  opacity: 0.9;
+}
+
+input:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #5b696f;
+}
+
+font {
+  color: #5b696f;
+  cursor: default;
+}
+
+.list-box li {
+  float: left;
+  list-style-type: none;
+}
+
+.list-box li:not(:first-child) {
+  display: none; /* 첫 번째 li 요소를 제외한 모든 li 요소를 숨김 */
+}
+
+.list-box li:first-child {
+  display: list-item; /* 첫 번째 li 요소를 보이도록 설정 */
+}
+/* 게시물 파트 끝 */
+
+/*푸터 파트 시작 html = 517~535 */
+#footer-container {
+  width: 100%;
+  margin-top: 50px;
+  height: 200px;
+}
+
+.footer-logo {
+  border-top: 1px solid rgb(200, 200, 200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin: 0 20px;
+}
+.name {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  margin: 15px 0;
+}
+
+.name > p {
+  margin: 0 15px;
+}
+.footer-container p {
+  margin: 10px;
+}
+
+.information {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.information > p {
+  margin: 0 15px;
+}
+/* 푸터 파트 끝 */

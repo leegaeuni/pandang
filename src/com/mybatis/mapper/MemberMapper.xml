@@ -44,4 +44,18 @@
 		where member_number=#{memberNumber}
 	</update>
 	
+	<insert id="join" parameterType="MemberDTO">
+		insert into tbl_member
+		(member_id, member_password, member_name, member_nickname,
+		member_birth, member_gender, member_phone_number, member_email,
+		member_ask, member_answer, member_status, member_address,
+		member_address_detail, member_zone_code)
+		values(#{memberId},
+		#{memberPassword}, #{memberName}, #{memberNickname}, #{memberBirth},
+		#{memberGender}, #{memberPhoneNumber}, #{memberEmail}, #{memberAsk},
+		#{memberAnswer},
+		#{memberStatus}, #{memberAddress}, #{memberAddressDetail}, #{memberZoneCode})
+
+	</insert>
+
 </mapper>
