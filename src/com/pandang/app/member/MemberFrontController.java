@@ -30,12 +30,17 @@ public class MemberFrontController extends HttpServlet{
 			new JoinOkController().execute(req, resp);
 			break;
 		case "/member/checkIdOk.me":
+			new CheckIdOkController().execute(req, resp);
+			break;
+		case "/member/checkNicknameOk.me":
+			new CheckNicknameOkController().execute(req, resp);
 			break;
 		case "/member/login.me":
 			req.getRequestDispatcher("/app/member/login.jsp").forward(req, resp);
 			break;
 		case "/member/loginOk.me":
-		
+			new LoginOkController().execute(req, resp);
+			break;
 
 		case "/member/mypageOk.me":
 			req.getRequestDispatcher("/app/mypage/myPage.jsp").forward(req, resp);
