@@ -3,12 +3,14 @@
 
 <mapper namespace="basket">
 	
-	<select id="selectAll" resultType="BasketVO" parameterType="map">
-	select store_file_original_name,
-	ts.store_title , ts.store_price 
-	from tbl_store ts join tbl_store_file tsf 
-	on ts.store_number = tsf.store_number 
-	order by ts.store_number desc
+	<select id="selectAll" resultType="BasketVO" parameterType="_int">
+		select m.member_number , s.store_number , sf.store_file_system_name ,
+		s.store_title , s.store_price , b.basket_cnt
+		from tbl_member m join tbl_basket b on m.member_number = #{memberNumber}
+		and m.member_number = b.member_number
+		join tbl_store s on b.store_number = s.store_number
+		left outer join tbl_store_file sf
+		on s.store_number = sf.store_number ;
 	</select>
 	
 	
