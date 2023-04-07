@@ -54,7 +54,7 @@
 		#{memberPassword}, #{memberName}, #{memberNickname}, #{memberBirth},
 		#{memberGender}, #{memberPhoneNumber}, #{memberEmail}, #{memberAsk},
 		#{memberAnswer},
-		#{memberStatus}, #{memberAddress},
+		#{memberAddress},
 		#{memberAddressDetail}, #{memberZoneCode})
 	</insert>
 	

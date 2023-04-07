@@ -32,10 +32,10 @@ public class LoginOkController implements Execute {
 //		}
 		
 		if(memberNumber == -1) {
-			path = "/member/login.me";
+			path = "/main";
 		} else {
 //			로그인하면 어떤 경로로 갈건지 적어주세요.
-			path = "/app/main/main.jsp";
+			path = "/main";
 		}
 		
 		resp.sendRedirect(path);
