@@ -76,7 +76,7 @@
                 <label>
                   <input
                     type="checkbox"
-                    name="basket_product_normal_type_normal"
+                    name="basket-product"
                     value="selectall"
                     onclick="selectAll(this)"
                   />
@@ -102,7 +102,7 @@
                   <input
                     type="checkbox"
                     id="basket_chk_id_0"
-                    name="basket_product_normal_type_normal"
+                    name="basket-product"
                   />
                 </label>
               </td>
@@ -119,8 +119,8 @@
                       +,- 버튼을 이용해야지만 숫자가 변경됨 -->
                   <div class="quantity-btn">                    
                     <span>
-                      <button class="plus-btn">+</button>
-                      <button class="minus-btn">-</button>
+                      <button type="button" class="plus-btn">+</button>
+                      <button type="button" class="minus-btn">-</button>
                     </span>
                   </div>
                   
@@ -142,10 +142,9 @@
         </table>
         <div class="delete-order">
           <div class="check-product">선택상품</div>
-          <div class="delete"><button>삭제하기</button></div>
+          <div class="delete"><button type="button">삭제하기</button></div>
         </div>
 
-        <!-- 장바구니 5개까지 뜨고 6개부터는 다음페이지로 넘어감 -->
         <!-- 장바구니에서 결제하고 나면 장바구니에 담았던 상품 삭제되어야 함 -->
 
         <table class="pay-table">
@@ -160,9 +159,9 @@
 
             <tbody>
               <tr>
-                <td class="final-product-pay">2057153</td>
-                <td class="final-post-pay">9000</td>
-                <td class="final-total-pay">23186163</td>
+                <td class="final-product-pay">0</td>
+                <td class="final-post-pay">0</td>
+                <td class="final-total-pay">0</td>
               </tr>
             </tbody>
           </div>
