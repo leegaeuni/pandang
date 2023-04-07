@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,6 +64,10 @@
 
       <!-- ######main##### -->
       <div class="container">
+      
+      <form id="edit-form" action="${pagetContext.request.contextPath}/basket/basketOk.ba" method="post"
+			enctype="multipart/form-data">
+      
         <table class="board-table">
           <div class="basket-table">장바구니</div>
           <thead>
@@ -88,6 +93,9 @@
           </thead>
 
           <tbody>
+          
+           <c:forEach var="basket" items="${basketList}">
+          <!-- items="${basketList}"는 BasketController에서 List<BasketVO>의 변수로 선언한 basketList임 -->
             <tr>
               <td class="check-box">
                 <label>
@@ -99,19 +107,14 @@
                 </label>
               </td>
               <td class="basket-img">
-                <a href="#">
                   <img src="${pageContext.request.contextPath}/assets/img/basket/ohdungicushion.jpg" alt="" />
-                </a>
+                
               </td>
-              <td class="store-title">
-                <a href="#">
-                  오둥이 쿠션
-                </a>               
-                </td>
-              <td class="store-price">29800</td>
+              <td class="store-title" name="storeTitle" >${basket.getStoreTitle()}</td>
+              <td class="store-price" name="storePrice" >${basket.getStorePrice()}</td>
               <td class="buy-cnt">
                 <div class="quantity-wrap">
-                    <input type="text" class="quantity-input" value="1" >
+                    <input type="text" class="quantity-input" value="${basket.getBasketCnt()}" name="basketCnt">
                     <!-- <input type="text" class="quantity-input" value="1" readonly>이면
                       +,- 버튼을 이용해야지만 숫자가 변경됨 -->
                   <div class="quantity-btn">                    
@@ -121,169 +124,20 @@
                     </span>
                   </div>
                   
-                </div>
-                  <div class="modify-wrap">
-                    <span><button class="modify-btn">수정</button></span>
-                  </div>                  
+                </div>              
                 </td>
-              <td class="store-total-price">59600</td>
+              <td class="store-total-price">${basket.getStorePrice() * basket.getBasketCnt()}</td>
               <td class="post-price">3000</td>
-              <td class="buy-total-price">62600</td>
-            </tr>
-            <tr>
-              <td class="check-box">
-                <label>
-                  <input
-                    type="checkbox"
-                    id="basket_chk_id_1"
-                    name="basket_product_normal_type_normal"
-                  />
-                </label>
-              </td>
-              <td class="basket-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/basket/jrongcalendar.jpg" alt="" />
-                </a>
-              </td>
-              <td class="store-title"><a href="#">
-                2023 재롱이 달력
-              </a> 
-            </td>
-              <td class="store-price">15000</td>
-              <td class="buy-cnt">          
-                <div class="quantity-wrap">
-                <input type="text" class="quantity-input" value="1" >
-              <div class="quantity-btn">                    
-                <span>
-                  <button class="plus-btn">+</button>
-                  <button class="minus-btn">-</button>
-                </span>
-              </div>
+              <td class="buy-total-price">${basket.getStorePrice() * basket.getBasketCnt() + 3000}</td>
               
-            </div>
-              <div class="modify-wrap">
-                <span><button class="modify-btn">수정</button></span>
-              </div>
-            </td>
-              <td class="store-total-price">45000</td>
-              <td class="post-price">3000</td>
-              <td class="buy-total-price">48000</td>
-            </tr>
-            <tr>
-              <td class="check-box">
-                <label>
-                  <input
-                    type="checkbox"
-                    id="basket_chk_id_2"
-                    name="basket_product_normal_type_normal"
-                  />
-                </label>
-              </td>
-              <td class="basket-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/basket/choigosimmouse.jpg" alt="" />
-                </a>          
-              </td>
-              <td class="store-title"> <a href="#">
-                최고심 마우스 패드 무지개
-              </a> 
-            </td>
-              <td class="store-price">5000</td>
-              <td class="buy-cnt">          
-                <div class="quantity-wrap">
-                <input type="text" class="quantity-input" value="1" >
-              <div class="quantity-btn">                    
-                <span>
-                  <button class="plus-btn">+</button>
-                  <button class="minus-btn">-</button>
-                </span>
-              </div>
               
-            </div>
-              <div class="modify-wrap">
-                <span><button class="modify-btn">수정</button></span>
-              </div>
-            </td>
-              <td class="store-total-price">5000</td>
-              <td class="post-price">3000</td>
-              <td class="buy-total-price">8000</td>
             </tr>
-            <tr>
-              <td class="check-box">
-                <label>
-                  <input
-                    type="checkbox"
-                    id="basket_chk_id_3"
-                    name="basket_product_normal_type_normal"
-                  />
-                </label>
-              </td>
-              <td class="basket-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/basket/ohdungicushion.jpg" alt="" />
-                </a>
-              </td>
-              <td class="store-title">
-                <a href="#">
-                  오둥이 쿠션
-                </a>
-              </td>
-              <td class="store-price">29800</td>
-              <td class="buy-cnt">          
-                <div class="quantity-wrap">
-                <input type="text" class="quantity-input" value="1" >
-              <div class="quantity-btn">                    
-                <span>
-                  <button class="plus-btn">+</button>
-                  <button class="minus-btn">-</button>
-                </span>
-              </div>
-              
-            </div>
-              <div class="modify-wrap">
-                <span><button class="modify-btn">수정</button></span>
-              </div>
-            </td>
-              <td class="store-total-price">59600</td>
-              <td class="post-price">3000</td>
-              <td class="buy-total-price">62600</td>
-            </tr>
-            <tr>
-              <td class="check-box">
-                <label>
-                  <input
-                    type="checkbox"
-                    id="basket_chk_id_4"
-                    name="basket_product_normal_type_normal"
-                  />
-                </label>
-              </td>
-              <td class="basket-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/basket/ohdungicushion.jpg" alt="" />
-                </a>
-              </td>
-              <td class="store-title"><a href="#">오둥이 쿠션</a></td>
-              <td class="store-price">29800</td>
-              <td class="buy-cnt">          
-                <div class="quantity-wrap">
-                <input type="text" class="quantity-input" value="1" >
-              <div class="quantity-btn">                    
-                <span>
-                  <button class="plus-btn">+</button>
-                  <button class="minus-btn">-</button>
-                </span>
-              </div>
-              
-            </div>
-              <div class="modify-wrap">
-                <span><button class="modify-btn">수정</button></span>
-              </div>
-            </td>
-              <td class="store-total-price">59600</td>
-              <td class="post-price">3000</td>
-              <td class="buy-total-price">62600</td>
-            </tr>
+            </c:forEach> 
+    
+  
+            
+            
+            
           </tbody>
         </table>
         <div class="delete-order">
@@ -322,22 +176,6 @@
           </div>
         </div>
 
-        <!-- 체크를 유지한 채 다음 페이지로 이동시킬 수 있나?
-              이동 불가능해서 삭제함-->
-
-        <!-- <div class="pagination">
-          <ul>
-            <li><a href="#" class="prev">&lt;</a></li>
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#" class="next">&gt;</a></li>
-          </ul>
-        </div>
-      </div> -->
-
       <!-- #####footer##### -->
       <!-- @@@@푸터@@@@ -->
       <div class="footer-container">
@@ -363,12 +201,14 @@
         </div>
         <!-- 푸터 영역 종료 -->
       </div>
+      </form>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.6.3.js"
       integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/basket.js"></script>
   </body>
 </html>

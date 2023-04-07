@@ -12,6 +12,10 @@
   --mouse-focus-color: #1bcad3;
 }
 
+body {
+  min-width: 1040px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -20,6 +24,11 @@ input::-webkit-inner-spin-button {
 
 input:focus {
   outline: none;
+}
+
+
+ul li {
+  list-style: none;
 }
 
 a {
@@ -31,6 +40,7 @@ button {
   background: transparent;
   border: none;
   cursor: pointer;
+  color: #5b696f;
 }
 
 font {
@@ -165,6 +175,19 @@ font {
 
 .write-price {
   width: 100%;
+
+.write-title {
+  width: 100%;
+  margin: 0 10px 20px 0;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+}
+
+.write-price {
+  width: 50%;
   margin-bottom: 20px;
 }
 
@@ -188,6 +211,55 @@ font {
 
 .write-title input:focus {
   border: 1px solid var(--mouse-focus-color);
+}
+
+/* 카테고리 설정 */
+.write-category {
+  width: 200px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: 10px;
+}
+
+.dropdown-btn {
+  /* position: relative; */
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-btn:hover {
+  opacity: 0.7;
+}
+
+.menu-list {
+  display: none;
+  position: absolute;
+  top: 45px;
+}
+
+.list {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 1px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.list button {
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+}
+
+.list:hover {
+  background-color: var(--mouse-focus-color);
 }
 
 /* 컨텐츠 업로드 칸 */
@@ -401,3 +473,4 @@ input[type="file"] {
   justify-content: center;
   font-size: 10px;
 }
+

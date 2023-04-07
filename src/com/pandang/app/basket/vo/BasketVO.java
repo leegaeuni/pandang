@@ -1,18 +1,38 @@
 package com.pandang.app.basket.vo;
 
 
-//select store_file_system_name,
-//ts.store_title , ts.store_price 
-//from tbl_store ts join tbl_store_file tsf 
-//on ts.store_number = tsf.store_number 
-//order by ts.store_number desc 
+//select m.member_number , s.store_number , sf.store_file_system_name ,
+//s.store_title , s.store_price , b.basket_cnt
+//from tbl_member m join tbl_basket b on m.member_number = #{memberNumber}
+//and m.member_number = b.member_number
+//join tbl_store s on b.store_number = s.store_number
+//left outer join tbl_store_file sf
+//on s.store_number = sf.store_number ;
 
 public class BasketVO {
-	private String storeFileSystemName;
+	private int memberNumber;
+	private int storeNumber;
+	private String storeFileSystemName; 
 	private String storeTitle;
 	private int storePrice;
+	private int basketCnt;
 	
-	public BasketVO() {
+	public BasketVO() {}
+
+	public int getMemberNumber() {
+		return memberNumber;
+	}
+
+	public void setMemberNumber(int memberNumber) {
+		this.memberNumber = memberNumber;
+	}
+
+	public int getStoreNumber() {
+		return storeNumber;
+	}
+
+	public void setStoreNumber(int storeNumber) {
+		this.storeNumber = storeNumber;
 	}
 
 	public String getStoreFileSystemName() {
@@ -39,11 +59,18 @@ public class BasketVO {
 		this.storePrice = storePrice;
 	}
 
-	@Override
-	public String toString() {
-		return "BasketVO [storeFileSystemName=" + storeFileSystemName + ", storeTitle=" + storeTitle + ", storePrice="
-				+ storePrice + "]";
+	public int getBasketCnt() {
+		return basketCnt;
 	}
 
-	
+	public void setBasketCnt(int basketCnt) {
+		this.basketCnt = basketCnt;
+	}
+
+	@Override
+	public String toString() {
+		return "BasketVO [memberNumber=" + memberNumber + ", storeNumber=" + storeNumber + ", storeFileSystemName="
+				+ storeFileSystemName + ", storeTitle=" + storeTitle + ", storePrice=" + storePrice + ", basketCnt="
+				+ basketCnt + "]";
+	}
 }

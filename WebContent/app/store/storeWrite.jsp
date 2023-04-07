@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,6 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <div class="header-container">
@@ -79,6 +81,25 @@
           <div class="write-title">
             <input type="text" placeholder="상품명을 입력하세요" />
           </div>
+          <!-- 카테고리 설정 -->
+          <div class="write-category">
+            <button class="dropdown-btn" type="button">카테고리</button>
+            <ul class="menu-list">
+              <li class="list"><button type="button">디자인</button></li>
+              <li class="list"><button type="button">문구/완구</button></li>
+              <li class="list"><button type="button">악세사리</button></li>
+              <li class="list"><button type="button">패션</button></li>
+              <li class="list"><button type="button">뷰티</button></li>
+              <li class="list"><button type="button">애완용품</button></li>
+              <li class="list"><button type="button">리빙/홈</button></li>
+              <li class="list"><button type="button">음식</button></li>
+            </ul>
+          </div>
+          <!-- 가격 입력 -->
+          <div class="write-title">
+            <input type="text" placeholder="상품명을 입력하세요" />
+          </div>
+          <!-- 상품 입력 -->
           <div class="write-price">
             <input type="number" placeholder="가격을 입력하세요" />
             <span>원</span>
@@ -108,6 +129,7 @@
                  <button onclick="toggleTextBox()"><div class="image">
                  <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
                 </div></button>
+
                 <div class="text">텍스트</div>
               </div>
               <div class="tool-wrap">
@@ -124,6 +146,7 @@
               </div>
             </div>
           </div>
+
          </form>
         </div>
       </div>
@@ -139,6 +162,21 @@
          <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
             <div class="text">텍스트 추가</div>
           </div></button>
+
+        </div>
+      </div>
+      <!-- 오른쪽 버튼 박스 -->
+      <div class="add-btn__container">
+        <div class="add-btn__wrap">
+          <div class="images">
+            <img src="${pageContext.request.contextPath}/assets/img/add_image.png" />
+            <div class="text">이미지 추가</div>
+          </div>
+          <div class="images">
+            <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
+            <div class="text">텍스트 추가</div>
+          </div>
+
           <div class="images">
             <img src="${pageContext.request.contextPath}/assets/img/add_video.png" />
             <div class="text">동영상 추가</div>
@@ -182,7 +220,11 @@
       src="https://kit.fontawesome.com/9df4873843.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
     <script src="${pageContext.request.contextPath}/assets/js/storeWrite.js"></script>
   </body>
 </html>

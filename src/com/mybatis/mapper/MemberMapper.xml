@@ -2,18 +2,113 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
+	
+	<select id="adminLogin" parameterType="MemberDTO" resultType="_int" >
+		select member_number from tbl_member
+		where member_number=0 and member_id=#{memberId} and member_password=#{memberPassword}
+	</select>
+	
+	<select id="adminAllMember" resultType="MemberDTO" parameterType="map">
+		select member_number, member_id, member_name, member_status
+		from tbl_member
+		where member_number != 0
+		limit #{startRow}, #{rowCount}
+	</select>
+	
+	<select id="adminGetTotal" resultType='_int'>
+		select count(member_number) from tbl_member
+		where member_number != 0
+	</select>
+	
+	<select id="adminFindMember" resultType = "MemberDTO" parameterType="map">
+		select member_number, member_id, member_name, member_status 
+		from tbl_member 
+		where member_id like concat('%', #{memberId}, '%') and member_number != 0 
+		limit #{startRow}, #{rowCount}
+	</select>
+	
+	<select id="adminFindGetTotal" parameterType="string" resultType="_int">
+		select count(member_number) from tbl_member
+		where member_id like concat('%', #{memberId}, '%') and member_number != 0
+	</select>
+	
+	<update id="adminBanMember" parameterType="_int">
+		update tbl_member
+		set member_status=2
+		where member_number=#{memberNumber}
+	</update>
+	
+	<update id="adminRestoreMember" parameterType="_int">
+		update tbl_member
+		set member_status=1
+		where member_number=#{memberNumber}
+	</update>
+	
 	<insert id="join" parameterType="MemberDTO">
 		insert into tbl_member
 		(member_id, member_password, member_name, member_nickname,
 		member_birth, member_gender, member_phone_number, member_email,
-		member_ask, member_answer, member_status, member_address,
+		member_ask, member_answer, member_address,
 		member_address_detail, member_zone_code)
 		values(#{memberId},
 		#{memberPassword}, #{memberName}, #{memberNickname}, #{memberBirth},
 		#{memberGender}, #{memberPhoneNumber}, #{memberEmail}, #{memberAsk},
 		#{memberAnswer},
-		#{memberStatus}, #{memberAddress}, #{memberAddressDetail}, #{memberZoneCode})
-
+		#{memberStatus}, #{memberAddress},
+		#{memberAddressDetail}, #{memberZoneCode})
 	</insert>
+	
+ 	<select id="checkId" parameterType="string" resultType="_int">
+		select count(member_number) from tbl_member
+		where member_id = #{memberId}
+	</select>
+	
+	<select id="checkNickname" parameterType="string" resultType="_int">
+		select count(member_number) from tbl_member
+		where member_nickname = #{memberNickname}
+	</select>
+	
+	<select id="login" parameterType="MemberDTO" resultType="_int">
+		select member_number from tbl_member
+		where member_id = #{memberId} and member_password = #{memberPassword}
+	</select>
+	
+	
+		<!-- memberNickname이 초기 채널이름이다.
+			memberNickname이 채널로 연결되는 쿼리 작성해야함. -->
+
+
+	<select id="myPageSelectAll" resultType="MemberVO"
+		parameterType="_int">
+		select c.channel_name , c.channel_comment ,
+		cf.channel_file_system_name,
+		m.member_number, m.member_password ,
+		m.member_nickname , m.member_phone_number ,
+		m.member_address ,
+		m.member_address_detail , m.member_zone_code
+		from tbl_member m join
+		tbl_channel c
+		on m.member_number = #{memberNumber}
+		and m.member_number =
+		c.member_number
+		left outer join tbl_channel_file cf
+		on c.channel_number
+		= cf.channel_number
+	</select>
+
+	<update id="mypageEdit" parameterType="MemberVO">
+		update tbl_member m join tbl_channel c 
+		on m.member_number = c.member_number
+		set 
+		c.channel_name = #{channelName},
+		c.channel_comment = #{channelComment},
+		m.member_password = #{memberPassword},
+		m.member_nickname = #{memberNickname},
+		m.member_phone_number = #{memberPhoneNumber},
+		m.member_address = #{memberAddress},
+		m.member_address_detail = #{memberAddressDetail},
+		m.member_zone_code = #{memberZoneCode}
+		where m.member_number = #{memberNumber}
+	</update>
 
 </mapper>

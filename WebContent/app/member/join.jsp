@@ -92,7 +92,7 @@
                   placeholder="년(4자)"
                   required
                 />
-                <select name="memberBitrhMonth" id="mm" required>
+                <select name="memberBirthMonth" id="mm" required>
                   <option value="">월</option>
                   <option value="01">1</option>
                   <option value="02">2</option>
@@ -148,7 +148,7 @@
                   <input
                     type="text"
                     id="zoneCode"
-                    name="zoneCode"
+                    name="memberZoneCode"
                     readonly
                     placeholder="우편번호 입력"
                     required
@@ -161,7 +161,7 @@
                   <input
                     type="text"
                     id="address"
-                    name="address"
+                    name="memberAddress"
                     placeholder="주소 입력"
                     required
                   />
@@ -172,7 +172,7 @@
                 <br />
                   <input
                     type="text"
-                    name="addressDetail"
+                    name="memberAddressDetail"
                     placeholder="상세주소 입력"
                     required
                   />
@@ -193,14 +193,14 @@
               <input
                 type="text"
                 id="ask"
-                name="memberName"
+                name="memberAsk"
                 placeholder="질문을 입력하세요"
                 required
               /><br />
               <input
                 type="text"
                 id="answer"
-                name="memberName"
+                name="memberAnswer"
                 placeholder="답변을 입력하세요"
                 required
               />
@@ -212,7 +212,7 @@
               </div>
             </div>
             <div class="button-container">
-              <button type="button" class="button1">이전</button>
+              <button type="button" class="button1" onClick="location.href='/app/main/main.jsp'">이전</button>
               <button type="submit" class="button2">회원가입</button>
             </div>
           </form>
@@ -223,5 +223,5 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <!-- 스크립트  경로 jsp 제대로 잡기 -->
-  <script src="${pageContext.request.contextPath}/assets/js/join.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/join.js"></script> 
 </html>
