@@ -48,6 +48,8 @@ public class JoinOkController implements Execute {
 		
 		memberDAO.join(memberDTO);
 		
+		
+		
 		resp.sendRedirect("/member/login.me");
 	}
 }

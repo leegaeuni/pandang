@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -84,7 +85,7 @@
           <div class="content-container">
             <div class="profile">
               <img src="${pageContext.request.contextPath}/assets/img/test1.jpg" alt="" class="profile-img" />
-              <div class="member-nickname">asdf</div>
+              <div class="member-nickname">${channelName }</div>
             </div>
             <!-- 게시글 작성 시 경로 작성 -->
             <form action="" class="sns-content-area">
