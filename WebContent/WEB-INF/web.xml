@@ -20,6 +20,7 @@
 		<url-pattern>/main</url-pattern>
 	</servlet-mapping>	
 
+	<servlet>
   		<servlet-name>Admin</servlet-name>
   		<servlet-class>com.pandang.app.admin.AdminFrontController</servlet-class>
   	</servlet>

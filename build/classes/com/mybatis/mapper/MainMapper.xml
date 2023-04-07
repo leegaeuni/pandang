@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main">
+	<!-- <insert id="join" parameterType="MemberDTO"> insert into tbl_member 
+		(member_id, member_password, member_name, member_age, member_gender, member_email, 
+		member_address) values(#{memberId}, #{memberPassword}, #{memberName}, #{memberAge}, 
+		#{memberGender}, #{memberEmail}, #{memberAddress}) </insert> -->
+	<select id="selectAll" resultType="MainVO">
+		select j2.member_number,
+		j2.member_nickname, j2.follow_count,
+		j2.channel_comment,
+		j2.channel_number, j2.channel_name,
+		cf.channel_file_system_name
+		from(
+		select j.member_number, j.member_nickname, j.follow_count,
+		c.channel_comment, c.channel_number , c.channel_name
+		from (
+		select
+		m.member_number, m.member_nickname, count(f.member_number_from)
+		follow_count
+		from tbl_member m left outer join tbl_follow f
+		on
+		m.member_number = f.member_number_to
+		group by m.member_number
+		)j left
+		outer join tbl_channel c
+		on j.member_number = c.member_number
+		) j2 left
+		outer join
+		tbl_channel_file cf
+		on j2.channel_number = cf.channel_number
+		order by
+		follow_count desc
+		limit 0, 12
+	</select>
+
+	<select id="select" resultType="MainLikeViewVO">
+		select ts.store_number, ts.store_title,
+		ts.store_view_cnt, count(tsl.store_number) as like_cnt,
+		sf.store_file_system_name, tc.channel_name, tc.channel_number,
+		ts.member_number
+		from tbl_store ts
+		left join tbl_store_like tsl
+		on ts.store_number = tsl.store_number
+		left join tbl_store_file sf
+		on ts.store_number = sf.store_number
+		left join tbl_channel tc
+		on ts.member_number = tc.member_number
+		where ts.member_number
+		group by ts.store_number, ts.store_title, ts.store_view_cnt,
+		sf.store_file_system_name, tc.channel_name, tc.channel_number,
+		ts.member_number
+		order by ts.store_view_cnt desc
+	</select>
+
+	<!-- <select id="select" parameterType="_int" resultType="MainDTO"> select 
+		channel_file_system_name, channel_file_original_name, channel_number from 
+		tbl_channel_file where channel_number = #{channelNumber} </select> -->
+
+	<!-- <insert id="follow" parameterType="MainFollowVO"> insert into tbl_follow(member_number_from, 
+		member_number_to, member_number) values(#{member_number_from}, #{member_number_to), 
+		#{member_number}) </insert> -->
+	<!-- <select id="selectChannel" resultType="MainDTO" parameterType="map"> 
+		select channel_name from tbl_channel </select> -->
+</mapper>

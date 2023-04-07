@@ -34,10 +34,6 @@ public class MemberDAO {
 	public int getSequence() {
 		return sqlSession.selectOne("member.getSequence");
 	}
-
-	public void join(MemberDTO memberDTO) {
-		sqlSession.insert("member.join", memberDTO);
-	}
 	
 	public boolean checkId(String memberId) {
 		return (Integer)sqlSession.selectOne("member.checkId", memberId) < 1;
