@@ -14,7 +14,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="../Pandang_store_post_write/style.css" />
+    <link rel="stylesheet" href="../css/storeWrite.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="header-container">
@@ -22,7 +25,7 @@
       <div class="start-container">
         <a href="#"
           ><img
-            src="../Pandang_store_post_write/img/logo.jpg"
+            src="../img/logo.jpg"
             alt=""
             class="logo-img"
         /></a>
@@ -70,25 +73,9 @@
     <div class="main-container">
       <div class="write-wrap">
         <div class="title">
-          <!-- 카테고리 설정 -->
-          <div class="write-category">
-            <button class="dropdown-btn" type="button">카테고리</button>
-            <ul class="menu-list">
-              <li class="list"><button type="button">디자인</button></li>
-              <li class="list"><button type="button">문구/완구</button></li>
-              <li class="list"><button type="button">악세사리</button></li>
-              <li class="list"><button type="button">패션</button></li>
-              <li class="list"><button type="button">뷰티</button></li>
-              <li class="list"><button type="button">애완용품</button></li>
-              <li class="list"><button type="button">리빙/홈</button></li>
-              <li class="list"><button type="button">음식</button></li>
-            </ul>
-          </div>
-          <!-- 상품명 입력 -->
           <div class="write-title">
             <input type="text" placeholder="상품명을 입력하세요" />
           </div>
-          <!-- 가격 입력 -->
           <div class="write-price">
             <input type="number" placeholder="가격을 입력하세요" />
             <span>원</span>
@@ -96,29 +83,33 @@
         </div>
         <div class="write-content__wrap">
           <div class="contents">
+          <div id="text-area">
+        <textarea id="text-box" style="display:none"></textarea>
             <p>콘텐츠를 선택하여 업로드를 시작하세요.</p>
             <div class="tools">
               <div class="tool-wrap">
-                <div class="image">
-                  <img src="../Pandang_store_post_write/img/add_image.png" />
-                </div>
+               <input type="file" id="img-file" name="boardFile"
+         accept=".jpg, .jpeg, .png" multiple />
+                <label for="img-file" class="custom-file-upload"><div class="image">
+                  <img src="../img/add_image.png" />
+                </div></label>
                 <div class="text">이미지</div>
               </div>
               <div class="tool-wrap">
-                <div class="image">
-                  <img src="../Pandang_store_post_write/img/add_text.png" />
-                </div>
+                 <button onclick="toggleTextBox()"><div class="image">
+                 <img src="../img/add_text.png" />
+                </div></button>
                 <div class="text">텍스트</div>
               </div>
               <div class="tool-wrap">
                 <div class="image">
-                  <img src="../Pandang_store_post_write/img/add_video.png" />
+                  <img src="../img/add_video.png" />
                 </div>
                 <div class="text">동영상</div>
               </div>
               <div class="tool-wrap">
                 <div class="image">
-                  <img src="../Pandang_store_post_write/img/add_grid.png" />
+                  <img src="../img/add_grid.png" />
                 </div>
                 <div class="text">이미지 그리드</div>
               </div>
@@ -126,23 +117,24 @@
           </div>
         </div>
       </div>
+      </div>
       <!-- 오른쪽 버튼 박스 -->
       <div class="add-btn__container">
         <div class="add-btn__wrap">
-          <div class="images">
-            <img src="../Pandang_store_post_write/img/add_image.png" />
+             <label for="img-file" class="custom-file-upload"><div class="images">
+            <img src="../img/add_image.png" />
             <div class="text">이미지 추가</div>
-          </div>
-          <div class="images">
-            <img src="../Pandang_store_post_write/img/add_text.png" />
+          </div></label>
+            <button onclick="toggleTextBox()"><div class="images">
+         <img src="../img/add_text.png" />
             <div class="text">텍스트 추가</div>
-          </div>
+          </div></button>
           <div class="images">
-            <img src="../Pandang_store_post_write/img/add_video.png" />
+            <img src="../img/add_video.png" />
             <div class="text">동영상 추가</div>
           </div>
           <div class="images">
-            <img src="../Pandang_store_post_write/img/add_grid.png" />
+            <img src="../img/add_grid.png" />
             <div class="text">이미지 그리드 추가</div>
           </div>
         </div>
@@ -180,11 +172,7 @@
       src="https://kit.fontawesome.com/9df4873843.js"
       crossorigin="anonymous"
     ></script>
-        <script
-      src="https://code.jquery.com/jquery-3.6.3.js"
-      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-      crossorigin="anonymous"
-    ></script>
-    <script src="../Pandang_store_post_write/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/storeWrite.js"></script>
   </body>
 </html>
