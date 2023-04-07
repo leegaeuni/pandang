@@ -88,6 +88,12 @@
             </div>
             <!-- 게시글 작성 시 경로 작성 -->
             <form action="" class="sns-content-area">
+              <input
+                type="text"
+                class="sns-title"
+                name="snsTitle"
+                placeholder="제목 입력"
+              />
               <textarea
                 name="snsContent"
                 id="sns-content"
