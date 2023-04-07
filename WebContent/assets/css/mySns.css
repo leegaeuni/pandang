@@ -491,7 +491,6 @@ li {
 .host-profile {
   width: 100%;
   height: 10%;
-  border-bottom: 1px solid rgb(241, 241, 241);
   display: flex;
 }
 
@@ -681,6 +680,16 @@ li {
   padding: 5px;
 }
 
+.host-comment-content-wrap {
+  border-bottom: 1px solid rgb(241, 241, 241);
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0 10px;
+  height: max-content;
+  word-break: break-all;
+  padding: 10px 5px;
+}
+
 .comment-member-profile {
   width: 20%;
   height: 100%;
@@ -761,14 +770,14 @@ li {
   margin: 3px;
   font-weight: 500;
 }
-.post-view-cnt-box{
-	display: flex;
-    align-items: center;
-    justify-content: center;
+.post-view-cnt-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.view-cnt{
-	margin-left: 5px;
+.view-cnt {
+  margin-left: 5px;
 }
 
 .post-date {
@@ -799,10 +808,10 @@ li {
 }
 
 .comment-date {
-	width: 90%;
-    margin-left: 10px;
-    font-size: 13px;
-    font-weight: 400;
+  width: 90%;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 /* @@@@@@ 댓글 영역 끝 @@@@@@@@@ */
