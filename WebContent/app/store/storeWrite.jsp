@@ -78,9 +78,6 @@
     <div class="main-container">
       <div class="write-wrap">
         <div class="title">
-          <div class="write-title">
-            <input type="text" placeholder="상품명을 입력하세요" />
-          </div>
           <!-- 카테고리 설정 -->
           <div class="write-category">
             <button class="dropdown-btn" type="button">카테고리</button>
@@ -163,20 +160,6 @@
             <div class="text">텍스트 추가</div>
           </div></button>
 
-        </div>
-      </div>
-      <!-- 오른쪽 버튼 박스 -->
-      <div class="add-btn__container">
-        <div class="add-btn__wrap">
-          <div class="images">
-            <img src="${pageContext.request.contextPath}/assets/img/add_image.png" />
-            <div class="text">이미지 추가</div>
-          </div>
-          <div class="images">
-            <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
-            <div class="text">텍스트 추가</div>
-          </div>
-
           <div class="images">
             <img src="${pageContext.request.contextPath}/assets/img/add_video.png" />
             <div class="text">동영상 추가</div>
@@ -191,7 +174,7 @@
           <button class="btn-cancel">취소</button>
         </div>
       </div>
-    </div>
+     </div>
 
     <!-- @@@@푸터@@@@ -->
     <div class="footer-container">

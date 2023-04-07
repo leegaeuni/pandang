@@ -22,6 +22,7 @@
 		<typeAlias type="com.pandang.app.sns.file.dto.SnsFileDTO" alias="SnsFileDTO"/>
 		<typeAlias type="com.pandang.app.sns.like.dto.SnsLikeDTO" alias="SnsLikeDTO"/>
 		<typeAlias type="com.pandang.app.store.dto.StoreDTO" alias="StoreDTO"/>
+		<typeAlias type="com.pandang.app.store.vo.StoreDTO" alias="StoreVO"/>
 		<typeAlias type="com.pandang.app.store.comment.dto.StoreCommentDTO" alias="StoreCommentDTO"/>
 		<typeAlias type="com.pandang.app.store.file.dto.StoreFileDTO" alias="StoreFileDTO"/>
 		<typeAlias type="com.pandang.app.store.like.dto.StoreLikeDTO" alias="StoreLikeDTO"/>

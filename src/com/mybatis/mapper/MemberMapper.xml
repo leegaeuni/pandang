@@ -73,9 +73,9 @@
 		where member_id = #{memberId} and member_password = #{memberPassword}
 	</select>
 	
+	<!-- select문으로 멤버테이블에 방금 가입한 회원의 번호 -->
 	
-		<!-- memberNickname이 초기 채널이름이다.
-			memberNickname이 채널로 연결되는 쿼리 작성해야함. -->
+	<!-- 채널테이블에 넣을 수 있는 insert문을 Channelmapper에 작성  -->
 
 
 	<select id="myPageSelectAll" resultType="MemberVO"
