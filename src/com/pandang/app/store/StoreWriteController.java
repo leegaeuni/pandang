@@ -16,15 +16,16 @@ public class StoreWriteController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberDAO memberDAO = new MemberDAO();
 		HttpSession session = req.getSession();
-		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
+		Integer memberNumber = (Integer) session.getAttribute("memberNumber");
 		String path = null;
-		
-		if(memberNumber == null) {
+
+		if (memberNumber == null) {
 			path = "/app/member/login.jsp";
-		}else {
+		} else {
 			path = "/app/store/storeWrite.jsp";
+			req.setAttribute("memberId", memberDAO.getMemberNickname(memberNumber));
 		}
-		
+
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 

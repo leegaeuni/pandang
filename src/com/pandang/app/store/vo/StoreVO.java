@@ -1,5 +1,9 @@
 package com.pandang.app.store.vo;
 
+import java.util.List;
+
+import com.pandang.app.store.file.dto.StoreFileDTO;
+
 public class StoreVO {
 	private int storeNumber;
 	private String storeTitle;
@@ -10,8 +14,10 @@ public class StoreVO {
 	private int hashtagNumber;
 	private int memberNumber;
 	private String memberNickname;
-	
-	public StoreVO() {}
+	private List<StoreFileDTO> files;
+
+	public StoreVO() {
+	}
 
 	public int getStoreNumber() {
 		return storeNumber;
@@ -83,6 +89,14 @@ public class StoreVO {
 
 	public void setMemberNickname(String memberNickname) {
 		this.memberNickname = memberNickname;
+	}
+
+	public List<StoreFileDTO> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<StoreFileDTO> files) {
+		this.files = files;
 	}
 
 	@Override

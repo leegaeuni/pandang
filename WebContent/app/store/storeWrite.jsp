@@ -149,7 +149,7 @@
           </div>
         </div>
         <div class="button-wrap">
-          <button class="btn-next">다음</button>
+          <button type = "submit" class="btn-next">다음</button>
           <button class="btn-cancel">취소</button>
         </div>
       </div>

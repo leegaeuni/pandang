@@ -15,6 +15,10 @@ public class MemberDAO {
 	public void join(MemberDTO memberDTO) {
 		sqlSession.insert("member.join", memberDTO);
 	}
+
+	  public String getMemberNickname(int memberNumber) {
+		  return sqlSession.selectOne("member.getMemberNickname", memberNumber);
+	 }
 	
 	
 }

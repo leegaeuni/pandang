@@ -2,6 +2,7 @@ package com.pandang.app.store;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,14 +19,14 @@ import com.pandang.app.store.dto.StoreDTO;
 import com.pandang.app.store.file.dao.StoreFileDAO;
 import com.pandang.app.store.file.dto.StoreFileDTO;
 
-public class StoreWriteOkController implements Execute {
+public class StoreUpdateOkController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		StoreDAO storeDAO = new StoreDAO();
 		StoreDTO storeDTO = new StoreDTO();
-		StoreFileDAO storefileDAO = new StoreFileDAO();
-		StoreFileDTO storefileDTO = new StoreFileDTO();
+		StoreFileDAO storeFileDAO = new StoreFileDAO();
+		StoreFileDTO storeFileDTO = new StoreFileDTO();
 		int storeNumber = 0;
 
 		System.out.println("컨트롤러 입력 정상.");
@@ -54,22 +55,18 @@ public class StoreWriteOkController implements Execute {
 				fileOriginalName = filePart.getFileName();
 
 				if (fileOriginalName != null) {
-
 					File file = new File(uploadPath, fileOriginalName);
-
 					filePart.writeTo(file);
-
 					fileSystemName = filePart.getFileName();
 
-					storefileDTO.setStoreFileSystemName(fileSystemName);
-					storefileDTO.setStoreFileOriginalName(fileOriginalName);
-					storefileDTO.setStoreNumber(storeNumber);
+					storeFileDTO.setStoreFileSystemName(fileSystemName);
+					storeFileDTO.setStoreFileOriginalName(fileOriginalName);
+					storeFileDTO.setStoreNumber(storeNumber);
 
-					storefileDAO.insert(storefileDTO);
+					storeFileDAO.insert(storeFileDTO);
 				}
 
 			} else {
-
 				ParamPart paramPart = (ParamPart) part;
 				String paramName = paramPart.getName();
 				String paramValue = paramPart.getStringValue();
@@ -78,6 +75,9 @@ public class StoreWriteOkController implements Execute {
 					storeDTO.setStoreTitle(paramValue);
 				} else if (paramName.equals("storeContent")) {
 					storeDTO.setStoreContent(paramValue);
+				} else if (paramName.equals("storeNumber")) {
+					storeNumber = Integer.parseInt(paramValue);
+					storeDTO.setStoreNumber(storeNumber);
 				}
 
 				if (storeDTO.getStoreTitle() == null || storeDTO.getStoreContent() == null) {
@@ -85,9 +85,15 @@ public class StoreWriteOkController implements Execute {
 				}
 
 				storeDTO.setMemberNumber((Integer) req.getSession().getAttribute("memberNumber"));
-				storeDAO.insert(storeDTO);
+				storeDAO.update(storeDTO);
 
-				storeNumber = storeDAO.getSequence();
+				List<StoreFileDTO> files = storeFileDAO.select(storeNumber);
+
+				files.stream().map(file -> file.getStoreFileSystemName()).map(name -> new File(uploadPath, name))
+						.filter(tmp -> tmp.exists()).forEach(tmp -> tmp.delete());
+
+				storeFileDAO.delete(storeNumber);
+
 			}
 		}
 

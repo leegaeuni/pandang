@@ -1,8 +1,6 @@
 package com.pandang.app.store;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,21 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.pandang.app.Execute;
 import com.pandang.app.store.dao.StoreDAO;
 
-public class StoreOkController implements Execute {
+public class StoreUpdateController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int storeNumber = Integer.valueOf(req.getParameter("storeNumber"));
 		StoreDAO storeDAO = new StoreDAO();
 
-		String temp = req.getParameter("page");
+		req.setAttribute("store", storeDAO.select(storeNumber));
 
-		int page = temp == null ? 1 : Integer.valueOf(temp);
-
-		int rowCount = 12;
-
-		Map<String, Integer> pageMap = new HashMap<>();
-
-		req.getRequestDispatcher("/app/store/store.jsp").forward(req, resp);
+		req.getRequestDispatcher("/app/store/storeUpdate.jsp").forward(req, resp);
 	}
 
 }

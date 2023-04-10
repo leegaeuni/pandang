@@ -48,7 +48,6 @@ $fileInput.on('change', function() {
 	$cnt.text(files.length);
 
 	$('.img-cancel-btn').on('click', function() {
-		console.log("클릭!!!!");
 
 		$(this).parent().parent().remove();
 
@@ -69,6 +68,6 @@ $fileInput.on('change', function() {
 	});
 });
 
-$('.cancel-btn').on('click', () => {
-	window.location.href = '/board/boardListOk.bo';
+$('.btn-cancel').on('click', () => {
+	window.location.href = '/store/storeOk.st';
 });
