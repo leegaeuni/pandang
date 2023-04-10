@@ -43,10 +43,16 @@
           </a>
         </div>
         <div class="login-container">
-          <a href="#" class="login">로그인</a>
-          <a href="#" class="join">회원가입</a>
-          <a href="#" class="my-page">마이페이지</a>
-          <a href="#" class="logout">로그아웃</a>
+        	<c:choose>
+        		<c:when test="${empty sessionScope.memberNumber }">
+		          <a href="${pageContext.request.contextPath}/" class="login">로그인</a>
+		          <a href="#" class="join">회원가입</a>
+        		</c:when>
+        		<c:otherwise>
+		          <a href="#" class="logout">로그아웃</a>
+		          <a href="#" class="my-page">마이페이지</a>
+        		</c:otherwise>
+        	</c:choose>
         </div>
         <!— 헤더 영역 종료 —>
       </div>
