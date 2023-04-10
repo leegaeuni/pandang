@@ -20,8 +20,8 @@ public class MainOKController implements Execute{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MainDAO mainDAO = new MainDAO();
-		MainDTO mainDTO = new MainDTO();
 		System.out.println("제대로 작동된다");
+		MainDTO mainDTO = new MainDTO();
 		Map<String, Integer> pageMap = new HashMap<String, Integer>();
 		List<MainVO> channels = mainDAO.selectAll();
 //		MainDTO channelis = mainDAO.selectChannel(null);
@@ -33,7 +33,9 @@ public class MainOKController implements Execute{
 		int channelNumber = 2;
 		
 		System.out.println(channels);
+		System.out.println(stores);
 		req.setAttribute("channels", channels);
+		req.setAttribute("stores", stores);
 //		req.setAttribute("channelis", channelis);
 		req.getRequestDispatcher("/app/main/main.jsp").forward(req, resp);
 	}

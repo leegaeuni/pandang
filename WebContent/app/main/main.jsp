@@ -54,7 +54,9 @@
 		<!-- 헤더 아래에 모달 창 띄우기 -->
 		<article class="modal-box">
 			<div class="store-box">
-				<form action="" class="store-form"></form>
+				<form action="" class="store-form">
+					
+				</form>
 			</div>
 		</article>
 
@@ -163,16 +165,19 @@
 						class="items active">
 						<div class="store-wrap-sub">
 							<!-- 스토어 첫번째 줄@@@@@ -->
+							<c:forEach var="store" items="${stores}">
 							<div class="store-photo">
 								<!-- .store-photo이 .store-photo + .store-info-tap + .store-info-channel을 감싸는부모 div -->
 								<!-- .store-photo 스토어 첫번째 상품의 전체 div -->
-								<div class="store-photo-img">
+								<div class="store-photo-img" data-storeNumber="${store.getStoreNumber()}">
 									<img
-										src="${pageContext.request.contextPath}/assets/img/main/griptok.jpg" />
+										src="${pageContext.request.contextPath}/upload/${store.getStoreFileSystemName()}" />
 									<div class="store-info">
 										<div class="store-info-tap">
 											<!-- .store-info-tap은 hover시 나오는 상품 이름과 like버튼  -->
-											<span>유기견 그립톡</span>
+											<span>
+												<c:out value="${store.getStoreTitle() }"/>
+											</span>
 											<div class="like-btn">
 												<button>
 													<img class="before-like-btn"
@@ -182,10 +187,12 @@
 										</div>
 									</div>
 								</div>
-
+							
 								<div class="store-info-channel">
 									<div class="store-info-channel-name">
-										<span>유기견1</span>
+										<span>
+											<c:out value="${store.getChannelName() }"/>
+										</span>
 									</div>
 
 									<div class="cnt-wrap">
@@ -193,7 +200,9 @@
 											<div class="cnt-view-icon">
 												<span class="material-symbols-outlined"> visibility </span>
 											</div>
-											<div class="cnt-view-number">1010</div>
+											<div class="cnt-view-number">
+												<c:out value="${store.getStoreViewCnt() }"/>
+											</div>
 										</div>
 										<div class="cnt-like">
 											<div class="cnt-like-icon">
@@ -203,12 +212,16 @@
 													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
 													alt="heart" />
 											</div>
-											<div class="cnt-like-number">150</div>
+											<div class="cnt-like-number">
+												<c:out value="${store.getLikeCnt() }"/>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<!-- 방울이 시작@@@@@@@@@ -->
+							</c:forEach> 
+					<!--  =================== -->
+							<%-- <!-- 방울이 시작@@@@@@@@@ -->
 							<div class="store-photo">
 								<div class="store-photo-img">
 									<img
@@ -250,10 +263,10 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> 
 							<!-- 방울이 끝@@@@@@@@@ -->
 
-							<div class="store-photo">
+							 <div class="store-photo">
 								<div class="store-photo-img">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/main/cup.jpg" />
@@ -294,7 +307,7 @@
 									</div>
 								</div>
 							</div>
-
+ 
 							<div class="store-photo">
 								<div class="store-photo-img">
 									<img
@@ -680,7 +693,7 @@
 							</div>
 
 						</div>
-					</div>
+					</div>  --%>
 					<!-- store-wrap 끝 -->
 
 					<!-- 두번째 탭@@ 최신순 -->
@@ -703,7 +716,7 @@
 										</div>
 									</div>
 								</div>
-
+							<!-- =============================== -->
 								<div class="store-info-channel">
 									<div class="store-info-channel-name">
 										<span>유기견2</span>
@@ -1223,7 +1236,7 @@
 										</div>
 									</div>
 								</div>
-
+								<!-- ====================================== -->
 								<div class="store-info-channel">
 									<div class="store-info-channel-name">
 										<span>유기견3</span>

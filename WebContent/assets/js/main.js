@@ -5,8 +5,20 @@ let modalBox = document.querySelector(".modal-box");
 // @@@@@모달 창 띄우기
 for (let i = 0; i < storePhoto.length; i++) {
   storePhoto[i].addEventListener("click", function () {
+	let storeNumber = $(this).data('storenumber');
+	
+	console.log(storeNumber);
     modalBox.style.display = "flex";
     console.log(storePhoto);
+
+/*	$.ajax({
+		url : '/',
+		type : 'get',
+		data : {storeNumber : storeNumber},
+		success : function(result){
+		}	
+	});
+	*/
   });
 }
 

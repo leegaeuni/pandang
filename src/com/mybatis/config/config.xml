@@ -24,7 +24,7 @@
 		<typeAlias type="com.pandang.app.store.like.dto.StoreLikeDTO" alias="StoreLikeDTO"/>
 		<typeAlias type="com.pandang.app.main.vo.MainVO" alias="MainVO"/>
 		<!-- <typeAlias type="com.pandang.app.main.dto.MainDTO" alias="MainDTO"/> -->
-		<typeAlias type="com.pandan.app.mainLikeView.vo.MainLikeViewVO" alias="MainLikeViewVO"/>
+		<typeAlias type="com.pandang.app.main.vo.MainLikeViewVO" alias="MainLikeViewVO"/>
 	</typeAliases>
 
 	<environments default="mysql">
