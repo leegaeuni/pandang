@@ -43,7 +43,7 @@
 			left join tbl_channel tc on ts.member_number = tc.member_number where ts.member_number 
 			group by ts.store_number, ts.store_title, ts.store_view_cnt, sf.store_file_system_name, 
 			tc.channel_name, tc.channel_number, ts.member_number order by ts.store_view_cnt 
-			desc -->
+			+ like_cnt desc limit 12 -->
 		select ts.store_number, ts.store_title, ts.store_view_cnt,
 		count(tsl.store_number) as like_cnt, ts.member_number, ts.store_date,
 		sf.store_file_system_name,
