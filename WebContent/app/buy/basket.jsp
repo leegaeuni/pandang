@@ -114,6 +114,7 @@
               <td class="store-price" name="storePrice" >${basket.getStorePrice()}</td>
               <td class="buy-cnt">
                 <div class="quantity-wrap">
+                	<input class="" type="hidden" value="${basket.getStoreNumber() }">
                     <input type="text" class="quantity-input" value="${basket.getBasketCnt()}" name="basketCnt">
                     <!-- <input type="text" class="quantity-input" value="1" readonly>이면
                       +,- 버튼을 이용해야지만 숫자가 변경됨 -->
