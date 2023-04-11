@@ -178,7 +178,7 @@
 .follow-btn-box {
   width: 100px;
   height: 100%;
-  display: none;
+  display: flex;
 }
 
 .follow-btn {
@@ -216,7 +216,7 @@
 .profile-edit-path-box {
   width: 100px;
   height: 100%;
-  display: none;
+  display: block;
 }
 
 .profile-edit-path-btn {
@@ -315,7 +315,7 @@
 }
 
 #store,
-#post {
+#post-btn {
   border: none;
   background-color: white;
   font-size: 20px;
@@ -328,7 +328,7 @@
 }
 
 #store:hover,
-#post:hover {
+#post-btn:hover {
   color: rgb(42, 197, 198);
 }
 
@@ -527,8 +527,9 @@ li {
   position: fixed;
   z-index: 2;
   right: 70px;
-  height: 700px;
-  margin-top: 80px;
+ 	top : 50%;
+	transform : translate(0, -50%);
+  
   width: 80px;
   display: flex;
   flex-direction: column;
@@ -566,7 +567,7 @@ li {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #modal-btn {
@@ -681,6 +682,14 @@ li {
   padding: 5px;
 }
 
+.host-comment-content-wrap {
+  border-bottom: 1px solid rgb(241, 241, 241);
+  font-size: 13px;
+  font-weight: 400;
+  height: max-content;
+  word-break: break-all;
+  padding: 10px 15px;
+}
 .comment-member-profile {
   width: 20%;
   height: 100%;

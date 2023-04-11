@@ -26,6 +26,7 @@
 		<typeAlias type="com.pandang.app.sns.vo.SnsVO" alias="SnsVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsHeaderVO" alias="SnsHeaderVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsPostInfoVO" alias="SnsPostInfoVO"/>
+		<typeAlias type="com.pandang.app.sns.vo.SnsPostVO" alias="SnsPostVO"/>
 		<typeAlias type="com.pandang.app.sns.comment.vo.SnsCommentVO" alias="SnsCommentVO"/>
 	</typeAliases>
 
