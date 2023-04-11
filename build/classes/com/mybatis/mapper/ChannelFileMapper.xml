@@ -2,10 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="channelFile">
-	<insert id="join" parameterType="MemberDTO">
-		insert into tbl_member
-		(member_id, member_password, member_name, member_age, member_gender, member_email, member_address)
-		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberGender}, #{memberEmail}, #{memberAddress})
+	<insert id="insert" parameterType="ChannelFileDTO">
+		insert into
+		pandang.tbl_channel_file
+		(channel_file_system_name,
+		channel_file_original_name, channel_number)
+		values(#{channelFileSystemName}, #{channelFileOriginalName},
+		#{channelNumber})
 	</insert>
+	
+	<update id="update" parameterType="ChannelFileDTO">
+		update
+		pandang.tbl_channel_file
+		set channel_file_original_name=#{channelFileOriginalName}, 
+		channel_file_system_name=#{channelFileSystemName}		
+		where channel_number=#{channelNumber}
+	</update>
+	
+	<select id="select" parameterType="_int" resultType="ChannelFileDTO">
+		select channel_file_system_name, channel_file_original_name, channel_number
+		from pandang.tbl_channel_file
+		where channel_number=#{channelNumber}
+	
+	</select>
 	
 </mapper>

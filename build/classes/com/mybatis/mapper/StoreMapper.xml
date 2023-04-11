@@ -2,10 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="store">
-	<insert id="join" parameterType="MemberDTO">
-		insert into tbl_member
-		(member_id, member_password, member_name, member_age, member_gender, member_email, member_address)
-		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberGender}, #{memberEmail}, #{memberAddress})
+	<select id="selectAll" resultType="StoreVO" parameterType = "map">
+		select store_number, store_title, store_content, store_date, store_price, store_view_cnt,
+		h.hashtag_number, m.member_number, m.member_nickname
+		from tbl_member m 
+		join tbl_store s on m.member_number = s.member_number
+		join tbl_hashtag h on s.hashtag_number = h.hashtag_number
+		order by store_number desc
+		limit #{startRow}, #{rowCount}
+	</select>
+	
+	<insert id="insert" parameterType="StoreDTO">
+		insert into tbl_store(store_title, store_content, member_number)
+		values(#{storeTitle}, #{storeContent}, #{memberNumber})
 	</insert>
 	
 </mapper>

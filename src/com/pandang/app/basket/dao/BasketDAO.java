@@ -15,8 +15,9 @@ public class BasketDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-	public List<BasketVO> selectAll(Map<String, Integer> pageMap) {
-	      return sqlSession.selectList("basket.selectAll", pageMap);
+	// 회원 번호로 장바구니 받은 물건 받아오기 한 사람이 여러개 넣으므로 List<>사용
+	public List<BasketVO> selectAll(int memberNumber) {
+		return sqlSession.selectList("basket.selectAll", memberNumber);	
 	}
 	
 	
