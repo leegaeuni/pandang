@@ -86,7 +86,7 @@
         </div>
         <div class="write-content__wrap">
           <div class="contents">
-            <form id="write-form" action="${pagetContext.request.contextPath}/store/storeWrite.sw" method="post" enctype="multipart/form-data">      
+            <form id="write-form" action="${pagetContext.request.contextPath}/store/storeWriteOk.st" method="post" enctype="multipart/form-data">      
            <div id="text-area">
            <textarea id="text-box" style="display:none"></textarea>  
           <p>콘텐츠를 선택하여 업로드를 시작하세요.</p>     
@@ -130,6 +130,7 @@
       </div>
       <!-- 오른쪽 버튼 박스 -->
       <div class="add-btn__container">
+               <form id="write-form" action="${pagetContext.request.contextPath}/store/storeWriteOk.st" method="post" enctype="multipart/form-data">      
         <div class="add-btn__wrap">
              <label for="img-file" class="custom-file-upload"><div class="images">
             <img src="${pageContext.request.contextPath}/assets/img/add_image.png" />
@@ -152,7 +153,8 @@
           <button type = "submit" class="btn-next">다음</button>
           <button class="btn-cancel">취소</button>
         </div>
-      </div>
+             </form>
+      </div>      
     </div>
 
     <!-- @@@@푸터@@@@ -->
