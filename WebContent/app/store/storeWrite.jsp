@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,6 +19,10 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/storeWrite.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <div class="header-container">
@@ -98,18 +104,29 @@
         </div>
         <div class="write-content__wrap">
           <div class="contents">
-            <p>콘텐츠를 선택하여 업로드를 시작하세요.</p>
+            <form id="write-form" action="${pagetContext.request.contextPath}/store/storeWrite.sw" method="post" enctype="multipart/form-data">      
+           <div id="text-area">
+           <textarea id="text-box" style="display:none"></textarea>  
+          <p>콘텐츠를 선택하여 업로드를 시작하세요.</p>     
             <div class="tools">
               <div class="tool-wrap">
-                <div class="image">
+               <input type="file" id="img-file" name="boardFile"
+         accept=".jpg, .jpeg, .png" multiple />
+                <label for="img-file" class="custom-file-upload"><div class="image">
                   <img src="${pageContext.request.contextPath}/assets/img/add_image.png" />
-                </div>
+                </div></label>
                 <div class="text">이미지</div>
+                 <div class="img-controller-box">
+   			   <ul class="file-list">
+
+    		  </ul>
+ 			  </div>
               </div>
               <div class="tool-wrap">
-                <div class="image">
-                  <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
-                </div>
+                 <button onclick="toggleTextBox()"><div class="image">
+                 <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
+                </div></button>
+
                 <div class="text">텍스트</div>
               </div>
               <div class="tool-wrap">
@@ -126,19 +143,23 @@
               </div>
             </div>
           </div>
+
+         </form>
         </div>
+      </div>
       </div>
       <!-- 오른쪽 버튼 박스 -->
       <div class="add-btn__container">
         <div class="add-btn__wrap">
-          <div class="images">
+             <label for="img-file" class="custom-file-upload"><div class="images">
             <img src="${pageContext.request.contextPath}/assets/img/add_image.png" />
             <div class="text">이미지 추가</div>
-          </div>
-          <div class="images">
-            <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
+          </div></label>
+            <button onclick="toggleTextBox()"><div class="images">
+         <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
             <div class="text">텍스트 추가</div>
-          </div>
+          </div></button>
+
           <div class="images">
             <img src="${pageContext.request.contextPath}/assets/img/add_video.png" />
             <div class="text">동영상 추가</div>
@@ -153,7 +174,7 @@
           <button class="btn-cancel">취소</button>
         </div>
       </div>
-    </div>
+     </div>
 
     <!-- @@@@푸터@@@@ -->
     <div class="footer-container">

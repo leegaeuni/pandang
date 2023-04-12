@@ -66,7 +66,7 @@ public class MyPageEditOkController implements Execute {
 
       System.out.println("================");
       System.out.println(memberVO);
-      
+//      
 //      이미지 DB에 넣기
 //      getFileNames는 input태그의 name속성을 의미한다.
 //      Enumeration은 이터레이터와 비슷하다고 생각하면 된다.

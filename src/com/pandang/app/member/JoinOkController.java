@@ -47,6 +47,19 @@ public class JoinOkController implements Execute {
 		
 		
 		memberDAO.join(memberDTO);
+//		방금전 insert된 pk(memberNumber)를 가져오고 가입할떄 사용한 memberNickname과 memberNumber를 DTO넣어놓고
+//		넣은 값을 ChannelDTO에 꽂아줘야한다. 
+//		채널 DB에 memberNickname과 memberNumber(채널DB에 fk)를 넣어줘야한다.
+//		회원가입 하자마자 채널명이 memberNickname으로 들어가야하니까 
+		
+		
+//		ChannelDTO.channelDTO = new ChannelDTO();
+//		channelDTO.setChannelName(req.getParameter("memberNickname"));
+//		channelDTO.setMemberNumber(memberDAO.last());
+//		
+//		channelDAO.join(channelDTO);
+		
+		
 		
 		
 		
