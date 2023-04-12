@@ -30,6 +30,7 @@ public class SnsFrontController extends HttpServlet{
 			new SnsWriteController().execute(req,resp);
 			break;
 		case "/sns/snsWriteOk.sn" :
+			new SnsWriteOkController().execute(req,resp);
 			break;
 	
 		}
