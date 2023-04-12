@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
+import com.pandang.app.member.vo.MemberVO;
 import com.pandang.app.sns.comment.vo.SnsCommentVO;
+import com.pandang.app.sns.dto.SnsDTO;
 import com.pandang.app.sns.vo.SnsHeaderVO;
 import com.pandang.app.sns.vo.SnsPostInfoVO;
 import com.pandang.app.sns.vo.SnsVO;
@@ -32,5 +34,17 @@ public class SnsDAO {
 	
 	public List<SnsCommentVO> snsCommentList(int snsNumber){
 		return sqlSession.selectList("sns.snsCommentList", snsNumber);
+	}
+	
+	public MemberVO getSnsWriter(int memberNumber) {
+		return sqlSession.selectOne("member.snsWrite", memberNumber);
+	}
+	
+	public void snsWrite(SnsDTO snsDTO) {
+		sqlSession.insert("sns.snsWrite", snsDTO);
+	}
+	
+	public int getSequence() {
+		return sqlSession.selectOne("sns.getSequence");
 	}
 }

@@ -79,6 +79,15 @@
 		where ts.sns_number = #{snsNumber}
 	</select>
 
+	<insert id="snsWrite" parameterType="SnsDTO">
+		insert into tbl_sns
+		(sns_title, sns_content, member_number)
+		values(#{snsTitle}, #{snsContent}, #{memberNumber})
+	</insert>
+	
+	<select id="getSequence" resultType="_int">
+		select last_insert_id()
+	</select>
 	
 
 </mapper>

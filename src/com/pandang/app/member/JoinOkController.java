@@ -61,6 +61,8 @@ public class JoinOkController implements Execute {
 		
 		
 		
+		
+		
 		resp.sendRedirect("/member/login.me");
 	}
 }
