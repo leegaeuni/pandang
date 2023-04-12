@@ -19,6 +19,12 @@ for (let i = 0; i < storePhoto.length; i++) {
 		}	
 	});
 	*/
+	
+/*	$.ajax({
+		url : '/main/mainOk.re',
+		type : 'get',
+		data : {storeNumber : storeNumber}	
+	});*/
   });
 }
 

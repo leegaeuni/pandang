@@ -78,14 +78,14 @@
           <!-- 채널 컨테이너 영역 시작 -->
           <div class="choice-list-box">
             <div class="choice-container">
-              <button type="buttnon" class="pandang-pick choice-list">
+              <button type="button" class="pandang-pick choice-list">
                 판당pick
               </button>
-              <button type="buttnon" class="recommand choice-list">
+              <button type="button" class="recommand choice-list">
                 추천순
               </button>
-              <button type="buttnon" class="new choice-list">최신순</button>
-              <button type="buttnon" class="free choice-list">무료</button>
+              <button type="button" class="new choice-list">최신순</button>
+              <button type="button" class="free choice-list">무료</button>
             </div>
             <div class="page-btn-box">
               <button type="button" class="prev">
@@ -102,6 +102,11 @@
             <!-- 채널 컨테이너 영역 종료 -->
           </div>
         </div>
+        
+        
+        
+        
+        
         <!-- 모달창 작업 -->
 
         <div class="post-modal">
@@ -412,7 +417,13 @@
             </div>
           </div>
         </div>
+
         <!-- 모달창 작업 종료  -->
+
+
+
+
+
 
         <div class="post-container">
           <div class="post-box-container">

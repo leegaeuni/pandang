@@ -26,6 +26,10 @@ public class MainDAO {
 	public List<MainLikeViewVO> select(){
 		return sqlSession.selectList("main.select");
 	}
+	
+	public void updateViewCnt(int storeNumber) {
+		sqlSession.update("main.updateViewCnt", storeNumber);
+	}
 
 //	public List<MainDTO> select(){
 //		return sqlSession.selectList("main.select");

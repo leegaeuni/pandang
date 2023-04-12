@@ -31,6 +31,9 @@ public class StoreFrontController extends HttpServlet{
 		case "/store/storeWriteOk.sw":
 			new StoreWriteOkController().execute(req, resp);
 			break;
+		case "/store/storeUpdateViewCntOk.sw":
+			new StoreUpdateViewCntOkController().execute(req, resp);
+			break;
 		}
 	}
 }

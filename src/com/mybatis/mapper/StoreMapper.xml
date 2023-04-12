@@ -16,5 +16,6 @@
 		insert into tbl_store(store_title, store_content, member_number)
 		values(#{storeTitle}, #{storeContent}, #{memberNumber})
 	</insert>
+
 	
 </mapper>

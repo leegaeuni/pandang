@@ -15,4 +15,9 @@ public class StoreDAO {
 	public void insert(StoreDTO storeDTO) {
 		sqlSession.insert("store.insert", storeDTO);
 	}
+	
+	public void updateViewCnt(int storeNumber) {
+		sqlSession.update("store.updateViewCnt", storeNumber);
+	}
+
 }
