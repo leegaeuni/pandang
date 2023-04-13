@@ -46,6 +46,7 @@ $(".return").on("click", function () {
   $(".img-counter").css("display", "none");
   $(".return").css("display", "none");
   $(".file-input").val("");
+  cnt = 1;
 });
 
 $(".img-select").on("click", function (e) {
