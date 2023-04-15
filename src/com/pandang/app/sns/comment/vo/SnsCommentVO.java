@@ -11,15 +11,17 @@ package com.pandang.app.sns.comment.vo;
 //on tm.member_number = tc.member_number 
 //left join tbl_channel_file tcf 
 //on tc.channel_number = tcf.channel_number 
-//where ts.sns_number = 1;
+
 
 public class SnsCommentVO {
 	private int snsNumber;
 	private int snsCommentNumber;
+	private int memberNumber;
 	private String snsCommentContent;
 	private String memberNickname;
 	private String channelName;
 	private String snsCommentDate;
+	
 	
 	
 	public SnsCommentVO() {
@@ -27,9 +29,11 @@ public class SnsCommentVO {
 	}
 
 
+
 	public int getSnsNumber() {
 		return snsNumber;
 	}
+
 
 
 	public void setSnsNumber(int snsNumber) {
@@ -37,9 +41,11 @@ public class SnsCommentVO {
 	}
 
 
+
 	public int getSnsCommentNumber() {
 		return snsCommentNumber;
 	}
+
 
 
 	public void setSnsCommentNumber(int snsCommentNumber) {
@@ -47,9 +53,23 @@ public class SnsCommentVO {
 	}
 
 
+
+	public int getMemberNumber() {
+		return memberNumber;
+	}
+
+
+
+	public void setMemberNumber(int memberNumber) {
+		this.memberNumber = memberNumber;
+	}
+
+
+
 	public String getSnsCommentContent() {
 		return snsCommentContent;
 	}
+
 
 
 	public void setSnsCommentContent(String snsCommentContent) {
@@ -57,9 +77,11 @@ public class SnsCommentVO {
 	}
 
 
+
 	public String getMemberNickname() {
 		return memberNickname;
 	}
+
 
 
 	public void setMemberNickname(String memberNickname) {
@@ -67,9 +89,11 @@ public class SnsCommentVO {
 	}
 
 
+
 	public String getChannelName() {
 		return channelName;
 	}
+
 
 
 	public void setChannelName(String channelName) {
@@ -77,9 +101,11 @@ public class SnsCommentVO {
 	}
 
 
+
 	public String getSnsCommentDate() {
 		return snsCommentDate;
 	}
+
 
 
 	public void setSnsCommentDate(String snsCommentDate) {
@@ -87,12 +113,16 @@ public class SnsCommentVO {
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "SnsCommentVO [snsNumber=" + snsNumber + ", snsCommentNumber=" + snsCommentNumber
-				+ ", snsCommentContent=" + snsCommentContent + ", memberNickname=" + memberNickname + ", channelName="
-				+ channelName + ", snsCommentDate=" + snsCommentDate + "]";
+		return "SnsCommentVO [snsNumber=" + snsNumber + ", snsCommentNumber=" + snsCommentNumber + ", memberNumber="
+				+ memberNumber + ", snsCommentContent=" + snsCommentContent + ", memberNickname=" + memberNickname
+				+ ", channelName=" + channelName + ", snsCommentDate=" + snsCommentDate + "]";
 	}
+
+
+	
 
 	
 	

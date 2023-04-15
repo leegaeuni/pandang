@@ -18,6 +18,7 @@
 	order by ts.sns_date desc
 	</select>
 
+	<!-- snsHostHeader 부분 -->
 	<select id="memberInfo" resultType="SnsHeaderVO" parameterType="_int">
 		select
 		m.member_number,
@@ -45,6 +46,8 @@
 		channel_comment
 	</select>
 	
+	
+	<!-- post hover시에 보이는 정보들 -->
 	<select id="snsPostInfo" resultType="SnsPostInfoVO" parameterType="map">
     select ts.sns_number, ts.sns_title as snsTitle, ts.sns_date as snsDate, ts.sns_view_cnt as snsViewCnt,
     count(tsl.sns_number) as likeCnt
@@ -56,28 +59,50 @@
     order by ts.sns_number desc
     limit #{startRow}, #{rowCount}
 	</select>
-	
-	<select id="snsCommentList" parameterType="_int"
-		resultType="SnsCommentVO">
-		select ts.sns_number , tsc.sns_comment_number , tsc.sns_comment_content ,
-		tm.member_nickname , tc.channel_name  ,
-		tsc.sns_comment_date
-		from tbl_sns ts join tbl_sns_comment tsc
-		on ts.sns_number = tsc.sns_number
-		left join tbl_member tm
-		on tsc.member_number = tm.member_number
-		left join tbl_channel tc
-		on tm.member_number = tc.member_number		
-		where tsc.sns_number = #{snsNubmer};
-	</select>
 
-
+	<!-- 전체 게시글 수 가져오기 -->
 	<select id="getTotal" parameterType="_int" resultType="_int">
 		select count(sns_number) from tbl_sns ts
 		where member_number = #{memberNumber}
 	</select>
 	
+	<!-- view 업데이트 -->
+	<update id="updateSnsViewCnt" parameterType="_int">
+		update tbl_sns 
+		set sns_view_cnt = sns_view_cnt + 1
+		where sns_number = #{snsNumber}
+	</update>
 	
+	<!-- 좋아요 업데이트 -->
+	<insert id="updateSnsLikeCnt" parameterType="SnsDTO">
+		insert into tbl_sns_like
+		(sns_number, member_number)
+		values(#{snsNumber}, #{memberNumber})
+	</insert>
+	
+	<delete id="deleteSnsLikeCnt" parameterType="SnsDTO">
+		delete from tbl_sns_like
+		where sns_number = #{snsNumber}  and member_number= #{memberNumber}
+	</delete>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteSnsPost" parameterType="_int">
+		delete from tbl_sns
+		where sns_number = #{snsNumber}
+	</delete>
+	
+	<delete id="deleteSnsLikeFromHost" parameterType="_int">
+		delete from tbl_sns_like
+		where sns_number = #{snsNumber}
+	</delete>
+	
+	<delete id="deleteSnsCommentFromHost" parameterType="_int">
+		delete from tbl_sns_comment
+		where sns_number = #{snsNumber}
+	</delete>
+
+	
+	<!-- 게시글 불러오기 -->
 	<select id="showSnsPost" parameterType="map" resultType="SnsPostVO">
 	select ts.sns_number , ts.sns_title , ts.sns_content , sns_date,
 	count(tsl.sns_number) as like_cnt,
@@ -96,10 +121,54 @@
 	on tm.member_number = tc.member_number
 	left join tbl_channel_file tcf
 	on tc.channel_number = tcf.channel_number
+	where ts.sns_number = #{snsNumber}
 	group by tsf.sns_file_system_name,
 	tc.channel_name ,
 	tcf.channel_file_system_name,
 	ts.sns_number
 	</select>
+	
+	
+	<!-- 댓글 읽어오기 -->
+	<select id="snsCommentList" parameterType="map"
+		resultType="SnsCommentVO">
+		select ts.sns_number , tsc.sns_comment_number , tsc.sns_comment_content ,
+		tm.member_nickname , tc.channel_name  ,tsc.member_number ,
+		tsc.sns_comment_date
+		from tbl_sns ts left join tbl_sns_comment tsc
+		on ts.sns_number = tsc.sns_number
+		left join tbl_member tm
+		on tsc.member_number = tm.member_number
+		left join tbl_channel tc
+		on tm.member_number = tc.member_number
+		where ts.sns_number = #{snsNumber}
+	</select>
 
+	<!-- 댓글 작성 -->
+	<insert id="snsCommentInsert" parameterType="snsCommentDTO">
+		insert into tbl_sns_comment
+		(sns_comment_content,sns_number, member_number)
+		values(#{snsCommentContent},  #{snsNumber}, #{memberNumber})
+	</insert>
+	
+	
+	
+	<!-- 댓글 삭제 -->
+	<delete id="snsCommentDelete" parameterType="_int">
+		delete from tbl_sns_comment
+		where sns_comment_number= #{snsCommentNumber}
+	</delete>
+	
+	
+	
+	<!-- 댓글 수정 -->
+	<update id="snsCommentUpdate" parameterType="snsCommentDTO">
+		update tbl_sns_comment
+		set sns_comment_content= #{snsCommentContent}
+		where sns_comment_number= #{snsCommentNumber}
+	</update>
+	
+	
+	
+	
 </mapper>

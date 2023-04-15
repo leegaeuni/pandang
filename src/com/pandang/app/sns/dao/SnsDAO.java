@@ -6,7 +6,9 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
+import com.pandang.app.sns.comment.dto.SnsCommentDTO;
 import com.pandang.app.sns.comment.vo.SnsCommentVO;
+import com.pandang.app.sns.dto.SnsDTO;
 import com.pandang.app.sns.vo.SnsHeaderVO;
 import com.pandang.app.sns.vo.SnsPostInfoVO;
 import com.pandang.app.sns.vo.SnsPostVO;
@@ -32,8 +34,8 @@ public class SnsDAO {
 		return sqlSession.selectList("sns.snsPostInfo", pageMap);
 	}
 	
-	public List<SnsCommentVO> snsCommentList(int snsNumber){
-		return sqlSession.selectList("sns.snsCommentList", snsNumber);
+	public List<SnsCommentVO> snsCommentList(Map<String, Integer> pageMap){
+		return sqlSession.selectList("sns.snsCommentList", pageMap);
 	}
 	
 	// sns. 은 namespace가 sns인 매퍼 안에 있는거 가져오려고 쓰는거임 
@@ -43,6 +45,42 @@ public class SnsDAO {
 	
 	public List<SnsPostVO> showSnsPost(Map<String, Integer> pageMap){
 		return sqlSession.selectList("sns.showSnsPost", pageMap);
+	}
+	
+	public void updateSnsViewCnt(int snsNumber) {
+		sqlSession.update("sns.updateSnsViewCnt", snsNumber);
+	}
+	
+	public void updateSnsLikeCnt(SnsDTO snsDTO) {
+		sqlSession.insert("sns.updateSnsLikeCnt", snsDTO);
+	}
+	
+	public void deleteSnsLikeCnt(SnsDTO snsDTO) {
+		sqlSession.delete("sns.deleteSnsLikeCnt", snsDTO);
+	}
+	
+	public void deleteSnsPost(int snsNumber) {
+		sqlSession.delete("sns.deleteSnsPost", snsNumber);
+	}
+	
+	public void deleteSnsLikeFromHost(int snsNumber) {
+		sqlSession.delete("sns.deleteSnsLikeFromHost", snsNumber);
+	}
+	
+	public void deleteSnsCommentFromHost(int snsNumber) {
+		sqlSession.delete("sns.deleteSnsCommentFromHost", snsNumber);
+	}
+	
+	public void snsCommentInsert(SnsCommentVO snsCommentVO){
+		sqlSession.insert("sns.snsCommentInsert", snsCommentVO);
+	}
+	
+	public void snsCommentDelete(int snsCommentNumber) {
+		sqlSession.delete("sns.snsCommentDelete", snsCommentNumber);
+	}
+
+	public void snsCommentUpdate(SnsCommentDTO snsCommentDTO) {
+		sqlSession.update("sns.snsCommentUpdate", snsCommentDTO);
 	}
 	
 }

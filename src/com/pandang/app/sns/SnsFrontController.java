@@ -34,6 +34,18 @@ public class SnsFrontController extends HttpServlet{
 		case "/sns/snsReadOk.sn":
 			new SnsReadOkController().execute(req, resp);
 			break;
+			
+		case "/sns/snsLikeOk.sn" : 
+			new SnsLikeOkController().execute(req, resp);
+			break;
+			
+		case "/sns/snsLikeDeleteOk.sn" :
+			new SnsLikeDeleteOkController().execute(req, resp);
+			break;
+			
+		case "/sns/snsPostDeleteOk.sn" : 
+			new SnsPostDeleteOkController().execute(req, resp);
+			break;
 	
 		}
 	}

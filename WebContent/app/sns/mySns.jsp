@@ -234,6 +234,8 @@
 					<div class="host-comment-content-wrap">
 						<span class="host-comment-content">@@@@@@@@@@</span>
 					</div>
+					<div class= "comment">
+					
 					<c:choose>
 					
 						<c:when test="${not empty comment}">	
@@ -241,7 +243,8 @@
 							<c:forEach var="comment" items="${comment}">
 							
 							
-								<div class="comment-wrap">
+							
+									<div class= "comment-wrap">
 									<div class="comment-member-info-box">
 										<div class="comment-member-info">
 											<div class="comment-member-profile">
@@ -253,7 +256,8 @@
 											</div>
 											<div class="comment-member-name-wrap">
 												<a href="" class="comment-member-name"> 
-												<input class="commentMemberNumber" type="hidden" value="${comment.getChannelName()}" /> 
+												<input class="commentChannelName" type="hidden" value="${comment.getChannelName()}" />
+												<input class="snsCommentNumber" type="hidden" value="${comment.getSnsCommentNumber()}"> 
 												<c:out value="${comment.getChannelName()}"></c:out>
 												
 						
@@ -268,7 +272,13 @@
 
 
 										</div>
-									</div>
+
+											<div class="comment-edit-option">
+												<button type="button" class="comment-modify">수정 완료
+												</button>
+											</div>
+
+										</div>
 
 
 
@@ -282,15 +292,15 @@
 												value="${comment.getSnsCommentDate()}"></c:out>
 										</span>
 									</div>
+									
 								</div>
-						
 								</c:forEach>
 								
 								</c:when>
 								</c:choose>
 							
 								
-								
+							</div>	
 
 								<!-- @@@@@@ 모달 댓글 영역 끝 @@@@@@ -->
 				</div>
@@ -310,10 +320,13 @@
 					</div>
 					<div class="post-date">2023년 3월 28일</div>
 				</div>
+				
 				<div class="mini-post-content">
-					<input class="comment-box" type="text" placeholder="댓글을 입력해 주세요" />
+					<input class="comment-box" type="text" id= "commentContent" placeholder="댓글을 입력해 주세요" />
+					<input type="hidden" class="memberNumber" value="${sessionScope.memberNumber}" />
 					<button type="submit" class="submit">게시</button>
 				</div>
+				
 			</div>
 		</div>
 		<div id="modal-btn-box-wrap">
@@ -332,6 +345,7 @@
 				</div>
 			</div>
 			<!-- 팔로우 버튼 -->
+			<c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
 			<div class="modal-follow-btn-box modal-btn-box">
 				<button type="button" class="modal-follow-btn btn-color"
 					id="modal-btn">
@@ -340,6 +354,9 @@
 				</button>
 				<span class="modal-btn-list">팔로우</span>
 			</div>
+			</c:if>
+			
+			<c:if test="${sessionScope.memberNumber == snsMemberInfo.getMemberNumber()}">
 			<!-- 수정하기 버튼  -->
 			<div class="modal-edit-btn-box modal-btn-box">
 				<button type="button" class="modal-edit-btn btn-color"
@@ -350,14 +367,18 @@
 			</div>
 			<!-- 삭제하기 버튼 -->
 			<div class="modal-delete-btn-box modal-btn-box">
+				<a href=#>
+				
 				<button type="button" class="modal-delete-btn btn-color"
 					id="modal-btn">
 					<span class="material-symbols-outlined"> delete </span>
 				</button>
+				</a>
 				<span class="modal-btn-list">삭제하기</span>
 			</div>
+			</c:if>
 			<!-- 신고하기 버튼  -->
-
+			<c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
 			<div class="modal-report-btn-wrap modal-btn-box">
 				<button type="button" class="modal-report-btn report-btn-color"
 					id="modal-btn">
@@ -365,6 +386,7 @@
 				</button>
 				<span class="modal-btn-list">신고하기</span>
 			</div>
+			</c:if>
 		</div>
 	</div>
 	<!-- 모달 파트 끝 -->
@@ -570,5 +592,6 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/mySns.js"></script>
+	
 </body>
 </html>

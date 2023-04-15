@@ -1,4 +1,4 @@
-package com.pandang.app.sns;
+package com.pandang.app.sns.comment;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,53 +16,55 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.pandang.app.Execute;
+import com.pandang.app.sns.comment.vo.SnsCommentVO;
 import com.pandang.app.sns.dao.SnsDAO;
 import com.pandang.app.sns.vo.SnsPostVO;
 
-public class SnsReadOkController implements Execute {
+public class SnsCommentOkController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		
+
 		HttpSession session = req.getSession();
 		
 //		session.setAttribute("snsNumber", 1);
 		
-		SnsDAO snsDAO = new SnsDAO();
-		
-		
+		 SnsDAO	snsDAO = new SnsDAO();
 		
 		 Map<String, Integer> pageMap = new HashMap<>();
-		 pageMap.put("snsNumber", Integer.parseInt(req.getParameter("snsPostNumber")));
+	     pageMap.put("snsNumber", Integer.parseInt(req.getParameter("snsNumber")));
+	     
 	      
-		 snsDAO.updateSnsViewCnt(Integer.parseInt(req.getParameter("snsPostNumber")));
+//	      System.out.println(pageMap.toString());
 	      
-	      System.out.println(pageMap.toString());
-	      
-	      List<SnsPostVO> snsPost = snsDAO.showSnsPost(pageMap);
+	      List<SnsCommentVO> snsComment = snsDAO.snsCommentList(pageMap);
 	     
 	      Gson gson = new Gson();
 	     
 	      
-	      JsonArray showPost = new JsonArray();
+	      JsonArray showCommentList = new JsonArray();
 	      
 	    
 	      
-	      snsPost.stream()
+	      snsComment.stream()
 	      .map(gson::toJson)
 	      .map(JsonParser::parseString)
-	      .forEach(showPost::add);
+	      .forEach(showCommentList::add);
 	      
-	     
+//	      System.out.println(showCommentList.toString());
 	      JsonObject result = new JsonObject();
 	      
+	     
 	      
-	      result.add("list", JsonParser.parseString(showPost.toString()));
-	  
-//	      System.out.println(showPost.toString());
+	      
+	      result.add("list", JsonParser.parseString(showCommentList.toString()));
+	      
+	     
 //	      System.out.println(result);
-//	      System.out.println(showPost);
+//	      System.out.println(showCommentList);
 	      
 	      resp.setContentType("application/json; charSet=utf-8");
 	      
@@ -70,7 +72,6 @@ public class SnsReadOkController implements Execute {
 	      out.print(result.toString());
 	      out.close();
 	      
-
 	}
 
 }

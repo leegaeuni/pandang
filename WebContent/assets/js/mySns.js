@@ -46,7 +46,7 @@ $(".report-btn-color").on({
 	},
 });
 
-// @@@@@@ 좋아요 색 변경 테스트 !@@@@@@@@
+// @@@@@@ 좋아요 @@@@@@@@
 
 $(".before-like-btn").on("click", function() {
 	if (
@@ -57,11 +57,62 @@ $(".before-like-btn").on("click", function() {
 			"src",
 			"https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
 		);
+
+		$.ajax({
+			url: '/sns/snsLikeOk.sn',
+			data: {
+				snsNumber: snsNumber,
+				memberNumber: memberNumber
+			},
+			success: function() {
+				$.ajax({
+					url: '/sns/snsReadOk.sn',
+					type: 'get',
+					dataType: 'json',
+					data: { snsPostNumber: snsPostNumber },
+					success: function(result) {
+						showSnsLikeDate(result);
+					},
+					error: function(a, b, c) {
+						console.log(c);
+					}
+
+				});
+
+			}
+		});
+
+
 	} else {
 		$(this).attr(
 			"src",
 			"https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
 		);
+
+		$.ajax({
+			url: '/sns/snsLikeDeleteOk.sn',
+			data: {
+				snsNumber: snsNumber,
+				memberNumber: memberNumber
+			},
+			success: function() {
+				$.ajax({
+					url: '/sns/snsReadOk.sn',
+					type: 'get',
+					dataType: 'json',
+					data: { snsPostNumber: snsPostNumber },
+					success: function(result) {
+						showSnsLikeDate(result);
+					},
+					error: function(a, b, c) {
+						console.log(c);
+					}
+
+				});
+
+			}
+		});
+
 	}
 });
 
@@ -150,28 +201,22 @@ $(".post-img-prev").on("click", function() {
 
 
 
-
-
-
-
-
 console.log($('.memberNumber').val());
 
-let $commentMemberNubmer = $('.commentMemberNumber');
+/*let $commentMemberNubmer = $('.commentMemberNumber');
 let $commentMemberName = $('.comment-member-name');
 
 
 
 let memberNumber = $('.commentMemberNumber').val();
 console.log(memberNumber);
+*/
 
-
-$commentMemberName.on('click', () => {
+/*$commentMemberName.on('click', () => {
 	window.location.href = '/sns/snsOk.sn?memberNumber=' + memberNumber;
 });
+*/
 
-
-let snsNumber = $('.snsNumber').val();
 
 
 
@@ -242,21 +287,6 @@ function showSnsList(result) {
 
 }
 
-/*$.ajax({
-	url: '/sns/snsListOk.sn',
-	type: 'get',
-	dataType: 'json',
-	data: {page: 1},
-	success: function(result){
-		showSnsList(result);
-		thisPage = result.page;
-	},
-	error: function(a, b, c){
-		console.log(c);
-	}
-	
-});*/
-
 let thisPage = 1;
 let realEndPage = $('.realEndPage').val();
 
@@ -307,50 +337,180 @@ $('.prev').on('click', function() {
 // ajax에서 .post-part 클릭시  snsNumber가져오는 이벤트 
 
 let snsPostNumber;
+let snsNumber;
 
 $('.snsList').on('click', '.post-part', function() {
 	snsPostNumber = $(this).children('.snsNumber').val();
+	snsNumber = $(this).children('.snsNumber').val();
+
 	console.log(snsPostNumber);
+	console.log(snsNumber);
 });
 
 
 
-
-function showSnsPost(result) {
-	$('.modal-like-date').html('');
+// 모달창 좋아요, 게시글 작성일 함수
+function showSnsLikeDate(result) {
+	$('.like-cnt').html('');
+	$('.post-date').html('');
 	for (let i = 0; i < result.list.length; i++) {
 		if (snsPostNumber == result.list[i].snsNumber) {
 
-			$('.modal-like-date').append(`
-			<div class="like-wrap">
-						<img class="before-like-btn"
-							src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-							alt="heart" />
-	
-
-						<!-- 임시 좋아요 수 -->
-						<div class="like-cnt">${result.list[i].likeCnt}</div>
-						개
-						
-					</div>
-					
-					<div class="post-date">${result.list[i].snsDate}</div>
-				</div>
-			`);
-
+			$('.like-cnt').append(`${result.list[i].likeCnt}`);
+			$('.post-date').append(`${result.list[i].snsDate}`);
 
 		}
 
-		
-	}
-	}
 
+	}
+}
+
+// 모달 게시글 작성자 함수
+function showPostHost(result) {
+	$('.host-name-box').html('');
+
+	for (let i = 0; i < result.list.length; i++) {
+		if (snsPostNumber == result.list[i].snsNumber) {
+			$('.host-name-box').append(`
+					<span class="host-name"> 
+					 ${result.list[i].channelName}
+					</span>
+	`);
+		}
+	}
+}
+
+// 모달 게시글 콘텐츠 함수
+function showPostContent(result) {
+	$('.host-comment-content').html('');
+	for (let i = 0; i < result.list.length; i++) {
+		if (snsPostNumber == result.list[i].snsNumber) {
+
+			$('.host-comment-content').append(`
+					
+					
+							${result.list[i].snsContent}
+						
+				`);
+
+		}
+	}
+}
+
+// 모달 게시글 댓글 함수
+
+
+function showPostComment(result) {
+	$('.comment').html('');
+	let text = '';
+	for (let i = 0; i < result.list.length; i++) {
+		if (snsPostNumber == result.list[i].snsNumber && result.list[i].snsCommentNumber != 0) {
+
+			/*$('.comment').append(`
+								<div class="comment-wrap">
+									<div class="comment-member-info-box">
+										<div class="comment-member-info">
+											<div class="comment-member-profile">
+												 <a href="#" class="comment-member-img"> <img
+													class="comment-profile-img"
+													src="/assets/img/SNSPage/01.jpeg"
+													alt="" />
+												</a> 
+											</div>
+											<div class="comment-member-name-wrap">
+												<a href="" class="comment-member-name"> 
+										
+												${result.list[i].channelName}
+						
+												</a>
+											</div>
+										</div>
+										<div class="comment-option">
+											<button class="comment-edit" type="button">수정</button>
+											<button class="comment-delete" type="button">삭제</button>
+										</div>
+									</div>
+
+
+
+									<div class="comment-content-wrap">
+										<span class="comment-content"> 
+										${result.list[i].snsCommentContent}
+										</span>
+									</div>
+									<div class="comment-date">
+										<span> 
+										${result.list[i].snsCommentDate}
+										</span>
+									</div>
+									</div>
+			
+				`);*/
+			text += `
+				<div class="comment-wrap">
+									<div class="comment-member-info-box">
+										<div class="comment-member-info">
+											<div class="comment-member-profile">
+												 <a href="#" class="comment-member-img"> <img
+													class="comment-profile-img"
+													src="/assets/img/SNSPage/01.jpeg"
+													alt="" />
+												</a> 
+											</div>
+											<div class="comment-member-name-wrap">
+												<a href="" class="comment-member-name"> 
+										
+												${result.list[i].channelName}
+						
+												</a>
+											</div>
+										</div>
+				
+				`
+			if (memberNumber == result.list[i].memberNumber) {
+				text += `
+					<div class="comment-option">
+						<button class="comment-edit" type="button" data-number="${result.list[i].snsCommentNumber}">수정</button>
+						<button class="comment-delete" type="button" data-number="${result.list[i].snsCommentNumber}">삭제</button>
+					</div>
+					
+					<div class="comment-edit-option">
+						<button class="comment-modify" type="button" data-number="${result.list[i].snsCommentNumber}">수정 완료 </button>
+					</div>
+					`
+
+			}
+
+			text += `
+				</div>
+
+
+
+									<div class="comment-content-wrap">
+										<span class="comment-content"> 
+										${result.list[i].snsCommentContent}
+										</span>
+									</div>
+									<div class="comment-date">
+										<span> 
+										${result.list[i].snsCommentDate}
+										</span>
+									</div>
+									</div>
+				`;
+
+
+
+		}
+	}
+	$('.comment').html(text);
+
+}
 
 
 
 
 $('.snsList').on('click', function() {
-	console.log('gegegeg');
 
 	$.ajax({
 		url: '/sns/snsReadOk.sn',
@@ -358,7 +518,9 @@ $('.snsList').on('click', function() {
 		dataType: 'json',
 		data: { snsPostNumber: snsPostNumber },
 		success: function(result) {
-			showSnsPost(result);
+			showSnsLikeDate(result);
+			showPostHost(result);
+			showPostContent(result);
 		},
 		error: function(a, b, c) {
 			console.log(c);
@@ -366,3 +528,179 @@ $('.snsList').on('click', function() {
 
 	});
 });
+
+// 댓글 url 변경 
+
+
+$('.snsList').on('click', function() {
+
+	$.ajax({
+		url: '/sns/snsCommentOk.snc',
+		type: 'get',
+		dataType: 'json',
+		data: { snsNumber: snsNumber },
+		success: function(result) {
+			showPostComment(result);
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+	});
+});
+
+// 댓글 작성 
+
+let memberNumber = $('.memberNumber').val();
+
+$('.submit').on('click', function() {
+	console.log('@@@@@@@@@');
+	console.log($('#commentContent').val());
+	console.log($('.memberNumber').val());
+
+	$.ajax({
+
+		url: "/sns/snsCommentInsertOk.snc",
+		type: "get",
+		data: {
+			snsNumber: snsNumber,
+			memberNumber: memberNumber,
+			snsCommentContent: $('#commentContent').val()
+		},
+		success: function() {
+			$('#commentContent').val('');
+			$.ajax({
+				url: '/sns/snsCommentOk.snc',
+				type: 'get',
+				dataType: 'json',
+				data: { snsNumber: snsNumber },
+				success: function(result) {
+					showPostComment(result);
+				},
+				error: function(a, b, c) {
+					console.log(c);
+				}
+
+			});
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+	});
+
+});
+
+// 댓글 삭제 
+$('.comment').on('click', '.comment-delete', function() {
+
+	let snsCommentNumber = $(this).data('number');
+
+	$.ajax({
+		url: "/sns/snsCommentDeleteOk.snc",
+		type: 'get',
+		data: { snsCommentNumber: snsCommentNumber },
+		success: function() {
+			// 댓글 갱신
+			$.ajax({
+				url: '/sns/snsCommentOk.snc',
+				type: 'get',
+				dataType: 'json',
+				data: { snsNumber: snsNumber },
+				success: function(result) {
+					showPostComment(result);
+				},
+				error: function(a, b, c) {
+					console.log(c);
+				}
+
+			});
+
+			console.log('success!!');
+		}
+	});
+});
+
+// 댓글 수정
+$('.comment').on('click', '.comment-edit', function() {
+
+
+	let $parent = $(this).closest('.comment-wrap');
+	console.log($parent);
+
+	let $children = $parent.find('.comment-option, .comment-edit-option');
+	console.log($children);
+
+	$children.eq(0).hide();
+	$children.eq(1).show();
+
+	let $content = $(this).parent().parent().next().children();
+	console.log($content);
+
+	$content.replaceWith(`<textarea class='modify-content'> </textarea>`);
+
+});
+
+
+// 댓글 수정 완료 처리
+$('.comment').on('click', '.comment-modify', function() {
+	let snsCommentNumber = $(this).data('number');
+	console.log($('.modify-content').val());
+
+	$.ajax({
+		url: '/sns/snsCommentUpdateOk.snc',
+		type: 'get',
+		data: {
+			snsCommentNumber: snsCommentNumber,
+			snsCommentContent: $('.modify-content').val()
+		},
+		success: function() {
+			$.ajax({
+				url: '/sns/snsCommentOk.snc',
+				type: 'get',
+				dataType: 'json',
+				data: { snsNumber: snsNumber },
+				success: function(result) {
+					showPostComment(result);
+				},
+				error: function(a, b, c) {
+					console.log(c);
+				}
+
+			});
+		}
+	});
+});
+
+// 게시글 삭제
+$('.modal-delete-btn-box').on('click', function() {
+	
+	$(".modal-box").css("display", "none");
+	
+	$.ajax({
+		url: '/sns/snsPostDeleteOk.sn',
+		type: 'get',
+		data: { snsNumber: snsNumber },
+		success: function() {
+			$.ajax({
+				url: '/sns/snsListOk.sn',
+				data: { page: thisPage },
+				success: function(result) {
+					showSnsList(result);
+					thisPage = result.page;
+					console.log(thisPage);
+				}
+			});
+
+			
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+	});
+
+});
+
+
+

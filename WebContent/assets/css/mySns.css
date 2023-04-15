@@ -707,14 +707,23 @@ li {
 .comment-option {
   width: 30%;
   height: 100%;
-  /* display: flex; */
+ 
   align-items: center;
   justify-content: space-evenly;
+  display: flex;
+}
+
+.comment-edit-option {
+  width: 30%;
+  height: 100%;
   display: none;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .comment-edit,
-.comment-delete {
+.comment-delete,
+.comment-modify {
   background-color: white;
   border: none;
   color: #5b696f;

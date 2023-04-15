@@ -24,9 +24,9 @@ public class SnsOkController implements Execute {
 		
 		
 		
-		// url에 있는 memberNumber 뽑아오는거
+//		// url에 있는 memberNumber 뽑아오는거
 		req.getParameter("memberNumber");
-		
+	
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("memberNumber", 1);
@@ -130,9 +130,11 @@ public class SnsOkController implements Execute {
 		
 		
 
-		// sns SnsCommentVO
+//		// sns SnsCommentVO
 		int snsNumber = 1;
-		List<SnsCommentVO> snsCommentVO = snsDAO.snsCommentList(snsNumber);
+		Map<String, Integer> snsComment = new HashMap();
+		snsComment.put("snsNumber", snsNumber);
+		List<SnsCommentVO> snsCommentVO = snsDAO.snsCommentList(snsComment);
 
 //		System.out.println(snsCommentVO);
 //
