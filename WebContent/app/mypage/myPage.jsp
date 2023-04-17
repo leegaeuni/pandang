@@ -21,36 +21,42 @@
 </head>
 <body>
 
-  <div class="header-container">
-    <!-- 헤더 영역 시작  -->
-    <div class="start-container">
-      <a href="#"><img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" class="logo-img" /></a>
-      <a href="#" class="header-list">판당</a>
-      <font>·</font>
-      <a href="#" class="header-list">산당</a>
-      <font>·</font>
-      <a href="#" class="header-list">sns</a>
-    </div>
-    <div class="search">
-      <input
-        type="text"
-        class="search-bar"
-        placeholder="어떤 창작물을 찾으시나요?"
-      />
-      <a href="#">
-        <button type="button" class="material-symbols-outlined">
-          search
-        </button>
-      </a>
-    </div>
-    <div class="login-container">
-      <a href="#" class="login">로그인</a>
-      <a href="#" class="join">회원가입</a>
-      <a href="#" class="my-page">마이페이지</a>
-      <a href="#" class="logout">로그아웃</a>
-    </div>
-     <!-- 헤더 영역 종료 -->
-  </div>
+ <div class="header-container">
+         <!-- 헤더 영역 시작  -->
+         <div class="start-container">
+            <!-- 메인페이지 이동처리 -->
+            <a href="${pageContext.request.contextPath}/main"><img
+               src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
+               class="logo-img" /></a>
+            <!-- 판당 페이지 이동처리 -->
+            <div class="pandang-container">
+               <a href="${pageContext.request.contextPath}/sns/snsOk.sn" class="header-list">판당</a> <font>·</font>
+               <!-- 산당 (스토어) 페이지 이동처리 -->
+               <a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
+            </div>
+         </div>
+  		<!-- 추가 수정부분 -->       
+        <form action="" class="search">
+            <input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
+               <button type="submit" class="material-symbols-outlined">
+                  search</button>
+         </form>
+         
+  
+         <div class="login-container">
+            <c:choose>
+               <c:when test="${empty sessionScope.memberNumber}">
+                  <a href="${pageContext.request.contextPath}/member/login.me" class="login">로그인</a> 
+                  <a href="${pageContext.request.contextPath}/member/join.me" class="join">회원가입</a> 
+               </c:when>
+               <c:otherwise>
+                  <a href="${pageContext.request.contextPath}/member/mypageOk.me" class="my-page">마이페이지</a> 
+                  <a href="${pageContext.request.contextPath}/member/logoutOk.me" class="logout">로그아웃</a>
+               </c:otherwise>
+            </c:choose>
+         </div>
+         <!-- 헤더 영역 종료 -->
+      </div>
 
   <div class="page-content">
     <!-- 배경 -->
@@ -68,19 +74,18 @@
           <div class="menu-type">
             <div class="type1">
               <!-- <button type="button" class="type1-button">프로필 편집</button> -->
-              <a href="#" class="type1-button">프로필 편집</a>
+              <a href="${pageContext.request.contextPath}/member/mypageOk.me" class="type1-button">프로필 편집</a>
             </div>
             <div class="type2">
               <!-- <button type="button" class="type2-button">장바구니</button> -->
-              <a href="#" class="type2-button">장바구니</a>
+              <a href="${pageContext.request.contextPath}/basket/basketOk.ba" class="type2-button">장바구니</a>
             </div>
             <div class="type3">
               <!-- <button type="button" class="type3-button">구매내역</button> -->
-              <a href="#" class="type3-button">구매내역</a>
+              <a href="${pageContext.request.contextPath}/buy/buyListOk.bu" class="type3-button">구매내역</a>
             </div>
             <div class="type4">
-               <!-- <button type="button" class="type4-button">배송조회</button> -->
-               <a href="#" class="type4-button">배송조회</a>
+               <a href="#" class="type4-button">판매내역</a>
             </div>
           </div>
         </div>

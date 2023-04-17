@@ -22,51 +22,48 @@
   <body>
     <div class="all-wrap">
       <!-- #######header####### -->
-      <div class="header-container">
-        <!-- 헤더 영역 시작  -->
-        <div class="start-container">
-          <!-- 메인페이지 이동처리 -->
-          <a href="#"
-            ><img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" class="logo-img"
-          /></a>
-          <!-- 판당 페이지 이동처리 -->
-          <a href="#" class="header-list">판당</a>
-          <font>·</font>
-          <!-- 산당 (스토어) 페이지 이동처리 -->
-          <a href="#" class="header-list">산당</a>
-          <font>·</font>
-          <!-- sns 페이지 이동처리 -->
-          <a href="#" class="header-list">sns</a>
-        </div>
-        <div class="search">
-          <input
-            type="text"
-            class="search-bar"
-            placeholder="어떤 창작물을 찾으시나요?"
-          />
-          <a href="#">
-            <button type="button" class="material-symbols-outlined">
-              search
-            </button>
-          </a>
-        </div>
-        <div class="login-container">
-          <!-- 로그인 페이지 이동처리 -->
-          <a href="#" class="login">로그인</a>
-          <!-- 회원가입 페이지 이동처리 -->
-          <a href="#" class="join">회원가입</a>
-          <!-- 마이페이지, 로그아웃 이동처리(display none 상태, 로그인시 보여야함) -->
-          <a href="#" class="my-page">마이페이지</a>
-          <a href="#" class="logout">로그아웃</a>
-        </div>
-        <!-- 헤더 영역 종료 -->
+ <div class="header-container">
+         <!-- 헤더 영역 시작  -->
+         <div class="start-container">
+            <!-- 메인페이지 이동처리 -->
+            <a href="${pageContext.request.contextPath}/main"><img
+               src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
+               class="logo-img" /></a>
+            <!-- 판당 페이지 이동처리 -->
+            <div class="pandang-container">
+               <a href="${pageContext.request.contextPath}/sns/snsOk.sn" class="header-list">판당</a> <font>·</font>
+               <!-- 산당 (스토어) 페이지 이동처리 -->
+               <a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
+            </div>
+         </div>
+  		<!-- 추가 수정부분 -->       
+        <form action="" class="search">
+            <input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
+               <button type="submit" class="material-symbols-outlined">
+                  search</button>
+         </form>
+         
+  
+         <div class="login-container">
+            <c:choose>
+               <c:when test="${empty sessionScope.memberNumber}">
+                  <a href="${pageContext.request.contextPath}/member/login.me" class="login">로그인</a> 
+                  <a href="${pageContext.request.contextPath}/member/join.me" class="join">회원가입</a> 
+               </c:when>
+               <c:otherwise>
+                  <a href="${pageContext.request.contextPath}/member/mypageOk.me" class="my-page">마이페이지</a> 
+                  <a href="${pageContext.request.contextPath}/member/logoutOk.me" class="logout">로그아웃</a>
+               </c:otherwise>
+            </c:choose>
+         </div>
+         <!-- 헤더 영역 종료 -->
       </div>
 
       <!-- ######main##### -->
       <div class="container">
       
-      <form id="edit-form" action="${pagetContext.request.contextPath}/basket/basketOk.ba" method="post"
-			enctype="multipart/form-data">
+      <form id="edit-form" action="${pagetContext.request.contextPath}/buy/pay.bu" method="post"
+			>
       
         <table class="board-table">
           <div class="basket-table">장바구니</div>
@@ -76,7 +73,7 @@
                 <label>
                   <input
                     type="checkbox"
-                    name="basket_product_normal_type_normal"
+                    name="basket-product-all"
                     value="selectall"
                     onclick="selectAll(this)"
                   />
@@ -84,16 +81,17 @@
               </th>
               <th>이미지</th>
               <th>상품정보</th>
-              <th>가격</th>
-              <th>수량</th>
-              <th>상품금액</th>
-              <th>배송비</th>
-              <th>총가격</th>
+              <th class="th-store-price">가격</th>
+              <th class="th-buy-cnt">수량</th>
+              <th class="th-store-total-price">상품금액</th>
+              <th class="th-post-price">배송비</th>
+              <th class="th-buy-total-price">총가격</th>
             </tr>
           </thead>
 
           <tbody>
           
+          	
            <c:forEach var="basket" items="${basketList}">
           <!-- items="${basketList}"는 BasketController에서 List<BasketVO>의 변수로 선언한 basketList임 -->
             <tr>
@@ -101,26 +99,33 @@
                 <label>
                   <input
                     type="checkbox"
-                    id="basket_chk_id_0"
-                    name="basket_product_normal_type_normal"
+                    class="store-number"
+                    name="basket-product"
+                    value="${basket.getStoreNumber() }"
                   />
+                  <div class='hidden'></div>
                 </label>
               </td>
               <td class="basket-img">
-                  <img src="${pageContext.request.contextPath}/assets/img/basket/ohdungicushion.jpg" alt="" />
+                  <img src="/upload/${basket.getStoreFileSystemName()} alt="" 
+                  name="storeFileSystemName"
+                  />
                 
               </td>
               <td class="store-title" name="storeTitle" >${basket.getStoreTitle()}</td>
               <td class="store-price" name="storePrice" >${basket.getStorePrice()}</td>
               <td class="buy-cnt">
                 <div class="quantity-wrap">
+                	<%-- <input class="store-number" type="hidden" value="${basket.getStoreNumber() }"> --%>
+                	<input class="member-number" type="hidden" value="${basket.getMemberNumber() }">
+                	
                     <input type="text" class="quantity-input" value="${basket.getBasketCnt()}" name="basketCnt">
                     <!-- <input type="text" class="quantity-input" value="1" readonly>이면
                       +,- 버튼을 이용해야지만 숫자가 변경됨 -->
                   <div class="quantity-btn">                    
                     <span>
-                      <button class="plus-btn">+</button>
-                      <button class="minus-btn">-</button>
+                      <button type="button" class="plus-btn">+</button>
+                      <button type="button" class="minus-btn">-</button>
                     </span>
                   </div>
                   
@@ -133,19 +138,23 @@
               
             </tr>
             </c:forEach> 
-    
+    		
   
             
             
             
           </tbody>
         </table>
+        
+        
+        <div class="basket-list">
         <div class="delete-order">
           <div class="check-product">선택상품</div>
-          <div class="delete"><button>삭제하기</button></div>
+          <div class="delete"><button type="button">삭제하기</button></div>
         </div>
+        </div>
+        
 
-        <!-- 장바구니 5개까지 뜨고 6개부터는 다음페이지로 넘어감 -->
         <!-- 장바구니에서 결제하고 나면 장바구니에 담았던 상품 삭제되어야 함 -->
 
         <table class="pay-table">
@@ -160,20 +169,20 @@
 
             <tbody>
               <tr>
-                <td class="final-product-pay">2057153</td>
-                <td class="final-post-pay">9000</td>
-                <td class="final-total-pay">23186163</td>
+                <td class="final-product-pay">0</td>
+                <td class="final-post-pay">0</td>
+                <td class="final-total-pay">0</td>
               </tr>
             </tbody>
           </div>
         </table>
         <div class="pay-box">
           <div class="pay-all">
-            <a href="#"><button>전체상품 주문</button></a>
+            <button type="submit">상품 주문</button>
           </div>
-          <div class="pay-check">
-            <a href="#"><button>선택상품 주문</button></a>
-          </div>
+          <%-- <div class="pay-check">
+            <a href="${pageContext.request.contextPath}/buy/payOk.bu"><button type="button">선택상품 주문</button></a>
+          </div> --%>
         </div>
 
       <!-- #####footer##### -->

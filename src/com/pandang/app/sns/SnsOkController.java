@@ -24,11 +24,12 @@ public class SnsOkController implements Execute {
 		
 		
 		
-		// url에 있는 memberNumber 뽑아오는거
+//		// url에 있는 memberNumber 뽑아오는거
 		req.getParameter("memberNumber");
-		
+	
 		
 		HttpSession session = req.getSession();
+//		session.setAttribute("memberNumber", (Integer.parseInt(req.getParameter("memberNumber"))));
 		session.setAttribute("memberNumber", 1);
 		
 		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
@@ -43,48 +44,108 @@ public class SnsOkController implements Execute {
 		req.getParameter("memberNumber");
 
 		// sns snsVO
-		List<SnsVO> snsVO = snsDAO.selectAll(memberNumber);
+		List<SnsVO> snsVO = snsDAO.selectAll(Integer.parseInt(req.getParameter("memberNumber")));
 
 
 //		System.out.println(snsVO);
 
-		System.out.println(snsVO);
+//		System.out.println(snsVO);
 
 //		for (SnsVO sns : snsVO) {
 //			System.out.println(snsVO);
 //		}
+		
+		
 
 		req.setAttribute("sns", snsVO);
 
 		// sns memberInfo
 		snsHeaderVO = snsDAO.memberInfo((Integer.parseInt(req.getParameter("memberNumber"))));
 
-		System.out.println(snsHeaderVO);
-		System.out.println(snsHeaderVO.getMemberNickname());
-		System.out.println(snsHeaderVO.getMemberNumber());
-		System.out.println(snsHeaderVO.getChannelComment());
+//		System.out.println(snsHeaderVO);
+//		System.out.println(snsHeaderVO.getMemberNickname());
+//		System.out.println(snsHeaderVO.getMemberNumber());
+//		System.out.println(snsHeaderVO.getChannelComment());
+		
+		
+		
+		// 세션에 채널 네임 담기 (임시)
+		session.setAttribute("channelName", req.getParameter(snsHeaderVO.getChannelName()));
 
-		req.setAttribute("snsMemberInfo", snsHeaderVO); // jsp에서 사용할 속성으로 설정
+		// jsp에서 사용할 속성으로 설정
+		req.setAttribute("snsMemberInfo", snsHeaderVO);
 
+		
 		// sns SnsPostInfo
+		
+		int total = snsDAO.getTotal(memberNumber);
+		
+		
+//      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
+//      그러므로 temp에는 null이 들어가게 된다.
+		String temp = req.getParameter("page");
+		
+//      null인 경우는 게시판에 처음 이동하는 것이므로 1페이지를 띄워주면 된다.
+		int page = temp == null ? 1 : Integer.valueOf(temp);
+		
+//      한 페이지에 몇 개의 게시물? 12개
+		int rowCount = 12;
+		
+//      페이지 버튼 세트는? 5개씩
+		int pageCount = 5;
+      	
+		
+		int startRow = (page-1) * rowCount;
+		
+//      Math.ceil() 올림처리
+		int endPage = (int)(Math.ceil(page/(double)pageCount) * pageCount);
+		
+//      endPage는 페이지 세트 당 마지막 번호를 의미한다.
+	     int startPage = endPage - (pageCount - 1);
+//	     startPage는 페이지 세트 당 첫 번째 번호를 의미한다.
+	      
+	      int realEndPage = (int)Math.ceil(total / (double)rowCount);
+//	      realEndPage는 전체 페이지 중 가장 마지막 번호를 의미한다.
+	      
+	      endPage = endPage > realEndPage ? realEndPage : endPage;
+//	      첫 번째 페이지 세트가 1~5
+//	      두 번째 페이지 세트가 6~10이어도
+//	      realEndPage가 7이라면 두 번째 페이지 세트의 마지막 번호는 7이어야 한다.
+		
+		
+		
+		Map<String, Integer> snsPost = new HashMap();
+		
+		snsPost.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
+		snsPost.put("startRow", startRow);
+	    snsPost.put("rowCount", rowCount);
+		
+		List<SnsPostInfoVO> snsPostInfoVO = snsDAO.snsPostInfo(snsPost);
 
-		List<SnsPostInfoVO> snsPostInfoVO = snsDAO.snsPostInfo(memberNumber);
-
-		System.out.println(snsPostInfoVO);
+//		System.out.println(snsPostInfoVO);
 
 		req.setAttribute("snsPostInfo", snsPostInfoVO);
+		req.setAttribute("realEndPage", realEndPage);
+		
+		
+		Map<String, Integer> storePost = new HashMap();
+		storePost.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
+		storePost.put("startRow", startRow);
+		storePost.put("rowCount", rowCount);
 
-		req.getRequestDispatcher("/app/sns/mySns.jsp").forward(req, resp);
-
-		// sns SnsCommentVO
+//		// sns SnsCommentVO
 		int snsNumber = 1;
-		List<SnsCommentVO> snsCommentVO = snsDAO.snsCommentList(snsNumber);
+		Map<String, Integer> snsComment = new HashMap();
+		snsComment.put("snsNumber", snsNumber);
+		List<SnsCommentVO> snsCommentVO = snsDAO.snsCommentList(snsComment);
 
-		System.out.println(snsCommentVO);
+//		System.out.println(snsCommentVO);
+//
+//		System.out.println(snsCommentVO.get(0).getSnsNumber());
 
-		System.out.println(snsCommentVO.get(0).getChannelName());
-
-		req.setAttribute("snsCommentList", snsCommentVO);
+		req.setAttribute("comment", snsCommentVO);
+		
+		req.getRequestDispatcher("/app/sns/mySns.jsp").forward(req, resp);
 
 	}
 
