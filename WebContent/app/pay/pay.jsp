@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,36 +23,42 @@
 </head>
 <body>
 
-  <div class="header-container">
-    <!-- 헤더 영역 시작  -->
-    <div class="start-container">
-      <a href="#"><img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" class="logo-img" /></a>
-      <a href="#" class="header-list">판당</a>
-      <font>·</font>
-      <a href="#" class="header-list">산당</a>
-      <font>·</font>
-      <a href="#" class="header-list">sns</a>
-    </div>
-    <div class="search">
-      <input
-        type="text"
-        class="search-bar"
-        placeholder="어떤 창작물을 찾으시나요?"
-      />
-      <a href="#">
-        <button type="button" class="material-symbols-outlined">
-          search
-        </button>
-      </a>
-    </div>
-    <div class="login-container">
-      <a href="#" class="login">로그인</a>
-      <a href="#" class="join">회원가입</a>
-      <a href="#" class="my-page">마이페이지</a>
-      <a href="#" class="logout">로그아웃</a>
-    </div>
-    <!-- 헤더 영역 종료 -->
-  </div>
+ <div class="header-container">
+         <!-- 헤더 영역 시작  -->
+         <div class="start-container">
+            <!-- 메인페이지 이동처리 -->
+            <a href="${pageContext.request.contextPath}/main"><img
+               src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
+               class="logo-img" /></a>
+            <!-- 판당 페이지 이동처리 -->
+            <div class="pandang-container">
+               <a href="${pageContext.request.contextPath}/sns/snsOk.sn" class="header-list">판당</a> <font>·</font>
+               <!-- 산당 (스토어) 페이지 이동처리 -->
+               <a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
+            </div>
+         </div>
+  		<!-- 추가 수정부분 -->       
+        <form action="" class="search">
+            <input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
+               <button type="submit" class="material-symbols-outlined">
+                  search</button>
+         </form>
+         
+  
+         <div class="login-container">
+            <c:choose>
+               <c:when test="${empty sessionScope.memberNumber}">
+                  <a href="${pageContext.request.contextPath}/member/login.me" class="login">로그인</a> 
+                  <a href="${pageContext.request.contextPath}/member/join.me" class="join">회원가입</a> 
+               </c:when>
+               <c:otherwise>
+                  <a href="${pageContext.request.contextPath}/member/mypageOk.me" class="my-page">마이페이지</a> 
+                  <a href="${pageContext.request.contextPath}/member/logoutOk.me" class="logout">로그아웃</a>
+               </c:otherwise>
+            </c:choose>
+         </div>
+         <!-- 헤더 영역 종료 -->
+      </div>
   
     <div class="page-content">
         <!-- 배경화면 -->
@@ -99,55 +106,27 @@
                   </thead>
         
                   <tbody>
-                    <tr>
-                      <td class="basket-img">
-                        <img src="${pageContext.request.contextPath}/assets/img/product/ohdungicushion.jpg" alt="" />
-                      </td>
-                      <td class="title">오둥이 쿠션</td>
-                      <td class="price">29800</td>
-                      <td class="count">2</td>
-                      <td class="price-count">59600</td>
-                      <td class="delivery-price">3000</td>
-                      <td class="total-price">62600</td>
-                    </tr>
+                  
+                  <c:choose>
+                  	<c:when test="${not empty payList }">
+	                  	<c:forEach var="pay" items="${payList}">
+		                    <tr>
+		                      <td class="basket-img">
+		                        <img src="${pageContext.request.contextPath}/assets/img/product/ohdungicushion.jpg" alt="" />
+		                      </td>
+		                      <td class="title">${pay.getStoreTitle() }</td>
+		                      <td class="price">${pay.getStorePrice() }</td>
+		                      <td class="count">${pay.getBasketCnt()}</td>
+		                      <td class="price-count">${pay.getStorePrice() * pay.getBasketCnt() }</td>
+		                      <td class="delivery-price">3000</td>
+		                      <td class="total-price">${pay.getStorePrice() * pay.getBasketCnt() +3000}</td>
+		                    </tr>
+	                  	</c:forEach>
+                  	</c:when>
+                  </c:choose>
                     <!-- ============================================================= -->
                     
-                    <tr>
-                      
-                      <td class="basket-img">
-                        <img src="${pageContext.request.contextPath}/assets/img/product/jrongcalendar.jpg" alt="" />
-                      </td>
-                      <td class="title">2023 재롱이 달력</td>
-                      <td class="price">15000</td>
-                      <td class="count">3</td>
-                      <td class="price-count">45000</td>
-                      <td class="delivery-price">3000</td>
-                      <td class="total-price">48000</td>
-                    </tr>
-                    <tr>
-                      <td class="basket-img">
-                        <img src="${pageContext.request.contextPath}/assets/img/product/choigosimmouse.jpg" alt="" />
-                      </td>
-                      <td class="title">최고심 마우스 패드 무지개</td>
-                      <td class="price">5000</td>
-                      <td class="count">1</td>
-                      <td class="price-count">5000</td>
-                      <td class="delivery-price">3000</td>
-                      <td class="total-price">8000</td>
-                    </tr>
-                    <!-- ======================================================= -->
                     
-                    <tr>
-                      <td class="basket-img">
-                        <img src="${pageContext.request.contextPath}/assets/img/product/ohdungicushion.jpg" alt="" />
-                      </td>
-                      <td class="title">오둥이 쿠션</td>
-                      <td class="price1">29800</td>
-                      <td class="coune-countt">2</td>
-                      <td class="pric">59600</td>
-                      <td class="delivery-price">3000</td>
-                      <td class="total-price">62600</td>
-                    </tr>
                     </tbody>
                 </table>
 
@@ -162,10 +141,10 @@
                     </thead>
         
                     <tbody>
-                      <tr class="txt">
-                        <td class="product-pay">2057153</td>
-                        <td class="delivery-pay">9000</td>
-                        <td class="total-pay">23186163</td>
+                      <tr class="pay-total">
+                        <td class="product-pay">0</td>
+                        <td class="delivery-pay">0</td>
+                        <td class="total-pay">0</td>
                       </tr>
                     </tbody>
                   </div>
@@ -200,7 +179,7 @@
                             <label class="type1">회원 정보와 동일</label>
                             <input type="radio" class="type-different" name="information">
                             <label class="type2">새로운 배송지</label>
-                            <a href="#" class="look-address">주소록보기</a>
+                            <!-- <a href="#" class="look-address">주소록보기</a> -->
                           </div>
                         </td>
                       </tr>
@@ -212,7 +191,7 @@
                           <span class="requiredDot">*</span>
                         </th>
                         <td class="who-is">
-                          <input type="text" class="who-is-put" required>
+                          <input type="text" class="who-is-put"  value="${payMember.getMemberName()}" required>
                         </td>
                       </tr>
                       <!-- 받는 사람 끝 -->
@@ -223,10 +202,14 @@
                           <span class="requiredDot">*</span>
                         </th>
                         <td class="address-put-type">
-                          <input type="text" class="mail-address" placeholder="우편번호 입력" required id="zoneCode"> <br>
-                          <input type="text" class="main-address" required id="addressKakao">
+                          <input type="text" class="mail-address" placeholder="우편번호 입력" required id="zoneCode"
+                          value="${payMember.getMemberZoneCode()}"> <br>
+                          <input type="text" class="main-address" required id="addressKakao"
+                          value="${payMember.getMemberAddress()}">
                           <span class="address-number">기본주소</span> <br>
-                          <input type="text" class="sub-address" required id="addressDetail" name="addressDetail">
+                          <input type="text" class="sub-address" required id="addressDetail" 
+                          value="${payMember.getMemberAddressDetail()}"
+                          name="addressDetail">
                           <span class="address-number">상세주소</span>
                           <span class="address-number">(배송지 주소를 정확하게 기입 부탁드립니다.)</span>
                         </td>
@@ -238,7 +221,8 @@
                           일반전화
                         </th>
                         <td class="classic-phone-type">
-                          <input type="text" class="classic-phone-put" placeholder="숫자만 입력하세요.">
+                          <input type="text" class="classic-phone-put"
+                          placeholder="숫자만 입력하세요." >
                         </td>
                       </tr>
                       <!-- 일반전화 끝 -->
@@ -249,7 +233,9 @@
                           <span class="requiredDot">*</span>
                         </th>
                         <td class="cell-phone-type">
-                          <input type="text" class="cell-phone-put" placeholder="숫자만 입력하세요." required>
+                          <input type="text" class="cell-phone-put" placeholder="숫자만 입력하세요." 
+                          value="${payMember.getMemberPhoneNumber()}"
+                          required>
                         </td>
                       </tr>
                       <!-- 휴대전화 끝 -->
@@ -263,9 +249,9 @@
                           <span class="requiredDot">*</span>
                         </th>
                         <td class="email-type">
-                          <input type="text" class="front-email-address" required  id="email1" name="member_email">
+                          <input type="text" class="front-email-address" required  id="email1" name="member_email" value="${emailFront}">
                           @
-                          <input type="text" class="end-email-address" id="email2" name="member_email" required> 
+                          <input type="text" class="back-email-address" id="email2" name="member_email" value="${emailBack}" required> 
                           <select class="email-kind" name="select_email" onchange="selectEmail(this)">
                             <option value="" selected>- 이메일 선택 -</option>
                             <option value="1">직접입력</option>
@@ -310,7 +296,7 @@
                     <strong style="font-weight: bold;">최종결제 금액</strong>
                   </h4>
                   <span class="price-zone">
-                    23,186,163
+                    0
                   </span>
                   <div class="pay-button">
                     <a href="#" class="pay-button-tag">결제하기</a>

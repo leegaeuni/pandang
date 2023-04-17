@@ -6,8 +6,12 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
+
 import com.pandang.app.store.dto.StoreDTO;
 import com.pandang.app.store.vo.StoreVO;
+
+import com.pandang.app.basket.vo.BasketVO;
+
 
 public class StoreDAO {
 	public SqlSession sqlSession;
@@ -20,12 +24,20 @@ public class StoreDAO {
 		return sqlSession.selectList("store.selectAll", pageMap);
 	}
 	
+<<<<<<< HEAD
 	public int getTotal() {
 		return sqlSession.selectOne("store.getTotal");
 	}
+=======
+>>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
 
 	public void insert(StoreDTO storeDTO) {
 		sqlSession.insert("store.insert", storeDTO);
+}
+
+	public BasketVO buy(int storeNumber) {
+		return sqlSession.selectOne("store.buy", storeNumber);
+
 	}
 
 	public int getSequence() {

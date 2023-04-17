@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="storeFile">
+<<<<<<< HEAD
 	<insert id="insert" parameterType="StoreFileDTO">
 		insert into tbl_store_file(store_file_system_name, store_file_original_name, store_number)
 		values(#{storeFileSystemName}, #{storeFileOriginalName}, #{storeNumber})
@@ -18,4 +19,29 @@
 		where store_number = #{storeNumber}
 	</delete>
 	
+=======
+	<insert id="join" parameterType="MemberDTO">
+		insert into tbl_member
+		(member_id, member_password, member_name, member_age, member_gender,
+		member_email, member_address)
+		values(#{memberId}, #{memberPassword},
+		#{memberName}, #{memberAge}, #{memberGender}, #{memberEmail},
+		#{memberAddress})
+	</insert>
+
+	<select id="select" resultType="StoreFileDTO"
+		parameterType="_int">
+		select store_file_system_name,
+		store_file_original_name,
+		store_number
+		from tbl_store_file
+		where store_number = #{storeNumber}
+	</select>
+
+	<delete id="delete" parameterType="_int">
+		delete from tbl_store_file
+		where store_number= #{storeNumber}
+	</delete>
+
+>>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
 </mapper>
