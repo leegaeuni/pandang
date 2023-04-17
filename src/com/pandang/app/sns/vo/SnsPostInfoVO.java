@@ -13,7 +13,16 @@ public class SnsPostInfoVO {
 	private String snsDate;
 	private int snsViewCnt;
 	private int likeCnt;
+	private int snsNumber;
 	
+	public int getSnsNumber() {
+		return snsNumber;
+	}
+
+	public void setSnsNumber(int snsNumber) {
+		this.snsNumber = snsNumber;
+	}
+
 	public SnsPostInfoVO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -54,7 +63,7 @@ public class SnsPostInfoVO {
 	@Override
 	public String toString() {
 		return "SnsPostInfoVO [snsTitle=" + snsTitle + ", snsDate=" + snsDate + ", snsViewCnt=" + snsViewCnt
-				+ ", likeCnt=" + likeCnt + "]";
+				+ ", likeCnt=" + likeCnt + ", snsNumber=" + snsNumber + "]";
 	}
 	
 	

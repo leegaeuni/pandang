@@ -10,5 +10,6 @@
 		#{memberName}, #{memberAge}, #{memberGender}, #{memberEmail},
 		#{memberAddress})
 	</insert>
+	
 
 </mapper>

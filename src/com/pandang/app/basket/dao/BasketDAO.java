@@ -20,6 +20,9 @@ public class BasketDAO {
 		return sqlSession.selectList("basket.selectAll", memberNumber);	
 	}
 	
+	public void delete (int storeNumber) {
+		sqlSession.delete("basket.delete", storeNumber);		
+	}
 	
 	
 	}

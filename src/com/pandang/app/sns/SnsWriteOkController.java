@@ -44,7 +44,6 @@ public class SnsWriteOkController implements Execute {
       snsDAO.snsWrite(snsDTO);
       snsNumber = snsDAO.getSequence();
       
-      System.out.println(snsNumber);
       
 //      getFileNames는 input태그의 name속성을 의미한다.
 //      Enumeration은 이터레이터와 비슷하다고 생각하면 된다.
@@ -65,7 +64,6 @@ public class SnsWriteOkController implements Execute {
          snsFileDTO.setSnsFileOriginalName(fileOriginalName);
          snsFileDTO.setSnsNumber(snsNumber);
          
-         System.out.println(snsFileDTO);
          snsFileDAO.snsWrite(snsFileDTO);;
       }
       
