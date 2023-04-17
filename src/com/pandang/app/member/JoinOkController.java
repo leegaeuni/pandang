@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pandang.app.Execute;
+import com.pandang.app.channel.dao.ChannelDAO;
+import com.pandang.app.channel.dto.ChannelDTO;
 import com.pandang.app.member.dao.MemberDAO;
 import com.pandang.app.member.dto.MemberDTO;
 
@@ -15,6 +17,9 @@ public class JoinOkController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = new MemberDTO();
+		ChannelDAO channelDAO = new ChannelDAO();
+		ChannelDTO channelDTO = new ChannelDTO();
+		
 		String memberBirth = null;
 //		private String memberId;
 //		private String memberPassword;
@@ -53,12 +58,16 @@ public class JoinOkController implements Execute {
 //		회원가입 하자마자 채널명이 memberNickname으로 들어가야하니까 
 		
 		
+		
 //		ChannelDTO.channelDTO = new ChannelDTO();
 //		channelDTO.setChannelName(req.getParameter("memberNickname"));
 //		channelDTO.setMemberNumber(memberDAO.last());
 //		
 //		channelDAO.join(channelDTO);
+		channelDTO.setChannelName(req.getParameter("memberNickname"));
+		channelDTO.setMemberNumber(memberDAO.getMemberNumber());
 		
+		channelDAO.joinChannel(channelDTO);
 		
 		
 		resp.sendRedirect("/member/login.me");

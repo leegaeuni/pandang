@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,16 +26,20 @@
               <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" />
             </div>
             <h1>로그인</h1>
-            <div class="input">
+				
+			
+			  <div class="input">
               <label for="id">아이디</label><br />
               <input
                 type="text"
                 id="id"
                 name="memberId"
+                value="${requestScope.memberId}"
                 placeholder="아이디를 입력하세요"
                 required
-              />
+              /> 
             </div>
+             
             <div class="input">
               <label for="password">비밀번호</label><br />
               <input
@@ -52,20 +57,20 @@
 
 					<div class="login-find-container">
               <div class="login-keep-container">
-                <input type="checkbox" id="login-keep" name="loginKeep" />
+                <input type="checkbox" id="login-keep" name="rembmer" value="remember"/>
                 <label for="login-keep">로그인 유지</label>
               </div>
               <div class="find-container">
                 <!-- 아이디 찾기 페이지로 이동 -->
-                <a href="#">아이디</a>
+                <a href="${pageContext.request.contextPath}/member/findId.me">아이디</a>
                 <span>/</span>
                 <!-- 질문답변 인증 페이지로 이동 -->
-                <a href="#">비밀번호 찾기</a>
+                <a href="${pageContext.request.contextPath}/member/findPw.me">비밀번호 찾기</a>
               </div>
             </div>
             <div class="join">
               <!-- 회원가입 페이지로 이동 -->
-              <a href="#">아직 판당 회원이 아니신가요?</a>
+              <a href="${pageContext.request.contextPath}/member/join.me">아직 판당 회원이 아니신가요?</a>
             </div>
           </form>
         </div>
@@ -76,3 +81,4 @@
   <!-- 스크립트  경로 jsp때 제대로 잡기 -->
   <script src="${pageContext.request.contextPath}/assets/js/login.js"></script>
 </html>
+

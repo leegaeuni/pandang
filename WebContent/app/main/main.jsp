@@ -42,9 +42,9 @@
 			</div>
 			<div class="login-container">
 				<!-- 로그인 페이지 이동처리 -->
-				<a href="#" class="login">로그인</a>
+				<a href="/member/login.me" class="login">로그인</a>
 				<!-- 회원가입 페이지 이동처리 -->
-				<a href="#" class="join">회원가입</a>
+				<a href="/member/join.me" class="join">회원가입</a>
 				<!-- 마이페이지, 로그아웃 이동처리(display none 상태, 로그인시 보여야함) -->
 				<a href="#" class="my-page">마이페이지</a> <a href="#" class="logout">로그아웃</a>
 			</div>
