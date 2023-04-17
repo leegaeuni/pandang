@@ -47,12 +47,12 @@ public class StoreFrontController extends HttpServlet {
 		case "/store/storeUpdate.st":
 			new StoreUpdateController().execute(req, resp);
 			break;
-		case "/store/storeUpdateOk.st":
-			new StoreUpdateOkController().execute(req, resp);
-			break;
-		case "/store/storeDeleteOk.st":
-			new StoreDeleteOkController().execute(req, resp);
-			break;
+//		case "/store/storeUpdateOk.st":
+//			new StoreUpdateOkController().execute(req, resp);
+//			break;
+//		case "/store/storeDeleteOk.st":
+//			new StoreDeleteOkController().execute(req, resp);
+//			break;
 
 		}
 	}
