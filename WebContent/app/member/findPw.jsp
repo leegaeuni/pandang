@@ -19,7 +19,7 @@
       <div class="main-wrapper">
         <div class="main-container">
           <!-- form 태그 action 지정하기 -->
-          <form action="" method="post">
+          <form action="${pageContext.request.contextPath}/member/findPwOk.me" method="post">
             <div class="logo-pandang">
               <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" />
             </div>
@@ -30,6 +30,7 @@
                 type="text"
                 id="id"
                 name="memberId"
+                value="${memberId}"
                 placeholder="아이디를 입력하세요"
                 required
               />

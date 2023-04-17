@@ -15,4 +15,8 @@ public class ChannelDAO {
 	public void update(ChannelDTO channelDTO) {
 		sqlSession.update("channel.update", channelDTO);
 	}
+	
+	public void joinChannel(ChannelDTO channelDTO) {
+		sqlSession.insert("channel.joinChannel", channelDTO);
+	}
 }

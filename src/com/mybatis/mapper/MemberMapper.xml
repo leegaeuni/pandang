@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<!-- mapper는 query문을 저장한다. -->
 <mapper namespace="member">
 	
 	<select id="adminLogin" parameterType="MemberDTO" resultType="_int" >
@@ -73,9 +73,28 @@
 		where member_id = #{memberId} and member_password = #{memberPassword}
 	</select>
 	
-	<!-- select문으로 멤버테이블에 방금 가입한 회원의 번호 -->
+	<select id="findId" parameterType="map" resultType="string">
+		select member_id from tbl_member
+		where member_name = #{memberName} and member_birth = #{memberBirth}
+		and member_phone_number = #{memberPhoneNumber}
+	</select>
 	
-	<!-- 채널테이블에 넣을 수 있는 insert문을 Channelmapper에 작성  -->
+	<select id="findPw" parameterType="map" resultType="string">
+		select member_ask from tbl_member
+		where member_id = #{memberId} and member_name = #{memberName}
+		and member_birth = #{memberBirth} and member_phone_number = #{memberPhoneNumber}
+	</select>
+	
+	<update id="changePw" parameterType="MemberDTO">
+		update tbl_member
+		set	member_password = #{memberPassword}
+		where member_ask= #{memberAsk} and member_answer= #{memberAnswer}
+	</update>
+	
+	<select id="getMemberNumber" resultType="_int">
+		select last_insert_id()
+	</select>
+
 
 
 	<select id="myPageSelectAll" resultType="MemberVO"

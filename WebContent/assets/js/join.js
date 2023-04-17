@@ -8,7 +8,7 @@ window.onload = function () {
         //선택시 입력값 세팅
         document.getElementById("zoneCode").value = data.zonecode; //우편번호 넣기
         document.getElementById("address").value = data.address; // 주소 넣기
-        document.querySelector("input[name=addressDetail]").focus(); //상세입력 포커싱
+        document.querySelector("input[name=memberAddressDetail]").focus(); //상세입력 포커싱
       },
     }).open();
   });
@@ -106,6 +106,7 @@ $nicknameInput.on('change', function() {
 		}
 	});
 });
+
 
 // '이전' 버튼 누르면 메인페이지로 이동
 
