@@ -29,11 +29,11 @@ public class SnsOkController implements Execute {
 	
 		
 		HttpSession session = req.getSession();
-//		session.setAttribute("memberNumber", (Integer.parseInt(req.getParameter("memberNumber"))));
-		session.setAttribute("memberNumber", 1);
-		
 		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
-
+		if(req.getParameter("memberNumber")!=null) {
+			memberNumber = Integer.parseInt(req.getParameter("memberNumber")); 
+		}
+		
 		SnsDAO snsDAO = new SnsDAO();
 		SnsHeaderVO snsHeaderVO = new SnsHeaderVO();
 
@@ -44,7 +44,7 @@ public class SnsOkController implements Execute {
 		req.getParameter("memberNumber");
 
 		// sns snsVO
-		List<SnsVO> snsVO = snsDAO.selectAll(Integer.parseInt(req.getParameter("memberNumber")));
+		List<SnsVO> snsVO = snsDAO.selectAll(memberNumber);
 
 
 //		System.out.println(snsVO);
@@ -60,7 +60,7 @@ public class SnsOkController implements Execute {
 		req.setAttribute("sns", snsVO);
 
 		// sns memberInfo
-		snsHeaderVO = snsDAO.memberInfo((Integer.parseInt(req.getParameter("memberNumber"))));
+		snsHeaderVO = snsDAO.memberInfo(memberNumber);
 
 //		System.out.println(snsHeaderVO);
 //		System.out.println(snsHeaderVO.getMemberNickname());
