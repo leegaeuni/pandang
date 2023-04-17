@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,44 +22,41 @@
   <body>
     <div class="all-wrap">
       <!-- #######header####### -->
-      <div class="header-container">
-        <!-- 헤더 영역 시작  -->
-        <div class="start-container">
-          <!-- 메인페이지 이동처리 -->
-          <a href="#"
-            ><img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" class="logo-img"
-          /></a>
-          <!-- 판당 페이지 이동처리 -->
-          <a href="#" class="header-list">판당</a>
-          <font>·</font>
-          <!-- 산당 (스토어) 페이지 이동처리 -->
-          <a href="#" class="header-list">산당</a>
-          <font>·</font>
-          <!-- sns 페이지 이동처리 -->
-          <a href="#" class="header-list">sns</a>
-        </div>
-        <div class="search">
-          <input
-            type="text"
-            class="search-bar"
-            placeholder="어떤 창작물을 찾으시나요?"
-          />
-          <a href="#">
-            <button type="button" class="material-symbols-outlined">
-              search
-            </button>
-          </a>
-        </div>
-        <div class="login-container">
-          <!-- 로그인 페이지 이동처리 -->
-          <a href="#" class="login">로그인</a>
-          <!-- 회원가입 페이지 이동처리 -->
-          <a href="#" class="join">회원가입</a>
-          <!-- 마이페이지, 로그아웃 이동처리(display none 상태, 로그인시 보여야함) -->
-          <a href="#" class="my-page">마이페이지</a>
-          <a href="#" class="logout">로그아웃</a>
-        </div>
-        <!-- 헤더 영역 종료 -->
+ <div class="header-container">
+         <!-- 헤더 영역 시작  -->
+         <div class="start-container">
+            <!-- 메인페이지 이동처리 -->
+            <a href="${pageContext.request.contextPath}/main"><img
+               src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
+               class="logo-img" /></a>
+            <!-- 판당 페이지 이동처리 -->
+            <div class="pandang-container">
+               <a href="${pageContext.request.contextPath}/sns/snsOk.sn" class="header-list">판당</a> <font>·</font>
+               <!-- 산당 (스토어) 페이지 이동처리 -->
+               <a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
+            </div>
+         </div>
+  		<!-- 추가 수정부분 -->       
+        <form action="" class="search">
+            <input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
+               <button type="submit" class="material-symbols-outlined">
+                  search</button>
+         </form>
+         
+  
+         <div class="login-container">
+            <c:choose>
+               <c:when test="${empty sessionScope.memberNumber}">
+                  <a href="${pageContext.request.contextPath}/member/login.me" class="login">로그인</a> 
+                  <a href="${pageContext.request.contextPath}/member/join.me" class="join">회원가입</a> 
+               </c:when>
+               <c:otherwise>
+                  <a href="${pageContext.request.contextPath}/member/mypageOk.me" class="my-page">마이페이지</a> 
+                  <a href="${pageContext.request.contextPath}/member/logoutOk.me" class="logout">로그아웃</a>
+               </c:otherwise>
+            </c:choose>
+         </div>
+         <!-- 헤더 영역 종료 -->
       </div>
 
       <!-- ######main##### -->
@@ -83,104 +81,30 @@
           </thead>
           <!-- @@@배송 전-취소만 가능 / 배송 중, 배송완료-반품만 가능@@@-->
 
+		
           <tbody>
+          <c:forEach var="buy" items="${buyList}">
             <tr>
-              <td class="buy-date">2023-03-22</td>
-              <td class="buy-number">202303220001</td>
+              <td class="buy-date">${buy.getBuyDate()}</td>
+              <td class="buy-number">${buy.getBuyNumber()}</td>
               <td class="buy-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/main/ohdungicushion.jpg" alt="" />
-                </a>
+                  <img src="/upload/${buy.getStoreFileSystemName()} alt="" 
+                  name="storeFileSystemName"/>
               </td>
-              <td class="store-title"><a href="#">오둥이 쿠션</a></td>
-              <td class="store-price">29800</td>
-              <td class="buy-cnt">2</td>
+              <td class="store-title">${buy.getStoreTitle()}</td>
+              <td class="store-price">${buy.getStorePrice()}</td>
+              <td class="buy-cnt">${buy.getBuyCnt()}</td>
               <td class="post-price">3000</td>
-              <td class="buy-total-price">62600</td>
-              <td class="buy-status">배송완료</td>
-              <td class="post">CJ대한통운</td>
-              <td class="post-code">570333954180</td>
+              <td class="buy-total-price">${buy.getStorePrice() * buy.getBuyCnt() + 3000}</td>
+              <td class="buy-status">${buy.getBuyStatus()}</td>
+              <td class="post">${buy.getBuyPost()}</td>
+              <td class="post-code">${buy.getBuyPostCode()}</td>
               <td class="cancel-return"><button>반품</button></td>
             </tr>
-
-            <tr>
-              <td class="buy-date">2023-03-22</td>
-              <td class="buy-number">202303220001</td>
-              <td class="buy-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/main/ohdungicushion.jpg" alt="" />
-                </a>
-              </td>
-              <td class="store-title"><a href="#">오둥이 쿠션</a></td>
-              <td class="store-price">29800</td>
-              <td class="buy-cnt">2</td>
-              <td class="post-price">3000</td>
-              <td class="buy-total-price">62600</td>
-              <td class="buy-status">배송완료</td>
-              <td class="post">CJ대한통운</td>
-              <td class="post-code">570333954180</td>
-              <td class="cancel-return"><button>반품</button></td>
-            </tr>
-
-            <tr>
-              <td class="buy-date">2023-03-22</td>
-              <td class="buy-number">202303220001</td>
-              <td class="buy-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/main/ohdungicushion.jpg" alt="" />
-                </a>
-              </td>
-              <td class="store-title"><a href="#">오둥이 쿠션</a></td>
-              <td class="store-price">29800</td>
-              <td class="buy-cnt">2</td>
-              <td class="post-price">3000</td>
-              <td class="buy-total-price">62600</td>
-              <td class="buy-status">배송완료</td>
-              <td class="post">CJ대한통운</td>
-              <td class="post-code">570333954180</td>
-              <td class="cancel-return"><button>반품</button></td>
-            </tr>
-
-            <tr>
-              <td class="buy-date">2023-03-22</td>
-              <td class="buy-number">202303220001</td>
-              <td class="buy-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/main/ohdungicushion.jpg" alt="" />
-                </a>
-              </td>
-              <td class="store-title">
-                <a href="#"> 오둥이 쿠션 </a>
-              </td>
-              <td class="store-price">29800</td>
-              <td class="buy-cnt">2</td>
-              <td class="post-price">3000</td>
-              <td class="buy-total-price">62600</td>
-              <td class="buy-status">배송완료</td>
-              <td class="post">CJ대한통운</td>
-              <td class="post-code">570333954180</td>
-              <td class="cancel-return"><button>반품</button></td>
-            </tr>
-
-            <tr>
-              <td class="buy-date">2023-03-22</td>
-              <td class="buy-number">202303220001</td>
-              <td class="buy-img">
-                <a href="#">
-                  <img src="${pageContext.request.contextPath}/assets/img/main/jrongcalendar.jpg" alt="" />
-                </a>
-              </td>
-              <td class="store-title"><a href="#">재롱이 달력</a></td>
-              <td class="store-price">15000</td>
-              <td class="buy-cnt">3</td>
-              <td class="post-price">3000</td>
-              <td class="buy-total-price">48000</td>
-              <td class="buy-status">배송전</td>
-              <td class="post">CJ대한통운</td>
-              <td class="post-code">570333954180</td>
-              <td class="cancel-return"><button>취소</button></td>
-            </tr>
+            </c:forEach> 
           </tbody>
+          
+         
         </table>
 
         <!-- 구매내역 5개까지 뜨고 6개부터는 다음페이지로 넘어감 -->
@@ -188,14 +112,43 @@
         <div class="pagination">
           <ul>
             <!-- ========== 페이징 처리============ -->
-            <li><a href="#" class="prev">&lt;</a></li>
+        <!--     <li><a href="#" class="prev">&lt;</a></li>
             <li><a href="#" class="active">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
             <li><a href="#">5</a></li>
-            <li><a href="#" class="next">&gt;</a></li>
+            <li><a href="#" class="next">&gt;</a></li> -->
+            
+            <c:if test="${prev}">
+               <li><a href="${pageContext.request.contextPath}/buy/buyListOk.bu?page=${startPage - 1}" class="prev">&lt;</a></li>
+            </c:if>
+            
+            <c:forEach var="i" begin="${startPage}" end="${endPage}">
+               <c:choose>
+                  <c:when test="${!(i == page) }">
+                     <li>
+                        <a href="${pageContext.request.contextPath}/buy/buyListOk.bu?page=${i}">
+                           <c:out value="${i}"/>
+                        </a>
+                     </li>
+                  </c:when>
+                  <c:otherwise>
+                     <li>
+                        <a href="#" class="active">
+                           <c:out value="${i}"/>
+                        </a>
+                     </li>
+                  </c:otherwise>
+               </c:choose>
+            </c:forEach>
+            
+            <c:if test="${next}">
+               <li><a href="${pageContext.request.contextPath}/buy/buyListOk.bu?page=${endPage + 1}" class="next">&gt;</a></li>
+            </c:if>
             <!-- ========== /페이징 처리 ============ -->
+            
+            
           </ul>
         </div>
       </div>

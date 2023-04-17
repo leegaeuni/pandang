@@ -2,10 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="buy">
-	<insert id="join" parameterType="MemberDTO">
-		insert into tbl_member
-		(member_id, member_password, member_name, member_age, member_gender, member_email, member_address)
-		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberGender}, #{memberEmail}, #{memberAddress})
-	</insert>
+
+	<select id="buySeleteAll" resultType="BuyVO" parameterType="map">
+		select b.member_number, b.buy_date , b.buy_number ,
+		sf.store_file_system_name ,
+		s.store_number, s.store_title ,
+		s.store_price, b.buy_cnt , b.buy_status , b.buy_post , b.buy_post_code
+		,
+		m.member_name , m.member_phone_number , m.member_email ,
+		m.member_address , m.member_address_detail , m.member_zone_code,
+		b.buy_msg
+		from tbl_buy b join tbl_store s on b.member_number =
+		#{memberNumber}
+		and b.store_number = s.store_number left outer join
+		tbl_store_file sf
+		on s.store_number = sf.store_number
+		join tbl_member m
+		on m.member_number = b.member_number
+		order by buy_date desc
+		limit
+		#{startRow}, #{rowCount}
+	</select>
+
+	<select id="getTotal" resultType="_int" parameterType="_int">
+		select
+		count(buy_number) from tbl_buy tb where member_number =
+		#{memberNumber}
+	</select>
 	
+	
+	
+
+
 </mapper>
