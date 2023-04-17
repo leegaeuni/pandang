@@ -18,7 +18,6 @@
 		delete from tbl_store_file
 		where store_number = #{storeNumber}
 	</delete>
-	
 
 
 	<insert id="join" parameterType="MemberDTO">
@@ -29,8 +28,5 @@
 		#{memberName}, #{memberAge}, #{memberGender}, #{memberEmail},
 		#{memberAddress})
 	</insert>
-
-
-
 
 </mapper>

@@ -8,4 +8,24 @@
 		values(#{memberId}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberGender}, #{memberEmail}, #{memberAddress})
 	</insert>
 	
+	<select id="select" parameterType="StoreLikeDTO" resultType="_int">
+		select count(member_number) from tbl_store_like tsl 
+		where store_number = #{storeNumber}  and member_number = #{memberNumber}
+	</select>
+	
+	<insert id="insert" parameterType="StoreLikeDTO">
+		insert into tbl_store_like
+		(store_number, member_number)
+		values(#{storeNumber}, #{memberNumber})
+	</insert>
+	
+	<delete id="delete" parameterType="StoreLikeDTO">
+		delete from tbl_store_like 
+		where store_number = #{storeNumber} and member_number = #{memberNumber}
+	</delete>
+	
+	<select id="selectLikeCount" parameterType="_int" resultType="_int">
+		select count(member_number) from tbl_store_like tsl 
+		where store_number = #{storeNumber};
+	</select>
 </mapper>

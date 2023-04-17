@@ -106,6 +106,11 @@
             <!-- 채널 컨테이너 영역 종료 -->
           </div>
         </div>
+        
+        
+        
+        
+        
         <!-- 모달창 작업 -->
 
         <div class="post-modal">
@@ -416,7 +421,13 @@
             </div>
           </div>
         </div>
+
         <!-- 모달창 작업 종료  -->
+
+
+
+
+
 
         <div class="post-container">
         <c:choose>

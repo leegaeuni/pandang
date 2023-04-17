@@ -20,6 +20,7 @@ public class MainLikeViewVO {
 	private String channelName;
 	private int channelNumber;
 	private int memberNumber;
+	private int likeCnt;
 	
 	public MainLikeViewVO() {}
 
@@ -78,15 +79,22 @@ public class MainLikeViewVO {
 	public void setMemberNumber(int memberNumber) {
 		this.memberNumber = memberNumber;
 	}
+	
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
 
 	@Override
 	public String toString() {
 		return "MainLikeViewVO [storeNumber=" + storeNumber + ", storeTitle=" + storeTitle + ", storeViewCnt="
 				+ storeViewCnt + ", storeFileSystemName=" + storeFileSystemName + ", channelName=" + channelName
-				+ ", channelNumber=" + channelNumber + ", memberNumber=" + memberNumber + "]";
+				+ ", channelNumber=" + channelNumber + ", memberNumber=" + memberNumber + ", likeCnt=" + likeCnt + "]";
 	}
 
-	
 }
 
 	
