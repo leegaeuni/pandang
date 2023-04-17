@@ -43,11 +43,18 @@ font {
   height: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .start-container a:hover {
   color: rgb(42, 197, 198);
+}
+
+.pandang-container{
+   margin-left : 20px;
+}
+
+.header-list{
+   margin : 0 20px;
 }
 
 .logo-img {
@@ -63,8 +70,11 @@ font {
   background-color: #f5f6f7;
   margin-right: 40px;
   border-radius: 30px;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
+
 .search button {
   position: absolute;
   right: 30px; /* 우측 공간 조절 */
@@ -250,6 +260,7 @@ font {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  padding: 15px;
   border-bottom: solid 1px rgb(200, 200, 200);
 }
 
@@ -734,6 +745,7 @@ font {
   line-height: 1.53;
   letter-spacing: -0.5px;
   outline-style: none;
+  resize: none;
   /* border: 1px solid rgb(219, 222, 226); */
 }
 

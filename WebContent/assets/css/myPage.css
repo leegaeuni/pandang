@@ -1,7 +1,7 @@
   *{
     margin: 0px;
     padding: 0px;
-
+	font-family: "Pretendard";
     box-sizing: border-box;
   }
   
@@ -591,11 +591,18 @@
   
   .start-container {
     width: 400px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+ 	height: 20px;
+ 	display: flex;
+  	align-items: center;
   }
+  
+  .pandang-container{
+   margin-left : 20px;
+}
+
+.header-list{
+   margin : 0 20px;
+}
   
   .start-container a:hover {
     color: rgb(42, 197, 198);
@@ -607,14 +614,16 @@
   }
   
   .search {
-    display: flex;
-    width: 370px;
-    align-items: center;
-    height: 46px;
-    background-color: #f5f6f7;
-    margin-right: 40px;
-    border-radius: 30px;
-    position: relative;
+  display: flex;
+  width: 370px;
+  align-items: center;
+  height: 46px;
+  background-color: #f5f6f7;
+  margin-right: 40px;
+  border-radius: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
   }
   .search button {
     position: absolute;
@@ -668,14 +677,10 @@
     height: 40px;
     background-color: rgb(50, 50, 50);
     border-radius: 30px;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-  }
-  
-  .my-page {
-    display: none;
   }
   
   

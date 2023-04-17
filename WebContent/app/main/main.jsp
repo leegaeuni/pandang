@@ -23,30 +23,32 @@
 			<!-- 헤더 영역 시작  -->
 			<div class="start-container">
 				<!-- 메인페이지 이동처리 -->
-				<a href="#"><img
+				<a href="${pageContext.request.contextPath}/main"><img
 					src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
 					class="logo-img" /></a>
 				<!-- 판당 페이지 이동처리 -->
-				<a href="#" class="header-list">판당</a> <font>·</font>
-				<!-- 산당 (스토어) 페이지 이동처리 -->
-				<a href="#" class="header-list">산당</a> <font>·</font>
-				<!-- sns 페이지 이동처리 -->
-				<a href="#" class="header-list">sns</a>
+				<div class="pandang-container">
+					<a href="${pageContext.request.contextPath}/sns/snsOk.sn" class="header-list">판당</a> <font>·</font>
+					<!-- 산당 (스토어) 페이지 이동처리 -->
+					<a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
+				</div>
 			</div>
-			<div class="search">
-				<input type="text" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
-				<a href="#">
-					<button type="button" class="material-symbols-outlined">
+			<form action="" class="search">
+				<input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
+					<button type="submit" class="material-symbols-outlined">
 						search</button>
-				</a>
-			</div>
+			</form>
 			<div class="login-container">
-				<!-- 로그인 페이지 이동처리 -->
-				<a href="#" class="login">로그인</a>
-				<!-- 회원가입 페이지 이동처리 -->
-				<a href="#" class="join">회원가입</a>
-				<!-- 마이페이지, 로그아웃 이동처리(display none 상태, 로그인시 보여야함) -->
-				<a href="#" class="my-page">마이페이지</a> <a href="#" class="logout">로그아웃</a>
+				<c:choose>
+					<c:when test="${empty sessionScope.memberNumber}">
+						<a href="${pageContext.request.contextPath}/member/login.me" class="login">로그인</a> 
+						<a href="${pageContext.request.contextPath}/member/join.me" class="join">회원가입</a> 
+					</c:when>
+					<c:otherwise>
+						<a href="${pageContext.request.contextPath}/member/mypageOk.me" class="my-page">마이페이지</a> 
+						<a href="${pageContext.request.contextPath}/member/logoutOk.me" class="logout">로그아웃</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<!-- 헤더 영역 종료 -->
 		</div>

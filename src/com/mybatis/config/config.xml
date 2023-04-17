@@ -10,6 +10,7 @@
 		<typeAlias type="com.pandang.app.basket.dto.BasketDTO" alias="BasketDTO"/>
 		<typeAlias type="com.pandang.app.basket.vo.BasketVO" alias="BasketVO"/>		
 		<typeAlias type="com.pandang.app.buy.dto.BuyDTO" alias="BuyDTO"/>
+		<typeAlias type="com.pandang.app.buy.vo.BuyVO" alias="BuyVO"/>
 		<typeAlias type="com.pandang.app.channel.dto.ChannelDTO" alias="ChannelDTO"/>
 		<typeAlias type="com.pandang.app.channel.file.dto.ChannelFileDTO" alias="ChannelFileDTO"/>
 		<typeAlias type="com.pandang.app.follow.dto.FollowDTO" alias="FollowDTO"/>
@@ -22,16 +23,20 @@
 		<typeAlias type="com.pandang.app.sns.file.dto.SnsFileDTO" alias="SnsFileDTO"/>
 		<typeAlias type="com.pandang.app.sns.like.dto.SnsLikeDTO" alias="SnsLikeDTO"/>
 		<typeAlias type="com.pandang.app.store.dto.StoreDTO" alias="StoreDTO"/>
-		<typeAlias type="com.pandang.app.store.vo.StoreDTO" alias="StoreVO"/>
+		<typeAlias type="com.pandang.app.store.vo.StoreVO" alias="StoreVO"/>
 		<typeAlias type="com.pandang.app.store.comment.dto.StoreCommentDTO" alias="StoreCommentDTO"/>
+		<typeAlias type="com.pandang.app.store.comment.vo.StoreCommentVO" alias="StoreCommentVO"/>
 		<typeAlias type="com.pandang.app.store.file.dto.StoreFileDTO" alias="StoreFileDTO"/>
 		<typeAlias type="com.pandang.app.store.like.dto.StoreLikeDTO" alias="StoreLikeDTO"/>
 		<typeAlias type="com.pandang.app.main.vo.MainVO" alias="MainVO"/>
 		<!-- <typeAlias type="com.pandang.app.main.dto.MainDTO" alias="MainDTO"/> -->
 		<typeAlias type="com.pandang.app.main.vo.MainLikeViewVO" alias="MainLikeViewVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsVO" alias="SnsVO"/>
+		<typeAlias type="com.pandang.app.sns.vo.SnsFollowVO" alias="SnsFollowVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsHeaderVO" alias="SnsHeaderVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsPostInfoVO" alias="SnsPostInfoVO"/>
+		<typeAlias type="com.pandang.app.sns.vo.SnsPostVO" alias="SnsPostVO"/>
+		<typeAlias type="com.pandang.app.sns.vo.SnsStoreVO" alias="SnsStoreVO"/>
 		<typeAlias type="com.pandang.app.sns.comment.vo.SnsCommentVO" alias="SnsCommentVO"/>
 		<typeAlias type="com.pandang.app.report.sns.dto.ReportSnsDTO" alias="ReportSnsDTO"/>
 		<typeAlias type="com.pandang.app.report.sns.vo.ReportSnsVO" alias="ReportSnsVO"/>

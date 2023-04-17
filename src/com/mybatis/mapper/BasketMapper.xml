@@ -10,9 +10,13 @@
 		and m.member_number = b.member_number
 		join tbl_store s on b.store_number = s.store_number
 		left outer join tbl_store_file sf
-		on s.store_number = sf.store_number ;
+		on s.store_number = sf.store_number 
 	</select>
 	
+	<delete id="delete" parameterType="_int">
+	delete from tbl_basket
+	where store_number = #{storeNumber}
+	</delete>
 	
 	
 </mapper>

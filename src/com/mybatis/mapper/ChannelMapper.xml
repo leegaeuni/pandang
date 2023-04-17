@@ -5,7 +5,7 @@
 	<insert id="insert" parameterType="channelDTO">
 		insert into pandang.tbl_channel
 		(channel_name, channel_comment, member_number)
-		values(#{channelName}, #{channelComment}, #{memberNumber});
+		values(#{channelName}, #{channelComment}, #{memberNumber})
 	</insert>
 
 
@@ -14,7 +14,14 @@
 		set
 		channel_name=#{channelName}, channel_comment=#{channelComment},
 		member_number=#{memberNumber}
-		where channel_number=#{channelNumber};
+		where channel_number=#{channelNumber}
 	</update>
+	
+	
+	<insert id="joinChannel" parameterType="ChannelDTO">
+		INSERT INTO tbl_channel
+		(channel_name, member_number)
+		VALUES(#{channelName}, #{memberNumber})
+	</insert>
 	
 </mapper>

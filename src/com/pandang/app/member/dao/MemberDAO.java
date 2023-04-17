@@ -1,11 +1,13 @@
 package com.pandang.app.member.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
 import com.pandang.app.member.dto.MemberDTO;
 import com.pandang.app.member.vo.MemberVO;
-
+// DAO는 mapper에 적용된 query문을 실행시킨다.
 public class MemberDAO {
 	public SqlSession sqlSession;
 
@@ -16,6 +18,11 @@ public class MemberDAO {
 	public void join(MemberDTO memberDTO) {
 		sqlSession.insert("member.join", memberDTO);
 	}
+
+
+	  public String getMemberNickname(int memberNumber) {
+		  return sqlSession.selectOne("member.getMemberNickname", memberNumber);
+	 }
 
 	// DB에서 myPage 값 받아오기
 	public MemberVO myPageSelectAll(int memberNumber) {
@@ -29,11 +36,13 @@ public class MemberDAO {
 	public void mypageEdit(MemberVO memberVO) {
 		sqlSession.update("member.mypageEdit", memberVO);
 	}
-
-	// MyPageEditOkController에서 memberNumber를 사용해 DAO접근을 위해 사용
-	public int getSequence() {
-		return sqlSession.selectOne("member.getSequence");
+	
+	// pay 페이지의 회원정보 받아오기
+	public MemberDTO payMember(int memberNumber) {
+		return sqlSession.selectOne("member.payMember", memberNumber);
+		
 	}
+
 	
 	public boolean checkId(String memberId) {
 		return (Integer)sqlSession.selectOne("member.checkId", memberId) < 1;
@@ -48,4 +57,23 @@ public class MemberDAO {
 		return memberNumber == null ? -1 : memberNumber;
 	}
 	
+
+	public String findId(Map<String, String> map) {
+		return sqlSession.selectOne("member.findId", map);
+	}
+	
+	public String findPw(Map<String, String> map) {
+		return sqlSession.selectOne("member.findPw", map);
+	}
+	
+	public void changePw(MemberDTO memberDTO) {
+//		Integer memberNumber = sqlSession.selectOne("member.changePw", memberDTO);
+		sqlSession.update("member.changePw" , memberDTO);
+	}
+	
+	public int getMemberNumber() {
+		return sqlSession.selectOne("member.getMemberNumber");
+	}
+	
+
 }
