@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pandang.app.store.StoreUpdateViewCntOkController;
+
 public class MainFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,8 +25,11 @@ public class MainFrontController extends HttpServlet{
 		System.out.println(target);
 		
 		switch(target) {
-		case "/main":
+		case "/main.main":
 			new MainOKController().execute(req, resp);
+			break;
+		case "/main/likeOk.main":
+			new LikeOKController().execute(req, resp);
 			break;
 		}
 	}

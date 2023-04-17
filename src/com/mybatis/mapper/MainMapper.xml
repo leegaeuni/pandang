@@ -55,12 +55,7 @@
 		limit 12
 	</select>
 
-	<update id="updateViewCnt" parameterType="_int">
-		update tbl_store
-		set store_view_cnt = store_view_cnt + 1
-		where store_number=#{storeNumber}
-	</update>
-
+	
 	<!-- <select id="select" parameterType="_int" resultType="MainDTO"> select 
 		channel_file_system_name, channel_file_original_name, channel_number from 
 		tbl_channel_file where channel_number = #{channelNumber} </select> -->
