@@ -130,6 +130,7 @@
                 type="file"
                 name="file-input"
                 class="file-input"
+                accept=".jpg, .jpeg, .png"
                 multiple
               />
             </div>
@@ -185,7 +186,7 @@
           </div>
           <div class="content-container">
             <div class="profile">
-              <img src="/assets/img/test1.jpg" alt="" class="profile-img" />
+              <img src="${pageContext.request.contextPath}/upload/${channelFileSystemName}" alt="" class="profile-img" />
               <div class="member-nickname">${channelName }</div>
             </div>
             <!-- 게시글 작성 시 경로 작성 -->
