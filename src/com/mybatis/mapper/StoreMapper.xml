@@ -17,4 +17,11 @@
 		values(#{storeTitle}, #{storeContent}, #{memberNumber})
 	</insert>
 	
+	<select id="buy" parameterType="_int" resultType="BasketVO">
+		select sf.store_file_system_name , s.store_number , s.store_title , s.store_price 
+		from tbl_store s 
+		join tbl_store_file sf 
+		on s.store_number = sf.store_number and s.store_number = #{storeNumber}
+	</select>
+	
 </mapper>
