@@ -70,16 +70,21 @@
 		#{storeContent}, #{storeDate}, #{storePrice}, #{storeViewCnt},
 		#{hashtagNumber}, #{memberNumber})
 	</insert>
+<<<<<<< HEAD
+=======
+
+>>>>>>> c7c64b7aef20277e74bff40f83df01cf51cbcf70
 
 	<select id="getSequence" resultType="_int">
 		select last_insert_id()
 	</select>
 
-	<select id="select" parameterType="_int" resultType="StoreVO">
+<!-- 	<select id="select" parameterType="_int" resultType="StoreVO">
 		select
 		store_number, store_title, store_content, store_date, store_price,
 		store_view_cnt, hashtag_number, member_number)
 
+<<<<<<< HEAD
 	</select>
 	
 	<update id="updateViewCnt" parameterType="_int">
@@ -113,6 +118,10 @@
 		on j2.hashtag_number = th.hashtag_number 
         
 	</select>
+=======
+	</select> -->
+
+>>>>>>> c7c64b7aef20277e74bff40f83df01cf51cbcf70
 	
 	<select id="buy" parameterType="_int" resultType="BasketVO">
 		select sf.store_file_system_name , s.store_number , s.store_title , s.store_price 
@@ -120,5 +129,9 @@
 		join tbl_store_file sf 
 		on s.store_number = sf.store_number and s.store_number = #{storeNumber}
 	</select>
+<<<<<<< HEAD
+=======
+	
+>>>>>>> c7c64b7aef20277e74bff40f83df01cf51cbcf70
 
 </mapper>
