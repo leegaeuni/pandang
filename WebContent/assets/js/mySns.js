@@ -3,18 +3,28 @@
  */
 
 // @@@@@@ 이미지 클릭 했을 때 모달 창 띄우기 @@@@@@@@@
-$(".snsList").on("click", $('.post-part'), function() {
-	$(".modal-box").css("display", "flex");
+$('.snsList').on('click', $('.post-part') ,function(){
+	if($('#store').css('color') ==  'rgb(42, 197, 198)'){
+		 $(".s-post-modal").css("display", "flex");
 
-	$(".modal-background").css("display", "inline-block");
+  		$(".s-modal-background").css("display", "inline-block");
+	} else {
+		$(".modal-box").css("display", "flex");
+
+		$(".modal-background").css("display", "inline-block");
+	}
 });
-
 // @@@@@@@ 모달 영역 밖으로 클릭하면 모달 창 없애기 @@@@@@@
 
 $(".modal-background").on("click", function() {
 	$(".modal-box").css("display", "none");
 
 	$(this).css("display", "none");
+});
+
+$('.s-modal-background').on('click', function(){
+	$('.s-post-modal').css('display', 'none');
+	$(this).css('display', 'none');
 });
 
 // @@@@@@@ 모달 신고하기 버튼 누를 시 @@@@@@@@
@@ -48,7 +58,7 @@ $(".report-btn-color").on({
 
 // @@@@@@ 좋아요 @@@@@@@@
 
-$(".before-like-btn").on("click", function() {
+$(".modal-like-date").on("click", '.before-like-btn' ,function() {	
 	if (
 		$(this).attr("src") ===
 		"https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
@@ -116,14 +126,55 @@ $(".before-like-btn").on("click", function() {
 	}
 });
 
+let memberNumberFrom = $('.memberNumberFrom').val();
+let memberNumberTo = $('.memberNumberTo').val();
+
 // @@@@@@@ 모달 팔로우 버튼 클릭 수정 @@@@@@@@
 $(".modal-follow-btn").on("click", function() {
+	console.log($('.memberNumberFrom').val());
+	console.log($('.memberNumberTo').val());
+	
+	
+	
 	if ($(this).children(".add").css("display") === "block") {
 		$(this).children(".add").css("display", "none");
 		$(this).children(".done").css("display", "block");
+		
+		$.ajax({
+		url: '/sns/snsFollowOk.sn',
+		type: 'get',
+		data: { 
+				memberNumberFrom : memberNumberFrom,
+				memberNumberTo : memberNumberTo
+				 },
+		success: function() {
+			console.log('gegege');
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+		});
+		
 	} else {
 		$(this).children(".add").css("display", "block");
 		$(this).children(".done").css("display", "none");
+		
+		$.ajax({
+		url: '/sns/snsFollowDeleteOk.sn',
+		type: 'get',
+		data: { 
+				memberNumberFrom : memberNumberFrom,
+				memberNumberTo : memberNumberTo
+				 },
+		success: function() {
+			console.log('~~~~');
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+		});
 	}
 });
 
@@ -134,11 +185,45 @@ $(".follow-btn-box").on("click", function() {
 	if ($(this).children(".follow-btn").css("display") === "block") {
 		$(this).children(".follow-btn").css("display", "none");
 		$(this).children(".following-btn").css("display", "block");
+		
+		$.ajax({
+		url: '/sns/snsFollowOk.sn',
+		type: 'get',
+		data: { 
+				memberNumberFrom : memberNumberFrom,
+				memberNumberTo : memberNumberTo
+				 },
+		success: function() {
+			console.log('gegege');
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+		});
+		
 	} else {
 		$(this).children(".follow-btn").css("display", "block");
 		$(this).children(".following-btn").css("display", "none");
+		
+		$.ajax({
+		url: '/sns/snsFollowDeleteOk.sn',
+		type: 'get',
+		data: { 
+				memberNumberFrom : memberNumberFrom,
+				memberNumberTo : memberNumberTo
+				 },
+		success: function() {
+			console.log('~~~~');
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+		});
 	}
 });
+
 
 
 // @@@@@ 슬라이드 구현 @@@@@@
@@ -203,20 +288,6 @@ $(".post-img-prev").on("click", function() {
 
 console.log($('.memberNumber').val());
 
-/*let $commentMemberNubmer = $('.commentMemberNumber');
-let $commentMemberName = $('.comment-member-name');
-
-
-
-let memberNumber = $('.commentMemberNumber').val();
-console.log(memberNumber);
-*/
-
-/*$commentMemberName.on('click', () => {
-	window.location.href = '/sns/snsOk.sn?memberNumber=' + memberNumber;
-});
-*/
-
 
 
 
@@ -277,7 +348,7 @@ function showSnsList(result) {
 
 
 			if (i % 3 == 2) {
-				$('snsList').append(`
+				$('.snsList').append(`
 				</div>
 			`);
 			}
@@ -351,14 +422,23 @@ $('.snsList').on('click', '.post-part', function() {
 
 // 모달창 좋아요, 게시글 작성일 함수
 function showSnsLikeDate(result) {
-	$('.like-cnt').html('');
-	$('.post-date').html('');
+
+	$('.modal-like-date').html('');
 	for (let i = 0; i < result.list.length; i++) {
 		if (snsPostNumber == result.list[i].snsNumber) {
 
-			$('.like-cnt').append(`${result.list[i].likeCnt}`);
-			$('.post-date').append(`${result.list[i].snsDate}`);
+			$('.modal-like-date').append(`
+			<div class="like-wrap">
+						<img class="before-like-btn"
+							src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+							alt="heart" />
 
+					
+						<div class="like-cnt">${result.list[i].likeCnt}</div>
+						개
+					</div>
+					<div class="post-date">${result.list[i].snsDate}</div>
+			`);
 		}
 
 
@@ -701,6 +781,103 @@ $('.modal-delete-btn-box').on('click', function() {
 	});
 
 });
+
+
+$('#store').on('click',function(){
+	$(this).css('color', ' rgb(42, 197, 198)');
+	$('#post-btn').css('color', '#5b696f');
+	
+	
+	$.ajax({
+		url: "/sns/snsStoreListOk.sn",
+		type : 'get',
+		data : {page : thisPage},
+		success : function(result){
+			console.log('!!!!!!');
+			showStoreList(result);
+		}
+		
+	});
+	
+});
+
+$('#post-btn').on('click', function(){
+	$(this).css('color', ' rgb(42, 197, 198)');
+	$('#store').css('color', '#5b696f');
+	$.ajax({
+		url:'/sns/snsListOk.sn',
+		type: 'get',
+		data:  {page : thisPage},
+		success : function(result){
+			showSnsList(result);
+		}
+		
+	});
+});
+
+function showStoreList(result){
+	$(".snsList").html('');
+	for (let i = 0; i < result.list.length; i++) {
+
+
+
+		if (result.list[i].storeNumber == 0) {
+			$('.snsList').html(`<div>
+									<h1>아직 등록된 게시글이 없습니다!</h1>
+								</div>`
+			);
+		} else {
+
+			if (i % 3 == 0) {
+				$('.snsList').append(`	<div class="post-section">`)
+			}
+
+			$('.snsList').append(`	
+							<div class="post-part">
+								<input class="storeNumber" type="hidden"
+									value="${result.list[i].storeNumber}"> 
+									<img class="post-image" src="/assets/img/SNSPage/03.jpg" />
+								<div class="post-info">
+									<div class="post-name-box">
+										<span class="post-name"> 
+										${result.list[i].storeTitle}
+										</span>
+									</div>
+									<div class="date-like-wrap">
+										<div class="post-date-box">
+											<span class="post-date"> 
+											${result.list[i].storeDate}
+											</span>
+										</div>
+										<div class="post-like-cnt-box">
+											<span class="heart">♥</span> <span class="like-cnt"> 
+											${result.list[i].likeCnt}
+											</span>
+										</div>
+										<div class="post-view-cnt-box">
+											<span class="material-symbols-outlined"> visibility </span> <span
+												class="view-cnt"> 
+												${result.list[i].storeViewCnt}
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+		`);
+
+
+			if (i % 3 == 2) {
+				$('.snsList').append(`
+				</div>
+			`);
+			}
+
+		}
+	}
+
+}
+
 
 
 

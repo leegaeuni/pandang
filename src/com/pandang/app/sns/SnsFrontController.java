@@ -47,6 +47,17 @@ public class SnsFrontController extends HttpServlet{
 			new SnsPostDeleteOkController().execute(req, resp);
 			break;
 	
+		case "/sns/snsFollowOk.sn" :
+			new SnsFollowOkController().execute(req, resp);
+			break;
+			
+		case "/sns/snsFollowDeleteOk.sn" :
+			new SnsFollowDeleteOkController().execute(req, resp);
+			break;
+			
+		case "/sns/snsStoreListOk.sn" :
+			new SnsStoreListOkController().execute(req, resp);
+			break;
 		}
 	}
 }

@@ -60,7 +60,7 @@
     limit #{startRow}, #{rowCount}
 	</select>
 
-	<!-- 전체 게시글 수 가져오기 -->
+	<!-- 전체 sns 게시글 수 가져오기 -->
 	<select id="getTotal" parameterType="_int" resultType="_int">
 		select count(sns_number) from tbl_sns ts
 		where member_number = #{memberNumber}
@@ -83,6 +83,18 @@
 	<delete id="deleteSnsLikeCnt" parameterType="SnsDTO">
 		delete from tbl_sns_like
 		where sns_number = #{snsNumber}  and member_number= #{memberNumber}
+	</delete>
+	
+	<!-- 팔로우 업데이트 -->
+	<insert id="updateSnsFollow" parameterType="SnsFollowVO">
+		insert into tbl_follow
+		(member_number_from, member_number_to)
+		values(#{memberNumberFrom}, #{memberNumberTo})
+	</insert>
+	
+	<delete id="deleteSnsFollow" parameterType="SnsFollowVO">
+		delete from tbl_follow 
+		where member_number_from = #{memberNumberFrom} and member_number_to = #{memberNumberTo}
 	</delete>
 	
 	<!-- 게시글 삭제 -->
@@ -169,6 +181,26 @@
 	</update>
 	
 	
+	<!-- 전체 store 게시글 수  -->
+	<select id="getStoreTotal" resultType="_int" parameterType="_int">
+		select count(store_number) from tbl_store ts 
+		where member_number = #{memberNumber}
+	</select>
+	
+	
+	<!-- sns store탭 게시글 불러오기 -->
+	<select id="storePostInfo" parameterType="map" resultType="SnsStoreVO">
+		select ts.store_number , ts.store_title as storeTitle, ts.store_date as
+		storeDate, ts.store_view_cnt as storeViewCnt,
+		count(tsl.store_number) as likeCnt
+		from tbl_store ts
+		left join tbl_store_like tsl
+		on ts.store_number = tsl.store_number
+		where ts.member_number = #{memberNumber}
+		group by ts.store_number , ts.store_title , ts.store_date ,
+		ts.store_view_cnt
+		order by ts.store_date desc
+	</select>
 	
 	
 </mapper>

@@ -29,8 +29,8 @@ public class SnsOkController implements Execute {
 	
 		
 		HttpSession session = req.getSession();
+//		session.setAttribute("memberNumber", (Integer.parseInt(req.getParameter("memberNumber"))));
 		session.setAttribute("memberNumber", 1);
-		
 		
 		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
 
@@ -128,7 +128,10 @@ public class SnsOkController implements Execute {
 		req.setAttribute("realEndPage", realEndPage);
 		
 		
-		
+		Map<String, Integer> storePost = new HashMap();
+		storePost.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
+		storePost.put("startRow", startRow);
+		storePost.put("rowCount", rowCount);
 
 //		// sns SnsCommentVO
 		int snsNumber = 1;

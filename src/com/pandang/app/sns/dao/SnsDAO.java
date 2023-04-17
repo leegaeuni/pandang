@@ -9,9 +9,11 @@ import com.mybatis.config.MyBatisConfig;
 import com.pandang.app.sns.comment.dto.SnsCommentDTO;
 import com.pandang.app.sns.comment.vo.SnsCommentVO;
 import com.pandang.app.sns.dto.SnsDTO;
+import com.pandang.app.sns.vo.SnsFollowVO;
 import com.pandang.app.sns.vo.SnsHeaderVO;
 import com.pandang.app.sns.vo.SnsPostInfoVO;
 import com.pandang.app.sns.vo.SnsPostVO;
+import com.pandang.app.sns.vo.SnsStoreVO;
 import com.pandang.app.sns.vo.SnsVO;
 
 public class SnsDAO {
@@ -59,6 +61,14 @@ public class SnsDAO {
 		sqlSession.delete("sns.deleteSnsLikeCnt", snsDTO);
 	}
 	
+	public void updateSnsFollow(SnsFollowVO snsFollowVO) {
+		sqlSession.insert("sns.updateSnsFollow", snsFollowVO);
+	}
+	
+	public void deleteSnsFollow(SnsFollowVO snsFollowVO) {
+		sqlSession.delete("sns.deleteSnsFollow", snsFollowVO);
+	}
+	
 	public void deleteSnsPost(int snsNumber) {
 		sqlSession.delete("sns.deleteSnsPost", snsNumber);
 	}
@@ -66,6 +76,7 @@ public class SnsDAO {
 	public void deleteSnsLikeFromHost(int snsNumber) {
 		sqlSession.delete("sns.deleteSnsLikeFromHost", snsNumber);
 	}
+	
 	
 	public void deleteSnsCommentFromHost(int snsNumber) {
 		sqlSession.delete("sns.deleteSnsCommentFromHost", snsNumber);
@@ -83,4 +94,11 @@ public class SnsDAO {
 		sqlSession.update("sns.snsCommentUpdate", snsCommentDTO);
 	}
 	
+	public int getStoreTotal(int memberNumber) {
+		return sqlSession.selectOne("sns.getStoreTotal", memberNumber);
+	}
+	
+	public List<SnsStoreVO> storePostInfo(Map<String, Integer> pageMap){
+		return sqlSession.selectList("sns.storePostInfo", pageMap);
+	}
 }
