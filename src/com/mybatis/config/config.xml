@@ -10,6 +10,7 @@
 		<typeAlias type="com.pandang.app.basket.dto.BasketDTO" alias="BasketDTO"/>
 		<typeAlias type="com.pandang.app.basket.vo.BasketVO" alias="BasketVO"/>		
 		<typeAlias type="com.pandang.app.buy.dto.BuyDTO" alias="BuyDTO"/>
+		<typeAlias type="com.pandang.app.buy.vo.BuyVO" alias="BuyVO"/>
 		<typeAlias type="com.pandang.app.channel.dto.ChannelDTO" alias="ChannelDTO"/>
 		<typeAlias type="com.pandang.app.channel.file.dto.ChannelFileDTO" alias="ChannelFileDTO"/>
 		<typeAlias type="com.pandang.app.follow.dto.FollowDTO" alias="FollowDTO"/>

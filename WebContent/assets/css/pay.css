@@ -41,7 +41,14 @@ font {
   height: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+}
+
+.pandang-container{
+   margin-left : 20px;
+}
+
+.header-list{
+   margin : 0 20px;
 }
 
 .start-container a:hover {
@@ -61,7 +68,9 @@ font {
   background-color: #f5f6f7;
   margin-right: 40px;
   border-radius: 30px;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 .search button {
   position: absolute;
@@ -339,7 +348,7 @@ font {
     height: 65px;
   }
 
-  .txt{
+  .pay-total{
     text-align: center;
   }
   
@@ -557,11 +566,12 @@ font {
   .mail-address{
     width: 119px;
     /* padding: 0 0 0 9px; */
-    text-align: center;
+    text-align: inherit;
     height: 22px;
     border: 1px solid #ddd;
     line-height: 22px;
     margin: 5px 0px 0px 10px;
+    padding: 9px
   }
 
   .main-address,

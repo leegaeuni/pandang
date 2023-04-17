@@ -29,10 +29,12 @@ public class MemberDAO {
 	public void mypageEdit(MemberVO memberVO) {
 		sqlSession.update("member.mypageEdit", memberVO);
 	}
-
-	// MyPageEditOkController에서 memberNumber를 사용해 DAO접근을 위해 사용
-	public int getSequence() {
-		return sqlSession.selectOne("member.getSequence");
+	
+	// pay 페이지의 회원정보 받아오기
+	public MemberDTO payMember(int memberNumber) {
+		return sqlSession.selectOne("member.payMember", memberNumber);
+		
 	}
+
 
 }

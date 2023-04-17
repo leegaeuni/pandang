@@ -28,6 +28,8 @@ public class MyPageEditOkController implements Execute {
 		ChannelFileDTO channelFileDTO = new ChannelFileDTO();
 		ChannelFileDAO channelFileDAO = new ChannelFileDAO();				
 //		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");		
+//		int channelNumber = (Integer)req.getSession().getAttribute("channelNumber");		
+		
 		int memberNumber = 2;		
 		int channelNumber = 2;
 
@@ -74,9 +76,9 @@ public class MyPageEditOkController implements Execute {
       
       Enumeration<String> fileNames = multipartRequest.getFileNames();
 //      
-////      이터레이터의 hasNex()
+//      이터레이터의 hasNex()
       while(fileNames.hasMoreElements()) {
-////         이터레이터의 next()
+//         이터레이터의 next()
          String name = fileNames.nextElement();
          
          String fileSystemName = multipartRequest.getFilesystemName(name);

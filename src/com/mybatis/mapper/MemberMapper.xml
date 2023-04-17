@@ -49,5 +49,13 @@
 		m.member_zone_code = #{memberZoneCode}
 		where m.member_number = #{memberNumber}
 	</update>
-
+	
+	<!-- pay페이지의 회원 정보 받아오기  -->
+	<select id="payMember" resultType="MemberDTO" parameterType="_int">
+		select member_number , member_name , 
+		member_address , member_address_detail , 
+		member_zone_code, member_phone_number , member_email 
+		from tbl_member
+		where member_number = #{memberNumber};
+	</select>
 </mapper>
