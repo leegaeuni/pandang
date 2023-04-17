@@ -26,6 +26,11 @@ public class StoreFileDAO {
 	public void delete(int storeNumber) {
 		sqlSession.delete("storeFile.delete", storeNumber);
 	}
+<<<<<<< HEAD
+=======
+}
+=======
+>>>>>>> 6427ba2c29035518344a18df98881571557e4a94
 	
 	public StoreFileDTO select(int storeNumber) {
 		return sqlSession.selectOne("storeFile.select", storeNumber);	
@@ -35,6 +40,7 @@ public class StoreFileDAO {
 		sqlSession.delete("storeFile.delete", storeNumber);
 	}
 }
+<<<<<<< HEAD
 =======
 	
 	public StoreFileDTO select(int storeNumber) {
@@ -45,4 +51,6 @@ public class StoreFileDAO {
 		sqlSession.delete("storeFile.delete", storeNumber);
 	}
 }
+=======
+>>>>>>> 6427ba2c29035518344a18df98881571557e4a94
 >>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0

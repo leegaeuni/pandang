@@ -4,6 +4,9 @@
 <mapper namespace="storeFile">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6427ba2c29035518344a18df98881571557e4a94
 	<insert id="insert" parameterType="StoreFileDTO">
 		insert into tbl_store_file(store_file_system_name, store_file_original_name, store_number)
 		values(#{storeFileSystemName}, #{storeFileOriginalName}, #{storeNumber})
@@ -55,7 +58,10 @@
 	</delete>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
 =======
+=======
+>>>>>>> 6427ba2c29035518344a18df98881571557e4a94
 >>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
 </mapper>
