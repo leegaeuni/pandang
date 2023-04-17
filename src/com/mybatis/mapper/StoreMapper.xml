@@ -25,39 +25,26 @@
 		from tbl_member m
 		join tbl_store s on m.member_number = s.member_number
 		join tbl_hashtag h on
-		s.hashtag_number = h.hashtag_number
-		where h.hashtag_number = #{hashtagNumber}
-		order by store_like_cnt
-		limit
-		#{startRow}, #{rowCount}
-	</select>
-	
-	<select id="selectAllByDate" resultType="StoreVO" parameterType="map">
-		select store_number, store_title, store_content, store_date,
-		store_price, store_view_cnt, store_like_cnt,
-		h.hashtag_number, m.member_number,
-		m.member_nickname
-		from tbl_member m
-		join tbl_store s on m.member_number = s.member_number
-		join tbl_hashtag h on
-		s.hashtag_number = h.hashtag_number
-		where h.hashtag_number = #{hashtagNumber}
-		order by store_date desc
-		limit
-		#{startRow}, #{rowCount}
-	</select>
-
-	<select id="selectAllByFree" resultType="StoreVO" parameterType="map">
-		select store_number, store_title, store_content, store_date,
-		store_price, store_view_cnt, store_like_cnt,
-		h.hashtag_number, m.member_number,
-		m.member_nickname
-		from tbl_member m
-		join tbl_store s on m.member_number = s.member_number
-		join tbl_hashtag h on
-		s.hashtag_number = h.hashtag_number
-		where  h.hashtag_number = #{hashtagNumber} and store_price = 0
-		order by store_date desc
+				select j2.store_number, store_title , store_content , store_date , store_price , store_view_cnt , j2.member_number,
+				like_count, comment_count, tc.channel_number , tc.channel_name , cf.channel_file_system_name 
+		from(
+			select j.store_number, store_title , store_content , store_date , store_price , store_view_cnt , j.member_number,
+				like_count, count(c.member_number) comment_count
+			from (
+				select s.store_number, store_title , store_content , store_date , store_price , store_view_cnt , s.member_number,
+					count(l.store_number) like_count
+				from tbl_store s
+				left join tbl_store_like l
+				on s.store_number = l.store_number 
+				group by s.store_number
+			)j left join tbl_store_comment c
+			on j.store_number = c.store_number 
+			group by j.store_number
+		)j2
+		join tbl_channel tc
+		on j2.store_number = #{storeNumber} and j2.member_number = tc.member_number 
+		left join tbl_channel_file cf 
+		on tc.channel_number = cf.channel_number	order by store_date desc
 		limit
 		#{startRow}, #{rowCount}
 	</select>
@@ -70,10 +57,7 @@
 		#{storeContent}, #{storeDate}, #{storePrice}, #{storeViewCnt},
 		#{hashtagNumber}, #{memberNumber})
 	</insert>
-<<<<<<< HEAD
-=======
 
->>>>>>> c7c64b7aef20277e74bff40f83df01cf51cbcf70
 
 	<select id="getSequence" resultType="_int">
 		select last_insert_id()
@@ -84,9 +68,9 @@
 		store_number, store_title, store_content, store_date, store_price,
 		store_view_cnt, hashtag_number, member_number)
 
-<<<<<<< HEAD
 	</select>
-	
+ -->
+
 	<update id="updateViewCnt" parameterType="_int">
 		update tbl_store
 		set store_view_cnt = store_view_cnt + 1
@@ -118,10 +102,8 @@
 		on j2.hashtag_number = th.hashtag_number 
         
 	</select>
-=======
-	</select> -->
+	
 
->>>>>>> c7c64b7aef20277e74bff40f83df01cf51cbcf70
 	
 	<select id="buy" parameterType="_int" resultType="BasketVO">
 		select sf.store_file_system_name , s.store_number , s.store_title , s.store_price 
@@ -129,9 +111,5 @@
 		join tbl_store_file sf 
 		on s.store_number = sf.store_number and s.store_number = #{storeNumber}
 	</select>
-<<<<<<< HEAD
-=======
 	
->>>>>>> c7c64b7aef20277e74bff40f83df01cf51cbcf70
-
 </mapper>

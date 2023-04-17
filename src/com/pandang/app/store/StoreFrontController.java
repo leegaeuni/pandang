@@ -44,7 +44,6 @@ public class StoreFrontController extends HttpServlet {
 		case "/store/storeWriteOk.st":
 			new StoreWriteOkController().execute(req, resp);
 			break;
-<<<<<<< HEAD
 		case "/store/storeUpdate.st":
 			new StoreUpdateController().execute(req, resp);
 			break;
@@ -54,12 +53,9 @@ public class StoreFrontController extends HttpServlet {
 		case "/store/storeDeleteOk.st":
 			new StoreDeleteOkController().execute(req, resp);
 			break;
-
-=======
 		case "/store/storeUpdateViewCntOk.st":
 			new StoreUpdateViewCntOkController().execute(req, resp);
 			break;
->>>>>>> work/work02
 		}
 	}
 }

@@ -1,27 +1,19 @@
 package com.pandang.app.store.dao;
 
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Map;
-=======
->>>>>>> work/work02
+
+
 
 import org.apache.ibatis.session.SqlSession;
-
 import com.mybatis.config.MyBatisConfig;
-
 import com.pandang.app.store.dto.StoreDTO;
-<<<<<<< HEAD
 import com.pandang.app.store.vo.StoreVO;
-
 import com.pandang.app.basket.vo.BasketVO;
-
-
 import com.pandang.app.basket.vo.BasketVO;
-
-=======
 import com.pandang.app.store.vo.StoreUpdateVO;
->>>>>>> work/work02
+
+
 
 public class StoreDAO {
 	public SqlSession sqlSession;
