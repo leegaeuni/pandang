@@ -32,7 +32,7 @@ public class StoreDAO {
 
 	public void insert(StoreDTO storeDTO) {
 		sqlSession.insert("store.insert", storeDTO);
-}
+	}
 
 	public BasketVO buy(int storeNumber) {
 		return sqlSession.selectOne("store.buy", storeNumber);

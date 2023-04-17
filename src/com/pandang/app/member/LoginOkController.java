@@ -36,7 +36,7 @@ public class LoginOkController implements Execute {
 			path = "/member/login.me";
 		} else {
 //			로그인하면 어떤 경로로 갈건지 적어주세요.
-			path = "/main";
+			path = "/main.main";
 			session.setAttribute("memberNumber", memberNumber);
 		}
 		

@@ -17,14 +17,15 @@
 		<typeAlias type="com.pandang.app.hashtag.dto.HashtagDTO" alias="HashtagDTO"/>
 		<typeAlias type="com.pandang.app.member.dto.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.pandang.app.member.vo.MemberVO" alias="MemberVO"/>
-		
 		<typeAlias type="com.pandang.app.sns.dto.SnsDTO" alias="SnsDTO"/>
 		<typeAlias type="com.pandang.app.sns.comment.dto.SnsCommentDTO" alias="SnsCommentDTO"/>
 		<typeAlias type="com.pandang.app.sns.file.dto.SnsFileDTO" alias="SnsFileDTO"/>
 		<typeAlias type="com.pandang.app.sns.like.dto.SnsLikeDTO" alias="SnsLikeDTO"/>
 		<typeAlias type="com.pandang.app.store.dto.StoreDTO" alias="StoreDTO"/>
 		<typeAlias type="com.pandang.app.store.vo.StoreVO" alias="StoreVO"/>
+		<typeAlias type="com.pandang.app.store.vo.StoreUpdateVO" alias="StoreUpdateVO"/>
 		<typeAlias type="com.pandang.app.store.comment.dto.StoreCommentDTO" alias="StoreCommentDTO"/>
+		<typeAlias type="com.pandang.app.store.comment.vo.StoreCommentVO" alias="StoreCommentVO"/>
 		<typeAlias type="com.pandang.app.store.file.dto.StoreFileDTO" alias="StoreFileDTO"/>
 		<typeAlias type="com.pandang.app.store.like.dto.StoreLikeDTO" alias="StoreLikeDTO"/>
 		<typeAlias type="com.pandang.app.main.vo.MainVO" alias="MainVO"/>

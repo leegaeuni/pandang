@@ -14,7 +14,7 @@ public class LogoutOkController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		session.invalidate();
-		resp.sendRedirect("/main");
+		resp.sendRedirect("/main.main");
 		
 		
 //		본인 페이지에 '로그아웃' 버튼이 있으면 경로를
