@@ -25,10 +25,10 @@ public class StoreFrontController extends HttpServlet{
 		case "/store/storeOk.st":
 			new StoreOkController().execute(req, resp);
 			break;
-		case "/store/storeWrite.sw":
+		case "/store/storeWrite.st":
 			new StoreWriteController().execute(req, resp);
 			break;
-		case "/store/storeWriteOk.sw":
+		case "/store/storeWriteOk.st":
 			new StoreWriteOkController().execute(req, resp);
 			break;
 		}
