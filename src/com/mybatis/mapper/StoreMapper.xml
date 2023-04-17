@@ -91,5 +91,8 @@
 		on s.store_number = sf.store_number and s.store_number = #{storeNumber}
 	</select>
 	
+<<<<<<< HEAD
+>>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
+=======
 >>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
 </mapper>
