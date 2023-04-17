@@ -14,15 +14,15 @@ public class StoreFileDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 
-	public void insert(StoreFileDTO fileDTO) {
-		sqlSession.insert("file.insert", fileDTO);
+	public void insert(StoreFileDTO storeFileDTO) {
+		sqlSession.insert("storeFile.insert", storeFileDTO);
 	}
 
 	public List<StoreFileDTO> select(int storeNumber) {
-		return sqlSession.selectList("storefile.select", storeNumber);
+		return sqlSession.selectList("storeFile.select", storeNumber);
 	}
 
-	public void delete(int boardNumber) {
-		sqlSession.delete("file.delete", boardNumber);
+	public void delete(int storeNumber) {
+		sqlSession.delete("storeFile.delete", storeNumber);
 	}
 }

@@ -15,6 +15,7 @@ public class StoreCommentWriteOkController implements Execute {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		StoreCommentDTO storeCommentDTO = new StoreCommentDTO();
+		System.out.println("정상 작동 중");
 		req.setCharacterEncoding("UTF-8");
 		
 		storeCommentDTO.setStoreNumber(Integer.valueOf(req.getParameter("storeNumber")));

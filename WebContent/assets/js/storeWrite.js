@@ -1,12 +1,13 @@
 
 // 버튼 클릭 시 특정 영역을 텍스트 박스로 변경하는 함수
 function toggleTextBox() {
-  var target = document.getElementById("text-area");
-  var textBox = document.getElementById("text-box");
+	var target = document.getElementById("write-content__wrap");
+	var textBox = document.getElementById("text-box");
 
-  target.style.display = "none";
-  textBox.style.display = "block";
-  textBox.value = target.innerHTML;
+	target.appendChild(textBox);
+		$('#text-area').css('display', 'none');
+	
+	textBox.style.display = "block";
 }
 
 // 파일 첨부 시 이미지 미리보기 함수 
@@ -20,13 +21,14 @@ $fileInput.on('change', function() {
 	let files = this.files;
 	console.log(files);
 
+	$('#text-area').css('display', 'none');
 	$fileList.html('');
 
-	if (files.length > 5) {
+	if (files.length > 10) {
 		let dt = new DataTransfer();
 		files = dt.files;
 
-		alert("파일은 최대 5개 까지만 첨부 가능합니다.")
+		alert("파일은 최대 10개 까지만 첨부 가능합니다.")
 		$cnt.text(files.length);
 		return;
 	}
@@ -63,35 +65,33 @@ $fileInput.on('change', function() {
 		}
 
 		files = dt.files;
-		
+
 		console.log(files);
 		$cnt.text(files.length);
 	});
 });
 
-<<<<<<< HEAD
 $('.btn-cancel').on('click', () => {
 	window.location.href = '/store/storeOk.st';
 });
-=======
+
 $('.cancel-btn').on('click', () => {
 	window.location.href = '/board/boardListOk.bo';
 });
 
 // 드롭다운 버튼 클릭시 리스트가 보인다.
-$(".dropdown-btn").on("click", function () {
-  if ($(".menu-list").css("display") == "none") {
-    $(".menu-list").css("display", "block");
-  } else {
-    $(".menu-list").css("display", "none");
-  }
+$(".dropdown-btn").on("click", function() {
+	if ($(".menu-list").css("display") == "none") {
+		$(".menu-list").css("display", "block");
+	} else {
+		$(".menu-list").css("display", "none");
+	}
 });
 
 // 리스트 중 하나를 클릭하면 클릭한 리스트의 텍스트가 드롭다운 버튼의 값으로 바뀐다.
-$(".list").on("click", function (event) {
-  $(".menu-list").css("display", "none");
+$(".list").on("click", function(event) {
+	$(".menu-list").css("display", "none");
 	let category = $(this).text();
 	$(".write-category .dropdown-btn").text(category);
 });
 
->>>>>>> 507ce7a6a4a062cb1b1d2e9b88c40148106eb806

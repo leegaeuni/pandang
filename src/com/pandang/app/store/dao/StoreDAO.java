@@ -19,7 +19,7 @@ public class StoreDAO {
 	public List<StoreVO> selectAll(Map<String, Integer> pageMap) {
 		return sqlSession.selectList("store.selectAll", pageMap);
 	}
-
+	
 	public int getTotal() {
 		return sqlSession.selectOne("store.getTotal");
 	}

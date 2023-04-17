@@ -32,7 +32,7 @@ public class StoreWriteOkController implements Execute {
 		System.out.println(req.getParameter("storeTitle"));
 
 		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload/";
-		int fileSize = 1024 * 1024 * 5;
+		int fileSize = 1024 * 1024 * 10;
 		System.out.println(uploadPath);
 
 		MultipartParser parser = new MultipartParser(req, fileSize);

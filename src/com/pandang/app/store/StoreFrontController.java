@@ -24,7 +24,19 @@ public class StoreFrontController extends HttpServlet {
 		switch (target) {
 		case "/store/storeOk.st":
 			new StoreOkController().execute(req, resp);
-			req.getRequestDispatcher("/app/store/store.jsp").forward(req, resp);
+//			req.getRequestDispatcher("/app/store/store.jsp").forward(req, resp);
+			break;
+		case "/store/storeAjaxOk.st":
+			new StoreAjaxOkController().execute(req, resp);
+			break;
+		case "/store/storeAjaxLikeOk.st":
+			new StoreAjaxLikeOkController().execute(req, resp);
+			break;
+		case "/store/storeAjaxDateOk.st":
+			new StoreAjaxDateOkController().execute(req, resp);
+			break;
+		case "/store/storeAjaxFreeOk.st":
+			new StoreAjaxFreeOkController().execute(req, resp);
 			break;
 		case "/store/storeWrite.st":
 			new StoreWriteController().execute(req, resp);

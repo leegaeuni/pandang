@@ -76,6 +76,7 @@
 
     <!-- Main -->
     <div class="main-container">
+      <form id="write-form" action="${pagetContext.request.contextPath}/store/storeWriteOk.st" method="post" enctype="multipart/form-data">     
       <div class="write-wrap">
         <div class="title">
           <!-- 카테고리 설정 -->
@@ -94,39 +95,36 @@
           </div>
           <!-- 가격 입력 -->
           <div class="write-title">
-            <input type="text" placeholder="상품명을 입력하세요" />
+            <input type="text" id="title" name="storeTitle" placeholder="상품명을 입력하세요" required/>
           </div>
           <!-- 상품 입력 -->
           <div class="write-price">
-            <input type="number" placeholder="가격을 입력하세요" />
+            <input type="number" name="storePrice" placeholder="가격을 입력하세요" required/>
             <span>원</span>
           </div>
         </div>
-        <div class="write-content__wrap">
+        <div id="write-content__wrap">       
           <div class="contents">
-            <form id="write-form" action="${pagetContext.request.contextPath}/store/storeWriteOk.st" method="post" enctype="multipart/form-data">      
+          <input type="text" id="text-box" name ="storeContent" placeholder="상품 설명을 입력하세요" style="display:none" />
+             <ul class="file-list">
+
+    	  </ul>
            <div id="text-area">
-           <textarea id="text-box" style="display:none"></textarea>  
           <p>콘텐츠를 선택하여 업로드를 시작하세요.</p>     
             <div class="tools">
               <div class="tool-wrap">
-               <input type="file" id="img-file" name="boardFile"
+               <input type="file" id="img-file" name="storeFile"
          accept=".jpg, .jpeg, .png" multiple />
                 <label for="img-file" class="custom-file-upload"><div class="image">
                   <img src="${pageContext.request.contextPath}/assets/img/add_image.png" />
                 </div></label>
                 <div class="text">이미지</div>
-                 <div class="img-controller-box">
-   			   <ul class="file-list">
-
-    		  </ul>
- 			  </div>
+  
               </div>
               <div class="tool-wrap">
                  <button onclick="toggleTextBox()"><div class="image">
                  <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
                 </div></button>
-
                 <div class="text">텍스트</div>
               </div>
               <div class="tool-wrap">
@@ -143,25 +141,21 @@
               </div>
             </div>
           </div>
-
-         </form>
         </div>
       </div>
       </div>
       <!-- 오른쪽 버튼 박스 -->
-      <div class="add-btn__container">
-               <form id="write-form" action="${pagetContext.request.contextPath}/store/storeWriteOk.st" method="post" enctype="multipart/form-data">      
+      <div class="add-btn__container">   
         <div class="add-btn__wrap">
              <label for="img-file" class="custom-file-upload"><div class="images">
             <img src="${pageContext.request.contextPath}/assets/img/add_image.png" />
-            <div class="text">이미지 추가</div>
+            <div class="text">이미지 추가</div>    
           </div></label>
             <button onclick="toggleTextBox()"><div class="images">
          <img src="${pageContext.request.contextPath}/assets/img/add_text.png" />
             <div class="text">텍스트 추가</div>
           </div></button>
-
-          <div class="images">
+         <div class="images">
             <img src="${pageContext.request.contextPath}/assets/img/add_video.png" />
             <div class="text">동영상 추가</div>
           </div>
@@ -173,15 +167,10 @@
         <div class="button-wrap">
           <button type = "submit" class="btn-next">다음</button>
           <button class="btn-cancel">취소</button>
-        </div>
-<<<<<<< HEAD
-             </form>
-      </div>      
+        </div>     
+      </div>    
+         </form>      
     </div>
-=======
-      </div>
-     </div>
->>>>>>> 507ce7a6a4a062cb1b1d2e9b88c40148106eb806
 
     <!-- @@@@푸터@@@@ -->
     <div class="footer-container">

@@ -17,11 +17,11 @@ public class MemberDAO {
 		sqlSession.insert("member.join", memberDTO);
 	}
 
-<<<<<<< HEAD
+
 	  public String getMemberNickname(int memberNumber) {
 		  return sqlSession.selectOne("member.getMemberNickname", memberNumber);
 	 }
-=======
+
 	// DB에서 myPage 값 받아오기
 	public MemberVO myPageSelectAll(int memberNumber) {
 		// MemberVO타입 myPageSelectAll이 메소드 이름 int memberNumber을 받음
@@ -39,7 +39,6 @@ public class MemberDAO {
 	public int getSequence() {
 		return sqlSession.selectOne("member.getSequence");
 	}
->>>>>>> 507ce7a6a4a062cb1b1d2e9b88c40148106eb806
 	
 	public boolean checkId(String memberId) {
 		return (Integer)sqlSession.selectOne("member.checkId", memberId) < 1;
