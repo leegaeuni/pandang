@@ -42,7 +42,6 @@ font {
   height: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .start-container a:hover {
@@ -54,6 +53,14 @@ font {
   height: 40px;
 }
 
+.pandang-container{
+   margin-left : 20px;
+}
+
+.header-list{
+   margin : 0 20px;
+}
+
 .search {
   display: flex;
   width: 370px;
@@ -62,8 +69,11 @@ font {
   background-color: #f5f6f7;
   margin-right: 40px;
   border-radius: 30px;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
+
 .search button {
   position: absolute;
   right: 30px; /* 우측 공간 조절 */
@@ -111,8 +121,15 @@ font {
   color: white;
 }
 
-.my-page {
-  display: none;
+.logout {
+  width: 70px;
+  height: 40px;
+  background-color: rgb(50, 50, 50);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
 /* @@@@푸터@@@@@ */
@@ -165,6 +182,10 @@ main {
   font-size: 20px;
   line-height: 70px;
   border-bottom: 1px solid #dbdbdb;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sns-container {
@@ -178,6 +199,32 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.img-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.img img {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.img-counter {
+  display: none;
 }
 
 .img-container button {
@@ -261,4 +308,62 @@ main {
 
 textarea:focus {
   outline: none;
+}
+
+.file-input,
+.input {
+  display: none;
+}
+
+.img-cnt-container {
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  right: 50%;
+  transform: translate(50%, 0);
+  z-index: 3;
+}
+
+.img-cnt {
+  /* background: rgb(0, 149, 246); */
+  background: rgb(168, 168, 168);
+  margin-right: 4px;
+  border-radius: 50%;
+  height: 6px;
+  transition: all 0.2s ease-in-out;
+  width: 6px;
+}
+
+.next,
+.prev {
+  background: rgba(26, 26, 26, 0.8);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  transform: translate(0, -50%);
+  z-index: 3;
+  cursor: pointer;
+}
+
+.next {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+}
+
+.prev {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+}
+
+.return {
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+  display: none;
 }
