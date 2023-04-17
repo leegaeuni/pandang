@@ -8,7 +8,22 @@ let $answerInput = $("#answer");
 // 답변 ajax를 이용하여 일치, 불일치 판단후 답변 밑 span에 알려주기
 $answerInput.on("blur", function () {
   // ajax 이용하여 답변 일치 불일치 확인
+	$idInput.on('change', function() {
+	
+	$.ajax({
+		url : '/member/findPwAskOk.me',
+		type : 'post',
+		data : {memberAnswer : answer},
+		success : function(result) {
+			$checkAnswer.text(result);
+		},
+		error : function(a, b, c) {
+			console.log(c);
+		}
+	});
 });
+});
+
 
 // 비빌번호 검사
 const regex =

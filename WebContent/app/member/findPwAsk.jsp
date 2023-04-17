@@ -19,7 +19,7 @@
       <div class="main-wrapper">
         <div class="main-container">
           <!-- form 태그 action 지정하기 -->
-          <form action="" method="post">
+          <form action="${pageContext.request.contextPath}/member/findPwAskOk.me" method="post">
             <div class="logo-pandang">
               <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" />
             </div>
@@ -31,6 +31,7 @@
                 type="text"
                 id="ask"
                 name="memberAsk"
+                value="${memberAsk}"
                 readonly
               />
             </div>
@@ -64,7 +65,6 @@
               <input
                 type="password"
                 id="password2"
-                name="memberPassword"
                 placeholder="비밀번호를 입력하세요"
                 required
               /><br />

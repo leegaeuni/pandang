@@ -19,7 +19,7 @@
       <div class="main-wrapper">
         <div class="main-container">
           <!-- form 태그 action 지정하기 -->
-          <form action="" method="post">
+
             <div class="logo-pandang">
               <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" />
             </div>
@@ -59,15 +59,15 @@
               <button type="button" class="button2">다음</button>
             </div>
             <!-- 인증 성공시 아이디 ajax로 표시 -->
-            <span class="id-msg">아이디는 asdf입니다.</span>
             <!-- 평소엔 display:none 아이디 표시되면 disply:flex -->
+            <span class="id-msg"></span>
             <div class="login-find-container">
               <!-- 로그인 페이지로 이동후 아이디 input칸에 찾은 아이디 띄워주기 -->
-              <a href="#">로그인</a>
+              <a class="login-btn" href="${pageContext.request.contextPath}/member/login.me">로그인</a>
               <!-- 비밀번호 변경 페이지로 이동후 아이디 input칸에 찾은 아이디 띄워주기 -->
-              <a href="#">비밀번호 변경</a>
+              <a class="changePw-btn" href="${pageContext.request.contextPath}/member/findPw.me">비밀번호 변경</a>
             </div>
-          </form>
+
         </div>
       </div>
     </main>

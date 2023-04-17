@@ -1,11 +1,13 @@
 package com.pandang.app.member.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
 import com.pandang.app.member.dto.MemberDTO;
 import com.pandang.app.member.vo.MemberVO;
-
+// DAO는 mapper에 적용된 query문을 실행시킨다.
 public class MemberDAO {
 	public SqlSession sqlSession;
 
@@ -51,7 +53,22 @@ public class MemberDAO {
 	}
 	
 
-
-
+	public String findId(Map<String, String> map) {
+		return sqlSession.selectOne("member.findId", map);
+	}
+	
+	public String findPw(Map<String, String> map) {
+		return sqlSession.selectOne("member.findPw", map);
+	}
+	
+	public void changePw(MemberDTO memberDTO) {
+//		Integer memberNumber = sqlSession.selectOne("member.changePw", memberDTO);
+		sqlSession.update("member.changePw" , memberDTO);
+	}
+	
+	public int getMemberNumber() {
+		return sqlSession.selectOne("member.getMemberNumber");
+	}
+	
 
 }
