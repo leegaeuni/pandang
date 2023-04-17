@@ -44,6 +44,15 @@ font {
   align-items: center;
 }
 
+.pandang-container{
+   margin-left : 20px;
+}
+
+.header-list{
+   margin : 0 20px;
+}
+
+
 .start-container a:hover {
   color: rgb(42, 197, 198);
 }
@@ -62,7 +71,7 @@ font {
 }
 
 .search {
-  display: flex;
+   display: flex;
   width: 370px;
   align-items: center;
   height: 46px;
