@@ -42,7 +42,6 @@ font {
   height: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .start-container a:hover {
@@ -54,6 +53,14 @@ font {
   height: 40px;
 }
 
+.pandang-container{
+   margin-left : 20px;
+}
+
+.header-list{
+   margin : 0 20px;
+}
+
 .search {
   display: flex;
   width: 370px;
@@ -62,8 +69,11 @@ font {
   background-color: #f5f6f7;
   margin-right: 40px;
   border-radius: 30px;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
+
 .search button {
   position: absolute;
   right: 30px; /* 우측 공간 조절 */
@@ -111,8 +121,15 @@ font {
   color: white;
 }
 
-.my-page {
-  display: none;
+.logout {
+  width: 70px;
+  height: 40px;
+  background-color: rgb(50, 50, 50);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
 /* @@@@푸터@@@@@ */
