@@ -2,20 +2,87 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="store">
-	<select id="selectAll" resultType="StoreVO" parameterType = "map">
-		select store_number, store_title, store_content, store_date, store_price, store_view_cnt,
-		h.hashtag_number, m.member_number, m.member_nickname
-		from tbl_member m 
+	<select id="selectAll" resultType="StoreVO" parameterType="map">
+		select store_number, store_title, store_content, store_date,
+		store_price, store_view_cnt, store_like_cnt,
+		h.hashtag_number, m.member_number,
+		m.member_nickname
+		from tbl_member m
 		join tbl_store s on m.member_number = s.member_number
-		join tbl_hashtag h on s.hashtag_number = h.hashtag_number
-		order by store_number desc
-		limit #{startRow}, #{rowCount}
+		join tbl_hashtag h on
+		s.hashtag_number = h.hashtag_number
+		where h.hashtag_number = #{hashtagNumber}
+		order by store_view_cnt + store_like_cnt
+		limit
+		#{startRow}, #{rowCount}
+	</select>
+
+<select id="selectAllByLike" resultType="StoreVO" parameterType="map">
+		select store_number, store_title, store_content, store_date,
+		store_price, store_view_cnt, store_like_cnt,
+		h.hashtag_number, m.member_number,
+		m.member_nickname
+		from tbl_member m
+		join tbl_store s on m.member_number = s.member_number
+		join tbl_hashtag h on
+		s.hashtag_number = h.hashtag_number
+		where h.hashtag_number = #{hashtagNumber}
+		order by store_like_cnt
+		limit
+		#{startRow}, #{rowCount}
 	</select>
 	
+	<select id="selectAllByDate" resultType="StoreVO" parameterType="map">
+		select store_number, store_title, store_content, store_date,
+		store_price, store_view_cnt, store_like_cnt,
+		h.hashtag_number, m.member_number,
+		m.member_nickname
+		from tbl_member m
+		join tbl_store s on m.member_number = s.member_number
+		join tbl_hashtag h on
+		s.hashtag_number = h.hashtag_number
+		where h.hashtag_number = #{hashtagNumber}
+		order by store_date desc
+		limit
+		#{startRow}, #{rowCount}
+	</select>
+
+	<select id="selectAllByFree" resultType="StoreVO" parameterType="map">
+		select store_number, store_title, store_content, store_date,
+		store_price, store_view_cnt, store_like_cnt,
+		h.hashtag_number, m.member_number,
+		m.member_nickname
+		from tbl_member m
+		join tbl_store s on m.member_number = s.member_number
+		join tbl_hashtag h on
+		s.hashtag_number = h.hashtag_number
+		where  h.hashtag_number = #{hashtagNumber} and store_price = 0
+		order by store_date desc
+		limit
+		#{startRow}, #{rowCount}
+	</select>
+
 	<insert id="insert" parameterType="StoreDTO">
-		insert into tbl_store(store_title, store_content, member_number)
-		values(#{storeTitle}, #{storeContent}, #{memberNumber})
+		insert into
+		tbl_store(store_title, store_content, store_date, store_price,
+		store_view_cnt, hashtag_number, member_number)
+		values(#{storeTitle},
+		#{storeContent}, #{storeDate}, #{storePrice}, #{storeViewCnt},
+		#{hashtagNumber}, #{memberNumber})
 	</insert>
+<<<<<<< HEAD
+
+	<select id="getSequence" resultType="_int">
+		select last_insert_id()
+	</select>
+
+	<select id="select" parameterType="_int" resultType="StoreVO">
+		select
+		store_number, store_title, store_content, store_date, store_price,
+		store_view_cnt, hashtag_number, member_number)
+
+	</select>
+=======
 	
 	<select id="buy" parameterType="_int" resultType="BasketVO">
 		select sf.store_file_system_name , s.store_number , s.store_title , s.store_price 
@@ -24,4 +91,14 @@
 		on s.store_number = sf.store_number and s.store_number = #{storeNumber}
 	</select>
 	
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
+=======
+=======
+>>>>>>> 6427ba2c29035518344a18df98881571557e4a94
+>>>>>>> 0a22339949aa815646f55412faa0b95724ebfb94
+>>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
 </mapper>

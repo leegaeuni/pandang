@@ -22,7 +22,18 @@ public class StoreCommentFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 
 		switch(target) {
-		
+		case "/storeComment/storeCommentListOk.stc":
+			new StoreCommentListOkController().execute(req, resp);
+			break;
+		case "/storeComment/storeCommentWriteOk.stc":
+			new StoreCommentWriteOkController().execute(req, resp);
+			break;
+		case "/storeComment/storeCommentDeleteOk.stc":
+			new StoreCommentDeleteOkController().execute(req, resp);
+			break;
+		case "/storeComment/storeCommentUpdateOk.stc":
+			new StoreCommentUpdateOkController().execute(req, resp);
+			break;
 		}
 	}
 }

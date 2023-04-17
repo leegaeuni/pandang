@@ -19,6 +19,11 @@ public class MemberDAO {
 		sqlSession.insert("member.join", memberDTO);
 	}
 
+
+	  public String getMemberNickname(int memberNumber) {
+		  return sqlSession.selectOne("member.getMemberNickname", memberNumber);
+	 }
+
 	// DB에서 myPage 값 받아오기
 	public MemberVO myPageSelectAll(int memberNumber) {
 		// MemberVO타입 myPageSelectAll이 메소드 이름 int memberNumber을 받음

@@ -1,6 +1,3 @@
-/**
- * 
- */
 // @@@@@@@@@@ 선택된 카테고리만 css 부여하는 js @@@@@@@@@@@@
 $(".categori").on("click", function () {
   $(this).css("background-color", "rgb(50, 50, 50)");
@@ -198,4 +195,205 @@ $(".report-btn-color").on({
       $(this).css("color", "rgb(0, 0, 0)").data("clicked", false);
     }
   },
+});
+
+function showStore(result) {
+	$('.post-container').html('');
+		$('.pandang-pick').click();
+			for(let i=0; i<result.list.length; i++){			
+			$('.post-container').append(`<div class="post-box-container">    
+            <div class="post-img-container">
+              <div class="post-img-box-wrap">
+                <img
+                  class="post-img"
+                  src="${result.list[i].fileSystemName}"
+                  alt=""
+                />
+                <div class="post-img-back"></div>
+                <button type="button" class="like-btn">좋아요</button>
+                <div class="modal-background"></div>
+                <div class="modal-test"></div>
+              </div>
+            </div>
+             <div class="post-title-box">${result.list[i].storeTitle}</div>
+            <div class="writer-container">
+              <div class="channel-profile-box">
+                <a href="#" class="profile-img-box">
+                  <img
+                    class="profile-img"
+                    src="${result.list[i].channelFileSystemName }"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="writer-box">
+                <a href="" class="writer-name">${result.list[i].memberNickname}</a>
+              </div>
+              <font>·</font>
+              <div class="follow-btn-box">
+                <button type="button" class="follow-btn">
+                  <span class="follow">팔로우</span>
+                  <!-- 팔로우 버튼 누를 시 팔로잉 으로 떠야함 일단은 display none처리 했음 -->
+                  <img
+                    class="following"
+                    src="https://cdn.loud.kr/LOUD_IMG/main/ico-check-follow.png"
+                    alt=""
+                  />
+                  <span class="following">팔로잉</span>
+                </button>
+              </div>
+              <div class="like-wrap">
+                <img
+                  class="before-like-btn"
+                  src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+                  alt="heart"
+                />
+                <!-- 게시글에 좋아요 누를 시 하트 색이 하트로 변경됨 일단은 display none처리 했음 -->
+                <img
+                  class="after-like-btn"
+                  src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+                  alt="heart"
+                />
+                <!-- 임시 좋아요 수 -->
+                <div class="like-cnt">${result.list[i].storeLikeCount}</div>
+              </div>         
+            </div>               
+          </div>`)
+	}
+};
+
+$('.design').on('click', function(){
+	$(this).parent().children().removeClass('click');
+	$(this).addClass('click');
+	$('.pandang-pick').click();
+	$.ajax({
+		url :'/store/storeAjaxOk.st', 
+		type : 'get',
+		data : {hashtagNumber : 1},
+		dataType : 'json',
+		success : function(result){
+			showStore(result);	
+		}
+	})
+});
+
+$('.stationery-toys').on('click', function(){
+	$(this).parent().children().removeClass('click');
+	$(this).addClass('click');
+	$('.pandang-pick').click();
+	$.ajax({
+		url :'/store/storeAjaxOk.st', 
+		type : 'get',
+		data : {hashtagNumber : 2},
+		dataType : 'json',
+		success : function(result){
+			showStore(result);	
+		}
+	})
+});
+
+$('.accessories').on('click', function(){
+	$('.post-container').html('');
+	$(this).parent().children().removeClass('click');
+	$(this).addClass('click');
+	$('.pandang-pick').click();
+	$.ajax({
+		url :'/store/storeAjaxOk.st', 
+		type : 'get',
+		data : {hashtagNumber : 3},
+		dataType : 'json',
+		success : function(result){
+			showStore(result);	
+		}
+	})
+});
+
+$('.fashion').on('click', function(){
+	$(this).parent().children().removeClass('click');
+	$(this).addClass('click');
+	$('.pandang-pick').click();
+	$.ajax({
+		url :'/store/storeAjaxOk.st', 
+		type : 'get',
+		data : {hashtagNumber : 4},
+		dataType : 'json',
+		success : function(result){
+			showStore(result);	
+		}
+	})
+});
+
+$('.beauty').on('click', function(){
+	$(this).parent().children().removeClass('click');
+	$(this).addClass('click');
+	$('.pandang-pick').click();
+	$.ajax({
+		url :'/store/storeAjaxOk.st', 
+		type : 'get',
+		data : {hashtagNumber : 5},
+		dataType : 'json',
+		success : function(result){
+			showStore(result);	
+		}
+	})
+});
+
+$('.pet').on('click', function(){
+	$(this).parent().children().removeClass('click');
+	$(this).addClass('click');
+	$('.pandang-pick').click();
+	$.ajax({
+		url :'/store/storeAjaxOk.st', 
+		type : 'get',
+		data : {hashtagNumber : 6},
+		dataType : 'json',
+		success : function(result){
+			showStore(result);	
+		}
+	})
+});
+
+$('.living').on('click', function(){
+	$(this).parent().children().removeClass('click');
+	$(this).addClass('click');
+	$('.pandang-pick').click();
+	$.ajax({
+		url :'/store/storeAjaxOk.st', 
+		type : 'get',
+		data : {hashtagNumber : 7},
+		dataType : 'json',
+		success : function(result){
+			showStore(result);	
+		}
+	})
+});
+
+$('.food').on('click', function(){
+	$(this).parent().children().removeClass('click');
+	$(this).addClass('click');
+	$('.pandang-pick').click();
+	$.ajax({
+		url :'/store/storeAjaxOk.st', 
+		type : 'get',
+		data : {hashtagNumber : 8},
+		dataType : 'json',
+		success : function(result){
+			showStore(result);	
+		}
+	})
+});
+
+let currentPage = 1;
+
+$('.next').on('click', function(){
+    currentPage++;
+    $.ajax({
+        url : '/store/storeAjaxOk.st', 
+        type : 'get',
+        data : {hashtagNumber : 1, currentPage: currentPage},
+        dataType : 'json',
+        success : function(result){
+            showStore(result);	
+        }
+    });
 });
