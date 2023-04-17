@@ -33,13 +33,11 @@
 					<a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
 				</div>
 			</div>
-			<div class="search">
-				<input type="text" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
-				<a href="#">
-					<button type="button" class="material-symbols-outlined">
+			<form action="" class="search">
+				<input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
+					<button type="submit" class="material-symbols-outlined">
 						search</button>
-				</a>
-			</div>
+			</form>
 			<div class="login-container">
 				<c:choose>
 					<c:when test="${empty sessionScope.memberNumber}">
