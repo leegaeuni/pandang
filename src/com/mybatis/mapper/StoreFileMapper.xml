@@ -18,7 +18,7 @@
 		delete from tbl_store_file
 		where store_number = #{storeNumber}
 	</delete>
-	
+
 	<insert id="join" parameterType="MemberDTO">
 		insert into tbl_member
 		(member_id, member_password, member_name, member_age, member_gender,

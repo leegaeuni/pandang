@@ -36,10 +36,10 @@
 	</select>
 
 	<select id="select" resultType="MainLikeViewVO">
-		select ts.store_number, ts.store_title,
-		ts.store_view_cnt, count(tsl.store_number) as like_cnt,
-		sf.store_file_system_name, tc.channel_name, tc.channel_number,
-		ts.member_number
+		select ts.store_number, ts.store_title, ts.store_view_cnt,
+		count(tsl.store_number) as like_cnt, ts.member_number,
+		sf.store_file_system_name,
+		tc.channel_name, tc.channel_number
 		from tbl_store ts
 		left join tbl_store_like tsl
 		on ts.store_number = tsl.store_number
@@ -51,9 +51,11 @@
 		group by ts.store_number, ts.store_title, ts.store_view_cnt,
 		sf.store_file_system_name, tc.channel_name, tc.channel_number,
 		ts.member_number
-		order by ts.store_view_cnt desc
+		order by ts.store_view_cnt + like_cnt desc
+		limit 12
 	</select>
 
+	
 	<!-- <select id="select" parameterType="_int" resultType="MainDTO"> select 
 		channel_file_system_name, channel_file_original_name, channel_number from 
 		tbl_channel_file where channel_number = #{channelNumber} </select> -->
