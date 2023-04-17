@@ -70,7 +70,6 @@
 		#{storeContent}, #{storeDate}, #{storePrice}, #{storeViewCnt},
 		#{hashtagNumber}, #{memberNumber})
 	</insert>
-<<<<<<< HEAD
 
 	<select id="getSequence" resultType="_int">
 		select last_insert_id()
@@ -82,7 +81,38 @@
 		store_view_cnt, hashtag_number, member_number)
 
 	</select>
-=======
+	
+	<update id="updateViewCnt" parameterType="_int">
+		update tbl_store
+		set store_view_cnt = store_view_cnt + 1
+		where store_number=#{storeNumber}
+	</update>
+	
+	<select id="selectModal" parameterType="_int" resultType="StoreUpdateVO">
+		select j2.store_number, store_title , store_content , store_date , store_price , store_view_cnt , j2.member_number,
+				like_count, comment_count, tc.channel_number , tc.channel_name , cf.channel_file_system_name , j2.hashtag_number, th.hashtag_name 
+		from(
+			select j.store_number, store_title , store_content , store_date , store_price , store_view_cnt , j.member_number,
+				like_count, count(c.member_number) comment_count , hashtag_number
+			from (
+				select s.store_number, store_title , store_content , store_date , store_price , store_view_cnt , s.member_number, s.hashtag_number,
+					count(l.store_number) like_count
+				from tbl_store s
+				left join tbl_store_like l
+				on s.store_number = l.store_number 
+				group by s.store_number
+			)j left join tbl_store_comment c
+			on j.store_number = c.store_number 
+			group by j.store_number
+		)j2
+		join tbl_channel tc
+		on j2.store_number = #{storeNumber} and j2.member_number = tc.member_number 
+		left join tbl_channel_file cf 
+		on tc.channel_number = cf.channel_number
+		join tbl_hashtag th 
+		on j2.hashtag_number = th.hashtag_number 
+        
+	</select>
 	
 	<select id="buy" parameterType="_int" resultType="BasketVO">
 		select sf.store_file_system_name , s.store_number , s.store_title , s.store_price 
@@ -90,15 +120,5 @@
 		join tbl_store_file sf 
 		on s.store_number = sf.store_number and s.store_number = #{storeNumber}
 	</select>
-	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
-=======
-=======
->>>>>>> 6427ba2c29035518344a18df98881571557e4a94
->>>>>>> 0a22339949aa815646f55412faa0b95724ebfb94
->>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
+
 </mapper>

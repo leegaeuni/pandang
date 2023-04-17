@@ -26,6 +26,7 @@ public class MainDAO {
 	public List<MainLikeViewVO> select(){
 		return sqlSession.selectList("main.select");
 	}
+	
 
 //	public List<MainDTO> select(){
 //		return sqlSession.selectList("main.select");

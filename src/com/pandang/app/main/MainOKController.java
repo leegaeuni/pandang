@@ -28,6 +28,9 @@ public class MainOKController implements Execute{
 //		List<MainDTO> channelFile = mainDAO.select();
 		List<MainLikeViewVO> stores = mainDAO.select();
 
+//		JsonParser jsonParser = new JsonParser();
+//	    jsonParser.parseString(gson.toJson(reports));
+//	    out.print(jsonParser.parseString(gson.toJson(reports)).toString());
 		
 		
 		int channelNumber = 2;

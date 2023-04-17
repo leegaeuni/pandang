@@ -1,13 +1,17 @@
 package com.pandang.app.store.dao;
 
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Map;
+=======
+>>>>>>> work/work02
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
 
 import com.pandang.app.store.dto.StoreDTO;
+<<<<<<< HEAD
 import com.pandang.app.store.vo.StoreVO;
 
 import com.pandang.app.basket.vo.BasketVO;
@@ -15,6 +19,9 @@ import com.pandang.app.basket.vo.BasketVO;
 
 import com.pandang.app.basket.vo.BasketVO;
 
+=======
+import com.pandang.app.store.vo.StoreUpdateVO;
+>>>>>>> work/work02
 
 public class StoreDAO {
 	public SqlSession sqlSession;
@@ -80,4 +87,13 @@ public class StoreDAO {
 =======
 >>>>>>> c3f4f79f0951106e7025a7dcc0f3c7b6ad31eeb0
 	}
+	
+	public void updateViewCnt(int storeNumber) {
+		sqlSession.update("store.updateViewCnt", storeNumber);
+	}
+	
+	public StoreUpdateVO selectModal(int storeNumber) {
+		return sqlSession.selectOne("store.selectModal", storeNumber);
+	}
+
 }
