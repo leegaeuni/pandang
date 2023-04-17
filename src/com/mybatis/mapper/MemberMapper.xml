@@ -111,4 +111,12 @@
 		where m.member_number = #{memberNumber}
 	</update>
 
+	<select id="snsWrite" parameterType="_int" resultType="MemberVO">
+		select c.channel_name , f.channel_file_system_name 
+		from tbl_channel c 
+		join tbl_channel_file f 
+		on c.channel_number = f.channel_number 
+		where member_number = #{memberNumber}
+	</select>
+	
 </mapper>

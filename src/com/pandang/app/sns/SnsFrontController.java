@@ -26,7 +26,12 @@ public class SnsFrontController extends HttpServlet{
 //			req.getRequestDispatcher("/app/sns/mySns.jsp").forward(req, resp);
 			new SnsOkController().execute(req,resp);
 			break;
-			
+		case "/sns/snsWrite.sn" :
+			new SnsWriteController().execute(req,resp);
+			break;
+		case "/sns/snsWriteOk.sn" :
+			new SnsWriteOkController().execute(req,resp);
+			break;
 	
 		}
 	}
