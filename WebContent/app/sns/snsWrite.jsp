@@ -20,7 +20,9 @@
     <title>SNS 작성 페이지</title>
   </head>
   <body>
-      <div class="header-container">
+
+    <div class="header-container">
+
          <!-- 헤더 영역 시작  -->
          <div class="start-container">
             <!-- 메인페이지 이동처리 -->
@@ -34,13 +36,17 @@
                <a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
             </div>
          </div>
-         <div class="search">
+
+         <form class="search">
+
             <input type="text" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
             <a href="#">
                <button type="button" class="material-symbols-outlined">
                   search</button>
             </a>
-         </div>
+
+         </form>
+
          <div class="login-container">
             <c:choose>
                <c:when test="${empty sessionScope.memberNumber}">
