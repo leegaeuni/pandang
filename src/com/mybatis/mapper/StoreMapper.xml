@@ -109,4 +109,10 @@
 		on s.store_number = sf.store_number and s.store_number = #{storeNumber}
 	</select>
 
+	<insert id="storeWrite" parameterType="StoreDTO">
+		insert into tbl_store
+		(store_title, store_content, store_price, hashtag_number, member_number)
+		values(#{storeTitle}, #{storeContent}, #{storePrice}, #{hashtagNumber}, #{memberNumber})
+	</insert>
+	
 </mapper>

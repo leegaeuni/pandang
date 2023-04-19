@@ -33,6 +33,10 @@ public class MemberDAO {
 	}
 
 	// myPage 수정한 값 DB에 보내기
+	public void mypageEditNoPw(MemberVO memberVO) {
+		sqlSession.update("member.mypageEditNoPw", memberVO);
+	}
+	
 	public void mypageEdit(MemberVO memberVO) {
 		sqlSession.update("member.mypageEdit", memberVO);
 	}

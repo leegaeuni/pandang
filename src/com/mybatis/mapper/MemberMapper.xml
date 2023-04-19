@@ -130,6 +130,20 @@
 		where m.member_number = #{memberNumber}
 	</update>
 
+	<update id="mypageEditNoPw" parameterType="MemberVO">
+		update tbl_member m join tbl_channel c 
+		on m.member_number = c.member_number
+		set 
+		c.channel_name = #{channelName},
+		c.channel_comment = #{channelComment},
+		m.member_nickname = #{memberNickname},
+		m.member_phone_number = #{memberPhoneNumber},
+		m.member_address = #{memberAddress},
+		m.member_address_detail = #{memberAddressDetail},
+		m.member_zone_code = #{memberZoneCode}
+		where m.member_number = #{memberNumber}
+	</update>
+
 
 	<select id="snsWrite" parameterType="_int" resultType="MemberVO">
 		select c.channel_name , f.channel_file_system_name 
