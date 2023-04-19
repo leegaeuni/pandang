@@ -26,6 +26,10 @@ public class StoreDAO {
 		return sqlSession.selectList("store.selectAll", pageMap);
 	}
 	
+	public List<StoreVO> selectAllByFree(Map<String, Integer> pageMap) {
+		return sqlSession.selectList("store.selectAllByFree", pageMap);
+	}
+	
 	public int getTotal() {
 		return sqlSession.selectOne("store.getTotal");
 	}
