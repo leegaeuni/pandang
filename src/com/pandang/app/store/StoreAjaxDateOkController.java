@@ -34,7 +34,7 @@ public class StoreAjaxDateOkController implements Execute {
 		pageMap.put("startRow", startRow);
 		pageMap.put("hashtagNumber", Integer.parseInt(req.getParameter("hashtagNumber")));
 		
-		List<StoreVO> stores = storeDAO.selectAll(pageMap);
+		List<StoreVO> stores = storeDAO.selectAllByDate(pageMap);
 		
 		Gson gson = new Gson();
 	      JsonArray storeList = new JsonArray();

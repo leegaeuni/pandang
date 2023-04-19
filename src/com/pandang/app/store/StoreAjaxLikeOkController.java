@@ -34,7 +34,7 @@ public class StoreAjaxLikeOkController implements Execute {
 		pageMap.put("startRow", startRow);
 		pageMap.put("hashtagNumber", Integer.parseInt(req.getParameter("hashtagNumber")));
 		
-		List<StoreVO> stores = storeDAO.selectAll(pageMap);
+		List<StoreVO> stores = storeDAO.selectAllByLike(pageMap);
 		
 		Gson gson = new Gson();
 	      JsonArray storeList = new JsonArray();

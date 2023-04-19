@@ -34,7 +34,7 @@ public class StoreAjaxFreeOkController implements Execute {
 		pageMap.put("startRow", startRow);
 		pageMap.put("hashtagNumber", Integer.parseInt(req.getParameter("hashtagNumber")));
 		
-		List<StoreVO> stores = storeDAO.selectAll(pageMap);
+		List<StoreVO> stores = storeDAO.selectAllByFree(pageMap);
 		
 		Gson gson = new Gson();
 	      JsonArray storeList = new JsonArray();
