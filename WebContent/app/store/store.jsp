@@ -487,7 +487,7 @@
                   alt="heart"
                 />
                 <!-- 임시 좋아요 수 -->
-                <div class="like-cnt">${store.getStoreLikeCount()}</div>
+                <div class="like-cnt">0</div>
               </div>         
             </div>               
           </div>
