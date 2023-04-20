@@ -4,62 +4,87 @@
 <mapper namespace="store">
 	<select id="selectAll" resultType="StoreVO" parameterType="map">
 		select store_number, store_title, store_content, store_date,
-		store_price, store_view_cnt,
-		h.hashtag_number, m.member_number,
-		m.member_nickname
-		from tbl_member m
-		join tbl_store s on m.member_number = s.member_number
-		join tbl_hashtag h on
-		s.hashtag_number = h.hashtag_number
-		where h.hashtag_number = #{hashtagNumber}
-		order by store_view_cnt
-		limit
-		#{startRow}, #{rowCount}
+      store_price, store_view_cnt, (select count(store_number) from tbl_store_like  where store_number =s.store_number) store_like_cnt,
+      h.hashtag_number, m.member_number,
+      m.member_nickname, (select store_file_system_name 
+         from tbl_store_file sf 
+         where store_number =s.store_number  
+         limit 0,1) store_file_system_name, channel_file_system_name 
+      from tbl_member m
+      join tbl_channel c on m.member_number = c.member_number 
+      join tbl_channel_file cf on cf.channel_number = c.channel_number 
+      join tbl_store s on m.member_number = s.member_number
+      join tbl_hashtag h on
+      s.hashtag_number = h.hashtag_number
+      where h.hashtag_number = #{hashtagNumber}
+      order by store_view_cnt + store_like_cnt desc
+     	 limit
+	  #{startRow}, #{rowCount}
 	</select>
 	
 	<select id="selectAllByLike" resultType="StoreVO" parameterType="map">
-		select store_number, store_title, store_content, store_date,
-		store_price, store_view_cnt,
-		h.hashtag_number, m.member_number,
-		m.member_nickname
-		from tbl_member m
-		join tbl_store s on m.member_number = s.member_number
-		join tbl_hashtag h on
-		s.hashtag_number = h.hashtag_number
-		where  h.hashtag_number = #{hashtagNumber}
-		order by store_date desc
-		limit
-		#{startRow}, #{rowCount}
+				select store_number, store_title, store_content, store_date,
+      store_price, store_view_cnt, (select count(store_number) from tbl_store_like  where store_number =s.store_number) store_like_cnt,
+      h.hashtag_number, m.member_number,
+      m.member_nickname, (select store_file_system_name 
+         from tbl_store_file sf 
+         where store_number =s.store_number  
+         limit 0,1) store_file_system_name, channel_file_system_name 
+      from tbl_member m
+      join tbl_channel c on m.member_number = c.member_number 
+      join tbl_channel_file cf on cf.channel_number = c.channel_number 
+      join tbl_store s on m.member_number = s.member_number
+      join tbl_hashtag h on
+      s.hashtag_number = h.hashtag_number
+      where h.hashtag_number = #{hashtagNumber}
+      order by store_like_cnt desc
+     	 limit
+	  #{startRow}, #{rowCount}
 	</select>
 	
 	<select id="selectAllByDate" resultType="StoreVO" parameterType="map">
-		select store_number, store_title, store_content, store_date,
-		store_price, store_view_cnt,
-		h.hashtag_number, m.member_number,
-		m.member_nickname
-		from tbl_member m
-		join tbl_store s on m.member_number = s.member_number
-		join tbl_hashtag h on
-		s.hashtag_number = h.hashtag_number
-		where  h.hashtag_number = #{hashtagNumber}
-		order by store_date desc
-		limit
-		#{startRow}, #{rowCount}
+				select store_number, store_title, store_content, store_date,
+      store_price, store_view_cnt, (select count(store_number) from tbl_store_like  where store_number =s.store_number) store_like_cnt,
+      h.hashtag_number, m.member_number,
+      m.member_nickname, (select store_file_system_name 
+         from tbl_store_file sf 
+         where store_number =s.store_number  
+         limit 0,1) store_file_system_name, channel_file_system_name 
+      from tbl_member m
+      join tbl_channel c on m.member_number = c.member_number 
+      join tbl_channel_file cf on cf.channel_number = c.channel_number 
+      join tbl_store s on m.member_number = s.member_number
+      join tbl_hashtag h on
+      s.hashtag_number = h.hashtag_number
+      where h.hashtag_number = #{hashtagNumber}
+      order by store_date desc
+     	 limit
+	  #{startRow}, #{rowCount}
 	</select>
 
 	<select id="selectAllByFree" resultType="StoreVO" parameterType="map">
-		select store_number, store_title, store_content, store_date,
-		store_price, store_view_cnt,
-		h.hashtag_number, m.member_number,
-		m.member_nickname
-		from tbl_member m
-		join tbl_store s on m.member_number = s.member_number
-		join tbl_hashtag h on
-		s.hashtag_number = h.hashtag_number
-		where  h.hashtag_number = #{hashtagNumber} and store_price = 0
-		order by store_date desc
-		limit
-		#{startRow}, #{rowCount}
+				select store_number, store_title, store_content, store_date,
+      store_price, store_view_cnt, (select count(store_number) from tbl_store_like  where store_number =s.store_number) store_like_cnt,
+      h.hashtag_number, m.member_number,
+      m.member_nickname, (select store_file_system_name 
+         from tbl_store_file sf 
+         where store_number =s.store_number  
+         limit 0,1) store_file_system_name, channel_file_system_name 
+      from tbl_member m
+      join tbl_channel c on m.member_number = c.member_number 
+      join tbl_channel_file cf on cf.channel_number = c.channel_number 
+      join tbl_store s on m.member_number = s.member_number
+      join tbl_hashtag h on
+      s.hashtag_number = h.hashtag_number
+      where h.hashtag_number = #{hashtagNumber} and store_price = 0
+      order by store_date desc
+     	 limit
+	  #{startRow}, #{rowCount}
+	</select>
+
+	<select id="getTotal" resultType="_int" parameterType="_int">
+		select count(store_number) from tbl_store
+		where hashtag_number = #{hashtagNumber}
 	</select>
 
 	<insert id="insert" parameterType="StoreDTO">

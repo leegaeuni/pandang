@@ -38,8 +38,8 @@ public class StoreDAO {
 		return sqlSession.selectList("store.selectAllByDate", pageMap);
 	}
 	
-	public int getTotal() {
-		return sqlSession.selectOne("store.getTotal");
+	public int getTotal(int hashtagNumber) {
+		return sqlSession.selectOne("store.getTotal", hashtagNumber);
 	}
 
 	public void insert(StoreDTO storeDTO) {

@@ -200,37 +200,11 @@ $(".report-btn-color").on({
 //처음 페이지 설정
 $(document).ready(function(){
     $('.pandang-pick').click();
- 	var currentPage = 1;
-	const maxPage = 5;
-
-function design() {
-  $.ajax({
-    url :'/store/storeAjaxOk.st', 
-    type : 'get',
-    data : {hashtagNumber : 1, currentPage: currentPage},
-    dataType : 'json',
-    success : function(result){
-      showStore(result);
-    }
-  });
-}
-
- $('.next').on('click', function(){
-  if (currentPage < maxPage) {
-    currentPage++;
-    design();
-  }
-});
-
-$('.prev').on('click', function(){
-  if (currentPage > 1) {
-    currentPage--;
-    design();
-  }
-});
+    $('.prev').prop('disabled', true);
 });
 
 function showStore(result) {
+	console.log(result);
 	$('.post-container').html('');
 			for(let i=0; i<result.list.length; i++){			
 			$('.post-container').append(`<div class="post-box-container">    
@@ -287,15 +261,15 @@ function showStore(result) {
                   alt="heart"
                 />
                 <!-- 임시 좋아요 수 -->
-                <div class="like-cnt">0</div>
+                <div class="like-cnt">${result.list[i].storeLikeCnt}</div>
               </div>         
             </div>               
           </div>`)
 	}
 };
 
-var currentPage = 1;
-const maxPage = 5;
+let currentPage = 1;
+let maxPage = tempRealEnd;
 var url = '/store/storeAjaxOk.st';
 var data = {hashtagNumber: 1, currentPage: currentPage};
 
@@ -307,6 +281,7 @@ function categori() {
     dataType: 'json',
     success: function(result) {
       showStore(result);
+		maxPage = result.realEndPage;
     }
   });
 }
@@ -316,6 +291,7 @@ $('.design').on('click', function() {
   $(this).addClass('click');
   $('.pandang-pick').click();
   currentPage = 1;
+	data.currentPage=1;
   url = '/store/storeAjaxOk.st';
   data.hashtagNumber = 1;
   categori();
@@ -326,6 +302,7 @@ $('.stationery-toys').on('click', function() {
   $(this).addClass('click');
   $('.pandang-pick').click();
   currentPage = 1;
+	data.currentPage=1;
   data.hashtagNumber = 2;
   categori();
 });
@@ -335,6 +312,7 @@ $('.accessories').on('click', function() {
   $(this).addClass('click');
   $('.pandang-pick').click();
   currentPage = 1;
+	data.currentPage=1;
   url = '/store/storeAjaxOk.st';
   data.hashtagNumber = 3;
   categori();
@@ -345,6 +323,7 @@ $('.fashion').on('click', function() {
   $(this).addClass('click');
   $('.pandang-pick').click();
   currentPage = 1;
+	data.currentPage=1;
   url = '/store/storeAjaxOk.st'; 
   data.hashtagNumber = 4; 
   categori();
@@ -355,6 +334,7 @@ $('.beauty').on('click', function() {
   $(this).addClass('click');
   $('.pandang-pick').click();
   currentPage = 1;
+	data.currentPage=1;
   url = '/store/storeAjaxOk.st'; 
   data.hashtagNumber = 5;
   categori();
@@ -365,6 +345,7 @@ $('.pet').on('click', function() {
   $(this).addClass('click');
   $('.pandang-pick').click();
   currentPage = 1;
+	data.currentPage=1;
   url = '/store/storeAjaxOk.st';
   data.hashtagNumber = 6;
   categori();
@@ -375,6 +356,7 @@ $('.living').on('click', function() {
   $(this).addClass('click');
   $('.pandang-pick').click();
   currentPage = 1;
+	data.currentPage=1;
   url = '/store/storeAjaxOk.st';
   data.hashtagNumber = 7;
   categori();
@@ -385,6 +367,7 @@ $('.food').on('click', function() {
   $(this).addClass('click');
   $('.pandang-pick').click();
   currentPage = 1;
+  data.currentPage=1;
   url = '/store/storeAjaxOk.st';
   data.hashtagNumber = 8;
   categori();
@@ -396,6 +379,7 @@ $('.pandang-pick').on('click', function() {
     $(this).addClass('click');
     url = '/store/storeAjaxOk.st';
     currentPage = 1;
+	data.currentPage=1;
     categori();
   }
 });
@@ -406,6 +390,7 @@ $('.recommand').on('click', function() {
     $(this).addClass('click');
     url = '/store/storeAjaxLikeOk.st';
     currentPage = 1;
+	data.currentPage=1;
     categori();
   }
 });
@@ -416,6 +401,7 @@ $('.new').on('click', function() {
     $(this).addClass('click');
     url = '/store/storeAjaxDateOk.st';
     currentPage = 1;
+	data.currentPage=1;
     categori();
   }
 });
@@ -426,6 +412,7 @@ $('.free').on('click', function() {
     $(this).addClass('click');
     url = '/store/storeAjaxFreeOk.st';
     currentPage = 1;
+	data.currentPage=1;
     categori();
   }
 });
@@ -433,14 +420,31 @@ $('.free').on('click', function() {
 $('.next').on('click', function() {
   if (currentPage < maxPage) {
     currentPage++;
+	data.currentPage++;
+console.log(data)
     categori();
   }
+  if (currentPage == maxPage) {
+    $(this).prop('disabled', true);
+  }
+  if (currentPage > 1) {
+    $('.prev').prop('disabled', false);
+  }
+
+  console.log(currentPage)
 });
 
 $('.prev').on('click', function(){
   if (currentPage > 1) {
     currentPage--;
+	data.currentPage--;
     categori();
+  }
+  if (currentPage == 1) {
+    $(this).prop('disabled', true);
+  }
+  if (currentPage < maxPage) {
+    $('.next').prop('disabled', false);
   }
 });
 

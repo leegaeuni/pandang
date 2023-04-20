@@ -26,13 +26,19 @@ public class StoreAjaxLikeOkController implements Execute {
 		StoreDAO storeDAO = new StoreDAO();
 		StoreDTO storeDTO = new StoreDTO();
 		int rowCount = 12;
-		String temp = req.getParameter("page");
+		int total = storeDAO.getTotal(Integer.parseInt(req.getParameter("hashtagNumber")));
+		String temp = req.getParameter("currentPage");
 		int page = temp == null ? 1 : Integer.valueOf(temp);
 		int startRow = (page-1)*rowCount;
-		Map<String, Integer> pageMap = new HashMap();
+		int realEndPage = (int)Math.ceil(total / (double)rowCount);
+		Map<String, Integer> pageMap = new HashMap<>();
 		pageMap.put("rowCount", rowCount);
 		pageMap.put("startRow", startRow);
 		pageMap.put("hashtagNumber", Integer.parseInt(req.getParameter("hashtagNumber")));
+		
+		System.out.println("total : " + total);
+		System.out.println("page : " + temp);
+		System.out.println(pageMap);
 		
 		List<StoreVO> stores = storeDAO.selectAllByLike(pageMap);
 		
@@ -48,6 +54,7 @@ public class StoreAjaxLikeOkController implements Execute {
 	      JsonObject result = new JsonObject();
 	      result.add("list", JsonParser.parseString(storeList.toString()));
 	      result.addProperty("page", page);
+	      result.addProperty("realEndPage", realEndPage);
 	      
 	      resp.setContentType("application/json; charset=utf-8");
 	      PrintWriter out = resp.getWriter();
