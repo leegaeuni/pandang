@@ -447,4 +447,3 @@ $('.prev').on('click', function(){
     $('.next').prop('disabled', false);
   }
 });
-

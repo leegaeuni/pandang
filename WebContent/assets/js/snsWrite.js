@@ -5,7 +5,6 @@ let src = null;
 let files = null;
 $tmpInput.on("change", function () {
   files = this.files;
-  console.log(files);
   fileLength = files.length;
   $(".img-cnt-container").html("");
 
