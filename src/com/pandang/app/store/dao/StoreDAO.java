@@ -75,4 +75,12 @@ public class StoreDAO {
 	public void storeWrite(StoreDTO storeDTO) {
 		sqlSession.insert("store.storeWrite", storeDTO);
 	}
+	
+	public List<StoreVO> search(Map<String, Object> map) {
+		return sqlSession.selectList("store.search", map);
+	}
+	
+	public int searchGetTotal(String searchInput) {
+		return sqlSession.selectOne("store.searchGetTotal", searchInput);
+	}
 }
