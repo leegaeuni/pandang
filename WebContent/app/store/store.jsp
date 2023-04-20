@@ -487,7 +487,7 @@
                   alt="heart"
                 />
                 <!-- 임시 좋아요 수 -->
-                <div class="like-cnt">${store.getStoreLikeCnt()}</div>
+                <div class="like-cnt">${store.getStoreLikeCnt() }</div>
               </div>         
             </div>               
           </div>
@@ -525,6 +525,9 @@
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+		let tempRealEnd = '${realEndPage}';    
+    </script>
     <script src="${pageContext.request.contextPath}/assets/js/store.js"></script>
   </body>
 </html>

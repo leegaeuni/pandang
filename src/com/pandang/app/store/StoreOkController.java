@@ -21,9 +21,11 @@ public class StoreOkController implements Execute {
 		StoreDAO storeDAO = new StoreDAO();
 		StoreDTO storeDTO = new StoreDTO();
 		int rowCount = 12;
+		int total = storeDAO.getTotal(1);
 		String temp = req.getParameter("page");
 		int page = temp == null ? 1 : Integer.valueOf(temp);
 		int startRow = (page-1)*rowCount;
+		int realEndPage = (int)Math.ceil(total / (double)rowCount);
 		Map<String, Integer> pageMap = new HashMap();
 		pageMap.put("rowCount", rowCount);
 		pageMap.put("startRow", startRow);
@@ -32,6 +34,7 @@ public class StoreOkController implements Execute {
 		List<StoreVO> stores = storeDAO.selectAll(pageMap);
 		
 		req.setAttribute("storeList", stores);
+		req.setAttribute("realEndPage", realEndPage);
 
 		
 		req.getRequestDispatcher("/app/store/store.jsp").forward(req, resp);
