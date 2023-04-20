@@ -198,10 +198,11 @@ $(".report-btn-color").on({
 });
 
 //처음 페이지 설정
-$(document).ready(function(){
+/*$(document).ready(function(){
     $('.pandang-pick').click();
  	var currentPage = 1;
 	const maxPage = 5;
+};*/
 
 function design() {
   $.ajax({
@@ -216,7 +217,7 @@ function design() {
   });
 }
 
- $('.next').on('click', function(){
+$('.next').on('click', function(){
   if (currentPage < maxPage) {
     currentPage++;
     design();
@@ -228,7 +229,6 @@ $('.prev').on('click', function(){
     currentPage--;
     design();
   }
-});
 });
 
 function showStore(result) {
@@ -519,7 +519,7 @@ function living() {
       updateButtons(currentPage, maxPage);
     }
   });
-}
+};
 
 $('.living').on('click', function(){
   $(this).parent().children().removeClass('click');
@@ -554,7 +554,7 @@ function food() {
       updateButtons(currentPage, maxPage);
     }
   });
-}
+};
 
 $('.food').on('click', function(){
   $(this).parent().children().removeClass('click');
