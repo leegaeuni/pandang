@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
+import com.pandang.app.sns.file.dto.SnsFileDTO;
 import com.pandang.app.store.file.dto.StoreFileDTO;
 
 public class StoreFileDAO {
@@ -51,5 +52,8 @@ public class StoreFileDAO {
 //		return sqlSession.selectOne("storeFile.select", storeNumber);	
 //	}
 	
+	public void storeWrite(StoreFileDTO storeFileDTO) {
+		sqlSession.insert("storeFile.storeWrite", storeFileDTO);
+	}
 }
 	

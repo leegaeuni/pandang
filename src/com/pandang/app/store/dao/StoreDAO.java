@@ -10,6 +10,7 @@ import com.mybatis.config.MyBatisConfig;
 import com.pandang.app.store.dto.StoreDTO;
 import com.pandang.app.store.vo.StoreVO;
 import com.pandang.app.basket.vo.BasketVO;
+import com.pandang.app.sns.dto.SnsDTO;
 import com.pandang.app.basket.vo.BasketVO;
 import com.pandang.app.store.vo.StoreUpdateVO;
 
@@ -71,4 +72,7 @@ public class StoreDAO {
 		return sqlSession.selectOne("store.selectModal", storeNumber);
 	}
 
+	public void storeWrite(StoreDTO storeDTO) {
+		sqlSession.insert("store.storeWrite", storeDTO);
+	}
 }
