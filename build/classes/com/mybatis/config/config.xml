@@ -38,6 +38,7 @@
 		<typeAlias type="com.pandang.app.sns.vo.SnsPostVO" alias="SnsPostVO"/>
 		<typeAlias type="com.pandang.app.sns.vo.SnsStoreVO" alias="SnsStoreVO"/>
 		<typeAlias type="com.pandang.app.sns.comment.vo.SnsCommentVO" alias="SnsCommentVO"/>
+		<typeAlias type="com.pandang.app.sns.comment.vo.SnsStoreCommentVO" alias="SnsStoreCommentVO"/>
 		<typeAlias type="com.pandang.app.report.sns.dto.ReportSnsDTO" alias="ReportSnsDTO"/>
 		<typeAlias type="com.pandang.app.report.sns.vo.ReportSnsVO" alias="ReportSnsVO"/>
 		<typeAlias type="com.pandang.app.report.store.dto.ReportStoreDTO" alias="ReportStoreDTO"/>
