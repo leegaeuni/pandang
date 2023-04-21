@@ -21,6 +21,7 @@ public class SnsCommentVO {
 	private String memberNickname;
 	private String channelName;
 	private String snsCommentDate;
+	private String channelFileSystemName;
 	
 	
 	
@@ -114,21 +115,27 @@ public class SnsCommentVO {
 
 
 
+	public String getChannelFileSystemName() {
+		return channelFileSystemName;
+	}
+
+
+
+	public void setChannelFileSystemName(String channelFileSystemName) {
+		this.channelFileSystemName = channelFileSystemName;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "SnsCommentVO [snsNumber=" + snsNumber + ", snsCommentNumber=" + snsCommentNumber + ", memberNumber="
 				+ memberNumber + ", snsCommentContent=" + snsCommentContent + ", memberNickname=" + memberNickname
-				+ ", channelName=" + channelName + ", snsCommentDate=" + snsCommentDate + "]";
+				+ ", channelName=" + channelName + ", snsCommentDate=" + snsCommentDate + ", channelFileSystemName="
+				+ channelFileSystemName + "]";
 	}
 
 
-	
-
-	
-	
-	
-	
-	
 	
 	
 }

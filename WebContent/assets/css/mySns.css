@@ -214,7 +214,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  display: none;
   cursor: pointer;
 }
 
@@ -1264,6 +1263,10 @@ font {
   border-radius: 5px;
   margin: 50px;
 }
+
+.s-commentL{
+	width: 100%;
+}
 .s-comment-list {
   display: flex;
   align-items: center;
@@ -1290,6 +1293,7 @@ font {
 .s-comment-member-info {
   height: 17px;
   display: flex;
+  align-items: center;
 }
 
 .s-member-id {
@@ -1304,7 +1308,6 @@ font {
   font-size: 12px;
   line-height: 14px;
   color: rgb(124, 132, 132);
-  width: 50px;
   display: flex;
   align-items: center;
 }
@@ -1332,7 +1335,7 @@ font {
   font-size: 13px;
   line-height: 20px;
   color: rgb(44, 48, 48);
-  white-space: pre-line;
+  
 }
 #s-comment-form {
   width: 100%;
@@ -1385,7 +1388,7 @@ font {
 }
 
 .s-submit-btn-box {
-  width: 96%;
+  width: 98%;
   height: 70px;
   display: flex;
   /* -webkit-box-pack: end; */
@@ -1407,15 +1410,26 @@ font {
   cursor: pointer;
 }
 /* @@@@@ 댓글 수정 삭제 테스트 @@@@@@ */
-.s-comment-edit-delete-btn-box {
+.s-comment-edit-delete-btn-box,
+.s-edit-btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50px;
+  margin-left : 50px;
+}
+
+.s-edit-btn-box {
   display: none;
   align-items: center;
   justify-content: space-between;
   width: 50px;
+  margin-left : 50px;
 }
 
 .s-comment-edit-btn,
-.s-comment-delete-btn {
+.s-comment-delete-btn,
+.s-edit-btn {
   border: none;
   background: white;
   cursor: pointer;
@@ -1423,46 +1437,12 @@ font {
   font-size: 12px;
 }
 .s-comment-edit-btn:hover,
-.s-comment-delete-btn:hover {
+.s-comment-delete-btn:hover,
+.s-edit-btn:hover {
   color: rgb(50, 50, 50);
 }
 
-.s-comment-edit-box {
-  width: 100%;
-  height: 123px;
-  margin-top: 10px;
-  display: none;
-}
 
-#s-comment-edit {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  min-height: 120px;
-  border: 1px solid rgb(240, 245, 245);
-  border-radius: 10px;
-  font-size: 14px;
-  outline-style: none;
-}
-
-.s-edit-btn-box {
-  height: 70px;
-  display: none;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.s-edit-btn {
-  background-color: white;
-  width: 100px;
-  height: 42px;
-  border-radius: 20px;
-  font-size: 15px;
-  border-style: none;
-  border: 1px solid rgb(228, 232, 232);
-  color: rgb(44, 48, 48);
-  cursor: pointer;
-}
 
 /* @@@@@@ 댓글 영역 끝 @@@@@@@ */
 /* @@@@@@@ 모달 픽시드 버튼 @@@@@@ */
@@ -1696,7 +1676,7 @@ font {
 
 .s-report-title {
   width: 100%;
-  height: 20%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1716,6 +1696,7 @@ font {
   width: 100%;
   height: 65%;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .s-report-content textarea {
@@ -1734,10 +1715,11 @@ font {
 }
 
 .s-report-btn {
-  width: 100%;
+  width: 99%;
   height: max-content;
   display: flex;
   justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .s-report-btn button {
