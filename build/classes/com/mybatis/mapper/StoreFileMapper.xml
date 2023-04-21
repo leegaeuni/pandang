@@ -28,4 +28,10 @@
 		#{memberAddress})
 	</insert>
 
+	<insert id="storeWrite" parameterType="StoreFileDTO">
+		insert into tbl_store_file
+		(store_file_system_name, store_file_original_name, store_number)
+		values(#{storeFileSystemName}, #{storeFileOriginalName}, #{storeNumber})
+	</insert>
+	
 </mapper>

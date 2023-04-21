@@ -51,7 +51,7 @@ public class PayController implements Execute {
 		
 		// 이메일 나눠서 가져오기
 		String emailFront = emails[0];
-		String emailBack = emails[1];				
+		String emailBack = emails[1];
 		
 //		js로 보내주는데 ${emailFront}이걸로 그냥 받음
 		req.setAttribute("emailFront", emailFront);

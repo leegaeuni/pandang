@@ -25,14 +25,18 @@ public class BuyFrontController extends HttpServlet{
 
 		switch(target) {		
 		case "/buy/buyListOk.bu":
-			new BuyListOkController().execute(req, resp);			
+			new BuyListOkController().execute(req, resp);
 //			req.getRequestDispatcher("/app/buy/order.jsp").forward(req, resp);
 			break;
-			
 		case "/buy/pay.bu":
 			new PayController().execute(req, resp);
 			break;
-		
+		case "/buy/sell.bu":
+			new SellController().execute(req, resp);
+			break;
+		case "/buy/sellOk.bu":
+			new SellOkController().execute(req, resp);
+			break;
 		}
 	}
 }
