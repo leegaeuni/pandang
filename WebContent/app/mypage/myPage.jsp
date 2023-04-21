@@ -25,7 +25,7 @@
          <!-- 헤더 영역 시작  -->
          <div class="start-container">
             <!-- 메인페이지 이동처리 -->
-            <a href="${pageContext.request.contextPath}/main.main"><img
+            <a href="${pageContext.request.contextPath}/main"><img
                src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
                class="logo-img" /></a>
             <!-- 판당 페이지 이동처리 -->
@@ -85,7 +85,7 @@
               <a href="${pageContext.request.contextPath}/buy/buyListOk.bu" class="type3-button">구매내역</a>
             </div>
             <div class="type4">
-               <a href="#" class="type4-button">판매내역</a>
+               <a href="${pageContext.request.contextPath}/buy/sell.bu" class="type4-button">판매내역</a>
             </div>
           </div>
         </div>
@@ -178,7 +178,7 @@
             <div class="member-id">
               <div class="member-id-name">비밀번호 변경</div>
               <label class="id-change">
-                <input type="password" placeholder="변경할 비밀번호를 입력해주세요." class="id-put-place"  
+                <input type="password" maxlength="12" placeholder="변경할 비밀번호 12자리를 입력해주세요." class="id-put-place"  required
                 name="memberPassword" >
                 
               </label>
