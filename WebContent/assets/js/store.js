@@ -20,7 +20,7 @@ $(".categori").on("click", function () {
 });
 
 // @@@@@좋아요 버튼 누를시에 색상 변경 흰색->빨간색 빨간색->흰색@@@@@@@@@@
-$(".like-btn").on("click", function () {
+$('.post-container').on("click",".like-btn", function () {  
   if ($(this).hasClass("active")) {
     // 이미 클릭한 경우
     $(this).removeClass("active");
@@ -54,15 +54,17 @@ $(".like-btn").on("click", function () {
 });
 
 // @@@@@@ 이미지 클릭 했을 때 모달 창 띄우기 @@@@@@@@@
-$(".post-img-back").on("click", function () {
+$('.post-container').on("click", ".post-img-back", function () {
+	console.log(this);
   $(".post-modal").css("display", "flex");
 
-  $(".modal-background").css("display", "inline-block");
+$(this).closest('.post-img-box-wrap').find('.modal-background').css("display", "inline-block")
+
 });
 
 // @@@@@@@ 모달 영역 밖으로 클릭하면 모달 창 없애기 @@@@@@@
 
-$(".modal-background").on("click", function () {
+$(".post-container").on("click",'.modal-background', function () {
   $(".post-modal").css("display", "none");
 
   $(this).css("display", "none");
@@ -107,8 +109,10 @@ $(".like-btn-color").on({
   click: function () {
     if ($(this).data("clicked") !== true) {
       $(this).css("color", "rgb(255, 0, 0)").data("clicked", true);
+	  $(".heart").css("color", "rgb(255, 0, 0)");
     } else {
       $(this).css("color", "rgb(0, 0, 0)").data("clicked", false);
+	  $(".heart").css("color", "rgb(0, 0, 0)");
     }
   },
 });
@@ -344,6 +348,7 @@ function showStore(result) {
 };
 
 let currentPage = 1;
+let tempRealEnd = $('.realEndPage').value;
 let maxPage = tempRealEnd;
 var url = '/store/storeAjaxOk.st';
 var data = {hashtagNumber: 1, currentPage: currentPage};
