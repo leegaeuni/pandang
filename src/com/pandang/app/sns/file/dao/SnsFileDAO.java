@@ -1,5 +1,7 @@
 package com.pandang.app.sns.file.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
@@ -15,4 +17,6 @@ public class SnsFileDAO {
 	public void snsWrite(SnsFileDTO snsFileDTO) {
 		sqlSession.insert("snsFile.snsWrite", snsFileDTO);
 	}
+	
+	
 }
