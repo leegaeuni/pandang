@@ -36,12 +36,12 @@ public class BasketDeleteOkController implements Execute {
 		System.out.println(basketList);
 		
 		for(String str : storeNumbers) {
-			System.out.println("다시!!!@@@");
-			System.out.println("삭제되는 스토어 넘버!");
-			System.out.println(str);
-			System.out.println("숫자로는 어떻게 나오나???");
-			System.out.println(Integer.parseInt(str) );
-			System.out.println("get으로 받아오는 체크된 스토어넘버");
+			/*
+			 * System.out.println("삭제되는 스토어 넘버!");
+			 * System.out.println(str); System.out.println("숫자로는 어떻게 나오나???");
+			 * System.out.println(Integer.parseInt(str) );
+			 * System.out.println("get으로 받아오는 체크된 스토어넘버");
+			 */
 //			System.out.println(basketList.get(memberNumber).getStoreNumber());
 			
 			basketDAO.delete(Integer.parseInt(str));

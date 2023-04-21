@@ -54,7 +54,6 @@ $('input[type="checkbox"]').on('change', function() {
 		// 총 상품금액
 		let price = parseInt(tr.find(".store-price").text()); // 1개당 상품 가격
 		let quantity = parseInt(tr.find(".quantity-input").val()); // 상품 개수
-		console.log(price, quantity);
 		checkedProductTotal += price * quantity;
 		// 총 배송비
 		let post = parseInt(tr.find(".post-price").text());
@@ -68,31 +67,18 @@ $('input[type="checkbox"]').on('change', function() {
 	finalPostPay.text(checkedPostTotal);
 	finalTotalPay.text(checkedTotal);		
 });
-//@@@@@@@@@@@
-
-
-
-
-
-
-
 // @@@@@여기서부터 ajax@@@@@
 
 // 장바구니 삭제
 $('.basket-list').on('click', '.delete', function() {
-	console.log('delete버튼 클릭만 확인');
-
+	/*console.log('delete버튼 클릭만 확인');*/
 	// 여러개 삭제시 배열이므로 valArr 변수 사용해서 배열받기
 	// each(function({}) 사용해서 클릭한 val 받기
 	let valArr = [];
 	$(".store-number:checked").each(function(){
-		let val = $(this).val();
-		
+		let val = $(this).val();		
 		valArr.push(val);
 	})	;
-	
-	console.log(valArr);
-	
 	// 삭제 버튼 클릭시 해당 tr 삭제
 	$(".store-number:checked").closest("tr").remove();
 	
@@ -114,9 +100,9 @@ $('.basket-list').on('click', '.delete', function() {
 
 	});
 });
-
+// 각각 체크박스 선택
 $('.board-table').on('change', '.store-number', function(e){
-	console.log($(e.target).parent().parent().next().next().next().next().children().children().eq(1).val());
+	/*console.log($(e.target).parent().parent().next().next().next().next().children().children().eq(1).val());*/
 	if($(e.target).is(':checked')){
 		$(e.target).next().html(`<input type='hidden' name='buyCnt' value='${
 			$(e.target).parent().parent().next().next().next().next().children().children().eq(1).val()
@@ -125,11 +111,22 @@ $('.board-table').on('change', '.store-number', function(e){
 		$(e.target).next().html('');
 	}
 });
+// 전체 체크박스 선택
+/*$('.board-table').on('change', '.check-all', function(e){
+	if($('.store-number').is(':checked')){
+		$(e.target).parent().parent().parent().parent().next().children().children().children().eq(1)
+	$('.store-number').next().html(`<input type='hidden' name='buyCnt' value='${
+			$(e.target).parent().parent().next().next().next().next().children().children().eq(1).val()
+		}'>`);
+	console.log("======");
+	}
+});*/
+
 
 $('.board-table').on('click', '.plus-btn', function(e){
 	let buyCnt = $(e.target).parent().parent().parent().parent().prev().prev().prev().prev().children().children().eq(1).children().val();
 	$(e.target).parent().parent().parent().parent().prev().prev().prev().prev().children().children().eq(1).children().val(++buyCnt);
-	console.log($(e.target).parent().parent().parent().parent().prev().prev().prev().prev().children().children().eq(1).children());
+	/*console.log($(e.target).parent().parent().parent().parent().prev().prev().prev().prev().children().children().eq(1).children());*/
 });
 
 $('.board-table').on('click', '.minus-btn', function(e){
