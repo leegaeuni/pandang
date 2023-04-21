@@ -23,8 +23,11 @@ public class StoreFileFrontController extends HttpServlet{
 		System.out.println(target);
 		
 		switch(target) {
-		case "/file/download.file":
+		case "/file/download.stf":
 			new StoreDownloadController().execute(req, resp);
+			break;
+		case "/file/storeFileOk.stf":
+			new StoreFileOkController().execute(req, resp);
 			break;
 		}		
 	}

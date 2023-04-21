@@ -19,6 +19,7 @@
 </head>
 
 <body>
+	<input type="hidden" value="${sessionScope.memberNumber}" class="j-login-number">
 	<div class="all-wrap">
 		<!-- #######header####### -->
 		<div class="header-container">
@@ -167,6 +168,7 @@
             <div class="post-comment-box">
               <!-- @@@@@댓글 창@@@@@@@@@ -->
               <div class="comment-container">
+              <div class="s-commentL">
                 <div class="comment-list">
                  <!-- @@@@@@@@@ 댓글 list @@@@@@@@@@ -->
                   <a herf="#" class="comment-user-profile-shortcuts">
@@ -190,6 +192,11 @@
 
                         <button class="comment-delete-btn">삭제</button>
                       </div>
+                      <div class="s-edit-btn-box">
+                      <button type="submit" class="s-edit-btn">
+                        수정 완료
+                      </button>
+                  </div>
                     </div>
                     <div class="height-box"></div>
                     <div class="comment">
@@ -240,6 +247,7 @@
                     </div>
                   </div>
                 </div>
+                </div>
               <!--   @@@@@@@@@ 댓글 작성 form 경로 처리 해야함 @@@@@@ -->
                 <form action="" method="post" id="comment-form">
                   <div class="write-area">
@@ -269,7 +277,8 @@
                     <!-- @@@@@@@@@ 버튼 끝 @@@@@@@@@@ -->
                   </div>
                 </form>
-              </div>
+              
+             </div>
               <!-- @@@@@@@@@ 댓글창 끝 @@@@@@@@@@ -->
             </div>
             <!-- @@@@@@@@@ post 영역 끝 @@@@@@@@@@ -->
@@ -401,9 +410,8 @@
 							</c:if>
 										<div class="hot-creater-profil">
 											<div class="profil-photo" name="channel_file_system_name">
-												<a href="#"> 
-												<%-- <img src="${pageContext.request.contextPath}/assets/img/main/choigosim.jpg" /> --%>
-											<c:out value="${profil.getChannelFileSystemName()}"></c:out> 
+												<a href="${pageContext.request.contextPath}/sns/snsOk.sn?memberNumber=${profil.getMemberNumber()}"> 
+												<img src="${pageContext.request.contextPath}/upload/${profil.getChannelFileSystemName()}" />
 												</a>
 												<!-- 이미지에 a태그 걸어놓음 이미지 누르면 해당 채널로 이동할 수 있도록 -->
 											</div>

@@ -1,5 +1,6 @@
 package com.pandang.app.store.vo;
 
+//연재가 만들었음
 //store_title 
 //store_date 
 //store_number 

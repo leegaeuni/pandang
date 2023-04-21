@@ -1,6 +1,7 @@
 package com.pandang.app.store.comment.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -31,3 +32,11 @@ public class StoreCommentDAO {
 		sqlSession.update("storeComment.update", storeCommentDTO);
 	}
 }
+
+
+
+
+
+
+
+
