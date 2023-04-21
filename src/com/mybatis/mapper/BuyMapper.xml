@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="buy">
-
 	<select id="buySeleteAll" resultType="BuyVO" parameterType="map">
 		select b.member_number, b.buy_date , b.buy_number ,
 		sf.store_file_system_name ,
@@ -11,9 +10,8 @@
 		,
 		m.member_name , m.member_phone_number , m.member_email ,
 		m.member_address , m.member_address_detail , m.member_zone_code,
-		b.buy_msg
-		from tbl_buy b join tbl_store s on b.member_number =
-		#{memberNumber}
+		b.buy_msg, b.buy_name, m.member_id
+		from tbl_buy b join tbl_store s on b.member_number = #{memberNumber}
 		and b.store_number = s.store_number left outer join
 		tbl_store_file sf
 		on s.store_number = sf.store_number
@@ -30,8 +28,11 @@
 		#{memberNumber}
 	</select>
 	
-	
-	
-
+	<!-- 택배사, 운송장번호 update -->
+	<update id="updatePost" parameterType="BuyVO">
+		update tbl_buy
+		set	buy_post = #{buyPost}, buy_post_code = #{buyPostCode}, buy_status = '배송중'
+		where buy_number = #{buyNumber}
+	</update>
 
 </mapper>
