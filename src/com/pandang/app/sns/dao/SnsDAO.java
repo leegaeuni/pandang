@@ -11,6 +11,7 @@ import com.pandang.app.member.vo.MemberVO;
 
 import com.pandang.app.sns.comment.dto.SnsCommentDTO;
 import com.pandang.app.sns.comment.vo.SnsCommentVO;
+import com.pandang.app.sns.comment.vo.SnsStoreCommentVO;
 import com.pandang.app.sns.dto.SnsDTO;
 import com.pandang.app.sns.vo.SnsFollowVO;
 
@@ -49,12 +50,20 @@ public class SnsDAO {
 		return sqlSession.selectOne("sns.getTotal", memberNumber);
 	}
 	
-	public List<SnsPostVO> showSnsPost(Map<String, Integer> pageMap){
-		return sqlSession.selectList("sns.showSnsPost", pageMap);
+	public SnsPostVO showSnsPost(int snsNumber){
+		return sqlSession.selectOne("sns.showSnsPost", snsNumber);
 	}
 	
 	public void updateSnsViewCnt(int snsNumber) {
 		sqlSession.update("sns.updateSnsViewCnt", snsNumber);
+	}
+	
+	public void updateStoreViewCnt(int storeNumber) {
+		sqlSession.update("sns.updateStoreViewCnt", storeNumber);
+	}
+	
+	public int liked(Map<String,Integer> map) {
+		return sqlSession.selectOne("sns.liked", map);
 	}
 	
 	public void updateSnsLikeCnt(SnsDTO snsDTO) {
@@ -63,6 +72,10 @@ public class SnsDAO {
 	
 	public void deleteSnsLikeCnt(SnsDTO snsDTO) {
 		sqlSession.delete("sns.deleteSnsLikeCnt", snsDTO);
+	}
+	
+	public int followed(Map<String,Integer> map) {
+		return sqlSession.selectOne("sns.followed", map);
 	}
 	
 	public void updateSnsFollow(SnsFollowVO snsFollowVO) {
@@ -98,12 +111,52 @@ public class SnsDAO {
 		sqlSession.update("sns.snsCommentUpdate", snsCommentDTO);
 	}
 	
+	public List<String> snsFile(int snsNumber) {
+		return sqlSession.selectList("sns.snsFile", snsNumber);
+	}
+	
 	public int getStoreTotal(int memberNumber) {
 		return sqlSession.selectOne("sns.getStoreTotal", memberNumber);
 	}
 	
 	public List<SnsStoreVO> storePostInfo(Map<String, Integer> pageMap){
 		return sqlSession.selectList("sns.storePostInfo", pageMap);
+	}
+	
+	public SnsStoreVO showStoreInfo(int storeNumber){
+		return sqlSession.selectOne("sns.showStoreInfo", storeNumber);
+	}
+	
+	public int showStoreLikeCnt(int storeNumber) {
+		return sqlSession.selectOne("sns.showStoreLikeCnt", storeNumber);
+	}
+	
+	public int showStoreCommentCnt(int storeNumber) {
+		return sqlSession.selectOne("sns.showStoreCommentCnt", storeNumber);
+	}
+	
+	public List<SnsStoreCommentVO> snsStoreCommentList(Map<String, Integer> pageMap){
+		return sqlSession.selectList("sns.snsStoreCommentList", pageMap);
+	}
+	
+	public void snsStoreCommentInsert(SnsStoreCommentVO snsStoreCommentVO){
+		sqlSession.insert("sns.snsStoreCommentInsert", snsStoreCommentVO);
+	}
+	
+	public void snsStoreCommentDelete(int storeCommentNumber) {
+		sqlSession.delete("sns.snsStoreCommentDelete", storeCommentNumber);
+	}
+	
+	public void snsStoreCommentUpdate(SnsStoreCommentVO snsStoreCommentVO) {
+		sqlSession.update("sns.snsStoreCommentUpdate", snsStoreCommentVO);
+	}
+	
+	public void updateStoreLikeCnt(SnsStoreVO snsStoreVO) {
+		sqlSession.insert("sns.updateStoreLikeCnt", snsStoreVO);
+	}
+	
+	public void deleteStoreLikeCnt(SnsStoreVO snsStoreVO) {
+		sqlSession.delete("sns.deleteStoreLikeCnt", snsStoreVO);
 	}
 	
 	public MemberVO getSnsWriter(int memberNumber) {

@@ -9,24 +9,26 @@ import javax.servlet.http.HttpSession;
 
 import com.pandang.app.Execute;
 import com.pandang.app.sns.dao.SnsDAO;
-import com.pandang.app.sns.vo.SnsFollowVO;
+import com.pandang.app.sns.vo.SnsStoreVO;
 
-public class SnsFollowDeleteOkController implements Execute {
+public class SnsStoreLikeCommentCntOkController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		HttpSession session = req.getSession();
 		
-		SnsFollowVO snsFollowVO = new SnsFollowVO();
+//		session.setAttribute("snsNumber", 1);
 		
-		snsFollowVO.setMemberNumberFrom((Integer)session.getAttribute("memberNumber"));
-		snsFollowVO.setMemberNumberTo(Integer.parseInt(req.getParameter("memberNumberTo")));
+		SnsDAO snsDAO = new SnsDAO();
 		
-		System.out.println(snsFollowVO.toString());
 		
-		new SnsDAO().deleteSnsFollow(snsFollowVO);
+		snsDAO.showStoreCommentCnt(Integer.parseInt(req.getParameter("storeNumber")));
+		snsDAO.showStoreLikeCnt(Integer.parseInt(req.getParameter("storeNumber")));
+		
+		
+		
+
 	}
 
 }
