@@ -106,7 +106,7 @@
             <!-- 채널 컨테이너 영역 종료 -->
           </div>
         </div>
-        
+        <input type="hidden" value="${realEndPage}" class="realEndPage">
         
         
         
@@ -187,8 +187,8 @@
                     <div class="view-cnt">32</div>
                   </div>
                   <div class="post-like-cnt">
-                    <span class="material-symbols-outlined"> favorite </span>
-                    <div class="p-like-cnt">77</div>
+                    <span class="material-symbols-outlined heart"> favorite </span>
+                    <div class="p-like-cnt">${store.getStoreLikeCnt() }</div>
                   </div>
                   <div class="post-comment-cnt">
                     <span class="material-symbols-outlined"> chat_bubble </span>
@@ -253,8 +253,7 @@
                       <form action="" method="post">
                         <div class="comment-edit-box">
                           <textarea name="" id="comment-edit">
-                          <span class="comment-content"
-                          >너무 마음에 드는 작품이에요~~~~
+                          <span class="comment-content">너무 마음에 드는 작품이에요~~~~
                         </span>
                       </textarea
                           >
@@ -523,11 +522,7 @@
         </div>
         <!-- 푸터 영역 종료 -->
       </div>
-    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-		let tempRealEnd = '${realEndPage}';    
-    </script>
     <script src="${pageContext.request.contextPath}/assets/js/store.js"></script>
   </body>
 </html>
