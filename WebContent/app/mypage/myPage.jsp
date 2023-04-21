@@ -85,7 +85,7 @@
               <a href="${pageContext.request.contextPath}/buy/buyListOk.bu" class="type3-button">구매내역</a>
             </div>
             <div class="type4">
-               <a href="#" class="type4-button">판매내역</a>
+               <a href="${pageContext.request.contextPath}/buy/sell.bu" class="type4-button">판매내역</a>
             </div>
           </div>
         </div>

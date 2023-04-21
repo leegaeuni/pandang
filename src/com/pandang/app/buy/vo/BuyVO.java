@@ -6,6 +6,8 @@ b.buy_cnt , b.buy_status , b.buy_post , b.buy_post_code ,
 m.member_name , m.member_phone_number , m.member_email , 
 m.member_address , m.member_address_detail , m.member_zone_code, b.buy_msg */
 
+// DB 테이블과 일치하지 않는 데이터를 받아야할 때 VO를 사용.
+// BuyDTO에 있는 데이터에 구매내역, 판매내역에 필요한 데이터를 추가로 받아야하기 때문에 VO를 사용.
 public class BuyVO {
 	private int memberNumber;
 	private String buyDate;
@@ -26,9 +28,28 @@ public class BuyVO {
 	private String memberAddress;
 	private String memberAddressDetail;
 	private String memberZoneCode;
-	private String buyMsg; 
+	private String buyMsg;
+	// sell에 필요한 값 추가.
+	private String buyName;
+	private String memberId;
 	
 	public BuyVO() {}
+	
+	public String getBuyName() {
+		return buyName;
+	}
+	
+	public void setBuyName(String buyName) {
+		this.buyName = buyName;
+	}
+	
+	public String getMemberId() {
+		return memberId;
+	}
+	
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
 
 	public int getMemberNumber() {
 		return memberNumber;
@@ -182,6 +203,7 @@ public class BuyVO {
 				+ ", buyPost=" + buyPost + ", buyPostCode=" + buyPostCode + ", memberName=" + memberName
 				+ ", memberPhoneNumber=" + memberPhoneNumber + ", memberEmail=" + memberEmail + ", memberAddress="
 				+ memberAddress + ", memberAddressDetail=" + memberAddressDetail + ", memberZoneCode=" + memberZoneCode
-				+ ", buyMsg=" + buyMsg + "]";
+				+ ", buyMsg=" + buyMsg + ", buyName=" + buyName + ", memberId=" + memberId + "]";
 	}
+
 }
