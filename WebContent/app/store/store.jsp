@@ -29,7 +29,7 @@
          <!-- 헤더 영역 시작  -->
          <div class="start-container">
             <!-- 메인페이지 이동처리 -->
-            <a href="${pageContext.request.contextPath}/main"><img
+            <a href="${pageContext.request.contextPath}/main.main"><img
                src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
                class="logo-img" /></a>
             <!-- 판당 페이지 이동처리 -->
@@ -39,11 +39,11 @@
                <a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
             </div>
          </div>
-       <form action="" class="search">
+       <form action="${pageContext.request.contextPath}/store/storeSearch.st" class="search">
             <input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
                <button type="submit" class="material-symbols-outlined">
                   search</button>
-         </form>
+       </form>
          <div class="login-container">
             <c:choose>
                <c:when test="${empty sessionScope.memberNumber}">
@@ -438,7 +438,7 @@
               <div class="post-img-box-wrap">
                 <img
                   class="post-img"
-                  src="${store.getStoreFileSystemName()}"
+                  src="${pageContext.request.contextPath}/upload/${store.getStoreFileSystemName()}"
                   alt=""
                 />
                 <div class="post-img-back"></div>
@@ -453,7 +453,7 @@
                 <a href="#" class="profile-img-box">
                   <img
                     class="profile-img"
-                    src="${store.getChannelFileSystemName() }"
+                    src="${pageContext.request.contextPath}/upload/${store.getChannelFileSystemName() }"
                     alt=""
                   />
                 </a>
@@ -487,7 +487,7 @@
                   alt="heart"
                 />
                 <!-- 임시 좋아요 수 -->
-                <div class="like-cnt">${store.getStoreLikeCount()}</div>
+                <div class="like-cnt">${store.getStoreLikeCnt() }</div>
               </div>         
             </div>               
           </div>
@@ -525,6 +525,9 @@
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+		let tempRealEnd = '${realEndPage}';    
+    </script>
     <script src="${pageContext.request.contextPath}/assets/js/store.js"></script>
   </body>
 </html>

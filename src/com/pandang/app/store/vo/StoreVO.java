@@ -6,15 +6,16 @@ public class StoreVO {
 	private String storeContent;
 	private String storeDate;
 	private int storePrice;
-	private int storeViewCount;
-	private int storeLikeCount;
+	private int storeViewCnt;
+	private int storeLikeCnt;
 	private int hashtagNumber;
 	private int memberNumber;
 	private String memberNickname;
 	private String storeFileSystemName;
 	private String channelFileSystemName;
 
-	public StoreVO() {}
+	public StoreVO() {
+	}
 
 	public int getStoreNumber() {
 		return storeNumber;
@@ -56,20 +57,20 @@ public class StoreVO {
 		this.storePrice = storePrice;
 	}
 
-	public int getStoreViewCount() {
-		return storeViewCount;
+	public int getStoreViewCnt() {
+		return storeViewCnt;
 	}
 
-	public void setStoreViewCount(int storeViewCount) {
-		this.storeViewCount = storeViewCount;
+	public void setStoreViewCnt(int storeViewCnt) {
+		this.storeViewCnt = storeViewCnt;
 	}
 
-	public int getStoreLikeCount() {
-		return storeLikeCount;
+	public int getStoreLikeCnt() {
+		return storeLikeCnt;
 	}
 
-	public void setStoreLikeCount(int storeLikeCount) {
-		this.storeLikeCount = storeLikeCount;
+	public void setStoreLikeCnt(int storeLikeCnt) {
+		this.storeLikeCnt = storeLikeCnt;
 	}
 
 	public int getHashtagNumber() {
@@ -115,11 +116,9 @@ public class StoreVO {
 	@Override
 	public String toString() {
 		return "StoreVO [storeNumber=" + storeNumber + ", storeTitle=" + storeTitle + ", storeContent=" + storeContent
-				+ ", storeDate=" + storeDate + ", storePrice=" + storePrice + ", storeViewCount=" + storeViewCount
-				+ ", storeLikeCount=" + storeLikeCount + ", hashtagNumber=" + hashtagNumber + ", memberNumber="
+				+ ", storeDate=" + storeDate + ", storePrice=" + storePrice + ", storeViewCnt=" + storeViewCnt
+				+ ", storeLikeCnt=" + storeLikeCnt + ", hashtagNumber=" + hashtagNumber + ", memberNumber="
 				+ memberNumber + ", memberNickname=" + memberNickname + ", storeFileSystemName=" + storeFileSystemName
 				+ ", channelFileSystemName=" + channelFileSystemName + "]";
 	}
 }
-
-

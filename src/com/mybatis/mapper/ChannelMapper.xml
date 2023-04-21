@@ -24,4 +24,10 @@
 		VALUES(#{channelName}, #{memberNumber})
 	</insert>
 	
+	<select id="getChannelNumber" parameterType="_int" resultType="_int">
+		select channel_number 
+		from tbl_channel
+		where member_number = #{memberNumber}
+	</select>
+	
 </mapper>

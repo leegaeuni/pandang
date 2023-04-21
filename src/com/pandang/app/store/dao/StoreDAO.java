@@ -10,6 +10,7 @@ import com.mybatis.config.MyBatisConfig;
 import com.pandang.app.store.dto.StoreDTO;
 import com.pandang.app.store.vo.StoreVO;
 import com.pandang.app.basket.vo.BasketVO;
+import com.pandang.app.sns.dto.SnsDTO;
 import com.pandang.app.basket.vo.BasketVO;
 import com.pandang.app.store.vo.StoreUpdateVO;
 
@@ -26,8 +27,20 @@ public class StoreDAO {
 		return sqlSession.selectList("store.selectAll", pageMap);
 	}
 	
-	public int getTotal() {
-		return sqlSession.selectOne("store.getTotal");
+	public List<StoreVO> selectAllByFree(Map<String, Integer> pageMap) {
+		return sqlSession.selectList("store.selectAllByFree", pageMap);
+	}
+	
+	public List<StoreVO> selectAllByLike(Map<String, Integer> pageMap) {
+		return sqlSession.selectList("store.selectAllByLike", pageMap);
+	}
+	
+	public List<StoreVO> selectAllByDate(Map<String, Integer> pageMap) {
+		return sqlSession.selectList("store.selectAllByDate", pageMap);
+	}
+	
+	public int getTotal(int hashtagNumber) {
+		return sqlSession.selectOne("store.getTotal", hashtagNumber);
 	}
 
 	public void insert(StoreDTO storeDTO) {
@@ -67,4 +80,15 @@ public class StoreDAO {
 		return sqlSession.selectOne("store.selectModal", storeNumber);
 	}
 
+	public void storeWrite(StoreDTO storeDTO) {
+		sqlSession.insert("store.storeWrite", storeDTO);
+	}
+	
+	public List<StoreVO> search(Map<String, Object> map) {
+		return sqlSession.selectList("store.search", map);
+	}
+	
+	public int searchGetTotal(String searchInput) {
+		return sqlSession.selectOne("store.searchGetTotal", searchInput);
+	}
 }

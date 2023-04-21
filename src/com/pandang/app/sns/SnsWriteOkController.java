@@ -23,7 +23,6 @@ public class SnsWriteOkController implements Execute {
 		SnsDAO snsDAO = new SnsDAO();
 		SnsFileDTO snsFileDTO = new SnsFileDTO();
 		SnsFileDAO snsFileDAO = new SnsFileDAO();
-		req.getSession().setAttribute("memberNumber", 1);
 		
 		int snsNumber = 0;
 		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload/";

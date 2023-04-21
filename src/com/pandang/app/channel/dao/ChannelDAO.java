@@ -19,4 +19,8 @@ public class ChannelDAO {
 	public void joinChannel(ChannelDTO channelDTO) {
 		sqlSession.insert("channel.joinChannel", channelDTO);
 	}
+	
+	public int getChannelNumber(int memberNumber) {
+		return sqlSession.selectOne("channel.getChannelNumber", memberNumber);
+	}
 }

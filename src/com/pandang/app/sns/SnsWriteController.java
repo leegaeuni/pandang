@@ -16,7 +16,6 @@ public class SnsWriteController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		SnsDAO snsDAO = new SnsDAO();
 		MemberVO memberVO = new MemberVO();
-		req.getSession().setAttribute("memberNumber", 1);
 		int memberNumber = (Integer)(req.getSession().getAttribute("memberNumber"));
 		memberVO = snsDAO.getSnsWriter(memberNumber);
 		req.setAttribute("channelName", memberVO.getChannelName());

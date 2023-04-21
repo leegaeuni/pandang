@@ -197,9 +197,15 @@ $(".report-btn-color").on({
   },
 });
 
+//처음 페이지 설정
+$(document).ready(function(){
+    $('.pandang-pick').click();
+    $('.prev').prop('disabled', true);
+});
+
 function showStore(result) {
+	console.log(result);
 	$('.post-container').html('');
-		$('.pandang-pick').click();
 			for(let i=0; i<result.list.length; i++){			
 			$('.post-container').append(`<div class="post-box-container">    
             <div class="post-img-container">
@@ -255,145 +261,189 @@ function showStore(result) {
                   alt="heart"
                 />
                 <!-- 임시 좋아요 수 -->
-                <div class="like-cnt">${result.list[i].storeLikeCount}</div>
+                <div class="like-cnt">${result.list[i].storeLikeCnt}</div>
               </div>         
             </div>               
           </div>`)
 	}
 };
 
-$('.design').on('click', function(){
-	$(this).parent().children().removeClass('click');
-	$(this).addClass('click');
-	$('.pandang-pick').click();
-	$.ajax({
-		url :'/store/storeAjaxOk.st', 
-		type : 'get',
-		data : {hashtagNumber : 1},
-		dataType : 'json',
-		success : function(result){
-			showStore(result);	
-		}
-	})
-});
-
-$('.stationery-toys').on('click', function(){
-	$(this).parent().children().removeClass('click');
-	$(this).addClass('click');
-	$('.pandang-pick').click();
-	$.ajax({
-		url :'/store/storeAjaxOk.st', 
-		type : 'get',
-		data : {hashtagNumber : 2},
-		dataType : 'json',
-		success : function(result){
-			showStore(result);	
-		}
-	})
-});
-
-$('.accessories').on('click', function(){
-	$('.post-container').html('');
-	$(this).parent().children().removeClass('click');
-	$(this).addClass('click');
-	$('.pandang-pick').click();
-	$.ajax({
-		url :'/store/storeAjaxOk.st', 
-		type : 'get',
-		data : {hashtagNumber : 3},
-		dataType : 'json',
-		success : function(result){
-			showStore(result);	
-		}
-	})
-});
-
-$('.fashion').on('click', function(){
-	$(this).parent().children().removeClass('click');
-	$(this).addClass('click');
-	$('.pandang-pick').click();
-	$.ajax({
-		url :'/store/storeAjaxOk.st', 
-		type : 'get',
-		data : {hashtagNumber : 4},
-		dataType : 'json',
-		success : function(result){
-			showStore(result);	
-		}
-	})
-});
-
-$('.beauty').on('click', function(){
-	$(this).parent().children().removeClass('click');
-	$(this).addClass('click');
-	$('.pandang-pick').click();
-	$.ajax({
-		url :'/store/storeAjaxOk.st', 
-		type : 'get',
-		data : {hashtagNumber : 5},
-		dataType : 'json',
-		success : function(result){
-			showStore(result);	
-		}
-	})
-});
-
-$('.pet').on('click', function(){
-	$(this).parent().children().removeClass('click');
-	$(this).addClass('click');
-	$('.pandang-pick').click();
-	$.ajax({
-		url :'/store/storeAjaxOk.st', 
-		type : 'get',
-		data : {hashtagNumber : 6},
-		dataType : 'json',
-		success : function(result){
-			showStore(result);	
-		}
-	})
-});
-
-$('.living').on('click', function(){
-	$(this).parent().children().removeClass('click');
-	$(this).addClass('click');
-	$('.pandang-pick').click();
-	$.ajax({
-		url :'/store/storeAjaxOk.st', 
-		type : 'get',
-		data : {hashtagNumber : 7},
-		dataType : 'json',
-		success : function(result){
-			showStore(result);	
-		}
-	})
-});
-
-$('.food').on('click', function(){
-	$(this).parent().children().removeClass('click');
-	$(this).addClass('click');
-	$('.pandang-pick').click();
-	$.ajax({
-		url :'/store/storeAjaxOk.st', 
-		type : 'get',
-		data : {hashtagNumber : 8},
-		dataType : 'json',
-		success : function(result){
-			showStore(result);	
-		}
-	})
-});
-
 let currentPage = 1;
+let maxPage = tempRealEnd;
+var url = '/store/storeAjaxOk.st';
+var data = {hashtagNumber: 1, currentPage: currentPage};
 
-$('.next').on('click', function(){
+function categori() {
+  $.ajax({
+    url: url,
+    type: 'get',
+    data: data,
+    dataType: 'json',
+    success: function(result) {
+      showStore(result);
+		maxPage = result.realEndPage;
+    }
+  });
+}
+
+$('.design').on('click', function() {
+  $(this).parent().children().removeClass('click');
+  $(this).addClass('click');
+  $('.pandang-pick').click();
+  currentPage = 1;
+	data.currentPage=1;
+  url = '/store/storeAjaxOk.st';
+  data.hashtagNumber = 1;
+  categori();
+});
+
+$('.stationery-toys').on('click', function() {
+  $(this).parent().children().removeClass('click');
+  $(this).addClass('click');
+  $('.pandang-pick').click();
+  currentPage = 1;
+	data.currentPage=1;
+  data.hashtagNumber = 2;
+  categori();
+});
+
+$('.accessories').on('click', function() {
+  $(this).parent().children().removeClass('click');
+  $(this).addClass('click');
+  $('.pandang-pick').click();
+  currentPage = 1;
+	data.currentPage=1;
+  url = '/store/storeAjaxOk.st';
+  data.hashtagNumber = 3;
+  categori();
+});
+
+$('.fashion').on('click', function() {
+  $(this).parent().children().removeClass('click');
+  $(this).addClass('click');
+  $('.pandang-pick').click();
+  currentPage = 1;
+	data.currentPage=1;
+  url = '/store/storeAjaxOk.st'; 
+  data.hashtagNumber = 4; 
+  categori();
+});
+
+$('.beauty').on('click', function() {
+  $(this).parent().children().removeClass('click');
+  $(this).addClass('click');
+  $('.pandang-pick').click();
+  currentPage = 1;
+	data.currentPage=1;
+  url = '/store/storeAjaxOk.st'; 
+  data.hashtagNumber = 5;
+  categori();
+});
+
+$('.pet').on('click', function() {
+  $(this).parent().children().removeClass('click');
+  $(this).addClass('click');
+  $('.pandang-pick').click();
+  currentPage = 1;
+	data.currentPage=1;
+  url = '/store/storeAjaxOk.st';
+  data.hashtagNumber = 6;
+  categori();
+});
+
+$('.living').on('click', function() {
+  $(this).parent().children().removeClass('click');
+  $(this).addClass('click');
+  $('.pandang-pick').click();
+  currentPage = 1;
+	data.currentPage=1;
+  url = '/store/storeAjaxOk.st';
+  data.hashtagNumber = 7;
+  categori();
+});
+
+$('.food').on('click', function() {
+  $(this).parent().children().removeClass('click');
+  $(this).addClass('click');
+  $('.pandang-pick').click();
+  currentPage = 1;
+  data.currentPage=1;
+  url = '/store/storeAjaxOk.st';
+  data.hashtagNumber = 8;
+  categori();
+});
+
+$('.pandang-pick').on('click', function() {
+  if (!$(this).hasClass('click')) {
+    $(this).parent().children().removeClass('click');
+    $(this).addClass('click');
+    url = '/store/storeAjaxOk.st';
+    currentPage = 1;
+	data.currentPage=1;
+    categori();
+  }
+});
+
+$('.recommand').on('click', function() {
+  if (!$(this).hasClass('click')) {
+    $(this).parent().children().removeClass('click');
+    $(this).addClass('click');
+    url = '/store/storeAjaxLikeOk.st';
+    currentPage = 1;
+	data.currentPage=1;
+    categori();
+  }
+});
+
+$('.new').on('click', function() {
+  if (!$(this).hasClass('click')) {
+    $(this).parent().children().removeClass('click');
+    $(this).addClass('click');
+    url = '/store/storeAjaxDateOk.st';
+    currentPage = 1;
+	data.currentPage=1;
+    categori();
+  }
+});
+
+$('.free').on('click', function() {
+  if (!$(this).hasClass('click')) {
+    $(this).parent().children().removeClass('click');
+    $(this).addClass('click');
+    url = '/store/storeAjaxFreeOk.st';
+    currentPage = 1;
+	data.currentPage=1;
+    categori();
+  }
+});
+
+$('.next').on('click', function() {
+  if (currentPage < maxPage) {
     currentPage++;
-    $.ajax({
-        url : '/store/storeAjaxOk.st', 
-        type : 'get',
-        data : {hashtagNumber : 1, currentPage: currentPage},
-        dataType : 'json',
-        success : function(result){
-            showStore(result);	
-        }
-    });
+	data.currentPage++;
+console.log(data)
+    categori();
+  }
+  if (currentPage == maxPage) {
+    $(this).prop('disabled', true);
+  }
+  if (currentPage > 1) {
+    $('.prev').prop('disabled', false);
+  }
+
+  console.log(currentPage)
+});
+
+$('.prev').on('click', function(){
+  if (currentPage > 1) {
+    currentPage--;
+	data.currentPage--;
+    categori();
+  }
+  if (currentPage == 1) {
+    $(this).prop('disabled', true);
+  }
+  if (currentPage < maxPage) {
+    $('.next').prop('disabled', false);
+  }
 });
