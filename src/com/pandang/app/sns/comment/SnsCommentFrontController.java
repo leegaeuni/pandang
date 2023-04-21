@@ -40,6 +40,22 @@ public class SnsCommentFrontController extends HttpServlet{
 			new SnsCommentUpdateOkController().execute(req, resp);
 			break;
 			
+		case "/sns/snsStoreCommentOk.snc" :
+			new SnsStoreCommentOkController().execute(req, resp);
+			break;
+			
+		case "/sns/snsStoreCommentInsertOk.snc" :
+			new SnsStoreCommentInsertOkController().execute(req, resp);
+			break;
+			
+		case "/sns/snsStoreCommentDeleteOk.snc" : 
+			new SnsStoreCommentDeleteOkController().execute(req, resp);
+			break;
+			
+		case "/sns/snsStoreCommentUpdateOk.snc" :
+			new SnsStoreCommentUpdateOkController().execute(req, resp);
+			break;
+			
 		}
 	}
 }

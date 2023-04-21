@@ -62,7 +62,7 @@
 				<!-- 프로필 이미지 wrap -->
 				<div class="profile-img-box">
 					<img class="profile-img"
-						src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" />
+						src="${pageContext.request.contextPath}/upload/${snsMemberInfo.getChannelFileSystemName()}" />
 				</div>
 				<!-- 프로필 이미지 wrap 끝 -->
 			</div>
@@ -70,20 +70,27 @@
 				<!-- 멤버 이름  -->
 				<div class="member-name-box">
 					<div class="name-follow">
-					<input class="memberNumber" type="hidden" value="${snsMemberInfo.getMemberNumber()}"/> 
+					
 						<h2 class="info-name">
 							<c:out value="${snsMemberInfo.getChannelName()}"></c:out>
 						</h2>
 						<div class="follow-btn-box">
-						
-							<c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
-								
-								<button class="follow-btn">팔로우</button>
-							<button class="following-btn">
+						<c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
+							
+							<c:choose>
+							<c:when test="${ifFollowed eq 'follow'}">
+								<button class="following-btn">
 								팔로잉 
-							<span class="material-symbols-outlined"> check </span>
-							</button>
-							</c:if>
+									<span class="material-symbols-outlined"> check </span>
+								</button>
+							 </c:when>
+							 <c:otherwise>
+							
+							<button class="follow-btn">팔로우</button>
+							 
+							</c:otherwise>
+							</c:choose>
+							 </c:if>
 							
 						</div>
 					</div>
@@ -176,7 +183,7 @@
 		<div id="modal">
 			<div class="slides-wrap">
 				<ul class="slide-box">
-					<li>
+					<%--  <li>
 					<img class="modal-img" src="https://cdn-dantats.stunning.kr/prod/portfolios/440fe107-612d-4c10-b068-d4bc572d2bcb/covers/2DbVojavJ5goYbuG.600.jpg.small?q=70&t=crop&e=0x0&s=598x598" />
 					</li>
 
@@ -194,8 +201,7 @@
 
 					<li>
 					<img class="modal-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" />
-					</li>
-					
+					</li>  --%>
 				</ul>
 				
 				
@@ -215,7 +221,7 @@
 				
 					<div class="host-profile-img-box">
 						<a href="#"> 
-						<img class="host-profile-img" src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300" alt="" />
+						<img class="host-profile-img" src="/upload/${snsMemberInfo.getChannelFileSystemName()}" alt="" />
 						</a>
 					</div>
 					
@@ -230,82 +236,18 @@
 				<!-- @@@@@@ 모달 댓글 영역 @@@@@@ -->
 				<div class="comment-list">
 					<div class="host-comment-content-wrap">
-						<span class="host-comment-content">@@@@@@@@@@</span>
+						<span class="host-comment-content"></span>
 					</div>
 					<div class= "comment">
 					
-					<c:choose>
-					
-						<c:when test="${not empty comment}">	
-							
-							<c:forEach var="comment" items="${comment}">
-							
-							
-							
-									<div class= "comment-wrap">
-									<div class="comment-member-info-box">
-										<div class="comment-member-info">
-											<div class="comment-member-profile">
-												 <a href="#" class="comment-member-img"> <img
-													class="comment-profile-img"
-													src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg"
-													alt="" />
-												</a> 
-											</div>
-											<div class="comment-member-name-wrap">
-												<a href="" class="comment-member-name"> 
-												<input class="commentChannelName" type="hidden" value="${comment.getChannelName()}" />
-												<input class="snsCommentNumber" type="hidden" value="${comment.getSnsCommentNumber()}"> 
-												<c:out value="${comment.getChannelName()}"></c:out>
-												
-						
-												</a>
-											</div>
-										</div>
-										<div class="comment-option">
-
-
-											<button class="comment-edit" type="button">수정</button>
-											<button class="comment-delete" type="button">삭제</button>
-
-
-										</div>
-
-											<div class="comment-edit-option">
-												<button type="button" class="comment-modify">수정 완료
-												</button>
-											</div>
-
-										</div>
-
-
-
-									<div class="comment-content-wrap">
-										<span class="comment-content"> <c:out
-												value="${comment.getSnsCommentContent()}"></c:out>
-										</span>
-									</div>
-									<div class="comment-date">
-										<span> <c:out
-												value="${comment.getSnsCommentDate()}"></c:out>
-										</span>
-									</div>
-									
-								</div>
-								</c:forEach>
-								
-								</c:when>
-								</c:choose>
-							
-								
-							</div>	
+					</div>	
 
 								<!-- @@@@@@ 모달 댓글 영역 끝 @@@@@@ -->
 				</div>
 
 				<!-- 모달 좋아요, 게시일 -->
 				<div class="modal-like-date">
-				<!--  	<input class="snsPostNumber" type="hidden" value="${snsPostNumber}">-->
+				
 					<div class="like-wrap">
 						<img class="before-like-btn"
 							src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
@@ -313,10 +255,10 @@
 
 
 						<!-- 임시 좋아요 수 -->
-						<div class="like-cnt">21</div>
+						<div class="like-cnt"></div>
 						개
 					</div>
-					<div class="post-date">2023년 3월 28일</div>
+					<div class="post-date"></div>
 				</div>
 				
 				<div class="mini-post-content">
@@ -335,7 +277,7 @@
 						<div class="author-img-back"></div>
 						<div class="author-profile">
 							<img class="author-profile-img"
-								src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
+								src="/upload/${snsMemberInfo.getChannelFileSystemName()}"
 								alt="" />
 						</div>
 					</a>
@@ -397,8 +339,10 @@
 			
 				<div class='snsList'>
 				<input class="realEndPage" type="hidden" value="${realEndPage}">
+				
 				<c:choose>
 					<c:when test="${not empty snsPostInfo}">
+
 					
 						<c:forEach var="sns" items="${snsPostInfo}" varStatus="loopStatus">
 						
@@ -413,12 +357,16 @@
 							
 							 <c:if test="${loopStatus.index % 3 == 0}">
 								<div class="post-section"></div>
-							</c:if>   
+							</c:if>
 
-							<div class="post-part">
+
+
+								<div class="post-part">
 								<input class="snsNumber" type="hidden"
 									value="${sns.getSnsNumber()}"> 
-									<img class="post-image" src="${pageContext.request.contextPath}/assets/img/SNSPage/03.jpg" />
+									<input class="storeNumber" type="hidden"
+									value="${store.getStoreNumber()}">
+									<img class="post-image" src="/upload/${sns.getSnsFileSystemName()}" />
 								<div class="post-info">
 									<div class="post-name-box">
 										<span class="post-name"> <c:out
@@ -445,10 +393,10 @@
 									</div>
 								</div>
 							</div>
-
-						 
-						
+							
 						</c:forEach>
+						
+		
 					
 					 </c:when>
 					
@@ -456,113 +404,7 @@
 				</c:choose>
 
 				</div>
-
-
-			<!-- 	<div class="post-section"> -->
-					<%-- <div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/06.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div>
-					<div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/07.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div>
-					<div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/08.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div> --%>
-				<!-- </div>
-				<div class="post-section"> -->
-					<%-- <div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/09.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div>
-					<div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/10.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div>
-					<div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/11.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div> --%>
-			<!-- 	</div>
-				<div class="post-section"> -->
-					<%-- <div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/12.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div>
-					<div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/13.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div>
-					<div class="post-part">
-						<img class="post-image"
-							src="${pageContext.request.contextPath}/assets/img/SNSPage/14.jpg" />
-						<span class="post-info"><span
-							class="post-name">게시물 명</span> <span class="date-like"> <time
-									class="post-date" datetime="">2023년 3월 28일</time>
-								<div class="like-count">
-									♥<span>#좋아요 개수</span>
-								</div>
-						</span></span>
-					</div> --%>
-				<!-- </div> -->
+				
 			</li>
 		</ul>
 	</section>
@@ -575,24 +417,26 @@
             <a href="#" id="s-modal-img-box">
               <img
                 class="s-profile-modal-img"
-                src="https://cdn-bastani.stunning.kr/prod/users/f4852320-5cea-4a09-9b2f-7e496b710e43/avatar/ah7M8e7fB5v6Dbif.414_2unday.png.small?q=60&t=crop&s=300x300"
+                src="/upload/${snsMemberInfo.getChannelFileSystemName()}"
                 alt=""
               />
               <div class="s-modal-img-background"></div>
             </a>
           </div>
           <div class="s-profile-modal-member">
-            <a href="#">leegaeun0923</a>
+            <a href="#" class="hostChannelName">${snsMemberInfo.getChannelName()}</a>
           </div>
+          <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
           <div class="s-profile-modal-follow-btn-box">
             <button class="s-profile-modal-follow-btn" type="button">
               팔로우
             </button>
             <button class="s-profile-modal-following-btn" type="button">
-              <span class="s-material-symbols-outlined">done</span>
-              <span id="#following">팔로잉</span>
+              <span class="material-symbols-outlined">done</span>
+              <span id="#s-following">팔로잉</span>
             </button>
           </div>
+          </c:if>
         </div>
         <div class="s-report-path">
           <!-- @@@@ 신고하기  @@@@@ -->
@@ -675,6 +519,7 @@
         <div class="s-post-comment-box">
           <!-- @@@@@댓글 창@@@@@@@@@ -->
           <div class="s-comment-container">
+          <div class="s-commentL">
             <div class="s-comment-list">
               <!-- @@@@@@@@@ 댓글 list @@@@@@@@@@ -->
               <a herf="#" class="s-comment-user-profile-shortcuts">
@@ -690,42 +535,30 @@
                   <a href="#" class="s-member-id">leeegaeun0923</a>
                   <div class="s-box"></div>
                   <div class="s-comment-date">4일 전</div>
-                  <!-- @@@@ 댓글 작성자와 로그인 한사람 일치할시 보여야함 @@@ 
-                    display : flex로 변경되게 해주세요 
-                  일단은 none 처리  -->
+                 
                   <div class="s-comment-edit-delete-btn-box">
                     <button class="s-comment-edit-btn">수정</button>
 
                     <button class="s-comment-delete-btn">삭제</button>
                   </div>
-                </div>
-                <div class="s-height-box"></div>
-                <div class="s-comment">
-                  <span class="s-comment-content"
-                    >너무 마음에 드는 작품이에요~~~~
-                  </span>
-                  <!-- @@@@@@ 댓글 수정 form 경로처리 @@@@@@ -->
-                  <form action="" method="post">
-                    <div class="s-comment-edit-box">
-                      <textarea name="" id="s-comment-edit">
-                        <span class="s-comment-content"
-                        >너무 마음에 드는 작품이에요~~~~
-                      </span>
-                    </textarea
-                      >
-                    </div>
-                    <div class="s-edit-btn-box">
+                  <div class="s-edit-btn-box">
                       <button type="submit" class="s-edit-btn">
                         수정 완료
                       </button>
-                    </div>
-                  </form>
-                  <!-- 댓글 수정 form 영역 끝 -->
+                  </div>
+                </div>
+                <div class="s-height-box"></div>
+                <div class="s-comment">
+                  <span class="s-comment-content">
+                  너무 마음에 드는 작품이에요~~~~
+                  </span>
+                 
                 </div>
               </div>
               <!-- @@@@@@@@@ 댓글 리스트 끝  @@@@@@@@@@ -->
             </div>
-            <div class="s-comment-list">
+            </div>
+            <!-- <div class="s-comment-list">
               <a herf="#" class="s-comment-user-profile-shortcuts">
                 <div class="s-comment-user-profile-wrap">
                   <img
@@ -747,9 +580,9 @@
                   </span>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- @@@@@@@@@ 댓글 작성 form 경로 처리 해야함 @@@@@@ -->
-            <form action="" method="post" id="s-comment-form">
+           
               <div class="s-write-area">
                 <!-- @@@@@@@@@ 댓글 작성 공간 @@@@@@@@@@ -->
                 <div class="s-comment-profile-container">
@@ -776,7 +609,7 @@
                 </button>
                 <!-- @@@@@@@@@ 버튼 끝 @@@@@@@@@@ -->
               </div>
-            </form>
+            
           </div>
           <!-- @@@@@@@@@ 댓글창 끝 @@@@@@@@@@ -->
         </div>
@@ -790,7 +623,7 @@
               <div class="s-author-profile">
                 <img
                   class="s-author-profile-img"
-                  src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
+                  src="/upload/${snsMemberInfo.getChannelFileSystemName()}"
                   alt=""
                 />
               </div>
@@ -799,6 +632,7 @@
           </div>
         </div>
         <!-- @@@ 모달 픽시드 팔로우 버튼 내 글일시 안 보여야함 @@@ -->
+        <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
         <div class="s-post-btn-box" id="s-follow">
           <div class="s-modal-follow-btn-wrap s-btn-wrap-flex">
             <button type="button" class="s-modal-follow-btn s-btn-color">
@@ -808,6 +642,7 @@
             <span class="s-modal-btn-list">팔로우</span>
           </div>
         </div>
+        </c:if>
         <!-- @@@ 팔로우 영역 끝 @@@ -->
         <div class="s-post-btn-box" id="s-like">
           <div class="s-modal-like-btn-wrap s-btn-wrap-flex">
@@ -819,6 +654,7 @@
         </div>
         <!-- @@@ 좋아요 영역 끝 @@@ -->
         <!-- @@@ 모달 픽시드 장바구니 버튼 내 글일시 안 보여야함 @@@ -->
+        <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
         <div class="s-post-btn-box" id="s-basket">
           <div class="s-modal-basket-btn-wrap s-btn-wrap-flex">
             <button type="button" class="s-modal-btn s-btn-color">
@@ -827,8 +663,10 @@
             <span class="s-modal-btn-list">장바구니</span>
           </div>
         </div>
+        </c:if>
         <!-- @@@ 장바구니 영역 끝 @@@ -->
         <!-- @@@ 모달 픽시드 구매하기 버튼 내 글일시 안 보여야함 @@@ -->
+        <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
         <div class="s-post-btn-box" id="s-buy">
           <div class="s-modal-buy-btn-wrap s-btn-wrap-flex">
             <!-- @@@@@ 구매하기 페이지 경로 이동 처리 해야함 @@@@@ -->
@@ -840,8 +678,10 @@
             <span class="s-modal-btn-list">구매하기</span>
           </div>
         </div>
+        </c:if>
         <!-- @@@ 신고하기 영역 끝 @@@ -->
         <!-- @@@ 모달 픽시드 신고하기 버튼 내 글일시 안 보여야함 @@@ -->
+        <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
         <div class="s-post-btn-box" id="s-report">
           <div class="s-modal-report-btn-wrap s-btn-wrap-flex">
             <button type="button" class="s-modal-report-btn s-report-btn-color">
@@ -850,8 +690,10 @@
             <span class="s-modal-btn-list">신고하기</span>
           </div>
         </div>
+        </c:if>
         <!-- @@@ 수정하기 영역 끝 @@@ -->
         <!-- @@@ 모달 픽시드 수정하기 버튼 내 글일시  보여야함 @@@ -->
+        <c:if test="${sessionScope.memberNumber == snsMemberInfo.getMemberNumber()}">
         <div class="s-post-btn-box" id="s-edit">
           <div class="s-modal-edit-btn-wrap s-btn-wrap-flex">
             <button type="button" class="s-modal-edit-btn s-btn-color">
@@ -860,8 +702,10 @@
             <span class="s-modal-btn-list">수정하기</span>
           </div>
         </div>
+        </c:if>
         <!-- @@@ 삭제하기 영역 끝 @@@ -->
         <!-- @@@ 모달 픽시드 삭제하기 버튼 내 글일시  보여야함 @@@ -->
+        <c:if test="${sessionScope.memberNumber == snsMemberInfo.getMemberNumber()}">
         <div class="s-post-btn-box" id="s-delete">
           <div class="s-modal-delete-btn-wrap s-btn-wrap-flex">
             <button type="button" class="s-modal-delete-btn s-btn-color">
@@ -870,6 +714,7 @@
             <span class="s-modal-btn-list">삭제하기</span>
           </div>
         </div>
+        </c:if>
       </div>
     </div>
 
