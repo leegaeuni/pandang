@@ -36,7 +36,6 @@ public class LikeOKController implements Execute {
 		resp.setContentType("text/html; utf-8");
 		
 		int likeCount = storeLikeDAO.selectLikeCount(storeNumber);
-		System.out.println(likeCount);
 		
 		PrintWriter out = resp.getWriter();
 		out.print(likeCount);
