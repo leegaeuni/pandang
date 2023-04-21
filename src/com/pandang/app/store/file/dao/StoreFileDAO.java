@@ -19,10 +19,10 @@ public class StoreFileDAO {
 		sqlSession.insert("storeFile.insert", storeFileDTO);
 	}
 
-//	public List<StoreFileDTO> select(int storeNumber) {
-//		return sqlSession.selectList("storeFile.select", storeNumber);
-//	}
-//
+	public List<StoreFileDTO> selectList(int storeNumber) {
+		return sqlSession.selectList("storeFile.select", storeNumber);
+	}
+
 //	public void delete(int storeNumber) {
 //		sqlSession.delete("storeFile.delete", storeNumber);
 //	}

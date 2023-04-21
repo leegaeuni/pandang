@@ -74,10 +74,12 @@ public class StoreDAO {
 	
 	public void updateViewCnt(int storeNumber) {
 		sqlSession.update("store.updateViewCnt", storeNumber);
+		//연재가 만들었음
 	}
 	
 	public StoreUpdateVO selectModal(int storeNumber) {
 		return sqlSession.selectOne("store.selectModal", storeNumber);
+		//연재가 만들었음
 	}
 
 	public void storeWrite(StoreDTO storeDTO) {
