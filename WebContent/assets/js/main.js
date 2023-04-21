@@ -39,31 +39,236 @@ let modalBox = document.querySelector(".modal-box");*/
   }
 });*/
 
-
+let storeNumber = 0;
+let memberNumber = $('.j-login-number').val();
 // @@@@@@ 이미지 클릭 했을 때 모달 창 띄우기 @@@@@@@@@
 
 $('.store-wrap-sub').on('click', '.store-info', function(e){
 	$(".post-modal").css("display", "flex");
     $(".modal-background").css("display", "inline-block");
 	console.log($(e.target).parent().parent().data('storenumber'));
-	
+	storeNumber = $(e.target).parent().parent().data('storenumber');
 	$.ajax({
 		url : '/store/storeUpdateViewCntOk.st',
 		type : 'get',
-		data : {storeNumber : $(e.target).parent().parent().data('storenumber')},
+		data : {storeNumber : storeNumber},
 		dataType : 'json',
 		success : function(result){
-			console.log(result);
 			insertDataModal(result);
-			//showModal(result);
-			//closeModal(result);
+			getStoreComment();
+			getStoreFile();
+
 		}
 	});
 	
 	/*밖에다가 댓글과 게시물이미지 ajax를 만들것*/
+	
+	function getStoreComment(){
+		$.ajax({
+				url: '/storeComment/storeCommentListOk.stc',
+				type: 'get',
+				dataType: 'json',
+				data: { storeNumber: storeNumber },
+				success: function(result) {
+					showStoreComment(result);
+				},
+				error: function(a, b, c) {
+					console.log(c);
+				}
+
+			});
+	}
+	
+	function getStoreFile(){
+		$.ajax({
+			url:'/file/storeFileOk.stf',
+			type:'get',
+			dataType:'json',
+			data: {storeNumber : storeNumber},
+			success: function(result){
+				
+				let text = '';
+				
+				for(let i=0; i<result.length; i++){
+					text += `
+						<img
+			                src="/upload/${result[i].storeFileSystemName}"
+			                alt=""
+			              />
+					`;
+				}
+					
+				$('.post').append(text);
+			}
+		});
+	}
+	
+	function showStoreComment(result){
+	$('.s-commentL').html('');
+	let text = '';
+	for (let i = 0; i < result.length; i++) {
+		if (storeNumber == result[i].storeNumber && result[i].storeCommentNumber != 0) {
+			
+			text += `<div class="comment-list">
+              <!-- @@@@@@@@@ 댓글 list @@@@@@@@@@ -->
+              <a herf="#" class="comment-user-profile-shortcuts">
+                <div class="comment-user-profile-wrap">
+                  <img
+                    src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
+                    alt=""
+                  />
+                </div>
+              </a>
+              <div class="text-wrap">
+                <div class="comment-member-info">
+                  <a href="#" class="member-id">${result[i].memberNickname}</a>
+                  <div class="box"></div>
+                  <div class="comment-date">${result[i].storeCommentDate}</div>
+                  `
+
+				if(memberNumber == result[i].memberNumber){
+					text += `
+					
+					<div class="comment-edit-delete-btn-box">
+                    <button class="comment-edit-btn" data-number="${result[i].storeCommentNumber}">수정</button>
+
+                    <button class="comment-delete-btn"  data-number="${result[i].storeCommentNumber}">삭제</button>
+                  </div>
+
+					 <div class="edit-btn-box">
+                      <button type="submit" class="edit-btn" data-number="${result[i].storeCommentNumber}">
+                        수정 완료
+                      </button>
+                  </div>`
+				}
+				
+				text += `
+					</div>
+				<div class="height-box"></div>
+                <div class="comment">
+                  <span class="comment-content">
+					${result[i].storeCommentContent}
+                  </span>
+                 
+                  
+                </div>
+              </div>
+              <!-- @@@@@@@@@ 댓글 리스트 끝  @@@@@@@@@@ -->
+            </div>`;
+		}
+	}
+	$('.s-commentL').html(text);
+}
+
+/* store 모달 댓글 작성 */
+$('.comment-submit-btn').on('click', function() {
+	
+	$.ajax({
+
+		url: "/storeComment/storeCommentWriteOk.stc",
+		type: "get",
+		data: {
+			storeNumber: storeNumber,
+			memberNumber: memberNumber,
+			storeCommentContent: $('.comment-input-area').val()
+		},
+		success: function() {
+			$('.comment-input-area').val('');
+			getStoreComment();
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+	});
+
+});
+
+// store 댓글 삭제
+$('.comment-container').on('click', '.comment-delete-btn', function() {
+
+	let storeCommentNumber = $(this).data('number');
+
+	$.ajax({
+		url: "/storeComment/storeCommentDeleteOk.stc",
+		type: 'get',
+		data: { storeCommentNumber: storeCommentNumber },
+		success: function() {
+			// 댓글 갱신
+			$.ajax({
+				url: '/storeComment/storeCommentListOk.stc',
+				type: 'get',
+				dataType: 'json',
+				data: { storeNumber: storeNumber },
+				success: function(result) {
+					showStoreComment(result);
+				},
+				error: function(a, b, c) {
+					console.log(c);
+				}
+
+			});
+
+			console.log('success!!');
+		}
+	});
 });
 
 
+// store 댓글 수정
+
+$('.comment-container').on('click', '.comment-edit-btn', function() {
+
+
+	let $parent = $(this).closest('.comment-list');
+	console.log($parent);
+
+	 let $children = $parent.find('.comment-edit-delete-btn-box, .edit-btn-box');
+	console.log($children);
+
+	$children.eq(0).hide();
+	$children.eq(1).show();
+
+	let $content = $(this).closest('.comment-list').find('.comment-content');
+	console.log($content);
+
+	$content.replaceWith(`<textarea class='modify-content'> </textarea>`);
+
+});
+
+
+$('.comment-container').on('click', '.edit-btn', function() {
+	let storeCommentNumber = $(this).data('number');
+	console.log($('.modify-content').val());
+
+	$.ajax({
+		url: '/storeComment/storeCommentUpdateOk.stc',
+		type: 'get',
+		data: {
+			storeCommentNumber: storeCommentNumber,
+			storeCommentContent: $('.modify-content').val()
+		},
+		success: function() {
+			$.ajax({
+				url: '/storeComment/storeCommentListOk.stc',
+				type: 'get',
+				dataType: 'json',
+				data: { storeNumber: storeNumber },
+				success: function(result) {
+					showStoreComment(result);
+				},
+				error: function(a, b, c) {
+					console.log(c);
+				}
+
+			});
+		}
+	});
+});
+	
+});
+
+/*=================================================*/
 
 function insertDataModal(result){
 	$('.post-title').text(result.storeTitle);
