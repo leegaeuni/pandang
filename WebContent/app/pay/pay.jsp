@@ -44,6 +44,7 @@
                   search</button>
          </form>
          
+  
          <div class="login-container">
             <c:choose>
                <c:when test="${empty sessionScope.memberNumber}">

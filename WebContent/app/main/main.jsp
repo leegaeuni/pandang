@@ -402,15 +402,15 @@
 										<div class="hot-creater-profil">
 											<div class="profil-photo" name="channel_file_system_name">
 												<a href="#"> 
-												<img src="${profil.getChannelFileSystemName()}"/>
+												<%-- <img src="${pageContext.request.contextPath}/assets/img/main/choigosim.jpg" /> --%>
+											<c:out value="${profil.getChannelFileSystemName()}"></c:out> 
 												</a>
 												<!-- 이미지에 a태그 걸어놓음 이미지 누르면 해당 채널로 이동할 수 있도록 -->
 											</div>
 											<div class="profil-info">
 												<div class="profil-info-wrap">
 													<div class="profil-channel-name" name="channel_name">
-														<%-- <c:out value="${profil.getChannelName()}" /> --%>
-														      <img src="${pageContext.request.contextPath}/assets/img/main/choigosim.jpg" />
+														<c:out value="${profil.getChannelName()}" />
 													</div>
 													<div class="profil-follow-btn">
 														<button>

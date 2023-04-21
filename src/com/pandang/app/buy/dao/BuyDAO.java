@@ -15,18 +15,13 @@ public class BuyDAO {
 	public BuyDAO() {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
-	// BuyMapper에서 buySeleteAll의 resultType="BuyVO"
-	// BuyVO의 Object를 여러개 가져와야하니까 selectList 사용.
+
 	public List<BuyVO> buySeleteAll(Map<String, Integer> pageMap) {
 		return sqlSession.selectList("buy.buySeleteAll", pageMap);
 	}
 
 	public int getTotal(int memberNumber) {
 		return sqlSession.selectOne("buy.getTotal", memberNumber);
-	}
-	
-	public void updatePost(BuyVO buyVO) {
-		sqlSession.update("buy.updatePost", buyVO);
 	}
 	
 }
