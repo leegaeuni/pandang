@@ -6,8 +6,8 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
+import com.pandang.app.buy.dto.BuyDTO;
 import com.pandang.app.buy.vo.BuyVO;
-import com.pandang.app.member.dto.MemberDTO;
 
 public class BuyDAO {
 	public SqlSession sqlSession;
@@ -27,6 +27,14 @@ public class BuyDAO {
 	
 	public void updatePost(BuyVO buyVO) {
 		sqlSession.update("buy.updatePost", buyVO);
+
+	public void buyInsert(BuyDTO buyDTO) {
+		sqlSession.insert("buy.buyInsert", buyDTO);
+	}
+	
+	public void buyCancel(int buyNumber) {
+		sqlSession.update("buy.buyCancel", buyNumber);
+
 	}
 	
 }

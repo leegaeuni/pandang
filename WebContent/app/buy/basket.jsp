@@ -73,6 +73,7 @@
                 <label>
                   <input
                     type="checkbox"
+                    class = "check-all"
                     name="basket-product-all"
                     value="selectall"
                     onclick="selectAll(this)"
@@ -101,8 +102,7 @@
                     type="checkbox"
                     class="store-number"
                     name="basket-product"
-                    value="${basket.getStoreNumber() }"
-                  />
+                    value="${basket.getStoreNumber() }"/>
                   <div class='hidden'></div>
                 </label>
               </td>

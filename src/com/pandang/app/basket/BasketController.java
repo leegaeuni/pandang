@@ -25,9 +25,11 @@ public class BasketController implements Execute {
 				
 		List<BasketVO> basketList = basketDAO.selectAll(memberNumber);
 		
-		System.out.println(basketList);
-		
-		System.out.println("@@@@@@@@@");
+		/*
+		 * System.out.println(basketList);
+		 * 
+		 * System.out.println("@@@@@@@@@");
+		 */
 		
 //		jsp에 basketList 넘겨주기!
 		req.setAttribute("basketList", basketList);	
