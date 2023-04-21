@@ -37,15 +37,11 @@
             </div>
          </div>
 
-         <form class="search">
-
-            <input type="text" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
-            <a href="#">
-               <button type="button" class="material-symbols-outlined">
+         <form action="${pageContext.request.contextPath}/store/storeSearch.st" class="search">
+            <input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
+               <button type="submit" class="material-symbols-outlined">
                   search</button>
-            </a>
-
-         </form>
+       </form>
 
          <div class="login-container">
             <c:choose>
