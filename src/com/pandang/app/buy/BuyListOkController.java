@@ -22,7 +22,7 @@ public class BuyListOkController implements Execute {
 //		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		int memberNumber = 2;
 		int total = buyDAO.getTotal(memberNumber);
-		System.out.println(total);						
+		/* System.out.println(total); */					
 		String temp = req.getParameter("page");
 	      
 
@@ -40,11 +40,11 @@ public class BuyListOkController implements Execute {
       boolean next = endPage != realEndPage;
             
       
-      System.out.println(prev);
-      System.out.println(endPage);
-      System.out.println(temp);
-      System.out.println(req.getParameter("page"));
-      System.out.println(realEndPage);
+		/*
+		 * System.out.println(prev); System.out.println(endPage);
+		 * System.out.println(temp); System.out.println(req.getParameter("page"));
+		 * System.out.println(realEndPage);
+		 */
       
       
       Map<String, Integer> pageMap = new HashMap<>();
@@ -54,7 +54,7 @@ public class BuyListOkController implements Execute {
       
       List<BuyVO> buyList = buyDAO.buySeleteAll(pageMap);
       
-      System.out.println(memberNumber);
+		/* System.out.println(memberNumber); */
      
       req.setAttribute("buyList", buyList);
       req.setAttribute( "memberNumber", memberNumber);
@@ -64,7 +64,7 @@ public class BuyListOkController implements Execute {
       req.setAttribute("prev", prev);
       req.setAttribute("next", next);
       
-      System.out.println(buyList);
+		/* System.out.println(buyList); */
       
       req.getRequestDispatcher("/app/buy/order.jsp").forward(req, resp);
 
