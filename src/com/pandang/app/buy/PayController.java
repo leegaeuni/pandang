@@ -43,8 +43,10 @@ public class PayController implements Execute {
 			storeDAO.buy(Integer.parseInt(buyNumbers[i])).setBasketCnt(Integer.parseInt(buyCnts[i]));
 			payList.add(storeDAO.buy(Integer.parseInt(buyNumbers[i])));
 		}
-		System.out.println("===================");
-		System.out.println(payList.toString());
+		/*
+		 * System.out.println("===================");
+		 * System.out.println(payList.toString());
+		 */
 		
 //		String emailFront = req.getSession().getAttribute("memberEmail");	
 		
@@ -58,7 +60,7 @@ public class PayController implements Execute {
 		req.setAttribute("emailBack", emailBack);
 		req.setAttribute("payList", payList);
 		
-		System.out.println(payMember);
+		/* System.out.println(payMember); */
 
 		req.setAttribute("payMember", payMember);
 		req.getRequestDispatcher("/app/pay/pay.jsp").forward(req, resp);

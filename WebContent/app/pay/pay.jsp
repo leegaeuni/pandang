@@ -66,33 +66,8 @@
             <!-- 작은 배경화면 -->
             <div class="inner-wrap">
 
-              <!-- =============================================================== -->
-              <!-- 상품주문 내역
-              <div class="orderList">
-                상품주문 내역 이름
-                <div class="orderList-title">
-                  <h3>배송상품 주문내역</h3>
-                </div>
-                상품주문 내역 이름 끝
-                <div class="oderList-board">
-                  주문내역 창
-                  <table class="oder-board" border="1">
-                    <thead class="oder-kind">
-                      <tr class="oderList-kind">
-                        <th class="chk">
-                          <input type="checkbox" class="checkbox">
-                        </th>
-                      </tr>
-                    </thead>
-                  </table>
-                  주문내역 창 끝
-                </div>
-              </div>
-              상품주문 내역 끝 -->
-
-
                 <table class="board-table">
-                  <div class="basket-table">구매내역</div>
+                  <div class="basket-table">구매하기</div>
                   <thead>
                     <tr>
                       <th class="basket-name1">이미지</th>
@@ -106,17 +81,19 @@
                   </thead>
         
                   <tbody>
-                  
                   <c:choose>
                   	<c:when test="${not empty payList }">
+                  		<input type="hidden" value="${payList.size()}" class="list-size">
 	                  	<c:forEach var="pay" items="${payList}">
 		                    <tr>
 		                      <td class="basket-img">
-		                        <img src="${pageContext.request.contextPath}/assets/img/product/ohdungicushion.jpg" alt="" />
+	 	                        <input type="hidden" class="store-number" name="storeNumber" value="${pay.getStoreNumber() }">
+		                        <img src="${pageContext.request.contextPath}/upload/${pay.getStoreFileSystemName()}" alt="" />
 		                      </td>
 		                      <td class="title">${pay.getStoreTitle() }</td>
 		                      <td class="price">${pay.getStorePrice() }</td>
-		                      <td class="count">${pay.getBasketCnt()}</td>
+		                      
+		                      <td class="count" name="buyCnt">${pay.getBasketCnt()}</td>
 		                      <td class="price-count">${pay.getStorePrice() * pay.getBasketCnt() }</td>
 		                      <td class="delivery-price">3000</td>
 		                      <td class="total-price">${pay.getStorePrice() * pay.getBasketCnt() +3000}</td>
@@ -191,7 +168,7 @@
                           <span class="requiredDot">*</span>
                         </th>
                         <td class="who-is">
-                          <input type="text" class="who-is-put"  value="${payMember.getMemberName()}" required>
+                          <input type="text" class="who-is-put" name="buyName" value="${payMember.getMemberName()}" required>
                         </td>
                       </tr>
                       <!-- 받는 사람 끝 -->
@@ -203,15 +180,16 @@
                         </th>
                         <td class="address-put-type">
                           <input type="text" class="mail-address" placeholder="우편번호 입력" required id="zoneCode"
-                          value="${payMember.getMemberZoneCode()}"> <br>
+                           name="buyZoneCode" value="${payMember.getMemberZoneCode()}"> <br>
                           <input type="text" class="main-address" required id="addressKakao"
-                          value="${payMember.getMemberAddress()}">
+                           name="buyAddress" value="${payMember.getMemberAddress()}">
                           <span class="address-number">기본주소</span> <br>
                           <input type="text" class="sub-address" required id="addressDetail" 
-                          value="${payMember.getMemberAddressDetail()}"
-                          name="addressDetail">
+                           name="buyAddressDetail" value="${payMember.getMemberAddressDetail()}"
+                          >
+                          <!-- name="addressDetail"지움 -->
                           <span class="address-number">상세주소</span>
-                          <span class="address-number">(배송지 주소를 정확하게 기입 부탁드립니다.)</span>
+                          <span class="address-number-text">(배송지 주소를 정확하게 기입 부탁드립니다.)</span>
                         </td>
                       </tr>
                       <!-- 주소 끝 -->
@@ -234,7 +212,7 @@
                         </th>
                         <td class="cell-phone-type">
                           <input type="text" class="cell-phone-put" placeholder="숫자만 입력하세요." 
-                          value="${payMember.getMemberPhoneNumber()}"
+                           name="buyPhoneNumber" value="${payMember.getMemberPhoneNumber()}"
                           required>
                         </td>
                       </tr>
@@ -278,7 +256,7 @@
                           배송메시지
                         </th>
                         <td class="delivery-message">
-                          <textarea cols="70" class="delivery-message-area"></textarea>
+                          <textarea cols="70" class="delivery-message-area" name="buyMsg"></textarea>
                         </td>
                       </tr>
                     </tbody>
@@ -299,7 +277,7 @@
                     0
                   </span>
                   <div class="pay-button">
-                    <a href="#" class="pay-button-tag">결제하기</a>
+                    <button class="pay-button-tag" onclick="requestPay()" type="button">결제하기</button>
                   </div>
                   </div>
                   <!-- 두번째 결제 창 끝 -->
@@ -336,6 +314,11 @@
       <p>전화: +82(0)07 1111 2222-3</p>
     </div>
     <!-- 푸터 영역 종료 -->
+    <!-- 결제 api용 스크립트 -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <!-- 결제 api용 스크립트 끝! -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/pay.js"></script>
