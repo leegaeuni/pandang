@@ -21,7 +21,7 @@ public class SellOkController implements Execute {
 		buyVO.setBuyPost(req.getParameter("buyPost"));
 		buyVO.setBuyPostCode(req.getParameter("buyPostCode"));
 		
-		System.out.println(buyVO);
+//		System.out.println(buyVO);
 		
 		buyDAO.updatePost(buyVO);
 	}

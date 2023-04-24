@@ -26,13 +26,24 @@ public class SnsListOkController implements Execute {
 		
 		HttpSession session = req.getSession();
 		
+		
+		
+		if(session.getAttribute("memberNumber") == null && req.getParameter("memberNumber") == null) {
+			req.getRequestDispatcher("/app/member/login.jsp").forward(req, resp);
+			return;
+		}
+
 		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
+		if(req.getParameter("memberNumber")!=null) {
+			memberNumber = Integer.parseInt(req.getParameter("memberNumber")); 
+		}
 		
-		
+		Integer hostMemberNumber = Integer.parseInt(req.getParameter("hostMemberNumber"));
+		System.out.println(hostMemberNumber);
 		
 		SnsDAO snsDAO = new SnsDAO();
 		
-		int total = snsDAO.getTotal(memberNumber);
+		int total = snsDAO.getTotal(hostMemberNumber);
 		
 		
 //      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
@@ -71,9 +82,8 @@ public class SnsListOkController implements Execute {
 	      Map<String, Integer> pageMap = new HashMap<>();
 	      pageMap.put("startRow", startRow);
 	      pageMap.put("rowCount", rowCount);
-	      pageMap.put("memberNumber", memberNumber);
-	      
-	      System.out.println(pageMap.toString());
+	      pageMap.put("memberNumber", hostMemberNumber);
+	     
 	      
 	      List<SnsPostInfoVO> sns = snsDAO.snsPostInfo(pageMap);
 	     

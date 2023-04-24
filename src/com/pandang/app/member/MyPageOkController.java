@@ -19,10 +19,9 @@ public class MyPageOkController implements Execute {
 //		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 //		로그인 안 해서 memberNumber을 받을 수 없음 따라서 DB에서 바로 접근을 위해 int memberNumber = 2로 임의로 설정함
 		HttpSession session = req.getSession();
-		MemberVO myPage = memberDAO.myPageSelectAll((Integer)session.getAttribute("memberNumber"));
+		MemberVO myPage = memberDAO.myPageSelectAll((Integer) session.getAttribute("memberNumber"));
 		// memberDAO의 memberNumber만 받아옴
-		
-		
+
 		req.setAttribute("myPage", myPage);
 		req.getRequestDispatcher("/app/mypage/myPage.jsp").forward(req, resp);
 	}

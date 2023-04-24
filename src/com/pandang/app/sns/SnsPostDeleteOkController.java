@@ -19,6 +19,7 @@ public class SnsPostDeleteOkController implements Execute{
 		
 		snsDAO.deleteSnsLikeFromHost(Integer.parseInt(req.getParameter("snsNumber")));
 		snsDAO.deleteSnsCommentFromHost(Integer.parseInt(req.getParameter("snsNumber")));
+		snsDAO.deleteSnsFileFromHost(Integer.parseInt(req.getParameter("snsNumber")));
 		snsDAO.deleteSnsPost(Integer.parseInt(req.getParameter("snsNumber")));
 		
 	}

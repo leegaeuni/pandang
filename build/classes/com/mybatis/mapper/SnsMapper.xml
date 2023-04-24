@@ -29,12 +29,14 @@
 		(select count(*) from tbl_follow where member_number_to = m.member_number) as
 		to_count,
 		count(distinct s.sns_number) as sns_count,
-		c.channel_comment
+		c.channel_comment,
+		tcf.channel_file_system_name 
 		from
 		tbl_member m
 		left join tbl_follow f on m.member_number = f.member_number_from
 		left join tbl_sns s on m.member_number = s.member_number
 		left join tbl_channel c on m.member_number = c.member_number
+		left join tbl_channel_file tcf on c.channel_number =tcf.channel_number 
 		where
 		m.member_number = #{memberNumber}
 		group by
@@ -43,14 +45,18 @@
 		c.channel_name ,
 		from_count,
 		to_count,
-		channel_comment
+		channel_comment,
+		tcf.channel_file_system_name 
 	</select>
 	
 	
 	<!-- post hover시에 보이는 정보들 -->
 	<select id="snsPostInfo" resultType="SnsPostInfoVO" parameterType="map">
     select ts.sns_number, ts.sns_title as snsTitle, ts.sns_date as snsDate, ts.sns_view_cnt as snsViewCnt,
-    count(tsl.sns_number) as likeCnt
+    count(tsl.sns_number) as likeCnt,
+  	 (select sns_file_system_name  from tbl_sns_file tsf
+  	 where sns_number= ts.sns_number
+  	 limit 0, 1) sns_file_system_name 
     from tbl_sns ts
     left join tbl_sns_like tsl
     on ts.sns_number = tsl.sns_number
@@ -73,7 +79,19 @@
 		where sns_number = #{snsNumber}
 	</update>
 	
+	<update id="updateStoreViewCnt" parameterType="_int">
+		update tbl_store
+		set store_view_cnt = store_view_cnt + 1
+		where store_number = #{storeNumber}
+	</update>
+	
 	<!-- 좋아요 업데이트 -->
+	<select id="liked" parameterType="map" resultType="_int">
+		select count(sns_number) from tbl_sns_like 
+ 		where sns_number = #{snsNumber} and member_number = #{memberNumber}
+	</select>
+	
+	
 	<insert id="updateSnsLikeCnt" parameterType="SnsDTO">
 		insert into tbl_sns_like
 		(sns_number, member_number)
@@ -86,6 +104,11 @@
 	</delete>
 	
 	<!-- 팔로우 업데이트 -->
+	<select id="followed" parameterType="map" resultType="_int">
+		select count(member_number_from) from tbl_follow
+ 		where member_number_from = #{memberNumberFrom} and member_number_to = #{memberNumberTo}
+	</select>
+	
 	<insert id="updateSnsFollow" parameterType="SnsFollowVO">
 		insert into tbl_follow
 		(member_number_from, member_number_to)
@@ -112,19 +135,21 @@
 		delete from tbl_sns_comment
 		where sns_number = #{snsNumber}
 	</delete>
+	
+	<delete id="deleteSnsFileFromHost" parameterType="_int">
+		delete from tbl_sns_file 
+		where sns_number = #{snsNumber}
+	</delete>
 
 	
 	<!-- 게시글 불러오기 -->
 	<select id="showSnsPost" parameterType="map" resultType="SnsPostVO">
 	select ts.sns_number , ts.sns_title , ts.sns_content , sns_date,
 	count(tsl.sns_number) as like_cnt,
-	tsf.sns_file_system_name ,
 	tc.channel_name ,
 	tcf.channel_file_system_name ,
 	ts.member_number
 	from tbl_sns ts
-	left join tbl_sns_file tsf
-	on ts.sns_number = tsf.sns_number
 	left join tbl_sns_like tsl
 	on ts.sns_number = tsl.sns_number
 	left join tbl_member tm
@@ -134,7 +159,7 @@
 	left join tbl_channel_file tcf
 	on tc.channel_number = tcf.channel_number
 	where ts.sns_number = #{snsNumber}
-	group by tsf.sns_file_system_name,
+	group by 
 	tc.channel_name ,
 	tcf.channel_file_system_name,
 	ts.sns_number
@@ -146,13 +171,16 @@
 		resultType="SnsCommentVO">
 		select ts.sns_number , tsc.sns_comment_number , tsc.sns_comment_content ,
 		tm.member_nickname , tc.channel_name  ,tsc.member_number ,
-		tsc.sns_comment_date
+		tsc.sns_comment_date,
+		tcf.channel_file_system_name 
 		from tbl_sns ts left join tbl_sns_comment tsc
 		on ts.sns_number = tsc.sns_number
 		left join tbl_member tm
 		on tsc.member_number = tm.member_number
 		left join tbl_channel tc
 		on tm.member_number = tc.member_number
+		left join tbl_channel_file tcf 
+		on tc.channel_number = tcf.channel_number 
 		where ts.sns_number = #{snsNumber}
 	</select>
 
@@ -190,6 +218,11 @@
 		where sns_comment_number= #{snsCommentNumber}
 	</update>
 	
+	<select id="snsFile" parameterType="_int" resultType="string">
+		select sns_file_system_name, sns_number from tbl_sns_file 
+		where sns_number = #{snsNumber}
+	</select>
+	
 	
 	<!-- 전체 store 게시글 수  -->
 	<select id="getStoreTotal" resultType="_int" parameterType="_int">
@@ -202,7 +235,10 @@
 	<select id="storePostInfo" parameterType="map" resultType="SnsStoreVO">
 		select ts.store_number , ts.store_title as storeTitle, ts.store_date as
 		storeDate, ts.store_view_cnt as storeViewCnt,
-		count(tsl.store_number) as likeCnt
+		count(tsl.store_number) as likeCnt,
+		(select store_file_system_name  from tbl_store_file tsf
+  	 	where store_number= ts.store_number
+  	 	limit 0, 1) store_file_system_name 
 		from tbl_store ts
 		left join tbl_store_like tsl
 		on ts.store_number = tsl.store_number
@@ -212,6 +248,91 @@
 		order by ts.store_date desc
 	</select>
 	
+	
+	<!-- sns store탭 게시글 1개 읽어오기 -->
+	<select id="showStoreInfo" parameterType="_int" resultType="snsStoreVO">
+		select ts.store_title, ts.store_number,
+		ts.store_date, th.hashtag_name, ts.store_view_cnt from tbl_store ts 
+		join tbl_hashtag th 
+		on ts.hashtag_number = th.hashtag_number
+		where ts.store_number = #{storeNumber}
+	</select>
+	
+	<select id="showStoreLikeCnt" parameterType="_int" resultType="_int">
+		select count(store_number) from tbl_store_like
+		where store_number  = #{storeNumber}
+	</select>
+	
+	<select id="showStoreCommentCnt" parameterType="_int" resultType="_int">
+		select count(store_number) from tbl_store_comment 
+		where store_number  = #{storeNumber}
+	</select>
+	
+	<!-- store 댓글 읽어오기 -->
+	<select id="snsStoreCommentList" parameterType="map"
+		resultType="SnsStoreCommentVO">
+		select ts.store_number , tsc.store_comment_number , tsc.store_comment_content ,
+		tm.member_nickname , tc.channel_name  ,tsc.member_number ,
+		tsc.store_comment_date
+		from tbl_store ts left join tbl_store_comment tsc
+		on ts.store_number = tsc.store_number
+		left join tbl_member tm
+		on tsc.member_number = tm.member_number
+		left join tbl_channel tc
+		on tm.member_number = tc.member_number
+		where ts.store_number = #{storeNumber}
+	</select>
+	
+	<!-- store 댓글 작성 -->
+	<insert id="snsStoreCommentInsert" parameterType="snsStoreCommentVO">
+		insert into tbl_store_comment
+		(store_comment_content,store_number, member_number)
+		values(#{storeCommentContent},  #{storeNumber}, #{memberNumber})
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="snsStoreCommentDelete" parameterType="_int">
+		delete from tbl_store_comment
+		where store_comment_number= #{storeCommentNumber}
+	</delete>
+	
+	<!-- 댓글 수정 -->
+	<update id="snsStoreCommentUpdate" parameterType="snsStoreCommentVO">
+		update tbl_store_comment
+		set store_comment_content= #{storeCommentContent}
+		where store_comment_number= #{storeCommentNumber}
+	</update>
+	
+	<!-- 좋아요 업데이트 -->
+	<insert id="updateStoreLikeCnt" parameterType="snsStoreVO">
+		insert into tbl_store_like
+		(store_number, member_number)
+		values(#{storeNumber}, #{memberNumber})
+	</insert>
+	
+	<delete id="deleteStoreLikeCnt" parameterType="snsStoreVO">
+		delete from tbl_store_like
+		where store_number = #{storeNumber}  and member_number= #{memberNumber}
+	</delete>
 
+
+	<!-- 신고하기 -->
+	<insert id="reportPost" parameterType="reportSnsDTO">
+		insert into tbl_report_sns
+		(report_title, report_content, report_member_number, report_sns_number)
+		values(#{reportTitle}, #{reportContent}, #{reportMemberNumber}, #{reportSnsNumber})
+	</insert>
+	
+	<update id="updatePost" parameterType="snsDTO">
+		update tbl_sns
+		set sns_title=#{snsTitle}, sns_content=#{snsContent}
+		where sns_number=#{snsNumber}
+	</update>
+	
+	<insert id="reportStorePost" parameterType="reportStoreDTO">
+		insert into tbl_report_store
+		(report_title, report_content, report_member_number, report_store_number)
+		values(#{reportTitle}, #{reportContent}, #{reportMemberNumber}, #{reportStoreNumber})
+	</insert>
 	
 </mapper>

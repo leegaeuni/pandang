@@ -283,7 +283,7 @@
           </div>
           <div class="button-wrap">
             <button type="submit" class="btn-next">다음</button>
-            <button class="btn-cancel">취소</button>
+            <button class="btn-cancel" type="button">취소</button>
           </div>
         </div>
       </form>

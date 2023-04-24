@@ -1,8 +1,8 @@
-//@@@체크박스 선택시 값띄우기@@@
+
 // th의 체크박스 선택시 전체 체크박스 선택 
-function selectAll(selectAll) {
+/*function selectAll(selectAll) {
 	$('input[name="basket-product"]').prop('checked', selectAll.checked);
-}
+}*/
 
 // 버튼으로 숫자 변환하면 상품금액 바뀜
 $(".plus-btn").on("click", function() {
@@ -67,6 +67,7 @@ $('input[type="checkbox"]').on('change', function() {
 	finalPostPay.text(checkedPostTotal);
 	finalTotalPay.text(checkedTotal);		
 });
+
 // @@@@@여기서부터 ajax@@@@@
 
 // 장바구니 삭제
@@ -111,16 +112,16 @@ $('.board-table').on('change', '.store-number', function(e){
 		$(e.target).next().html('');
 	}
 });
-// 전체 체크박스 선택
-/*$('.board-table').on('change', '.check-all', function(e){
-	if($('.store-number').is(':checked')){
-		$(e.target).parent().parent().parent().parent().next().children().children().children().eq(1)
-	$('.store-number').next().html(`<input type='hidden' name='buyCnt' value='${
-			$(e.target).parent().parent().next().next().next().next().children().children().eq(1).val()
+
+$('.board-table').on('click', '.check-all', function(e){
+		if($(e.target).is(':checked')){
+		$(e.target).parent().parent().parent().parent().next().children().children().children().children().eq(1).html(`<input type='hidden' name='buyCnt' value='${
+			$(e.target).parent().parent().parent().parent().next().children().children().next().next().next().next().children().children().eq(1).val()
 		}'>`);
-	console.log("======");
+	}else{
+		$(e.target).parent().parent().parent().parent().next().children().children().children().children().eq(1).html('');
 	}
-});*/
+});
 
 
 $('.board-table').on('click', '.plus-btn', function(e){
@@ -135,4 +136,28 @@ $('.board-table').on('click', '.minus-btn', function(e){
 	$(e.target).parent().parent().parent().parent().prev().prev().prev().prev().children().children().eq(1).children().val(--buyCnt);
 	}
 });
+// 체크박스 전체선택
+$('.check-all').click(function(){
+		var checked = $('.check-all').is(':checked');
+		
+		if(checked){
+			$('.store-number').prop('checked',false);
+			$('.store-number').click();
+		}else{
+			$('.store-number').prop('checked',true);
+			$('.store-number').click();
+		}
+	});
+	
+	
+// 체크박스 선택 안 하면 알림창
+function check(){
+	let checkedBox = document.querySelectorAll('input=[name="basket-product"]:checked').length;
+	if(checkedBox=0){
+		alert('구매할 상품을 하나 이상 선택해라')
+		return false;
+	}
+	
+}
+
 

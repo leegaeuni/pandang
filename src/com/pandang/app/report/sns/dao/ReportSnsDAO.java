@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
+import com.pandang.app.report.sns.dto.ReportSnsDTO;
 import com.pandang.app.report.sns.vo.ReportSnsVO;
 
 public class ReportSnsDAO {
@@ -30,6 +31,11 @@ public class ReportSnsDAO {
 	public int findSnsGetTotal(String reportTitle) {
 		return sqlSession.selectOne("report.findSnsGetTotal", reportTitle);
 	}
+	
+	public String profileImg(String memberId) {
+		return sqlSession.selectOne("report.profileImg", memberId);
+	}
+	
 	
 
 }
