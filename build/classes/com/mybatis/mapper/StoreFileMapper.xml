@@ -14,6 +14,12 @@
 		where store_number = #{storeNumber}
 	</select>
 	
+	<select id="selectList" parameterType="_int" resultType="StoreFileDTO">
+		select store_file_system_name, store_file_original_name, store_number
+		from tbl_store_file
+		where store_number = #{storeNumber}
+	</select>
+	
 	<delete id="delete" parameterType="_int">
 		delete from tbl_store_file
 		where store_number = #{storeNumber}
