@@ -224,7 +224,7 @@ font {
   .basket-table {
     height: 30px;
     font-size: 25px;
-    font-weight: 600;
+   /*  font-weight: 600; */
     margin: 10px;
     padding-left: 5px;
   }
@@ -238,6 +238,7 @@ font {
     padding: 28px;
     border-top: 1px solid #aaa;
     border-bottom: 1px solid #aaa;
+    color: #5b696f;
   }
 
   .title,
@@ -340,6 +341,7 @@ font {
     top: 550px;
     width: 1200px;
     height: 65px;
+    color: #5b696f;
   }
 
   .pay-total{
@@ -375,6 +377,18 @@ font {
     border-radius: 10px;
   }
    */
+
+.pay-table tr{
+	height: 50px;
+}
+
+.board-table tr{
+	height: 140px;
+}
+
+.pay-title{
+	height: 50px !important;
+}
 
 /* ================================================================ */
 
@@ -590,6 +604,10 @@ font {
     font-weight: 500;
     letter-spacing: 0.5px;
   }
+  
+  .address-number-text{
+  	font-size: 12px;
+  }
 
   .classic-phone,
   .cell-phone{
@@ -796,14 +814,16 @@ font {
     text-align: center;
     border: 1px solid #ddd;
     background-color: #f2f2f260;
+    margin-top: 100px;
   }
 
   .final-pay-message{
     margin: 17px 0 0;
     color: #353535;
-    font-size: 12px;
-    padding: 0px;
+    font-size: 14px;
+    padding: 10px;
     text-align: center
+    
   }
 
   .price-zone{
@@ -815,16 +835,18 @@ font {
     height: auto;
     padding: 0px;
     color: #444;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 16px;
     font-weight: bold;
     letter-spacing: 0px;
     background: #f4f4f4;
-    margin-left: -2px;
+    
   }
 
   .pay-button{
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    
   }
 
   .pay-button-tag{
@@ -834,6 +856,22 @@ font {
     padding: 8px 0px;
     text-align: center;
     color: #fff;
+    border-radius: 20px;
+    width: 75px;
+    
+    border: 1px solid #f0f0f0;
+  	cursor: pointer;
+  }
+  
+  .area-title{
+  padding-left: 5px;
+  margin: 10px;
+  margin-top: 50px;
+  }
+  
+  .post-info-text{
+  font-size: 25px;
+  font-weight: normal;
   }
 
    /* @@@@푸터@@@@@ */

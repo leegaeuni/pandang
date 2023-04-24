@@ -1,4 +1,4 @@
-package com.pandang.app.main;
+package com.pandang.app.store.like;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,13 +11,12 @@ import com.pandang.app.Execute;
 import com.pandang.app.store.like.dao.StoreLikeDAO;
 import com.pandang.app.store.like.dto.StoreLikeDTO;
 
-public class LikeOKController implements Execute {
+public class StoreLikeOkController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		StoreLikeDAO storeLikeDAO = new StoreLikeDAO();
-//		int memberNumber = 1;
-		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+		int memberNumber = 1;
 		int storeNumber = Integer.valueOf(req.getParameter("storeNumber"));
 		StoreLikeDTO storeLikeDTO = new StoreLikeDTO();
 		int result = 0;

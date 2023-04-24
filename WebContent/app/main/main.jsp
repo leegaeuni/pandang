@@ -26,7 +26,7 @@
 			<!-- 헤더 영역 시작  -->
 			<div class="start-container">
 				<!-- 메인페이지 이동처리 -->
-				<a href="${pageContext.request.contextPath}/main"><img
+				<a href="${pageContext.request.contextPath}/main.main"><img
 					src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
 					class="logo-img" /></a>
 				<!-- 판당 페이지 이동처리 -->
@@ -462,17 +462,17 @@
                <div class="store-text-wrap">
                   <div class="store-text">새로운 스타일의 상품 발견해보세요.</div>
                </div>
-
-               <div class="store-nav-wrap tabs">
-                  <span>판매글 :</span>
-                  <ul>
-                     <li class="tab" data-tab-target="#tab1">판당 pick</li>
-                     <li class="tab" data-tab-target="#tab2">최신순</li>
-                     <li class="tab" data-tab-target="#tab3">팔로잉</li>
-                  </ul>
-               </div>
-            </div>
-
+					<div class="store-nav-wrap tabs">
+						<span>판매글 :</span>
+						<ul>
+							<li class="tab pandang-pick" data-tab-target="#tab1">판당 pick</li>
+							<li class="tab lastest" data-tab-target="#tab2">최신순</li>
+							<c:if test="${not empty sessionScope.memberNumber}">
+								<li class="tab following" data-tab-target="#tab3">팔로잉</li>
+							</c:if>
+						</ul>
+					</div>
+				</div>
 
             <div class="content">
 
@@ -539,479 +539,7 @@
                      </div>
                      </c:forEach> 
                <!--  =================== -->
-                     <%-- <!-- 방울이 시작@@@@@@@@@ -->
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
 
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>방울이 친구 키링</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>방울이</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div> 
-                     <!-- 방울이 끝@@@@@@@@@ -->
-
-                      <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/cup.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>토끼 자개 머그컵</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>토끼</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
- 
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/bag.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>비건 숄더백</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>비건 스토어</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <!-- @@@@@스토어 두번째 줄@@@@@ -->
-
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/perfume.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>비밀정원으로부터의 초대</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>조향사</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-
-
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/ohdungicushion.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>오둥이 쿠션</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>오둥이</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/jrongcalendar.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>재롱이 달력</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>재롱잔치</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/choigosimmouse.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>무지개 마우스 패드</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>최고심</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <!-- @@@@@스토어 세번째 줄@@@@@ -->
-
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>비건 숄더백</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>방울이</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>비건 숄더백</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>방울이</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>비건 숄더백</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>방울이</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="store-photo">
-                        <div class="store-photo-img">
-                           <img
-                              src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
-                           <div class="store-info">
-                              <div class="store-info-tap">
-                                 <span>비건 숄더백</span>
-                                 <div class="like-btn">
-                                    <button>
-                                       <img class="before-like-btn"
-                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
-                                    </button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="store-info-channel">
-                           <div class="store-info-channel-name">
-                              <span>방울이</span>
-                           </div>
-
-                           <div class="cnt-wrap">
-                              <div class="cnt-view">
-                                 <div class="cnt-view-icon">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                 </div>
-                                 <div class="cnt-view-number">1010</div>
-                              </div>
-                              <div class="cnt-like">
-                                 <div class="cnt-like-icon">
-                                    <img class="before-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                                       alt="heart" /> <img class="after-like-btn"
-                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                                       alt="heart" />
-                                 </div>
-                                 <div class="cnt-like-number">50</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                  </div>
-               </div>  --%>
                <!-- store-wrap 끝 -->
 
                <!-- 두번째 탭@@ 최신순 -->
@@ -1804,3 +1332,431 @@
                               <div class="store-info-tap">
                                  <span>재롱이 달력</span>
          
+=======
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/bag.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>비건 숄더백</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>비건 스토어</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- @@@@@스토어 두번째 줄@@@@@ -->
+
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/perfume.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>비밀정원으로부터의 초대</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>조향사</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/ohdungicushion.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>오둥이 쿠션</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>오둥이</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/jrongcalendar.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>재롱이 달력</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>재롱잔치</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/choigosimmouse.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>무지개 마우스 패드</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>최고심</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- @@@@@스토어 세번째 줄@@@@@ -->
+
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>비건 숄더백</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>방울이</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>비건 숄더백</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>방울이</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>비건 숄더백</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>방울이</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="store-photo">
+								<div class="store-photo-img">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/main/keyring.jpg" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<span>비건 숄더백</span>
+											<div class="like-btn">
+												<button>
+													<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>방울이</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">1010</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												<img class="before-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+													alt="heart" /> <img class="after-like-btn"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />
+											</div>
+											<div class="cnt-like-number">50</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>  --%>
+					<!-- store-wrap 끝 -->
+
+				</div>
+				<!-- 여기 위에 탭 복붙 -->
+			</div>
+		</div>
+	</div>
+
+	<!-- #######footer####### -->
+	<!-- @@@@푸터@@@@ -->
+	<div class="footer-container">
+		<!-- 푸터 영역 시작 -->
+		<div class="footer-logo">
+			<h1>Pandang</h1>
+		</div>
+		<div class="name">
+			<p>Gwangin Park</p>
+			<p>Duksoo Kim</p>
+			<p>Gaeun Lee</p>
+			<p>Yeseul Kim</p>
+			<p>Yeonjae Chung</p>
+			<p>Geonhee Lee</p>
+		</div>
+		<div class="information">
+			<p>주식회사 코나우딩요</p>
+			<p>대표 박광인</p>
+			<p>서울특별시 강남구</p>
+			<p>사업자번호 123-45-67890</p>
+			<p>통신판매업 신고: 2022-서울강남-0000</p>
+			<p>전화: +82(0)07 1111 2222-3</p>
+		</div>
+		<!-- 푸터 영역 종료 -->
+	</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.3.js"
+		integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+		crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+</body>
+</html>
+>>>>>>> 5a87c4b03e7be6b48dc2cf0ef0786fdbadd115fa

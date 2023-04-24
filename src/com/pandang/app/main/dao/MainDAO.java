@@ -11,6 +11,7 @@ import com.pandang.app.main.dto.MainDTO;
 import com.pandang.app.main.vo.MainFollowVO;
 import com.pandang.app.main.vo.MainLikeViewVO;
 import com.pandang.app.main.vo.MainVO;
+import com.pandang.app.sns.vo.SnsFollowVO;
 
 public class MainDAO {
 	public SqlSession sqlSession;
@@ -23,8 +24,24 @@ public class MainDAO {
 		return sqlSession.selectList("main.selectAll");
 	}
 	
-	public List<MainLikeViewVO> select(){
-		return sqlSession.selectList("main.select");
+	public List<MainLikeViewVO> select(int memberNumber){
+		return sqlSession.selectList("main.select", memberNumber);
+	}
+	
+	public List<MainLikeViewVO> selectLastest(int memberNumber){
+		return sqlSession.selectList("main.selectLastest", memberNumber);
+	}
+	
+	public List<MainFollowVO> selectFollow() {
+		return sqlSession.selectList("main.selectFollow");
+	}
+	
+	public void updateFollow(MainFollowVO mainFollowVO) {
+		sqlSession.insert("main.updateFollow", mainFollowVO);
+	}
+	
+	public void deleteFollow(MainFollowVO mainFollowVO) {
+		sqlSession.delete("main.deleteFollow", mainFollowVO);
 	}
 	
 

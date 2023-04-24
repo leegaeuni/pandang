@@ -173,7 +173,7 @@
 }
 
 .name-follow {
-  width: 80%;
+  width: 50%;
   height: 100%;
   display: flex;
 }
@@ -219,6 +219,26 @@
 
 .following-btn span {
   font-size: 15px;
+}
+
+.post-writing-box{
+	display: flex;
+    width: 250px;
+    justify-content: space-around;
+    margin-right: 5px;
+}
+
+.store-writing-btn,
+.sns-writing-btn{
+	width: 100px;
+    height: 100%;
+    background-color: #f5f6f7;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    font-size: 15px;
+    color: #5b696f;
+    cursor: pointer;
 }
 
 .profile-edit-path-box {
@@ -504,6 +524,7 @@ li {
   overflow: hidden;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  border : 1px solid gray;
 }
 
 /* 모달 댓글 영역 게시글 작성자 뜨는곳  */
@@ -624,7 +645,6 @@ li {
 }
 
 .done {
-  display: none;
   color: rgb(42, 197, 198);
 }
 

@@ -19,6 +19,13 @@
 		values(#{storeNumber}, #{memberNumber})
 	</insert>
 	
+	<update id="update" parameterType="StoreDTO">
+		update tbl_store
+		set store_title = #{storeTitle}, store_content = #{storeContent},
+		store_price = #{storePrice}, hashtag_number = #{hashtagNumber} 
+		where store_number = #{storeNumber}
+	</update>
+	
 	<delete id="delete" parameterType="StoreLikeDTO">
 		delete from tbl_store_like 
 		where store_number = #{storeNumber} and member_number = #{memberNumber}

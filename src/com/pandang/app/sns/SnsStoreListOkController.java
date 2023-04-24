@@ -29,11 +29,11 @@ public class SnsStoreListOkController implements Execute{
 		
 //		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
 		
-		int memberNumber = 1;
+		Integer hostMemberNumber = Integer.parseInt(req.getParameter("hostMemberNumber"));
 		
 		SnsDAO snsDAO = new SnsDAO();
 		
-		int total = snsDAO.getStoreTotal(1);
+		int total = snsDAO.getStoreTotal(hostMemberNumber);
 		
 		
 //      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
@@ -72,7 +72,7 @@ public class SnsStoreListOkController implements Execute{
 	      Map<String, Integer> pageMap = new HashMap<>();
 	      pageMap.put("startRow", startRow);
 	      pageMap.put("rowCount", rowCount);
-	      pageMap.put("memberNumber", memberNumber);
+	      pageMap.put("memberNumber", hostMemberNumber);
 	      
 	      System.out.println(pageMap.toString());
 	      

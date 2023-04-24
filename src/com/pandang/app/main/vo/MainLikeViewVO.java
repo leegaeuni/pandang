@@ -1,17 +1,18 @@
 package com.pandang.app.main.vo;
-	/*
-	 * select ts.store_number, ts.store_title, ts.store_view_cnt, count(tsl.store_number) as like_cnt, sf.store_file_system_name, tc.channel_name, tc.channel_number 
+
+/*
+ * select ts.store_number, ts.store_title, ts.store_view_cnt, count(tsl.store_number) as like_cnt, sf.store_file_system_name, tc.channel_name, tc.channel_number 
 from tbl_store ts
 left join tbl_store_like tsl 
-    on ts.store_number = tsl.store_number 
+on ts.store_number = tsl.store_number 
 left join tbl_store_file sf
-    on ts.store_number = sf.store_number
+on ts.store_number = sf.store_number
 left join tbl_channel tc
-    on ts.member_number = tc.member_number
+on ts.member_number = tc.member_number
 where ts.member_number
 group by ts.store_number, ts.store_title, ts.store_view_cnt, sf.store_file_system_name, tc.channel_name, tc.channel_number 
 order by ts.store_view_cnt desc;
-	 */
+ */
 public class MainLikeViewVO {
 	private int storeNumber;
 	private String storeTitle;
@@ -21,8 +22,10 @@ public class MainLikeViewVO {
 	private int channelNumber;
 	private int memberNumber;
 	private int likeCnt;
-	
-	public MainLikeViewVO() {}
+	private int isLike;
+
+	public MainLikeViewVO() {
+	}
 
 	public int getStoreNumber() {
 		return storeNumber;
@@ -79,7 +82,7 @@ public class MainLikeViewVO {
 	public void setMemberNumber(int memberNumber) {
 		this.memberNumber = memberNumber;
 	}
-	
+
 	public int getLikeCnt() {
 		return likeCnt;
 	}
@@ -88,13 +91,20 @@ public class MainLikeViewVO {
 		this.likeCnt = likeCnt;
 	}
 
+	public int getIsLike() {
+		return isLike;
+	}
+
+	public void setIsLike(int isLike) {
+		this.isLike = isLike;
+	}
+
 	@Override
 	public String toString() {
 		return "MainLikeViewVO [storeNumber=" + storeNumber + ", storeTitle=" + storeTitle + ", storeViewCnt="
 				+ storeViewCnt + ", storeFileSystemName=" + storeFileSystemName + ", channelName=" + channelName
-				+ ", channelNumber=" + channelNumber + ", memberNumber=" + memberNumber + ", likeCnt=" + likeCnt + "]";
+				+ ", channelNumber=" + channelNumber + ", memberNumber=" + memberNumber + ", likeCnt=" + likeCnt
+				+ ", isLike=" + isLike + "]";
 	}
 
 }
-
-	

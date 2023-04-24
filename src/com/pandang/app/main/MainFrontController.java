@@ -22,7 +22,6 @@ public class MainFrontController extends HttpServlet{
 	
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String target = req.getRequestURI().substring(req.getContextPath().length());
-		System.out.println(target);
 		
 		switch(target) {
 		case "/main.main":
@@ -30,6 +29,18 @@ public class MainFrontController extends HttpServlet{
 			break;
 		case "/main/likeOk.main":
 			new LikeOKController().execute(req, resp);
+			break;
+		case "/main/mainAjaxPandangOk.main":
+			new MainAjaxPandangOKController().execute(req,resp);
+			break;
+		case "/main/mainAjaxLastestOk.main":
+			new MainAjaxLastestOKController().execute(req, resp);
+			break;
+		case "/main/mainAjaxFollowOk.main":
+				new MainAjaxFollowOKController().execute(req, resp);
+				break;
+		case "/main/mainFollowOk.main":
+			new MainFollowOKController().execute(req, resp);
 			break;
 		}
 	}
