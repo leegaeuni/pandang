@@ -80,8 +80,8 @@
                   />
                 </label>
               </th>
-              <th>이미지</th>
-              <th>상품정보</th>
+              <th class="th-basket-img">이미지</th>
+              <th class="th-store-title">상품정보</th>
               <th class="th-store-price">가격</th>
               <th class="th-buy-cnt">수량</th>
               <th class="th-store-total-price">상품금액</th>
@@ -119,7 +119,7 @@
                 	<%-- <input class="store-number" type="hidden" value="${basket.getStoreNumber() }"> --%>
                 	<input class="member-number" type="hidden" value="${basket.getMemberNumber() }">
                 	
-                    <input type="text" class="quantity-input" value="${basket.getBasketCnt()}" name="basketCnt">
+                    <input type="text" class="quantity-input" value="${basket.getBasketCnt()}" name="basketCnt" readonly>
                     <!-- <input type="text" class="quantity-input" value="1" readonly>이면
                       +,- 버튼을 이용해야지만 숫자가 변경됨 -->
                   <div class="quantity-btn">                    
@@ -155,14 +155,12 @@
         </div>
         
 
-        <!-- 장바구니에서 결제하고 나면 장바구니에 담았던 상품 삭제되어야 함 -->
-
         <table class="pay-table">
           <div class="basket-table">
             <thead>
               <tr>
-                <th>총 상품 금액</th>
-                <th>총 배송비</th>
+                <th class="final-product-pay-th">총 상품 금액</th>
+                <th class="final-post-pay-th">총 배송비</th>
                 <th class="total-pay-th">결제 예정 금액</th>
               </tr>
             </thead>
@@ -180,9 +178,6 @@
           <div class="pay-all">
             <button type="submit">상품 주문</button>
           </div>
-          <%-- <div class="pay-check">
-            <a href="${pageContext.request.contextPath}/buy/payOk.bu"><button type="button">선택상품 주문</button></a>
-          </div> --%>
         </div>
 
       <!-- #####footer##### -->

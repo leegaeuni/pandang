@@ -69,7 +69,7 @@
                 <table class="board-table">
                   <div class="basket-table">구매하기</div>
                   <thead>
-                    <tr>
+                    <tr class="pay-title">
                       <th class="basket-name1">이미지</th>
                       <th class="basket-name2">상품정보</th>
                       <th class="basket-name3">가격</th>
@@ -134,7 +134,7 @@
                 <div class="orderarea">
                   <!-- 창 이름 -->
                   <div class="area-title">
-                    <h3>배송 정보</h3>
+                    <h3 class="post-info-text">배송 정보</h3>
                     <p class="required-area">
                       <span class="requiredDot">*</span>
                       필수입력사항

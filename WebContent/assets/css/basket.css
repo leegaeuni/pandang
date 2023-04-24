@@ -177,6 +177,7 @@ th {
 .board-table {
   border-top: 1px solid #aaa;
   border-bottom: 1px solid #aaa;
+  width: 100%
 }
 
 .basket-img img {
@@ -208,6 +209,7 @@ th {
 .pay-table {
   border-top: 1px solid #aaa;
   border-bottom: 1px solid #aaa;
+  width: 100%;
 }
 
 .pay-table td {
@@ -225,10 +227,10 @@ th {
   width: 45%;
 } */
 
-.total-pay,
+/* .total-pay,
 .total-pay-th {
   padding-left: 70px;
-}
+} */
 
 .pay-all,
 .pay-check {
@@ -299,6 +301,8 @@ button {
   height: 26px;
   display: none;
 }
+
+
 
 
 /* #######footer####### */
