@@ -8,7 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import com.mybatis.config.MyBatisConfig;
 
 import com.pandang.app.member.vo.MemberVO;
-
+import com.pandang.app.report.sns.dto.ReportSnsDTO;
+import com.pandang.app.report.store.dto.ReportStoreDTO;
 import com.pandang.app.sns.comment.dto.SnsCommentDTO;
 import com.pandang.app.sns.comment.vo.SnsCommentVO;
 import com.pandang.app.sns.comment.vo.SnsStoreCommentVO;
@@ -93,7 +94,9 @@ public class SnsDAO {
 	public void deleteSnsLikeFromHost(int snsNumber) {
 		sqlSession.delete("sns.deleteSnsLikeFromHost", snsNumber);
 	}
-	
+	public void deleteSnsFileFromHost(int snsNumber) {
+		sqlSession.delete("sns.deleteSnsFileFromHost", snsNumber);
+	}
 	
 	public void deleteSnsCommentFromHost(int snsNumber) {
 		sqlSession.delete("sns.deleteSnsCommentFromHost", snsNumber);
@@ -157,6 +160,18 @@ public class SnsDAO {
 	
 	public void deleteStoreLikeCnt(SnsStoreVO snsStoreVO) {
 		sqlSession.delete("sns.deleteStoreLikeCnt", snsStoreVO);
+	}
+	
+	public void reportPost(ReportSnsDTO reportSnsDTO){
+		sqlSession.insert("sns.reportPost", reportSnsDTO);
+	}
+	
+	public void updatePost(SnsDTO snsDTO) {
+		sqlSession.update("sns.updatePost", snsDTO);
+	}
+	
+	public void reportStorePost(ReportStoreDTO reportStoreDTO){
+		sqlSession.insert("sns.reportStorePost", reportStoreDTO);
 	}
 	
 	public MemberVO getSnsWriter(int memberNumber) {

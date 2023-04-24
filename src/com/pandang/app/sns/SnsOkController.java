@@ -23,10 +23,6 @@ public class SnsOkController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-//		// url에 있는 memberNumber 뽑아오는거
-		req.getParameter("memberNumber");
-	
-		
 		HttpSession session = req.getSession();
 		
 		if(session.getAttribute("memberNumber") == null && req.getParameter("memberNumber") == null) {
@@ -53,17 +49,6 @@ public class SnsOkController implements Execute {
 		// sns snsVO
 		List<SnsVO> snsVO = snsDAO.selectAll(memberNumber);
 
-
-//		System.out.println(snsVO);
-
-//		System.out.println(snsVO);
-
-//		for (SnsVO sns : snsVO) {
-//			System.out.println(snsVO);
-//		}
-		
-		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 		req.setAttribute("sns", snsVO);
 

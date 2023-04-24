@@ -21,12 +21,12 @@
          <!-- 헤더 영역 시작  -->
          <div class="start-container">
             <!-- 메인페이지 이동처리 -->
-            <a href="${pageContext.request.contextPath}/main.main"><img
-               src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
-               class="logo-img" /></a>
+            <a href="${pageContext.request.contextPath}/main.main">
+            <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt="" class="logo-img" /></a>
             <!-- 판당 페이지 이동처리 -->
             <div class="pandang-container">
-               <a href="${pageContext.request.contextPath}/sns/snsOk.sn" class="header-list">판당</a> <font>·</font>
+               <a href="${pageContext.request.contextPath}/sns/snsOk.sn" class="header-list">판당</a> 
+               	<font>·</font>
                <!-- 산당 (스토어) 페이지 이동처리 -->
                <a href="${pageContext.request.contextPath}/store/storeOk.st" class="header-list">산당</a>
             </div>
@@ -67,13 +67,15 @@
 			<div class="info-user">
 				<!-- 멤버 이름  -->
 				<div class="member-name-box">
+				<input type="hidden" id="hostMemberNumber" value="${snsMemberInfo.getMemberNumber()}">
 					<div class="name-follow">
 					
 						<h2 class="info-name">
 							<c:out value="${snsMemberInfo.getChannelName()}"></c:out>
 						</h2>
-						<div class="follow-btn-box">
 						<c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
+						<div class="follow-btn-box">
+						
 							
 							<c:choose>
 							<c:when test="${ifFollowed eq 'follow'}">
@@ -88,21 +90,33 @@
 							 
 							</c:otherwise>
 							</c:choose>
-							 </c:if>
+							
 							
 						</div>
+						 </c:if>
 					</div>
+					
+					<c:if test="${sessionScope.memberNumber == snsMemberInfo.getMemberNumber()}">
+					<div class="post-writing-box">
+            		  <a href="/sns/snsWrite.sn">
+            		  	 <button class="sns-writing-btn">SNS 글 작성</button>
+            		  </a>
+            		  <a href="/store/storeWrite.st">
+               			<button class="store-writing-btn">스토어 글 작성</button>
+             		 </a>
+           			</div>
 					
 					
 					
 					<div class="profile-edit-path-box">
-					<c:if test="${sessionScope.memberNumber == snsMemberInfo.getMemberNumber()}">
+					<%-- <c:if test="${sessionScope.memberNumber == snsMemberInfo.getMemberNumber()}"> --%>
 				
 						<a href="${pageContext.request.contextPath}/member/mypageOk.me">
 							<button class="profile-edit-path-btn">프로필 편집</button>
 						</a>
-						</c:if>
+						
 					</div>
+					</c:if>
 					
 				</div>
 
@@ -162,44 +176,26 @@
 				<h1>신고 사유를 작성해주세요.</h1>
 			</div>
 			<!-- @@@@@@@@ 신고 내용 폼 경로처리 @@@@@@ -->
-			<form action="" method="post">
+			<form action="" method="post"> 
 				<div class="report-content-box">
 					<div class="report-title">
-						<input type="text" name="reportTitle" placeholder="제목을 입력해주세요." />
+						<input type="text" id="reportTitle" placeholder="제목을 입력해주세요."/>
 					</div>
 					<div class="report-content">
 						<textarea name="reportContent" id="report-content"
-							placeholder="신고 사유를 500자 이내로 작성해주세요."></textarea>
+							placeholder="신고 사유를 500자 이내로 작성해주세요." ></textarea>
 					</div>
 					<div class="report-btn">
 						<button type="submit">작성 완료</button>
 					</div>
 				</div>
-			</form>
+			 </form> 
 			<!-- @@@@@ 신고하기 영역 끝 @@@@@ -->
 		</div>
 		<div id="modal">
 			<div class="slides-wrap">
 				<ul class="slide-box">
-					<%--  <li>
-					<img class="modal-img" src="https://cdn-dantats.stunning.kr/prod/portfolios/440fe107-612d-4c10-b068-d4bc572d2bcb/covers/2DbVojavJ5goYbuG.600.jpg.small?q=70&t=crop&e=0x0&s=598x598" />
-					</li>
-
-					<li>
-					<img class="modal-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" />
-					</li>
-
-					<li>
-					<img class="modal-img" src="https://cdn-dantats.stunning.kr/prod/portfolios/440fe107-612d-4c10-b068-d4bc572d2bcb/covers/2DbVojavJ5goYbuG.600.jpg.small?q=70&t=crop&e=0x0&s=598x598" />
-					</li>
-
-					<li>
-					<img class="modal-img"src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" />
-					</li>
-
-					<li>
-					<img class="modal-img" src="${pageContext.request.contextPath}/assets/img/SNSPage/01.jpeg" />
-					</li>  --%>
+	
 				</ul>
 				
 				
@@ -271,7 +267,7 @@
 			<!-- @@@@@ 프로필 버튼 @@@@ -->
 			<div class="modal-profile-btn-box">
 				<div class="modal-profile-btn modal-btn-box">
-					<a href="#" class="author-info">
+					<a href="/sns/snsOk.sn?memberNumber=${snsMemberInfo.getMemberNumber()}" class="author-info">
 						<div class="author-img-back"></div>
 						<div class="author-profile">
 							<img class="author-profile-img"
@@ -289,8 +285,14 @@
 			<input class="memberNumberTo" type="hidden" value="${snsMemberInfo.getMemberNumber()}"/>
 				<button type="button" class="modal-follow-btn btn-color"
 					id="modal-btn">
-					<span class="material-symbols-outlined add"> add </span> <span
-						class="material-symbols-outlined done"> done </span>
+					<c:choose>
+						<c:when test="${ifFollowed eq 'follow'}">
+					<span class="material-symbols-outlined done">done</span>
+						</c:when>
+						<c:otherwise>
+					<span class="material-symbols-outlined add">add</span> 
+						</c:otherwise>
+					</c:choose>
 				</button>
 				<span class="modal-btn-list">팔로우</span>
 			</div>
@@ -299,15 +301,22 @@
 			<c:if test="${sessionScope.memberNumber == snsMemberInfo.getMemberNumber()}">
 			<!-- 수정하기 버튼  -->
 			<div class="modal-edit-btn-box modal-btn-box">
-				<button type="button" class="modal-edit-btn btn-color"
+				<form action="/sns/snsWrite.sn" method="post">
+				<input type="hidden" name="snsTitle" class="snsTitle">
+				<input type="hidden" name="snsContent" class="snsContent">
+				<input type="hidden" name="snsNumber" class="snsNumber">
+				
+				<button type="submit" class="modal-edit-btn btn-color"
 					id="modal-btn">
 					<span class="material-symbols-outlined"> edit </span>
 				</button>
+				
+				</form>
 				<span class="modal-btn-list">수정하기</span>
 			</div>
 			<!-- 삭제하기 버튼 -->
 			<div class="modal-delete-btn-box modal-btn-box">
-				<a href=#>
+				<a href="/sns/snsOk.sn">
 				
 				<button type="button" class="modal-delete-btn btn-color"
 					id="modal-btn">
@@ -442,19 +451,20 @@
             <h1>신고 사유를 작성해주세요.</h1>
           </div>
           <!-- @@@@@@@@ 신고 내용 폼 경로처리 @@@@@@ -->
-          <form action="" method="post">
+           <form action="" method="post"> 
             <div class="s-report-content-box">
               <div class="s-report-title">
                 <input
                   type="text"
                   name="reportTitle"
+                  id="storeReportTitle"
                   placeholder="제목을 입력해주세요."
                 />
               </div>
               <div class="s-report-content">
                 <textarea
                   name="reportContent"
-                  id="report-content"
+                  id="storeReportContent"
                   placeholder="신고 사유를 500자 이내로 작성해주세요."
                 ></textarea>
               </div>
@@ -462,7 +472,7 @@
                 <button type="submit">작성 완료</button>
               </div>
             </div>
-          </form>
+           </form> 
           <!-- @@@@@ 신고하기 영역 끝 @@@@@ -->
         </div>
         <div class="s-post-header-container">
@@ -634,9 +644,15 @@
         <div class="s-post-btn-box" id="s-follow">
           <div class="s-modal-follow-btn-wrap s-btn-wrap-flex">
             <button type="button" class="s-modal-follow-btn s-btn-color">
-              <span class="material-symbols-outlined add"> add </span>
-              <span class="material-symbols-outlined done"> done </span>
-            </button>
+							<c:choose>
+								<c:when test="${ifFollowed eq 'follow'}">
+									<span class="material-symbols-outlined done">done</span>
+								</c:when>
+								<c:otherwise>
+									<span class="material-symbols-outlined add">add</span>
+								</c:otherwise>
+							</c:choose>
+						</button>
             <span class="s-modal-btn-list">팔로우</span>
           </div>
         </div>
