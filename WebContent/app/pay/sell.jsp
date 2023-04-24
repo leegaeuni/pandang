@@ -89,7 +89,7 @@
 							<div class="buy-post">
 								<input type="text" id="post-select" /> <select name=""
 									onchange="selectPost(this)" required>
-									<option value="" selected>택배사 선택</option>
+									<option class="select-option" value="" selected>택배사 선택</option>
 									<option value="우체국택배">우체국택배</option>
 									<option value="CJ대한통운">CJ대한통운</option>
 									<option value="한진택배">한진택배</option>
@@ -110,7 +110,7 @@
 							<div class="sell-info-wrap-sub">
 								<div class="member-info-wrap">
 									<div class="buy-name">구매자 : ${sales.getMemberName()}</div>
-									<div class="buy-phone-number">휴재폰번호 :
+									<div class="buy-phone-number">휴대폰번호 :
 										${sales.getMemberPhoneNumber()}</div>
 									<div class="member-emeil">이메일 : ${sales.getMemberEmail()}</div>
 									<div class="buy-zone-code">우편번호 :
@@ -182,7 +182,7 @@
 
 					<c:if test="${next}">
 						<li><a
-							href="${pageContext.request.contextPath}/buy/sell.bu.bo?page=${endPage + 1}"
+							href="${pageContext.request.contextPath}/buy/sell.bu?page=${endPage + 1}"
 							class="next">&gt;</a></li>
 					</c:if>
 				</ul>
@@ -208,7 +208,7 @@
 				<p>대표 박광인</p>
 				<p>서울특별시 강남구</p>
 				<p>사업자번호 123-45-67890</p>
-				<p>통신판매업 신고: 2022-서울강남-0000</p>
+				<p>통신판매업 신고: 2022-서울강남-0000</p>		
 				<p>전화: +82(0)07 1111 2222-3</p>
 			</div>
 			<!-- 푸터 영역 종료 -->

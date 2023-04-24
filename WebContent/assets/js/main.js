@@ -809,6 +809,11 @@ $(".profil-follow-btn").on("click", function () {
 const tabs = document.querySelectorAll("[data-tab-target]");
 const tabcon = document.querySelectorAll("[data-tab-content]");
 
+// 처음 페이지 진입 시 '판당 pick'이 클릭되어 있게 하기.
+$(document).ready(function() {
+	$('.start-tab').click();
+});
+
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     const target = document.querySelector(tab.dataset.tabTarget);
@@ -818,7 +823,7 @@ tabs.forEach((tab) => {
     target.classList.add("active");
   });
 });
-
+ 
 // 탭 전환시 민트색으로 색상 변경
 $(".tab").on("click", function () {
   $(this).css("color", "rgb(42, 197, 198)");
