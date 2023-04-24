@@ -113,9 +113,6 @@
         
         <!-- 모달창 작업 -->
         <div class="post-modal">
-         <c:choose>
-					<c:when test="${not empty storeList}">
-						<c:forEach var="store" items="${storeList}">
           <div class="post-box">
             <div class="profile-path">
               <div class="profile-modal-img-box">
@@ -421,9 +418,6 @@
               </div>
             </div>
           </div>
-            	</c:forEach>
-					</c:when>      
-					</c:choose>     
         </div>
 
         <!-- 모달창 작업 종료  -->
@@ -435,8 +429,8 @@
 
         <div class="post-container">
         <c:choose>
-					<c:when test="${not empty storeList}">
-						<c:forEach var="store" items="${storeList}">
+					<c:when test="${not empty storeModal}">
+						<c:forEach var="store" items="${storeModal}">
           <div class="post-box-container">    
             <div class="post-img-container">
               <div class="post-img-box-wrap">
