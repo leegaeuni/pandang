@@ -453,6 +453,11 @@ $('.food').on('click', function() {
   categori();
 });
 
+
+/*==========================================*/
+
+
+/*판당 pick*/
 $('.pandang-pick').on('click', function() {
   if (!$(this).hasClass('click')) {
     $(this).parent().children().removeClass('click');
@@ -475,6 +480,7 @@ $('.recommand').on('click', function() {
   }
 });
 
+/*최신순*/
 $('.new').on('click', function() {
   if (!$(this).hasClass('click')) {
     $(this).parent().children().removeClass('click');
@@ -496,6 +502,11 @@ $('.free').on('click', function() {
     categori();
   }
 });
+
+/*====================================================*/
+
+
+
 
 $('.next').on('click', function() {
   if (currentPage < maxPage) {
