@@ -24,10 +24,6 @@ public class SnsFileReadOkController implements Execute {
 		// TODO Auto-generated method stub
 		SnsDAO snsDAO = new SnsDAO();
 		SnsFileDTO snsFileDTO = new SnsFileDTO();
-		
-	
-		
-		
 		List<String> snsFile = snsDAO.snsFile(Integer.parseInt(req.getParameter("snsNumber")));
 	     
 	      Gson gson = new Gson();
@@ -38,7 +34,7 @@ public class SnsFileReadOkController implements Execute {
 	      resp.setContentType("application/json; charSet=utf-8");
 	      
 	      
-	      System.out.println("!!!!!!!!!~~~!!!!!!!");
+	     
 	      System.out.println(JsonParser.parseString(gson.toJson(snsFile)));
 	      
 	      PrintWriter out = resp.getWriter();

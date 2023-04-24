@@ -16,6 +16,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.pandang.app.Execute;
+import com.pandang.app.report.sns.dao.ReportSnsDAO;
 import com.pandang.app.sns.dao.SnsDAO;
 import com.pandang.app.sns.vo.SnsPostVO;
 
@@ -30,12 +31,14 @@ public class SnsReadOkController implements Execute {
 		
 		
 		
-		SnsDAO snsDAO = new SnsDAO();
-		SnsPostVO snsPostVO = new SnsPostVO();
+			SnsDAO snsDAO = new SnsDAO();
+			SnsPostVO snsPostVO = new SnsPostVO();
+			ReportSnsDAO reportDAO = new ReportSnsDAO();
 			
 		 snsDAO.updateSnsViewCnt(Integer.parseInt(req.getParameter("snsNumber")));
 	      
 	
+		
 	      
 	      snsPostVO = snsDAO.showSnsPost(Integer.parseInt(req.getParameter("snsNumber")));
 	     
@@ -45,9 +48,6 @@ public class SnsReadOkController implements Execute {
 	      map.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
 	      
 	      String ifLiked = "";
-	    
-	      
-	     
 	      
 	      JsonObject liked = new JsonObject();
 	      liked.add("list", JsonParser.parseString(gson.toJson(snsPostVO)));
@@ -63,11 +63,9 @@ public class SnsReadOkController implements Execute {
 	      }
 	      
 	      liked.addProperty("likeTest", ifLiked);
-	      
+	      liked.addProperty("channelFileSystemName",  reportDAO.profileImg(req.getParameter("memberId")));
 	      // 팔로우
 	     
-	      
-	
 	      resp.setContentType("application/json; charSet=utf-8");
 	      
 	      PrintWriter out = resp.getWriter();

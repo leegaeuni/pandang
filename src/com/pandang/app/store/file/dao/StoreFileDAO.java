@@ -18,15 +18,20 @@ public class StoreFileDAO {
 	public void insert(StoreFileDTO storeFileDTO) {
 		sqlSession.insert("storeFile.insert", storeFileDTO);
 	}
-	
+
 	public List<StoreFileDTO> selectList(int storeNumber) {
 		return sqlSession.selectList("storeFile.selectList", storeNumber);
 	}
+  
 //
 //	public void delete(int storeNumber) {
 //		sqlSession.delete("storeFile.delete", storeNumber);
 //	}
-	
+
+	public List<StoreFileDTO> selectAll(int storeNumber) {
+		return sqlSession.selectList("storeFile.select", storeNumber);
+	}
+
 	
 	 public StoreFileDTO select(int storeNumber) { return
 		sqlSession.selectOne("storeFile.select", storeNumber); 
@@ -37,23 +42,6 @@ public class StoreFileDAO {
 		sqlSession.delete("storeFile.delete", storeNumber);
 	}
 
-//
-//	public StoreFileDTO select(int storeNumber) {
-//		return sqlSession.selectOne("storeFile.select", storeNumber);	
-//	}
-//	
-//	public void delete(int storeNumber) {
-//		sqlSession.delete("storeFile.delete", storeNumber);
-//	}
-
-//	public void delete(int storeNumber) {
-//		sqlSession.delete("storeFile.delete", storeNumber);
-//	}
-//	
-//	public StoreFileDTO select(int storeNumber) {
-//		return sqlSession.selectOne("storeFile.select", storeNumber);	
-//	}
-	
 	public void storeWrite(StoreFileDTO storeFileDTO) {
 		sqlSession.insert("storeFile.storeWrite", storeFileDTO);
 	}

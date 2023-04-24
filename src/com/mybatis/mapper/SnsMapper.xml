@@ -135,6 +135,11 @@
 		delete from tbl_sns_comment
 		where sns_number = #{snsNumber}
 	</delete>
+	
+	<delete id="deleteSnsFileFromHost" parameterType="_int">
+		delete from tbl_sns_file 
+		where sns_number = #{snsNumber}
+	</delete>
 
 	
 	<!-- 게시글 불러오기 -->
@@ -230,7 +235,10 @@
 	<select id="storePostInfo" parameterType="map" resultType="SnsStoreVO">
 		select ts.store_number , ts.store_title as storeTitle, ts.store_date as
 		storeDate, ts.store_view_cnt as storeViewCnt,
-		count(tsl.store_number) as likeCnt
+		count(tsl.store_number) as likeCnt,
+		(select store_file_system_name  from tbl_store_file tsf
+  	 	where store_number= ts.store_number
+  	 	limit 0, 1) store_file_system_name 
 		from tbl_store ts
 		left join tbl_store_like tsl
 		on ts.store_number = tsl.store_number
@@ -307,5 +315,24 @@
 		where store_number = #{storeNumber}  and member_number= #{memberNumber}
 	</delete>
 
+
+	<!-- 신고하기 -->
+	<insert id="reportPost" parameterType="reportSnsDTO">
+		insert into tbl_report_sns
+		(report_title, report_content, report_member_number, report_sns_number)
+		values(#{reportTitle}, #{reportContent}, #{reportMemberNumber}, #{reportSnsNumber})
+	</insert>
+	
+	<update id="updatePost" parameterType="snsDTO">
+		update tbl_sns
+		set sns_title=#{snsTitle}, sns_content=#{snsContent}
+		where sns_number=#{snsNumber}
+	</update>
+	
+	<insert id="reportStorePost" parameterType="reportStoreDTO">
+		insert into tbl_report_store
+		(report_title, report_content, report_member_number, report_store_number)
+		values(#{reportTitle}, #{reportContent}, #{reportMemberNumber}, #{reportStoreNumber})
+	</insert>
 	
 </mapper>

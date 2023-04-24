@@ -37,6 +37,7 @@ public class StoreOkController implements Execute {
 		req.setAttribute("realEndPage", realEndPage);
 
 		
+		
 		req.getRequestDispatcher("/app/store/store.jsp").forward(req, resp);
 	}
 }
