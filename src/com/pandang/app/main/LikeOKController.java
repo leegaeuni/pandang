@@ -16,8 +16,8 @@ public class LikeOKController implements Execute {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		StoreLikeDAO storeLikeDAO = new StoreLikeDAO();
-		int memberNumber = 1;
-//		int memberNumber = req.getSession().getAttribute("memberNumber");
+//		int memberNumber = 1;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		int storeNumber = Integer.valueOf(req.getParameter("storeNumber"));
 		StoreLikeDTO storeLikeDTO = new StoreLikeDTO();
 		int result = 0;
