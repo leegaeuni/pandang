@@ -24,7 +24,6 @@ public class StoreFrontController extends HttpServlet {
 		switch (target) {
 		case "/store/storeOk.st":
 			new StoreOkController().execute(req, resp);
-//			req.getRequestDispatcher("/app/store/store.jsp").forward(req, resp);
 			break;
 		case "/store/storeAjaxOk.st":
 			new StoreAjaxOkController().execute(req, resp);
@@ -47,21 +46,18 @@ public class StoreFrontController extends HttpServlet {
 		case "/store/storeUpdate.st":
 			new StoreUpdateController().execute(req, resp);
 			break;
+		case "/store/storeUpdateOk.st":
+			new StoreUpdateOkController().execute(req, resp);
+			break;
+		case "/store/storeDeleteOk.st":
+			new StoreDeleteOkController().execute(req, resp);
+			break;
 		case "/store/storeSearch.st":
 			new StoreSearchController().execute(req, resp);
 			break;
 		case "/store/storeSearchAjax.st":
 			new StoreSearchAjaxController().execute(req, resp);
 			break;
-
-//		case "/store/storeUpdateOk.st":
-//			new StoreUpdateOkController().execute(req, resp);
-//			break;
-//		case "/store/storeDeleteOk.st":
-//			new StoreDeleteOkController().execute(req, resp);
-//			break;
-
-
 		case "/store/storeUpdateViewCntOk.st":
 			new StoreUpdateViewCntOkController().execute(req, resp);
 			break;
