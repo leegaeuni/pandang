@@ -73,6 +73,7 @@
 	      			
 			        <div class="board-list">
 			          <div class="board-list-number">${report.getReportNumber() }</div>
+			          
 			          <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
 			          <a href="#" class="board-list-title">${report.getReportTitle() }</a>
 			          <div class="board-list-author">${report.getMemberId() }</div>
@@ -87,6 +88,7 @@
 			            </p>
 			          </div>
 			          <div class="report-btn-wrap">
+			          <input type="hidden" class="reportSnsNumber" value="${report.getReportSnsNumber()}">
 			            <!-- 클릭 시 해당 회원정보로 이동 -->
 			            <a href="#">${report.getReportedMemberId()}</a>
 			            <!-- 클릭 시 해당 게시물로 이동 -->
@@ -146,7 +148,82 @@
         </div>
       </div>
     </section>
+	<div class="modal-box">
+		<div class="modal-background"></div>
+		
+		<div id="modal">
+			<div class="slides-wrap">
+				<ul class="slide-box">
+	
+				</ul>
+				
+				
+				<div class="btn-box">
+					<!-- 이전 이미지보기와 다음 이미지보기 버튼 -->
+					<button class="post-img-prev">&lt</button>
+					<button class="post-img-next">&gt</button>
+				</div>
+				
+				
+			</div>
+			<!-- 모달 댓글창 영역 -->
+			
+			<div class="comment-container">
+				<!-- 게시글 작성자 프로필 박스 -->
+				<div class="host-profile">
+				
+					<div class="host-profile-img-box">
+						<a href="#"> 
+						<img class="host-profile-img" src="/upload/${snsMemberInfo.getChannelFileSystemName()}" alt="" />
+						</a>
+					</div>
+					
+					<div class="host-name-box">
+						<span class="host-name"> 
+						
+						</span>
+					</div>
+					
+					<!-- 프로필 박스 끝 -->
+				</div>
+				<!-- @@@@@@ 모달 댓글 영역 @@@@@@ -->
+				<div class="comment-list">
+					<div class="host-comment-content-wrap">
+						<span class="host-comment-content"></span>
+					</div>
+					<div class= "comment">
+					
+					</div>	
 
+								<!-- @@@@@@ 모달 댓글 영역 끝 @@@@@@ -->
+				</div>
+
+				<!-- 모달 좋아요, 게시일 -->
+				<div class="modal-like-date">
+				
+					<div class="like-wrap">
+						<img class="before-like-btn"
+							src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+							alt="heart" />
+
+
+						<!-- 임시 좋아요 수 -->
+						<div class="like-cnt"></div>
+						개
+					</div>
+					<div class="post-date"></div>
+				</div>
+				
+				<div class="mini-post-content">
+					<input class="comment-box" type="text" id= "commentContent" placeholder="댓글을 입력해 주세요" />
+					<input type="hidden" class="memberNumber" value="${sessionScope.memberNumber}" />
+					<button type="submit" class="submit">게시</button>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
     <!-- Footer -->
     <div class="footer-container">
       <!-- 푸터 영역 시작 -->
