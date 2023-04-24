@@ -95,8 +95,6 @@
 		select last_insert_id()
 	</select>
 
-
-
 	<select id="myPageSelectAll" resultType="MemberVO"
 		parameterType="_int">
 		select c.channel_name , c.channel_comment ,
@@ -164,4 +162,9 @@
 		where member_number = #{memberNumber};
 	</select>
 
+	<select id="getMemberNickname" parameterType="_int" resultType="string">
+		select member_nickname
+		from tbl_member
+		where member_number = #{memberNumber}
+	</select>
 </mapper>
