@@ -181,6 +181,9 @@
                   <!-- @@@@@@@@@ 모달 게시글 헤더 끝 @@@@@@@@@@ -->
                 </div>
                 <div class="post-information">
+                <c:choose>
+					<c:when test="${not empty storeList}">
+						<c:forEach var="store" items="${storeList}">
                   <!-- @@@@@@@@@ 게시글 조회, 좋아요, 댓글 수 @@@@@@@@@@ -->
                   <div class="post-view-cnt">
                     <span class="material-symbols-outlined"> visibility </span>
@@ -195,7 +198,10 @@
                     <div class="comment-cnt">33</div>
                   </div>
                   <!-- @@@@@@@@@ 모달 조회,좋아요,댓글 수 끝 @@@@@@@@@@ -->
-                </div>
+                   	</c:forEach>
+					</c:when>      
+					</c:choose>         
+                </div>                
               </div>
             </div>
             <div class="post">

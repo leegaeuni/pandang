@@ -60,7 +60,7 @@ $(".post-container").on("click",'.modal-background', function () {
 
 // @@@@@@@ 팔로우 팔로잉 버튼 @@@@@@@@@@@@
 
-$(".follow-btn").on("click", function () {
+$(".post-container").on("click", '.follow-btn', function () {
   if ($(this).children(".follow").css("display") != "none") {
     $(this).children(".follow").css("display", "none");
     $(this).children(".following").css("display", "inline-block");
@@ -452,3 +452,38 @@ $('.prev').on('click', function(){
     $('.next').prop('disabled', false);
   }
 });
+
+$(".modal-like-btn").on("click", function (e) {
+  let $target = $(this);
+ 
+  let src;
+  $target.toggleClass("active");
+  
+	likeAjax(this);
+
+  toggleImg($target, src);
+  e.stopPropagation();
+});
+
+function likeAjax(target){
+	let storeNumber = $(target).closest('.store-photo').find('.store-photo-img').data('storenumber');
+	
+	$.ajax({
+		url : '/store/storeLikeOk.stl',
+		type : 'get',
+		data : {storeNumber : storeNumber},
+		success : function(result){
+			 $(target).closest('.post-box').find('.p-like-cnt').text(result);
+		}
+	});
+}
+
+
+function toggleImg(target, src) {
+  target.prop("src", src);
+
+  target
+    .closest(".post-box")  
+    .find(".before-like-btn")
+    .prop("src", src);
+}

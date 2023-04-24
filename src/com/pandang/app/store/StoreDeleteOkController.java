@@ -12,9 +12,9 @@
 //import com.pandang.app.store.dao.StoreDAO;
 //import com.pandang.app.store.file.dao.StoreFileDAO;
 //import com.pandang.app.store.file.dto.StoreFileDTO;
-////
-////public class StoreDeleteOkController implements Execute {
-//////
+//
+//public class StoreDeleteOkController implements Execute {
+//
 //	@Override
 //	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		StoreDAO storeDAO = new StoreDAO();
@@ -34,5 +34,5 @@
 //		
 //		resp.sendRedirect("/store/storeOk.st");
 //	}
-
+//
 //}
