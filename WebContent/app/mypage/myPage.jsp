@@ -178,7 +178,7 @@
             <div class="member-id">
               <div class="member-id-name">비밀번호 변경</div>
               <label class="id-change">
-                <input type="password" maxlength="12" placeholder="변경할 비밀번호 12자리를 입력해주세요." class="id-put-place"  required
+                <input type="password" maxlength="12" placeholder="변경할 비밀번호 12자리를 입력해주세요." class="id-put-place" 
                 name="memberPassword" >
                 
               </label>
