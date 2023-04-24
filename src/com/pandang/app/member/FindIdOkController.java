@@ -20,34 +20,32 @@ public class FindIdOkController implements Execute {
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = new MemberDTO();
 		Map<String, String> map = new HashMap();
-		
-		
+
 		String memberName = req.getParameter("memberName");
 		String memberBirth = "";
 		String memberPhoneNumber = req.getParameter("memberPhoneNumber");
-		
+
 //		System.out.println(memberName);
 //		System.out.println(memberPhoneNumber);
 		req.getParameter("memberBirth");
-		for(int i=0;i<req.getParameter("memberBirth").length();i++) {
-			if(i == 4 || i == 6) {
+		for (int i = 0; i < req.getParameter("memberBirth").length(); i++) {
+			if (i == 4 || i == 6) {
 				memberBirth += '-';
 			}
 			memberBirth += req.getParameter("memberBirth").charAt(i);
-		};
-		
+		}
+		;
+
 		map.put("memberName", memberName);
 		map.put("memberBirth", memberBirth);
 		map.put("memberPhoneNumber", memberPhoneNumber);
-		System.out.println(map);
-		
+//		System.out.println(map);
+
 		resp.setContentType("text/html; charset=utf-8");
 
-		
-//		페이지에서 Ajax 쓰면 이거 써야함.
-		  PrintWriter out = resp.getWriter();
-		  out.print(memberDAO.findId(map));
-		  out.close();
-		
+		PrintWriter out = resp.getWriter();
+		out.print(memberDAO.findId(map));
+		out.close();
+
 	}
 }
