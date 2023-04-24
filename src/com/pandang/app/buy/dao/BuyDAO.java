@@ -27,7 +27,8 @@ public class BuyDAO {
 	
 	public void updatePost(BuyVO buyVO) {
 		sqlSession.update("buy.updatePost", buyVO);
-
+	}
+	
 	public void buyInsert(BuyDTO buyDTO) {
 		sqlSession.insert("buy.buyInsert", buyDTO);
 	}
