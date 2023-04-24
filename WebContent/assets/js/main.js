@@ -39,6 +39,85 @@ let modalBox = document.querySelector(".modal-box");*/
   }
 });*/
 
+/*const tabs = document.querySelectorAll("[data-tab-target]");
+const tabcon = document.querySelectorAll("[data-tab-content]");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = document.querySelector(tab.dataset.tabTarget);
+    tabcon.forEach((tabc_all) => {
+      tabc_all.classList.remove("active");
+    });
+    target.classList.add("active");
+  });
+});*/
+
+
+
+function getStoreList(result){
+	$(".store-wrap-sub").html('');
+			for(let i=0; i<result.length; i++){
+				let img = '';
+				if(result[i].isLike == 0){
+					img = `<img class="before-like-btn"
+														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />`;
+				}else {
+					img = `<img class="before-like-btn active"
+													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+													alt="heart" />`;
+				}
+				
+				console.log(img)
+				$('.store-wrap-sub').append(`<div class="store-photo">
+								<div class="store-photo-img" data-storeNumber="${result[i].storeNumber}">
+									<img
+										src="/upload/${result[i].storeFileSystemName}" />
+									<div class="store-info">
+										<div class="store-info-tap">
+											<!-- .store-info-tap은 hover시 나오는 상품 이름과 like버튼  -->
+											<span>
+												${result[i].storeTitle}
+											</span>
+											<div class="like-btn">
+												<button>
+													${img}
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+								<div class="store-info-channel">
+									<div class="store-info-channel-name">
+										<span>
+											${result[i].channelName}
+										</span>
+									</div>
+
+									<div class="cnt-wrap">
+										<div class="cnt-view">
+											<div class="cnt-view-icon">
+												<span class="material-symbols-outlined"> visibility </span>
+											</div>
+											<div class="cnt-view-number">
+												${result[i].storeViewCnt}
+											</div>
+										</div>
+										<div class="cnt-like">
+											<div class="cnt-like-icon">
+												${img}
+											</div>
+											<div class="cnt-like-number">
+												${result[i].likeCnt}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>`)
+				
+			}
+}
+
 let storeNumber = 0;
 let memberNumber = $('.j-login-number').val();
 // @@@@@@ 이미지 클릭 했을 때 모달 창 띄우기 @@@@@@@@@
@@ -744,8 +823,8 @@ $(".profile-modal-follow-btn").on("click", function () {
 
 
 // @@@@@ 호버 안의 like-btn 하트 회색 -> 빨간색
-$(".before-like-btn").on("click", function (e) {
-  let $target = $(this);
+$(".store-wrap-sub").on("click",".before-like-btn" , function (e) {
+  let $target = $(e.target);
   //  $(this)는 before-like-btn을 받음
   let src;
   $target.toggleClass("active");
@@ -758,7 +837,7 @@ $(".before-like-btn").on("click", function (e) {
     src = "https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png";
   }
 
-	likeAjax(this);
+	likeAjax(e.target);
 
   toggleImg($target, src);
   e.stopPropagation();
@@ -805,7 +884,7 @@ $(".profil-follow-btn").on("click", function () {
 });
 
 
-// @@@@@스토어의 탭 전환
+/*// @@@@@스토어의 탭 전환
 const tabs = document.querySelectorAll("[data-tab-target]");
 const tabcon = document.querySelectorAll("[data-tab-content]");
 
@@ -817,7 +896,7 @@ tabs.forEach((tab) => {
     });
     target.classList.add("active");
   });
-});
+});*/
 
 // 탭 전환시 민트색으로 색상 변경
 $(".tab").on("click", function () {
@@ -872,4 +951,97 @@ function checkEnd() {
   } else {
     $(".next").css("display", "block");
   }
-}
+};
+
+
+$('.lastest').on('click',function(){
+		$.ajax({
+			url : '/main/mainAjaxLastestOk.main',
+			type : 'get',
+			dataType : 'json',
+			success : function(result){
+	console.log('정연재 ㅄ');
+				getStoreList(result);
+			}
+		})
+})
+
+$('.pandang-pick').on('click', function(){
+	$.ajax({
+		url : '/main/mainAjaxPandangOk.main',
+		type : 'get',
+		dataType : 'json',
+		success : function(result){
+		  console.log('가보자고');
+			getStoreList(result)
+		}
+	})
+})
+
+$('.following').on('click', function(){
+	$.ajax({
+		url : '/main/mainAjaxFollowOk.main',
+		type : 'get',
+		dataType : 'json',
+		success : function(result){
+			console.log('일단 이거라도 가져오자');
+			getStoreList(result)
+		}
+	})
+})
+
+
+/*$(".profile-modal-follow-btn-box").on("click", function() {
+	if ($(this).children("profile-modal-follow-btn").css("display") === "block") {
+		$(this).children("profile-modal-follow-btn").css("display", "none");
+		$(this).children(".following-btn").css("display", "block");
+		
+		$.ajax({
+		url: '/main/mainFollowOk.main',
+		type: 'get',
+		data: { 
+				memberNumberFrom : memberNumberFrom,
+				memberNumberTo : memberNumberTo
+				 },
+		success: function() {
+			console.log('gegege');
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+		});
+		
+	} else {
+		$(this).children(".follow-btn").css("display", "block");
+		$(this).children(".following-btn").css("display", "none");
+		
+		$.ajax({
+		url: '/sns/snsFollowDeleteOk.sn',
+		type: 'get',
+		data: { 
+				memberNumberFrom : memberNumberFrom,
+				memberNumberTo : memberNumberTo
+				 },
+		success: function() {
+			console.log('~~~~');
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+		});
+	}
+});
+
+*/
+
+
+
+
+
+
+
+
+
+
