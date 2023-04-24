@@ -16,10 +16,19 @@ public class SnsWriteController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		SnsDAO snsDAO = new SnsDAO();
 		MemberVO memberVO = new MemberVO();
+		req.setCharacterEncoding("utf-8");
+		
 		int memberNumber = (Integer)(req.getSession().getAttribute("memberNumber"));
 		memberVO = snsDAO.getSnsWriter(memberNumber);
 		req.setAttribute("channelName", memberVO.getChannelName());
 		req.setAttribute("channelFileSystemName", memberVO.getChannelFileSystemName());
+		
+		if(req.getParameter("snsTitle") != null) {
+		req.setAttribute("snsTitle", req.getParameter("snsTitle"));
+		req.setAttribute("snsContent", req.getParameter("snsContent"));
+		req.setAttribute("snsNumber", Integer.parseInt(req.getParameter("snsNumber")));
+		}
+		
 		req.getRequestDispatcher("/app/sns/snsWrite.jsp").forward(req, resp);
 		
 	}

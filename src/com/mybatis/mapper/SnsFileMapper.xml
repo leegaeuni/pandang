@@ -10,6 +10,11 @@
 		values(#{snsFileSystemName}, #{snsFileOriginalName}, #{snsNumber})
 	</insert>
 	
+	<delete id="delete" parameterType="_int">
+		delete from tbl_sns_file
+		where sns_number=#{snsNumber}
+	</delete>
+	
 	
 	
 </mapper>

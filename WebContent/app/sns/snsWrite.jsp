@@ -186,12 +186,22 @@
               <div class="member-nickname">${channelName }</div>
             </div>
             <!-- 게시글 작성 시 경로 작성 -->
+            <c:choose>
+            	<c:when test="${snsTitle != null}">
+            	 	<form action="${pageContext.request.contextPath}/sns/snsUpdateOk.sn" class="sns-content-area" method='post' enctype="multipart/form-data">
+            	 	<input type="hidden" name="snsNumber" value="${snsNumber}">
+            	</c:when>
+           
+            <c:otherwise>
             <form action="${pageContext.request.contextPath}/sns/snsWriteOk.sn" class="sns-content-area" method='post' enctype="multipart/form-data">
+            </c:otherwise>
+             </c:choose>
               <input
                 type="text"
                 class="sns-title"
                 name="snsTitle"
                 placeholder="제목 입력"
+                value="${snsTitle}"
               />
               <textarea
                 name="snsContent"
@@ -199,7 +209,7 @@
                 cols="30"
                 rows="10"
                 placeholder="문구 입력..."
-              ></textarea>
+              >${snsContent} </textarea>
               <div class="button-container">
                 <button type="submit" class="submit-button">공유하기</button>
               </div>

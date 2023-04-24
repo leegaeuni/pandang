@@ -18,5 +18,9 @@ public class SnsFileDAO {
 		sqlSession.insert("snsFile.snsWrite", snsFileDTO);
 	}
 	
+	public void delete(int snsNumber) {
+		sqlSession.delete("snsFile.delete", snsNumber);
+	}
+	
 	
 }

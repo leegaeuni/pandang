@@ -15,10 +15,11 @@ import com.pandang.app.sns.dto.SnsDTO;
 import com.pandang.app.sns.file.dao.SnsFileDAO;
 import com.pandang.app.sns.file.dto.SnsFileDTO;
 
-public class SnsWriteOkController implements Execute {
+public class SnsUpdateOkController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		SnsDTO snsDTO = new SnsDTO();
 		SnsDAO snsDAO = new SnsDAO();
 		SnsFileDTO snsFileDTO = new SnsFileDTO();
@@ -36,12 +37,13 @@ public class SnsWriteOkController implements Execute {
 //      생성자 매개변수 : req, 업로드 경로, 최대 크기, 인코딩 방식, 이름 정책
       MultipartRequest multipartRequest = new MultipartRequest(req, uploadPath, fileSize, "utf-8", new DefaultFileRenamePolicy());
       
+      snsNumber = Integer.parseInt(multipartRequest.getParameter("snsNumber"));
+      System.out.println(snsNumber);
       snsDTO.setSnsTitle(multipartRequest.getParameter("snsTitle"));
       snsDTO.setSnsContent(multipartRequest.getParameter("snsContent"));
-      snsDTO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
+      snsDTO.setSnsNumber(snsNumber);
       
-      snsDAO.snsWrite(snsDTO);
-      snsNumber = snsDAO.getSequence();
+      snsDAO.updatePost(snsDTO);
       
       
 //      getFileNames는 input태그의 name속성을 의미한다.
@@ -49,7 +51,11 @@ public class SnsWriteOkController implements Execute {
 //      이터레이터가 나오기 이전에 사용되던 인터페이스이다.
       Enumeration<String> fileNames = multipartRequest.getFileNames();
       
+      
+      	snsFileDAO.delete(snsNumber);
+      
 //      이터레이터의 hasNext()
+      
       while(fileNames.hasMoreElements()) {
 //         이터레이터의 next()
          String name = fileNames.nextElement();
@@ -67,8 +73,6 @@ public class SnsWriteOkController implements Execute {
       }
       
       resp.sendRedirect("/sns/snsOk.sn");
-
-		
 	}
 
 }

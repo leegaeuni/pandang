@@ -5,6 +5,10 @@
 let memberNumber = $('.memberNumber').val();
 let memberNumberFrom = $('.memberNumberFrom').val();
 let memberNumberTo = $('.memberNumberTo').val();
+let hostMemberNumber = $('#hostMemberNumber').val();
+
+
+
 
 // @@@@@@ 이미지 클릭 했을 때 모달 창 띄우기 @@@@@@@@@
 $('.snsList').on('click', $('.post-part') ,function(){
@@ -135,11 +139,12 @@ $(".modal-like-date").on("click", '.before-like-btn' ,function() {
 
 
 // @@@@@@@ 모달 팔로우 버튼 클릭 수정 @@@@@@@@
-$(".modal-follow-btn").on("click", function() {
+$(".modal-follow-btn").on("click", '.add', function() {
+	$('.modal-follow-btn').html('');
+	$('.modal-follow-btn').append(`<span class="material-symbols-outlined done"> done </span>`);
 	
-	if ($(this).children(".add").css("display") === "block") {
-		$(this).children(".add").css("display", "none");
-		$(this).children(".done").css("display", "block");
+		$(this).css("display", "none");
+		$('.done').css("display", "block");
 		
 		$.ajax({
 		url: '/sns/snsFollowOk.sn',
@@ -157,11 +162,16 @@ $(".modal-follow-btn").on("click", function() {
 
 		});
 		
-	} else {
-		$(this).children(".add").css("display", "block");
-		$(this).children(".done").css("display", "none");
-		
-		$.ajax({
+	
+});
+
+$('.modal-follow-btn').on('click', '.done',function(){
+	$('.modal-follow-btn').append(`<span class="material-symbols-outlined add"> add </span>`);
+	
+	$(this).css("display", "none");
+	$('.add').css("display", "block");
+	
+	$.ajax({
 		url: '/sns/snsFollowDeleteOk.sn',
 		type: 'get',
 		data: { 
@@ -176,7 +186,6 @@ $(".modal-follow-btn").on("click", function() {
 		}
 
 		});
-	}
 });
 
 
@@ -229,6 +238,7 @@ $('.follow-btn-box').on('click', '.following-btn', function(){
 
 
 // @@@@@@@@@@@@@ SnsList Ajax@@@@@@@@@@@@@@@@
+
 function showSnsList(result) {
 	$(".snsList").html('');
 	for (let i = 0; i < result.list.length; i++) {
@@ -571,6 +581,10 @@ $('.snsList').on('click', function() {
 		success: function(result) {
 			showSnsLikeDate(result);
 			showPostContent(result);
+			$('.snsTitle').val(result.list.snsTitle);
+			$('.snsContent').val(result.list.snsContent);
+			$('.snsNumber').val(snsNumber);
+			
 		},
 		error: function(a, b, c) {
 			console.log(c);
@@ -684,8 +698,6 @@ $('.comment').on('click', '.comment-delete', function() {
 				}
 
 			});
-
-			console.log('success!!');
 		}
 	});
 });
@@ -749,24 +761,7 @@ $('.modal-delete-btn-box').on('click', function() {
 	$.ajax({
 		url: '/sns/snsPostDeleteOk.sn',
 		type: 'get',
-		data: { snsNumber: snsNumber },
-		success: function() {
-			$.ajax({
-				url: '/sns/snsListOk.sn',
-				data: { page: thisPage },
-				success: function(result) {
-					showSnsList(result);
-					thisPage = result.page;
-					console.log(thisPage);
-				}
-			});
-
-			
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
-
+		data: { snsNumber: snsNumber }
 	});
 
 });
@@ -780,9 +775,9 @@ $('#store').on('click',function(){
 	$.ajax({
 		url: "/sns/snsStoreListOk.sn",
 		type : 'get',
-		data : {page : thisPage},
+		data : {page : thisPage,
+			hostMemberNumber : hostMemberNumber},
 		success : function(result){
-			console.log('!!!!!!');
 			showStoreList(result);
 		}
 		
@@ -796,7 +791,8 @@ $('#post-btn').on('click', function(){
 	$.ajax({
 		url:'/sns/snsListOk.sn',
 		type: 'get',
-		data:  {page : thisPage},
+		data:  {page : thisPage,
+		     	hostMemberNumber : hostMemberNumber},
 		success : function(result){
 			showSnsList(result);
 		}
@@ -876,7 +872,6 @@ $('.snsList').on('click', function(){
 		data: { snsNumber : snsNumber },
 		success: function(result) {
 			showSnsFile(result);
-			
 		},
 		error: function(a, b, c) {
 			console.log(c);
@@ -909,7 +904,7 @@ function showStoreList(result){
 							<div class="post-part">
 								<input class="storeNumber" type="hidden"
 									value="${result.list[i].storeNumber}"> 
-									<img class="post-image" src="/assets/img/SNSPage/03.jpg" />
+									<img class="post-image" src="/upload/${result.list[i].storeFileSystemName}" />
 								<div class="post-info">
 									<div class="post-name-box">
 										<span class="post-name"> 
@@ -1110,7 +1105,6 @@ $('.s-comment-container').on('click', '.s-comment-delete-btn', function() {
 
 			});
 
-			console.log('success!!');
 		}
 	});
 });
@@ -1167,12 +1161,23 @@ $('.s-comment-container').on('click', '.s-edit-btn', function() {
 	});
 });
 
+$('.report-btn').on('click', function(){
+	
+	console.log($('#reportTitle').val());
+	console.log($('#report-content').val());
+	
+	$.ajax({
+		url: '/sns/snsReportOk.sn',
+		type: 'get',
+		data: {
+			reportNumber: snsNumber,
+			reportTitle: $('#reportTitle').val(),
+			reportContent: $('#report-content').val()
+		}
+	});
+	
+});
 
-
-
-
-
-// 이 밑은 다 스토어 모달!!~!!!!!
 // @@@@@@@@@@@ 모달 창 좋아요 버튼 누를 시 하트색 변경 @@@@@@@@@@@@@
 $(".s-like-btn-color").on({
   mouseover: function () {
@@ -1185,6 +1190,7 @@ $(".s-like-btn-color").on({
   },
   click: function () {
     if ($(this).data("clicked") !== true) {
+	
       $(this).css("color", "rgb(255, 0, 0)").data("clicked", true);
 
 		$.ajax({
@@ -1241,12 +1247,14 @@ $(".s-like-btn-color").on({
 });
 
 // @@@@@@@ 모달 팔로우 버튼 클릭 수정 @@@@@@@@
-$(".s-modal-follow-btn").on("click", function () {
-  if ($(this).children(".add").css("display") === "flex") {
-    $(this).children(".add").css("display", "none");
-    $(this).children(".done").css("display", "flex");
-
-	$.ajax({
+$(".s-modal-follow-btn").on("click", '.add', function() {
+	$('.s-modal-follow-btn').html('');
+	$('.s-modal-follow-btn').append(`<span class="material-symbols-outlined done"> done </span>`);
+	
+		$(this).css("display", "none");
+		$('.done').css("display", "block");
+		
+		$.ajax({
 		url: '/sns/snsFollowOk.sn',
 		type: 'get',
 		data: { 
@@ -1261,9 +1269,16 @@ $(".s-modal-follow-btn").on("click", function () {
 		}
 
 		});
-  } else {
-    $(this).children(".add").css("display", "flex");
-    $(this).children(".done").css("display", "none");
+		
+	
+});
+
+$('.s-modal-follow-btn').on('click', '.done',function(){
+	$('.s-modal-follow-btn').append(`<span class="material-symbols-outlined add"> add </span>`);
+	
+	$(this).css("display", "none");
+	$('.add').css("display", "block");
+	
 	$.ajax({
 		url: '/sns/snsFollowDeleteOk.sn',
 		type: 'get',
@@ -1279,8 +1294,9 @@ $(".s-modal-follow-btn").on("click", function () {
 		}
 
 		});
-  }
 });
+
+
 
 // @@@@@ 모달 프로필 hover 시에 나오는 모달 @@@@@@
 $("#s-profile").on("mouseover", function () {
@@ -1377,5 +1393,21 @@ $(".s-report-btn-color").on({
   },
 });
 
+$('.s-report-btn').on('click', function(){
+	
+	console.log($('#storeReportTitle').val());
+	console.log($('#storeReportContent').val());
+	
+	$.ajax({
+		url: '/sns/storeReportOk.sn',
+		type: 'get',
+		data: {
+			reportNumber: storeNumber,
+			reportTitle: $('#storeReportTitle').val(),
+			reportContent: $('#storeReportContent').val()
+		}
+	});
+	
+});
 
 
