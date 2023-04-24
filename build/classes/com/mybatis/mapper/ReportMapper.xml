@@ -65,5 +65,14 @@
 		select count(report_number) from tbl_report_store
 		where report_title like concat('%', #{reportTitle}, '%')
 	</select>
+	
+	<select id="profileImg" parameterType="string" resultType="string">
+		select tcf.channel_file_system_name  from tbl_channel_file tcf 
+		left join tbl_channel tc 
+		on tcf.channel_number = tc.channel_number 
+		left join tbl_member tm 
+		on tm.member_number = tc.member_number 
+		where tm.member_id = #{memberId}
+	</select>
 
 </mapper>

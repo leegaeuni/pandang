@@ -24,7 +24,6 @@ $nextBtn.on("click", function() {
         memberPhoneNumber: $("#phoneNumber").val()
       },
       success: function(result) {
-		console.log("abd");
         $(".id-msg").text("아이디는 " + result + "입니다.");
 		// 아이디찾기 성공 후 '로그인'/'비밀번호찾기' 버튼을 누르면 해당 url에 memberId 추가
 		$(".login-btn").attr("href", "/member/login.me?memberId=" + result);

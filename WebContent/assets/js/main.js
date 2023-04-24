@@ -4,30 +4,30 @@ let modalBox = document.querySelector(".modal-box");*/
 // @@@@@모달 창 띄우기
 /*for (let i = 0; i < storePhoto.length; i++) {
   storePhoto[i].addEventListener("click", function () {
-	let storeNumber = $(this).data('storenumber');
-	
-	console.log(storeNumber);
+   let storeNumber = $(this).data('storenumber');
+   
+   console.log(storeNumber);
     console.log(storePhoto);*/
 
-/*	$.ajax({
-		url : '/',
-		type : 'get',
-		data : {storeNumber : storeNumber},
-		success : function(result){
-		}	
-	});
-	*/
-	
-/*	$.ajax({
-		url : '/main/mainOk.re',
-		type : 'get',
-		data : {storeNumber : storeNumber}	,
-		dataType : 'json',
-		success : function(result){
-			
-		}
-	});*/
-/*	});
+/*   $.ajax({
+      url : '/',
+      type : 'get',
+      data : {storeNumber : storeNumber},
+      success : function(result){
+      }   
+   });
+   */
+   
+/*   $.ajax({
+      url : '/main/mainOk.re',
+      type : 'get',
+      data : {storeNumber : storeNumber}   ,
+      dataType : 'json',
+      success : function(result){
+         
+      }
+   });*/
+/*   });
 }*/
 
 
@@ -55,67 +55,67 @@ tabs.forEach((tab) => {
 
 
 function getStoreList(result){
-	$(".store-wrap-sub").html('');
-			for(let i=0; i<result.length; i++){
-				let img = '';
-				if(result[i].isLike == 0){
-					img = `<img class="before-like-btn"
-														src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />`;
-				}else {
-					img = `<img class="before-like-btn active"
-													src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-													alt="heart" />`;
-				}
-				
-				console.log(img)
-				$('.store-wrap-sub').append(`<div class="store-photo">
-								<div class="store-photo-img" data-storeNumber="${result[i].storeNumber}">
-									<img
-										src="/upload/${result[i].storeFileSystemName}" />
-									<div class="store-info">
-										<div class="store-info-tap">
-											<!-- .store-info-tap은 hover시 나오는 상품 이름과 like버튼  -->
-											<span>
-												${result[i].storeTitle}
-											</span>
-											<div class="like-btn">
-												<button>
-													${img}
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							
-								<div class="store-info-channel">
-									<div class="store-info-channel-name">
-										<span>
-											${result[i].channelName}
-										</span>
-									</div>
+   $(".store-wrap-sub").html('');
+         for(let i=0; i<result.length; i++){
+            let img = '';
+            if(result[i].isLike == 0){
+               img = `<img class="before-like-btn"
+                                          src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png" />`;
+            }else {
+               img = `<img class="before-like-btn active"
+                                       src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+                                       alt="heart" />`;
+            }
+            
+            console.log(img)
+            $('.store-wrap-sub').append(`<div class="store-photo">
+                        <div class="store-photo-img" data-storeNumber="${result[i].storeNumber}">
+                           <img
+                              src="/upload/${result[i].storeFileSystemName}" />
+                           <div class="store-info">
+                              <div class="store-info-tap">
+                                 <!-- .store-info-tap은 hover시 나오는 상품 이름과 like버튼  -->
+                                 <span>
+                                    ${result[i].storeTitle}
+                                 </span>
+                                 <div class="like-btn">
+                                    <button>
+                                       ${img}
+                                    </button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     
+                        <div class="store-info-channel">
+                           <div class="store-info-channel-name">
+                              <span>
+                                 ${result[i].channelName}
+                              </span>
+                           </div>
 
-									<div class="cnt-wrap">
-										<div class="cnt-view">
-											<div class="cnt-view-icon">
-												<span class="material-symbols-outlined"> visibility </span>
-											</div>
-											<div class="cnt-view-number">
-												${result[i].storeViewCnt}
-											</div>
-										</div>
-										<div class="cnt-like">
-											<div class="cnt-like-icon">
-												${img}
-											</div>
-											<div class="cnt-like-number">
-												${result[i].likeCnt}
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>`)
-				
-			}
+                           <div class="cnt-wrap">
+                              <div class="cnt-view">
+                                 <div class="cnt-view-icon">
+                                    <span class="material-symbols-outlined"> visibility </span>
+                                 </div>
+                                 <div class="cnt-view-number">
+                                    ${result[i].storeViewCnt}
+                                 </div>
+                              </div>
+                              <div class="cnt-like">
+                                 <div class="cnt-like-icon">
+                                    ${img}
+                                 </div>
+                                 <div class="cnt-like-number">
+                                    ${result[i].likeCnt}
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>`)
+            
+         }
 }
 
 let storeNumber = 0;
@@ -123,72 +123,72 @@ let memberNumber = $('.j-login-number').val();
 // @@@@@@ 이미지 클릭 했을 때 모달 창 띄우기 @@@@@@@@@
 
 $('.store-wrap-sub').on('click', '.store-info', function(e){
-	$(".post-modal").css("display", "flex");
+   $(".post-modal").css("display", "flex");
     $(".modal-background").css("display", "inline-block");
-	console.log($(e.target).parent().parent().data('storenumber'));
-	storeNumber = $(e.target).parent().parent().data('storenumber');
-	$.ajax({
-		url : '/store/storeUpdateViewCntOk.st',
-		type : 'get',
-		data : {storeNumber : storeNumber},
-		dataType : 'json',
-		success : function(result){
-			insertDataModal(result);
-			getStoreComment();
-			getStoreFile();
+   console.log($(e.target).parent().parent().data('storenumber'));
+   storeNumber = $(e.target).parent().parent().data('storenumber');
+   $.ajax({
+      url : '/store/storeUpdateViewCntOk.st',
+      type : 'get',
+      data : {storeNumber : storeNumber},
+      dataType : 'json',
+      success : function(result){
+         insertDataModal(result);
+         getStoreComment();
+         getStoreFile();
 
-		}
-	});
-	
-	/*밖에다가 댓글과 게시물이미지 ajax를 만들것*/
-	
-	function getStoreComment(){
-		$.ajax({
-				url: '/storeComment/storeCommentListOk.stc',
-				type: 'get',
-				dataType: 'json',
-				data: { storeNumber: storeNumber },
-				success: function(result) {
-					showStoreComment(result);
-				},
-				error: function(a, b, c) {
-					console.log(c);
-				}
+      }
+   });
+   
+   /*밖에다가 댓글과 게시물이미지 ajax를 만들것*/
+   
+   function getStoreComment(){
+      $.ajax({
+            url: '/storeComment/storeCommentListOk.stc',
+            type: 'get',
+            dataType: 'json',
+            data: { storeNumber: storeNumber },
+            success: function(result) {
+               showStoreComment(result);
+            },
+            error: function(a, b, c) {
+               console.log(c);
+            }
 
-			});
-	}
-	
-	function getStoreFile(){
-		$.ajax({
-			url:'/file/storeFileOk.stf',
-			type:'get',
-			dataType:'json',
-			data: {storeNumber : storeNumber},
-			success: function(result){
-				
-				let text = '';
-				
-				for(let i=0; i<result.length; i++){
-					text += `
-						<img
-			                src="/upload/${result[i].storeFileSystemName}"
-			                alt=""
-			              />
-					`;
-				}
-					
-				$('.post').append(text);
-			}
-		});
-	}
-	
-	function showStoreComment(result){
-	$('.s-commentL').html('');
-	let text = '';
-	for (let i = 0; i < result.length; i++) {
-		if (storeNumber == result[i].storeNumber && result[i].storeCommentNumber != 0) {
-			
-			text += `<div class="comment-list">
+         });
+   }
+   
+   function getStoreFile(){
+      $.ajax({
+         url:'/file/storeFileOk.stf',
+         type:'get',
+         dataType:'json',
+         data: {storeNumber : storeNumber},
+         success: function(result){
+            
+            let text = '';
+            
+            for(let i=0; i<result.length; i++){
+               text += `
+                  <img
+                         src="/upload/${result[i].storeFileSystemName}"
+                         alt=""
+                       />
+               `;
+            }
+               
+            $('.post').append(text);
+         }
+      });
+   }
+   
+   function showStoreComment(result){
+   $('.s-commentL').html('');
+   let text = '';
+   for (let i = 0; i < result.length; i++) {
+      if (storeNumber == result[i].storeNumber && result[i].storeCommentNumber != 0) {
+         
+         text += `<div class="comment-list">
               <!-- @@@@@@@@@ 댓글 list @@@@@@@@@@ -->
               <a herf="#" class="comment-user-profile-shortcuts">
                 <div class="comment-user-profile-wrap">
@@ -205,28 +205,28 @@ $('.store-wrap-sub').on('click', '.store-info', function(e){
                   <div class="comment-date">${result[i].storeCommentDate}</div>
                   `
 
-				if(memberNumber == result[i].memberNumber){
-					text += `
-					
-					<div class="comment-edit-delete-btn-box">
+            if(memberNumber == result[i].memberNumber){
+               text += `
+               
+               <div class="comment-edit-delete-btn-box">
                     <button class="comment-edit-btn" data-number="${result[i].storeCommentNumber}">수정</button>
 
                     <button class="comment-delete-btn"  data-number="${result[i].storeCommentNumber}">삭제</button>
                   </div>
 
-					 <div class="edit-btn-box">
+                <div class="edit-btn-box">
                       <button type="submit" class="edit-btn" data-number="${result[i].storeCommentNumber}">
                         수정 완료
                       </button>
                   </div>`
-				}
-				
-				text += `
-					</div>
-				<div class="height-box"></div>
+            }
+            
+            text += `
+               </div>
+            <div class="height-box"></div>
                 <div class="comment">
                   <span class="comment-content">
-					${result[i].storeCommentContent}
+               ${result[i].storeCommentContent}
                   </span>
                  
                   
@@ -234,63 +234,63 @@ $('.store-wrap-sub').on('click', '.store-info', function(e){
               </div>
               <!-- @@@@@@@@@ 댓글 리스트 끝  @@@@@@@@@@ -->
             </div>`;
-		}
-	}
-	$('.s-commentL').html(text);
+      }
+   }
+   $('.s-commentL').html(text);
 }
 
 /* store 모달 댓글 작성 */
 $('.comment-submit-btn').on('click', function() {
-	
-	$.ajax({
+   
+   $.ajax({
 
-		url: "/storeComment/storeCommentWriteOk.stc",
-		type: "get",
-		data: {
-			storeNumber: storeNumber,
-			memberNumber: memberNumber,
-			storeCommentContent: $('.comment-input-area').val()
-		},
-		success: function() {
-			$('.comment-input-area').val('');
-			getStoreComment();
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
+      url: "/storeComment/storeCommentWriteOk.stc",
+      type: "get",
+      data: {
+         storeNumber: storeNumber,
+         memberNumber: memberNumber,
+         storeCommentContent: $('.comment-input-area').val()
+      },
+      success: function() {
+         $('.comment-input-area').val('');
+         getStoreComment();
+      },
+      error: function(a, b, c) {
+         console.log(c);
+      }
 
-	});
+   });
 
 });
 
 // store 댓글 삭제
 $('.comment-container').on('click', '.comment-delete-btn', function() {
 
-	let storeCommentNumber = $(this).data('number');
+   let storeCommentNumber = $(this).data('number');
 
-	$.ajax({
-		url: "/storeComment/storeCommentDeleteOk.stc",
-		type: 'get',
-		data: { storeCommentNumber: storeCommentNumber },
-		success: function() {
-			// 댓글 갱신
-			$.ajax({
-				url: '/storeComment/storeCommentListOk.stc',
-				type: 'get',
-				dataType: 'json',
-				data: { storeNumber: storeNumber },
-				success: function(result) {
-					showStoreComment(result);
-				},
-				error: function(a, b, c) {
-					console.log(c);
-				}
+   $.ajax({
+      url: "/storeComment/storeCommentDeleteOk.stc",
+      type: 'get',
+      data: { storeCommentNumber: storeCommentNumber },
+      success: function() {
+         // 댓글 갱신
+         $.ajax({
+            url: '/storeComment/storeCommentListOk.stc',
+            type: 'get',
+            dataType: 'json',
+            data: { storeNumber: storeNumber },
+            success: function(result) {
+               showStoreComment(result);
+            },
+            error: function(a, b, c) {
+               console.log(c);
+            }
 
-			});
+         });
 
-			console.log('success!!');
-		}
-	});
+         console.log('success!!');
+      }
+   });
 });
 
 
@@ -299,66 +299,66 @@ $('.comment-container').on('click', '.comment-delete-btn', function() {
 $('.comment-container').on('click', '.comment-edit-btn', function() {
 
 
-	let $parent = $(this).closest('.comment-list');
-	console.log($parent);
+   let $parent = $(this).closest('.comment-list');
+   console.log($parent);
 
-	 let $children = $parent.find('.comment-edit-delete-btn-box, .edit-btn-box');
-	console.log($children);
+    let $children = $parent.find('.comment-edit-delete-btn-box, .edit-btn-box');
+   console.log($children);
 
-	$children.eq(0).hide();
-	$children.eq(1).show();
+   $children.eq(0).hide();
+   $children.eq(1).show();
 
-	let $content = $(this).closest('.comment-list').find('.comment-content');
-	console.log($content);
+   let $content = $(this).closest('.comment-list').find('.comment-content');
+   console.log($content);
 
-	$content.replaceWith(`<textarea class='modify-content'> </textarea>`);
+   $content.replaceWith(`<textarea class='modify-content'> </textarea>`);
 
 });
 
 
 $('.comment-container').on('click', '.edit-btn', function() {
-	let storeCommentNumber = $(this).data('number');
-	console.log($('.modify-content').val());
+   let storeCommentNumber = $(this).data('number');
+   console.log($('.modify-content').val());
 
-	$.ajax({
-		url: '/storeComment/storeCommentUpdateOk.stc',
-		type: 'get',
-		data: {
-			storeCommentNumber: storeCommentNumber,
-			storeCommentContent: $('.modify-content').val()
-		},
-		success: function() {
-			$.ajax({
-				url: '/storeComment/storeCommentListOk.stc',
-				type: 'get',
-				dataType: 'json',
-				data: { storeNumber: storeNumber },
-				success: function(result) {
-					showStoreComment(result);
-				},
-				error: function(a, b, c) {
-					console.log(c);
-				}
+   $.ajax({
+      url: '/storeComment/storeCommentUpdateOk.stc',
+      type: 'get',
+      data: {
+         storeCommentNumber: storeCommentNumber,
+         storeCommentContent: $('.modify-content').val()
+      },
+      success: function() {
+         $.ajax({
+            url: '/storeComment/storeCommentListOk.stc',
+            type: 'get',
+            dataType: 'json',
+            data: { storeNumber: storeNumber },
+            success: function(result) {
+               showStoreComment(result);
+            },
+            error: function(a, b, c) {
+               console.log(c);
+            }
 
-			});
-		}
-	});
+         });
+      }
+   });
 });
-	
+   
 });
 
 /*=================================================*/
 
 function insertDataModal(result){
-	$('.post-title').text(result.storeTitle);
-	$('.post-date').text(result.storeDate);
-	$('.post-categori').text(result.hashtagName);
-	$('.view-cnt').text(result.storeViewCnt);
-	$('.p-like-cnt').text(result.likeCount);
-	$('.comment-cnt').text(result.commentCount);
-	$('.post').text(result.storeContent);
-	//$('.author-profile-img').attr('src', '')
-	$('.profile-modal-member > a').text(result.channelName);
+   $('.post-title').text(result.storeTitle);
+   $('.post-date').text(result.storeDate);
+   $('.post-categori').text(result.hashtagName);
+   $('.view-cnt').text(result.storeViewCnt);
+   $('.p-like-cnt').text(result.likeCount);
+   $('.comment-cnt').text(result.commentCount);
+   $('.post').text(result.storeContent);
+   //$('.author-profile-img').attr('src', '')
+   $('.profile-modal-member > a').text(result.channelName);
 }
 
 function showModal(result){
@@ -673,33 +673,33 @@ $('.store-photo-img')(`<div class="post-box">
 
 /*
 function showReport(result){
-	$(".report-list").html('');
-			for(let i=0; i<result.list.length; i++){
-				
-				$('.report-list').append(`<div class="board-list">
-		          <div class="board-list-number">${result.list[i].reportNumber}</div>
-		          <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
-		          <a href="#" class="board-list-title">${result.list[i].reportTitle}</a>
-		          <div class="board-list-author">${result.list[i].memberId}</div>
-		          <div class="board-list-date">${result.list[i].reportDate}</div>
-		        </div>
-		
-		        <!-- 게시물 제목 클릭 시 신고내용이 보여진다. -->
-		        <div class="report-contents-wrap">
-		          <div class="report-content">
-		            <p>
-		              ${result.list[i].reportContent}
-		            </p>
-		          </div>
-		          <div class="report-btn-wrap">
-		            <!-- 클릭 시 해당 회원정보로 이동 -->
-		            <a href="#">${result.list[i].reportedMemberId}</a>
-		            <!-- 클릭 시 해당 게시물로 이동 -->
-		            <button class="go-post-btn">게시물 보기</button>
-		          </div>
-		        </div>`)
-				
-			}
+   $(".report-list").html('');
+         for(let i=0; i<result.list.length; i++){
+            
+            $('.report-list').append(`<div class="board-list">
+                <div class="board-list-number">${result.list[i].reportNumber}</div>
+                <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
+                <a href="#" class="board-list-title">${result.list[i].reportTitle}</a>
+                <div class="board-list-author">${result.list[i].memberId}</div>
+                <div class="board-list-date">${result.list[i].reportDate}</div>
+              </div>
+      
+              <!-- 게시물 제목 클릭 시 신고내용이 보여진다. -->
+              <div class="report-contents-wrap">
+                <div class="report-content">
+                  <p>
+                    ${result.list[i].reportContent}
+                  </p>
+                </div>
+                <div class="report-btn-wrap">
+                  <!-- 클릭 시 해당 회원정보로 이동 -->
+                  <a href="#">${result.list[i].reportedMemberId}</a>
+                  <!-- 클릭 시 해당 게시물로 이동 -->
+                  <button class="go-post-btn">게시물 보기</button>
+                </div>
+              </div>`)
+            
+         }
 };
 */
 
@@ -708,10 +708,10 @@ function showReport(result){
   $(".post-modal").css("display", "flex");
   $(".modal-background").css("display", "inline-block");
   console.log($(this).parent()).data('storeNumber');
-*/	/*$.ajax({
-		url : 
-		
-	})*/
+*/   /*$.ajax({
+      url : 
+      
+   })*/
 /*});*/
 
 
@@ -725,7 +725,7 @@ $(".modal-background").on("click", function () {
 
 
 function closeModal(result){
-	$('.post-modal').html('');
+   $('.post-modal').html('');
 };
 
 // @@@@@@@ 팔로우 팔로잉 버튼 @@@@@@@@@@@@
@@ -837,7 +837,7 @@ $(".store-wrap-sub").on("click",".before-like-btn" , function (e) {
     src = "https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png";
   }
 
-	likeAjax(e.target);
+   likeAjax(e.target);
 
   toggleImg($target, src);
   e.stopPropagation();
@@ -846,16 +846,16 @@ $(".store-wrap-sub").on("click",".before-like-btn" , function (e) {
 
 // 좋아요 버튼 ajax
 function likeAjax(target){
-	let storeNumber = $(target).closest('.store-photo').find('.store-photo-img').data('storenumber');
-	
-	$.ajax({
-		url : '/main/likeOk.main',
-		type : 'get',
-		data : {storeNumber : storeNumber},
-		success : function(result){
-			 $(target).closest('.store-photo').find('.cnt-like-number').text(result);
-		}
-	});
+   let storeNumber = $(target).closest('.store-photo').find('.store-photo-img').data('storenumber');
+   
+   $.ajax({
+      url : '/main/likeOk.main',
+      type : 'get',
+      data : {storeNumber : storeNumber},
+      success : function(result){
+          $(target).closest('.store-photo').find('.cnt-like-number').text(result);
+      }
+   });
 }
 
 
@@ -897,6 +897,11 @@ tabs.forEach((tab) => {
     target.classList.add("active");
   });
 });*/
+
+// 처음 페이지 진입 시 '판당 pick'이 클릭되어 있게 하기.
+$(document).ready(function() {
+   $('.pandang-pick').click();
+});
 
 // 탭 전환시 민트색으로 색상 변경
 $(".tab").on("click", function () {
@@ -955,93 +960,38 @@ function checkEnd() {
 
 
 $('.lastest').on('click',function(){
-		$.ajax({
-			url : '/main/mainAjaxLastestOk.main',
-			type : 'get',
-			dataType : 'json',
-			success : function(result){
-	console.log('정연재 ㅄ');
-				getStoreList(result);
-			}
-		})
-})
-
-$('.pandang-pick').on('click', function(){
-	$.ajax({
-		url : '/main/mainAjaxPandangOk.main',
-		type : 'get',
-		dataType : 'json',
-		success : function(result){
-		  console.log('가보자고');
-			getStoreList(result)
-		}
-	})
-})
-
-$('.following').on('click', function(){
-	$.ajax({
-		url : '/main/mainAjaxFollowOk.main',
-		type : 'get',
-		dataType : 'json',
-		success : function(result){
-			console.log('일단 이거라도 가져오자');
-			getStoreList(result)
-		}
-	})
-})
-
-
-/*$(".profile-modal-follow-btn-box").on("click", function() {
-	if ($(this).children("profile-modal-follow-btn").css("display") === "block") {
-		$(this).children("profile-modal-follow-btn").css("display", "none");
-		$(this).children(".following-btn").css("display", "block");
-		
-		$.ajax({
-		url: '/main/mainFollowOk.main',
-		type: 'get',
-		data: { 
-				memberNumberFrom : memberNumberFrom,
-				memberNumberTo : memberNumberTo
-				 },
-		success: function() {
-			console.log('gegege');
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
-
-		});
-		
-	} else {
-		$(this).children(".follow-btn").css("display", "block");
-		$(this).children(".following-btn").css("display", "none");
-		
-		$.ajax({
-		url: '/sns/snsFollowDeleteOk.sn',
-		type: 'get',
-		data: { 
-				memberNumberFrom : memberNumberFrom,
-				memberNumberTo : memberNumberTo
-				 },
-		success: function() {
-			console.log('~~~~');
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
-
-		});
-	}
+      $.ajax({
+         url : '/main/mainAjaxLastestOk.main',
+         type : 'get',
+         dataType : 'json',
+         success : function(result){
+   console.log('정연재 ㅄ');
+            getStoreList(result);
+         }
+      });
 });
 
-*/
+$('.pandang-pick').on('click', function(){
+   $.ajax({
+      url : '/main/mainAjaxPandangOk.main',
+      type : 'get',
+      dataType : 'json',
+      success : function(result){
+        console.log('가보자고');
+         getStoreList(result)
+      }
+   });
+});
 
-
-
-
-
-
-
-
-
+$('.following').on('click', function(){
+   $.ajax({
+      url : '/main/mainAjaxFollowOk.main',
+      type : 'get',
+      dataType : 'json',
+      success : function(result){
+         console.log('일단 이거라도 가져오자');
+         getStoreList(result)
+      }
+   });
+});
 

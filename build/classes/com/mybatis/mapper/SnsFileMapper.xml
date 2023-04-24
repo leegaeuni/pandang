@@ -2,9 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="snsFile">
+
+
 	<insert id="snsWrite" parameterType="SnsFileDTO">
 		insert into tbl_sns_file
 		(sns_file_system_name, sns_file_original_name, sns_number)
 		values(#{snsFileSystemName}, #{snsFileOriginalName}, #{snsNumber})
 	</insert>
+	
+	<delete id="delete" parameterType="_int">
+		delete from tbl_sns_file
+		where sns_number=#{snsNumber}
+	</delete>
+	
+	
+	
 </mapper>

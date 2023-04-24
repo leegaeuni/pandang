@@ -23,11 +23,6 @@ public class StoreFileDAO {
 		return sqlSession.selectList("storeFile.selectList", storeNumber);
 	}
   
-//
-//	public void delete(int storeNumber) {
-//		sqlSession.delete("storeFile.delete", storeNumber);
-//	}
-
 	public List<StoreFileDTO> selectAll(int storeNumber) {
 		return sqlSession.selectList("storeFile.select", storeNumber);
 	}

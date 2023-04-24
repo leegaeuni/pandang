@@ -75,7 +75,7 @@ public class SellController implements Execute {
 		// BuyDAO의 buySeleteAll메소드를 사용해서 mapper의 쿼리문을 돌려서 가져온 데이터를 List로 저장.
 		List<BuyVO> salesDetail = buyDAO.buySeleteAll(pageMap);
 		
-		System.out.println(salesDetail.toString());
+//		System.out.println(salesDetail.toString());
 
 		req.setAttribute("salesDetail", salesDetail);
 		req.setAttribute("page", page);
