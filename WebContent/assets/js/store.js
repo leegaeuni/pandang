@@ -533,7 +533,7 @@ let $modifyBtn = $('.modal-edit-btn');
 let $deleteBtn = $('.modal-delete-btn');
 
 $modifyBtn.on('click', () => {
-	window.location.href = '/store/storeUpdate.st';
+	window.location.href = '/store/storeUpdate.st'
 });
 
 $deleteBtn.on('click', () => {

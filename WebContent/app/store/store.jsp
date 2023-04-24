@@ -112,8 +112,10 @@
         
         
         <!-- 모달창 작업 -->
-
         <div class="post-modal">
+         <c:choose>
+					<c:when test="${not empty storeList}">
+						<c:forEach var="store" items="${storeList}">
           <div class="post-box">
             <div class="profile-path">
               <div class="profile-modal-img-box">
@@ -167,27 +169,26 @@
                 </div>
               </form>
               <!-- @@@@@ 신고하기 영역 끝 @@@@@ -->
-            </div>
-            <div class="post-header-container">
+            </div>   
+         	<div class="post-header-container">
+         	
               <div class="post-header-box">
                 <div class="post-header">
                   <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
-                  <div class="post-title">임시 게시글 제목</div>
+                  <div class="post-title">${store.getStoreTitle() }</div>
                   <div class="post-date-categori-box">
-                    <div class="post-date">2023.3.23</div>
+                    <div class="post-date">${store.getStoreDate() }</div>
                     <div>l</div>
-                    <div class="post-categori">패션</div>
+                    <div class="post-categori">1</div>
                   </div>
                   <!-- @@@@@@@@@ 모달 게시글 헤더 끝 @@@@@@@@@@ -->
                 </div>
                 <div class="post-information">
-                <c:choose>
-					<c:when test="${not empty storeList}">
-						<c:forEach var="store" items="${storeList}">
+               
                   <!-- @@@@@@@@@ 게시글 조회, 좋아요, 댓글 수 @@@@@@@@@@ -->
                   <div class="post-view-cnt">
                     <span class="material-symbols-outlined"> visibility </span>
-                    <div class="view-cnt">32</div>
+                    <div class="view-cnt">${store.getStoreViewCnt() }</div>
                   </div>
                   <div class="post-like-cnt">
                     <span class="material-symbols-outlined heart"> favorite </span>
@@ -198,29 +199,24 @@
                     <div class="comment-cnt">33</div>
                   </div>
                   <!-- @@@@@@@@@ 모달 조회,좋아요,댓글 수 끝 @@@@@@@@@@ -->
-                   	</c:forEach>
-					</c:when>      
-					</c:choose>         
+                   
                 </div>                
               </div>
+              
             </div>
             <div class="post">
               <!-- @@@@@@@@@ 모달 게시글 본문 @@@@@@@@@@ -->
-              <p>게시글 작성 테스중</p>
-              <p>게시글 작성 테스중</p>
-              <p>게시글 작성 테스중</p>
+              <p>${store.getStoreContent() }</p>
               <img
                 src="https://cdn-bastani.stunning.kr/prod/portfolios/16da7ecc-6e99-4388-8825-14c6d4de5f83/contents/VymrA8ubdEQF5EoT.1201%E1%84%83%E1%85%A6%E1%84%87%E1%85%B1_%E1%84%82%E1%85%A1%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A1%E1%84%89%E1%85%AE-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5_%E1%84%80%E1%85%A1%E1%84%85%E1%85%A9_%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A9%E1%84%8C%E1%85%A2_s.jpg"
                 alt=""
               />
-              <p>게시글 작성 테스중</p>
-              <p>게시글 작성 테스중</p>
+              <p>${store.getStoreContent() }</p>
               <img
                 src="https://cdn-bastani.stunning.kr/prod/portfolios/16da7ecc-6e99-4388-8825-14c6d4de5f83/contents/VymrA8ubdEQF5EoT.1201%E1%84%83%E1%85%A6%E1%84%87%E1%85%B1_%E1%84%82%E1%85%A1%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A1%E1%84%89%E1%85%AE-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5_%E1%84%80%E1%85%A1%E1%84%85%E1%85%A9_%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A9%E1%84%8C%E1%85%A2_s.jpg"
                 alt=""
               />
-              <p>게시글 작성 테스중</p>
-              <p>게시글 작성 테스중</p>
+              <p>${store.getStoreContent() }</p>
               <!-- @@@@@@@@@ 모달 게시글 본문 끝 @@@@@@@@@@ -->
             </div>
             <div class="post-comment-box">
@@ -425,6 +421,9 @@
               </div>
             </div>
           </div>
+            	</c:forEach>
+					</c:when>      
+					</c:choose>     
         </div>
 
         <!-- 모달창 작업 종료  -->
