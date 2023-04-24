@@ -203,6 +203,18 @@ th {
   cursor: pointer;
 }
 
+.change-status, .cancel{
+	width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #f0f0f0;
+  	cursor: pointer;
+}
+
+
+
 /* @@@@@페이지 이동 @@@@@ */
 .pagination {
   display: flex;
@@ -257,7 +269,7 @@ th {
 }
 
 .buy-status-change{
-  background-color: azure;
+  background-color: white;
   color: black;
   width: 400px;
   height: 200px;
@@ -266,7 +278,7 @@ th {
 }
 
 .buy-status-change-ok-page{
-  background-color: azure;
+  background-color: white;
   color: black;
   width: 400px;
   height: 200px;
@@ -288,6 +300,7 @@ th {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 18px;
 }
 
 .buy-status-change-ok-page{
