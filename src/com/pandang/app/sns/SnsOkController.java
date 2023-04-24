@@ -23,16 +23,23 @@ public class SnsOkController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		
 //		// url에 있는 memberNumber 뽑아오는거
 		req.getParameter("memberNumber");
 	
 		
 		HttpSession session = req.getSession();
+		
+		if(session.getAttribute("memberNumber") == null && req.getParameter("memberNumber") == null) {
+			req.getRequestDispatcher("/app/member/login.jsp").forward(req, resp);
+			return;
+		}
+
 		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
 		if(req.getParameter("memberNumber")!=null) {
 			memberNumber = Integer.parseInt(req.getParameter("memberNumber")); 
 		}
+		
+		System.out.println(memberNumber);
 		
 		SnsDAO snsDAO = new SnsDAO();
 		SnsHeaderVO snsHeaderVO = new SnsHeaderVO();
@@ -41,7 +48,7 @@ public class SnsOkController implements Execute {
 		// 그 memberNumber의 화면이 넘어오도록 내가 만들어야함
 		//
 		// 걔를 ajax로 써서 req.getParameter에 꽂아야함
-		req.getParameter("memberNumber");
+//		req.getParameter("memberNumber");
 
 		// sns snsVO
 		List<SnsVO> snsVO = snsDAO.selectAll(memberNumber);
@@ -56,6 +63,7 @@ public class SnsOkController implements Execute {
 //		}
 		
 		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 		req.setAttribute("sns", snsVO);
 
@@ -116,20 +124,18 @@ public class SnsOkController implements Execute {
 		
 		Map<String, Integer> snsPost = new HashMap();
 		
-		snsPost.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
+		snsPost.put("memberNumber", memberNumber);
 		snsPost.put("startRow", startRow);
 	    snsPost.put("rowCount", rowCount);
 		
 		List<SnsPostInfoVO> snsPostInfoVO = snsDAO.snsPostInfo(snsPost);
-
-//		System.out.println(snsPostInfoVO);
 
 		req.setAttribute("snsPostInfo", snsPostInfoVO);
 		req.setAttribute("realEndPage", realEndPage);
 		
 		
 		Map<String, Integer> storePost = new HashMap();
-		storePost.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
+		storePost.put("memberNumber", memberNumber);
 		storePost.put("startRow", startRow);
 		storePost.put("rowCount", rowCount);
 
@@ -144,6 +150,37 @@ public class SnsOkController implements Execute {
 //		System.out.println(snsCommentVO.get(0).getSnsNumber());
 
 		req.setAttribute("comment", snsCommentVO);
+		
+		
+		// 팔로우
+		String ifFollowed = "";
+		Map<String, Integer> map = new HashMap<>();
+		
+		int memberNumberTo;
+		
+		map.put("memberNumberFrom", (Integer)session.getAttribute("memberNumber"));
+		
+		if(req.getParameter("memberNumber")== null) {
+			memberNumberTo = -777;
+		} else {
+			memberNumberTo = Integer.parseInt(req.getParameter("memberNumber"));
+		}
+		
+		map.put("memberNumberTo", memberNumberTo);
+		
+		
+		System.out.println("memberNumberFrom" + (Integer)session.getAttribute("memberNumber"));
+		System.out.println(memberNumberTo);
+		
+		 if(snsDAO.followed(map) != 0) {
+	    	  ifFollowed = "follow";
+	      }
+		 
+		 System.out.println(ifFollowed);
+		
+	      
+	    req.setAttribute("ifFollowed", ifFollowed);
+	    
 		
 		req.getRequestDispatcher("/app/sns/mySns.jsp").forward(req, resp);
 

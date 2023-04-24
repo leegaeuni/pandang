@@ -26,13 +26,13 @@ public class SnsListOkController implements Execute {
 		
 		HttpSession session = req.getSession();
 		
-//		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
+		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
 		
-		int memberNumber = 1;
+		
 		
 		SnsDAO snsDAO = new SnsDAO();
 		
-		int total = snsDAO.getTotal(1);
+		int total = snsDAO.getTotal(memberNumber);
 		
 		
 //      처음 게시판 페이지에 진입하면 페이지에 대한 정보가 없다.
@@ -102,7 +102,7 @@ public class SnsListOkController implements Execute {
 	      
 	      
 	      resp.setContentType("application/json; charSet=utf-8");
-	      
+	     
 	      PrintWriter out = resp.getWriter();
 	      out.print(result.toString());
 	      out.close();

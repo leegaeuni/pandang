@@ -1,3 +1,15 @@
+function searchParam(key) {
+  return new URLSearchParams(location.search).get(key);
+};
+
+function isEmpty(str){
+		
+		if(typeof str == "undefined" || str == null || str == "")
+			return true;
+		else
+			return false ;
+	}
+
 // @@@@@@@@@@ 선택된 카테고리만 css 부여하는 js @@@@@@@@@@@@
 $(".categori").on("click", function () {
   $(this).css("background-color", "rgb(50, 50, 50)");
@@ -203,72 +215,135 @@ $(".report-btn-color").on({
 
 //처음 페이지 설정
 $(document).ready(function(){
-    $('.pandang-pick').click();
+    $('.pandang-pick').css('color', 'rgb(42, 197, 198)');
     $('.prev').prop('disabled', true);
 });
 
 function showStore(result) {
-	console.log(result);
 	$('.post-container').html('');
-			for(let i=0; i<result.list.length; i++){			
-			$('.post-container').append(`<div class="post-box-container">    
-            <div class="post-img-container">
-              <div class="post-img-box-wrap">
-                <img
-                  class="post-img"
-                  src="${result.list[i].fileSystemName}"
-                  alt=""
-                />
-                <div class="post-img-back"></div>
-                <button type="button" class="like-btn">좋아요</button>
-                <div class="modal-background"></div>
-                <div class="modal-test"></div>
-              </div>
-            </div>
-             <div class="post-title-box">${result.list[i].storeTitle}</div>
-            <div class="writer-container">
-              <div class="channel-profile-box">
-                <a href="#" class="profile-img-box">
-                  <img
-                    class="profile-img"
-                    src="${result.list[i].channelFileSystemName }"
-                    alt=""
-                  />
-                </a>
-              </div>
-              <div class="writer-box">
-                <a href="" class="writer-name">${result.list[i].memberNickname}</a>
-              </div>
-              <font>·</font>
-              <div class="follow-btn-box">
-                <button type="button" class="follow-btn">
-                  <span class="follow">팔로우</span>
-                  <!-- 팔로우 버튼 누를 시 팔로잉 으로 떠야함 일단은 display none처리 했음 -->
-                  <img
-                    class="following"
-                    src="https://cdn.loud.kr/LOUD_IMG/main/ico-check-follow.png"
-                    alt=""
-                  />
-                  <span class="following">팔로잉</span>
-                </button>
-              </div>
-              <div class="like-wrap">
-                <img
-                  class="before-like-btn"
-                  src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
-                  alt="heart"
-                />
-                <!-- 게시글에 좋아요 누를 시 하트 색이 하트로 변경됨 일단은 display none처리 했음 -->
-                <img
-                  class="after-like-btn"
-                  src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
-                  alt="heart"
-                />
-                <!-- 임시 좋아요 수 -->
-                <div class="like-cnt">${result.list[i].storeLikeCnt}</div>
-              </div>         
-            </div>               
-          </div>`)
+			for(let i=0; i<result.list.length; i++){	
+				if(isEmpty(result.list[i].storeFileSystemName)){
+					
+					$('.post-container').append(`<div class="post-box-container">    
+		            <div class="post-img-container">
+		              <div class="post-img-box-wrap">
+		                <img
+		                  class="post-img"
+		                  src="/assets/img/default.png"
+		                  alt=""
+		                />
+		                <div class="post-img-back"></div>
+		                <button type="button" class="like-btn">좋아요</button>
+		                <div class="modal-background"></div>
+		                <div class="modal-test"></div>
+		              </div>
+		            </div>
+		             <div class="post-title-box">${result.list[i].storeTitle}</div>
+		            <div class="writer-container">
+		              <div class="channel-profile-box">
+		                <a href="#" class="profile-img-box">
+		                  <img
+		                    class="profile-img"
+		                    src="/upload/${result.list[i].channelFileSystemName }"
+		                    alt=""
+		                  />
+		                </a>
+		              </div>
+		              <div class="writer-box">
+		                <a href="" class="writer-name">${result.list[i].memberNickname}</a>
+		              </div>
+		              <font>·</font>
+		              <div class="follow-btn-box">
+		                <button type="button" class="follow-btn">
+		                  <span class="follow">팔로우</span>
+		                  <!-- 팔로우 버튼 누를 시 팔로잉 으로 떠야함 일단은 display none처리 했음 -->
+		                  <img
+		                    class="following"
+		                    src="https://cdn.loud.kr/LOUD_IMG/main/ico-check-follow.png"
+		                    alt=""
+		                  />
+		                  <span class="following">팔로잉</span>
+		                </button>
+		              </div>
+		              <div class="like-wrap">
+		                <img
+		                  class="before-like-btn"
+		                  src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+		                  alt="heart"
+		                />
+		                <!-- 게시글에 좋아요 누를 시 하트 색이 하트로 변경됨 일단은 display none처리 했음 -->
+		                <img
+		                  class="after-like-btn"
+		                  src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+		                  alt="heart"
+		                />
+		                <!-- 임시 좋아요 수 -->
+		                <div class="like-cnt">${result.list[i].storeLikeCnt}</div>
+		              </div>         
+		            </div>               
+		          </div>`)
+					$('.post-img-box-wrap').css('border', '1px solid rgb(200,200,200)')
+				}else{
+					$('.post-img-box-wrap').css('border', 'none');
+					$('.post-container').append(`<div class="post-box-container">    
+		            <div class="post-img-container">
+		              <div class="post-img-box-wrap">
+		                <img
+		                  class="post-img"
+		                  src="/upload/${result.list[i].storeFileSystemName}"
+		                  alt=""
+		                />
+		                <div class="post-img-back"></div>
+		                <button type="button" class="like-btn">좋아요</button>
+		                <div class="modal-background"></div>
+		                <div class="modal-test"></div>
+		              </div>
+		            </div>
+		             <div class="post-title-box">${result.list[i].storeTitle}</div>
+		            <div class="writer-container">
+		              <div class="channel-profile-box">
+		                <a href="#" class="profile-img-box">
+		                  <img
+		                    class="profile-img"
+		                    src="/upload/${result.list[i].channelFileSystemName }"
+		                    alt=""
+		                  />
+		                </a>
+		              </div>
+		              <div class="writer-box">
+		                <a href="" class="writer-name">${result.list[i].memberNickname}</a>
+		              </div>
+		              <font>·</font>
+		              <div class="follow-btn-box">
+		                <button type="button" class="follow-btn">
+		                  <span class="follow">팔로우</span>
+		                  <!-- 팔로우 버튼 누를 시 팔로잉 으로 떠야함 일단은 display none처리 했음 -->
+		                  <img
+		                    class="following"
+		                    src="https://cdn.loud.kr/LOUD_IMG/main/ico-check-follow.png"
+		                    alt=""
+		                  />
+		                  <span class="following">팔로잉</span>
+		                </button>
+		              </div>
+		              <div class="like-wrap">
+		                <img
+		                  class="before-like-btn"
+		                  src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
+		                  alt="heart"
+		                />
+		                <!-- 게시글에 좋아요 누를 시 하트 색이 하트로 변경됨 일단은 display none처리 했음 -->
+		                <img
+		                  class="after-like-btn"
+		                  src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-red-fill.png"
+		                  alt="heart"
+		                />
+		                <!-- 임시 좋아요 수 -->
+		                <div class="like-cnt">${result.list[i].storeLikeCnt}</div>
+		              </div>         
+		            </div>               
+		          </div>`)
+				}
 	}
 };
 
@@ -426,8 +501,17 @@ $('.next').on('click', function() {
   if (currentPage < maxPage) {
     currentPage++;
 	data.currentPage++;
-console.log(data)
-    categori();
+	if(new URLSearchParams(location.search).has('searchInput')){
+		$.ajax({
+			url : '/store/storeSearchAjax.st',
+			type : 'get',
+			data : {searchInput : searchParam('searchInput'), page : currentPage},
+			dataType : 'json',
+			success : showStore
+		});
+	}else{
+	    categori();
+	}
   }
   if (currentPage == maxPage) {
     $(this).prop('disabled', true);
@@ -436,14 +520,23 @@ console.log(data)
     $('.prev').prop('disabled', false);
   }
 
-  console.log(currentPage)
 });
 
 $('.prev').on('click', function(){
   if (currentPage > 1) {
     currentPage--;
 	data.currentPage--;
-    categori();
+	if(new URLSearchParams(location.search).has('searchInput')){
+		$.ajax({
+			url : '/store/storeSearchAjax.st',
+			type : 'get',
+			data : {searchInput : searchParam('searchInput'), page : currentPage},
+			dataType : 'json',
+			success : showStore
+		});
+	   }else{
+		    categori();
+		}
   }
   if (currentPage == 1) {
     $(this).prop('disabled', true);

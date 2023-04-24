@@ -126,15 +126,13 @@ font {
   height: 40px;
   background-color: rgb(50, 50, 50);
   border-radius: 30px;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 }
 
-.my-page {
-  display: none;
-}
+
 
 
 /* @@@@@@전체 감싸는 div@@@@@ */
@@ -240,6 +238,66 @@ th {
   border-color: #aaa;
   color: #fff;
 }
+
+/* 모달css */
+.modal-box{
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  /* position: fixed; */
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  border-radius: 30px;
+}
+
+.buy-status-change{
+  background-color: azure;
+  color: black;
+  width: 400px;
+  height: 200px;
+  position: relative;
+  border-radius: 30px;
+}
+
+.buy-status-change-ok-page{
+  background-color: azure;
+  color: black;
+  width: 400px;
+  height: 200px;
+  position: relative;
+  display: none;
+  border-radius: 30px;
+}
+
+.button-wrap{
+  display: flex;
+    width: 400px;
+    height: 80px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.change-ok-text{
+  height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buy-status-change-ok-page{
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* 모달css 끝*/
+
 
 /* #######footer####### */
 .footer-container {

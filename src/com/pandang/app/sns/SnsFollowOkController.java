@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pandang.app.Execute;
 import com.pandang.app.sns.dao.SnsDAO;
@@ -14,10 +15,14 @@ public class SnsFollowOkController implements Execute{
 @Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		HttpSession session = req.getSession();
+		
 		SnsFollowVO snsFollowVO = new SnsFollowVO();
 		
-		snsFollowVO.setMemberNumberFrom(Integer.parseInt(req.getParameter("memberNumberFrom")));
+		snsFollowVO.setMemberNumberFrom((Integer)session.getAttribute("memberNumber"));
 		snsFollowVO.setMemberNumberTo(Integer.parseInt(req.getParameter("memberNumberTo")));
+		
+		System.out.println(snsFollowVO.toString());
 		
 		new SnsDAO().updateSnsFollow(snsFollowVO);
 		

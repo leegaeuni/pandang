@@ -27,66 +27,84 @@ public class SnsHeaderVO {
 	private int snsCount;
 	private String channelComment;
 	private int memberNumber;
+	private String channelFileSystemName;
 	
 	public SnsHeaderVO() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	public String getMemberNickname() {
 		return memberNickname;
 	}
+
 	public void setMemberNickname(String memberNickname) {
 		this.memberNickname = memberNickname;
 	}
-	public int getFromCount() {
-		return fromCount;
-	}
-	public void setFromCount(int fromCount) {
-		this.fromCount = fromCount;
-	}
-	public int getToCount() {
-		return toCount;
-	}
-	public void setToCount(int toCount) {
-		this.toCount = toCount;
-	}
-	public int getSnsCount() {
-		return snsCount;
-	}
-	public void setSnsCount(int snsCount) {
-		this.snsCount = snsCount;
-	}
-	public String getChannelComment() {
-		return channelComment;
-	}
-	public void setChannelComment(String channelComment) {
-		this.channelComment = channelComment;
-	}
-	public int getMemberNumber() {
-		return memberNumber;
-	}
-	public void setMemberNumber(int memberNumber) {
-		this.memberNumber = memberNumber;
-	}
-
 
 	public String getChannelName() {
 		return channelName;
 	}
 
-
 	public void setChannelName(String channelName) {
 		this.channelName = channelName;
 	}
 
+	public int getFromCount() {
+		return fromCount;
+	}
+
+	public void setFromCount(int fromCount) {
+		this.fromCount = fromCount;
+	}
+
+	public int getToCount() {
+		return toCount;
+	}
+
+	public void setToCount(int toCount) {
+		this.toCount = toCount;
+	}
+
+	public int getSnsCount() {
+		return snsCount;
+	}
+
+	public void setSnsCount(int snsCount) {
+		this.snsCount = snsCount;
+	}
+
+	public String getChannelComment() {
+		return channelComment;
+	}
+
+	public void setChannelComment(String channelComment) {
+		this.channelComment = channelComment;
+	}
+
+	public int getMemberNumber() {
+		return memberNumber;
+	}
+
+	public void setMemberNumber(int memberNumber) {
+		this.memberNumber = memberNumber;
+	}
+
+	public String getChannelFileSystemName() {
+		return channelFileSystemName;
+	}
+
+	public void setChannelFileSystemName(String channelFileSystemName) {
+		this.channelFileSystemName = channelFileSystemName;
+	}
 
 	@Override
 	public String toString() {
 		return "SnsHeaderVO [memberNickname=" + memberNickname + ", channelName=" + channelName + ", fromCount="
 				+ fromCount + ", toCount=" + toCount + ", snsCount=" + snsCount + ", channelComment=" + channelComment
-				+ ", memberNumber=" + memberNumber + "]";
+				+ ", memberNumber=" + memberNumber + ", channelFileSystemName=" + channelFileSystemName + "]";
 	}
+	
+	
 	
 	
 	

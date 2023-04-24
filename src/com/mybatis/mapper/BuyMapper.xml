@@ -27,6 +27,7 @@
 		count(buy_number) from tbl_buy tb where member_number =
 		#{memberNumber}
 	</select>
+
 	
 	<!-- 택배사, 운송장번호 update -->
 	<update id="updatePost" parameterType="BuyVO">
@@ -34,5 +35,28 @@
 		set	buy_post = #{buyPost}, buy_post_code = #{buyPostCode}, buy_status = '배송중'
 		where buy_number = #{buyNumber}
 	</update>
+
+
+	<insert id="buyInsert" parameterType="BuyDTO">
+		insert into tbl_buy
+		(buy_status, buy_date, buy_cnt,
+		member_number, store_number,
+		buy_phone_number, buy_name, buy_msg,
+		buy_address, buy_address_detail,
+		buy_zone_code)
+		values('결제완료',
+		CURRENT_TIMESTAMP, #{buyCnt},
+		#{memberNumber}, #{storeNumber},
+		#{buyPhoneNumber}, #{buyName},
+		#{buyMsg}, #{buyAddress},
+		#{buyAddressDetail}, #{buyZoneCode})
+	</insert>
+
+	<update id="buyCancel" parameterType="_int">
+		update tbl_buy
+		set buy_status= '반품신청'
+		where buy_number= #{buyNumber}
+	</update>
+
 
 </mapper>

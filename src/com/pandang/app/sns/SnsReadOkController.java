@@ -27,47 +27,51 @@ public class SnsReadOkController implements Execute {
 		
 		HttpSession session = req.getSession();
 		
-//		session.setAttribute("snsNumber", 1);
+		
+		
 		
 		SnsDAO snsDAO = new SnsDAO();
-		
-		
-		
-		 Map<String, Integer> pageMap = new HashMap<>();
-		 pageMap.put("snsNumber", Integer.parseInt(req.getParameter("snsPostNumber")));
+		SnsPostVO snsPostVO = new SnsPostVO();
+			
+		 snsDAO.updateSnsViewCnt(Integer.parseInt(req.getParameter("snsNumber")));
 	      
-		 snsDAO.updateSnsViewCnt(Integer.parseInt(req.getParameter("snsPostNumber")));
+	
 	      
-	      System.out.println(pageMap.toString());
-	      
-	      List<SnsPostVO> snsPost = snsDAO.showSnsPost(pageMap);
+	      snsPostVO = snsDAO.showSnsPost(Integer.parseInt(req.getParameter("snsNumber")));
 	     
 	      Gson gson = new Gson();
-	     
+	      Map<String, Integer> map = new HashMap<>();
+	      map.put("snsNumber", Integer.parseInt(req.getParameter("snsNumber")));
+	      map.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
 	      
-	      JsonArray showPost = new JsonArray();
-	      
+	      String ifLiked = "";
 	    
 	      
-	      snsPost.stream()
-	      .map(gson::toJson)
-	      .map(JsonParser::parseString)
-	      .forEach(showPost::add);
-	      
 	     
-	      JsonObject result = new JsonObject();
+	      
+	      JsonObject liked = new JsonObject();
+	      liked.add("list", JsonParser.parseString(gson.toJson(snsPostVO)));
+	     
+	      
+	      gson.toJson(snsPostVO);
+	      JsonParser.parseString(gson.toJson(snsPostVO));
 	      
 	      
-	      result.add("list", JsonParser.parseString(showPost.toString()));
-	  
-//	      System.out.println(showPost.toString());
-//	      System.out.println(result);
-//	      System.out.println(showPost);
+	      // 좋아요
+	      if(snsDAO.liked(map) != 0) {
+	    	   ifLiked = "like";
+	      }
 	      
+	      liked.addProperty("likeTest", ifLiked);
+	      
+	      // 팔로우
+	     
+	      
+	
 	      resp.setContentType("application/json; charSet=utf-8");
 	      
 	      PrintWriter out = resp.getWriter();
-	      out.print(result.toString());
+	      out.print(liked.toString());
 	      out.close();
 	      
 

@@ -14,19 +14,12 @@ public class SnsPostInfoVO {
 	private int snsViewCnt;
 	private int likeCnt;
 	private int snsNumber;
+	private String snsFileSystemName;
 	
 	public int getSnsNumber() {
 		return snsNumber;
 	}
 
-	public void setSnsNumber(int snsNumber) {
-		this.snsNumber = snsNumber;
-	}
-
-	public SnsPostInfoVO() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	public String getSnsTitle() {
 		return snsTitle;
 	}
@@ -59,14 +52,25 @@ public class SnsPostInfoVO {
 		this.likeCnt = likeCnt;
 	}
 
-	
+	public String getSnsFileSystemName() {
+		return snsFileSystemName;
+	}
+
+	public void setSnsFileSystemName(String snsFileSystemName) {
+		this.snsFileSystemName = snsFileSystemName;
+	}
+
+	public void setSnsNumber(int snsNumber) {
+		this.snsNumber = snsNumber;
+	}
+
 	@Override
 	public String toString() {
 		return "SnsPostInfoVO [snsTitle=" + snsTitle + ", snsDate=" + snsDate + ", snsViewCnt=" + snsViewCnt
-				+ ", likeCnt=" + likeCnt + ", snsNumber=" + snsNumber + "]";
+				+ ", likeCnt=" + likeCnt + ", snsNumber=" + snsNumber + ", snsFileSystemName=" + snsFileSystemName
+				+ "]";
 	}
-	
-	
+
 	
 
 }

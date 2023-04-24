@@ -126,15 +126,12 @@ font {
   height: 40px;
   background-color: rgb(50, 50, 50);
   border-radius: 30px;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 }
 
-.my-page {
-  display: none;
-}
 
 /* @@@@@@전체 감싸는 div@@@@@ */
 

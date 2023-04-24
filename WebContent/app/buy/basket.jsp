@@ -37,11 +37,11 @@
             </div>
          </div>
   		<!-- 추가 수정부분 -->       
-        <form action="" class="search">
+        <form action="${pageContext.request.contextPath}/store/storeSearch.st" class="search">
             <input type="text" name="searchInput" class="search-bar" placeholder="어떤 창작물을 찾으시나요?" />
                <button type="submit" class="material-symbols-outlined">
                   search</button>
-         </form>
+       </form>
          
   
          <div class="login-container">
@@ -73,6 +73,7 @@
                 <label>
                   <input
                     type="checkbox"
+                    class = "check-all"
                     name="basket-product-all"
                     value="selectall"
                     onclick="selectAll(this)"
@@ -101,8 +102,7 @@
                     type="checkbox"
                     class="store-number"
                     name="basket-product"
-                    value="${basket.getStoreNumber() }"
-                  />
+                    value="${basket.getStoreNumber() }"/>
                   <div class='hidden'></div>
                 </label>
               </td>
