@@ -192,6 +192,7 @@
                 class="sns-title"
                 name="snsTitle"
                 placeholder="제목 입력"
+                required
               />
               <textarea
                 name="snsContent"
