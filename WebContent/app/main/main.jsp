@@ -26,7 +26,7 @@
 			<!-- 헤더 영역 시작  -->
 			<div class="start-container">
 				<!-- 메인페이지 이동처리 -->
-				<a href="${pageContext.request.contextPath}/main"><img
+				<a href="${pageContext.request.contextPath}/main.main"><img
 					src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
 					class="logo-img" /></a>
 				<!-- 판당 페이지 이동처리 -->
