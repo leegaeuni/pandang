@@ -898,11 +898,6 @@ tabs.forEach((tab) => {
   });
 });*/
 
-// 처음 페이지 진입 시 '판당 pick'이 클릭되어 있게 하기.
-$(document).ready(function() {
-   $('.pandang-pick').click();
-});
-
 // 탭 전환시 민트색으로 색상 변경
 $(".tab").on("click", function () {
   $(this).css("color", "rgb(42, 197, 198)");
