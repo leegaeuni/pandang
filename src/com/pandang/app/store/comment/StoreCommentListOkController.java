@@ -31,6 +31,7 @@ public class StoreCommentListOkController implements Execute {
 		.map(gson::toJson)
 		.map(JsonParser::parseString)
 		.forEach(replies::add);
+		
 
 		
 		resp.setContentType("application/json; charset=utf-8");

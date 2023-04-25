@@ -24,8 +24,6 @@ public class SnsFollowDeleteOkController implements Execute {
 		snsFollowVO.setMemberNumberFrom((Integer)session.getAttribute("memberNumber"));
 		snsFollowVO.setMemberNumberTo(Integer.parseInt(req.getParameter("memberNumberTo")));
 		
-		System.out.println(snsFollowVO.toString());
-		
 		new SnsDAO().deleteSnsFollow(snsFollowVO);
 	}
 

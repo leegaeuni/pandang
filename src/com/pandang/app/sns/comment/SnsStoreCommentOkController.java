@@ -59,8 +59,6 @@ HttpSession session = req.getSession();
 	      result.add("list", JsonParser.parseString(showStoreCommentList.toString()));
 	      
 	     
-//	      System.out.println(result);
-//	      System.out.println(showCommentList);
 	      
 	      resp.setContentType("application/json; charSet=utf-8");
 	      

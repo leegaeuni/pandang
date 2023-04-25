@@ -35,11 +35,17 @@ public class SnsOkController implements Execute {
 			memberNumber = Integer.parseInt(req.getParameter("memberNumber")); 
 		}
 		
-		System.out.println(memberNumber);
+		
+		
 		
 		SnsDAO snsDAO = new SnsDAO();
 		SnsHeaderVO snsHeaderVO = new SnsHeaderVO();
-
+		
+		String sessionProfileImg = snsDAO.sessionProfileImg((Integer)session.getAttribute("memberNumber"));
+		System.out.println(sessionProfileImg);
+		
+		req.setAttribute("sessionProfileImg", sessionProfileImg);
+		
 		// 클릭한 멤버의 화면을 보고싶음 거기서 받아올 memberNumber
 		// 그 memberNumber의 화면이 넘어오도록 내가 만들어야함
 		//
@@ -153,17 +159,10 @@ public class SnsOkController implements Execute {
 		
 		map.put("memberNumberTo", memberNumberTo);
 		
-		
-		System.out.println("memberNumberFrom" + (Integer)session.getAttribute("memberNumber"));
-		System.out.println(memberNumberTo);
-		
 		 if(snsDAO.followed(map) != 0) {
 	    	  ifFollowed = "follow";
 	      }
 		 
-		 System.out.println(ifFollowed);
-		
-	      
 	    req.setAttribute("ifFollowed", ifFollowed);
 	    
 		
