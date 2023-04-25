@@ -31,6 +31,7 @@ public class SnsStoreReadOkController implements Execute {
 		
 		SnsDAO snsDAO = new SnsDAO();
 		SnsStoreVO snsStoreVO = new SnsStoreVO();
+		SnsStoreVO liked = new SnsStoreVO();
 		
 		
 		
@@ -47,7 +48,26 @@ public class SnsStoreReadOkController implements Execute {
 	      
 	      gson.toJson(snsStoreVO);
 	      JsonParser.parseString(gson.toJson(snsStoreVO));
-	 
+	      
+	   //  좋아요
+			String iLike = "";
+			Map<String, Integer> map = new HashMap<>();
+			
+			
+			map.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
+			map.put("storeNumber", Integer.parseInt(req.getParameter("storeNumber")));
+			
+			
+			if(snsDAO.ifLiked(map) != 0) {
+		    	   iLike = "like";
+		      } 
+			
+			 
+		    System.out.println(iLike);
+		    
+		    req.setAttribute("iLike", iLike);
+		    
+		    
 	      resp.setContentType("application/json; charSet=utf-8");
 	      
 	      PrintWriter out = resp.getWriter();

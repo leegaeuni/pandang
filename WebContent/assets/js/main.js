@@ -133,9 +133,9 @@ $('.store-wrap-sub').on('click', '.store-info', function(e){
       data : {storeNumber : storeNumber},
       dataType : 'json',
       success : function(result){
-         insertDataModal(result);
          getStoreComment();
          getStoreFile();
+         insertDataModal(result);
 
       }
    });
@@ -177,7 +177,7 @@ $('.store-wrap-sub').on('click', '.store-info', function(e){
                `;
             }
                
-            $('.post').append(text);
+            $('.post-img').append(text);
          }
       });
    }
@@ -356,7 +356,7 @@ function insertDataModal(result){
    $('.view-cnt').text(result.storeViewCnt);
    $('.p-like-cnt').text(result.likeCount);
    $('.comment-cnt').text(result.commentCount);
-   $('.post').text(result.storeContent);
+   $('.post-content').text(result.storeContent);
    //$('.author-profile-img').attr('src', '')
    $('.profile-modal-member > a').text(result.channelName);
 }
@@ -897,11 +897,6 @@ tabs.forEach((tab) => {
     target.classList.add("active");
   });
 });*/
-
-// 처음 페이지 진입 시 '판당 pick'이 클릭되어 있게 하기.
-$(document).ready(function() {
-   $('.pandang-pick').click();
-});
 
 // 탭 전환시 민트색으로 색상 변경
 $(".tab").on("click", function () {

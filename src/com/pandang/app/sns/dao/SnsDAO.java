@@ -29,6 +29,10 @@ public class SnsDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
+	public String sessionProfileImg(int memberNumber) {
+		return sqlSession.selectOne("sns.sessionProfileImg", memberNumber);
+	}
+	
 	public List<SnsVO> selectAll(int memberNumber) {
 		return sqlSession.selectList("sns.selectAll", memberNumber);
 	}
@@ -160,6 +164,10 @@ public class SnsDAO {
 	
 	public void deleteStoreLikeCnt(SnsStoreVO snsStoreVO) {
 		sqlSession.delete("sns.deleteStoreLikeCnt", snsStoreVO);
+	}
+	
+	public int ifLiked(Map<String, Integer> pageMap) {
+		return sqlSession.selectOne("sns.ifLiked", pageMap);
 	}
 	
 	public void reportPost(ReportSnsDTO reportSnsDTO){

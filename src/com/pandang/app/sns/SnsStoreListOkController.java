@@ -74,7 +74,6 @@ public class SnsStoreListOkController implements Execute{
 	      pageMap.put("rowCount", rowCount);
 	      pageMap.put("memberNumber", hostMemberNumber);
 	      
-	      System.out.println(pageMap.toString());
 	      
 	      List<SnsStoreVO> store = snsDAO.storePostInfo(pageMap);
 	     

@@ -90,7 +90,7 @@
 			          <div class="report-btn-wrap">
 			          <input type="hidden" class="reportSnsNumber" value="${report.getReportSnsNumber()}">
 			            <!-- 클릭 시 해당 회원정보로 이동 -->
-			            <a href="#">${report.getReportedMemberId()}</a>
+			            <span class="go-member-btn">${report.getReportedMemberId()}</span>
 			            <!-- 클릭 시 해당 게시물로 이동 -->
 			            <button class="go-post-btn">게시물 보기</button>
 			          </div>

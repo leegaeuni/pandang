@@ -18,7 +18,7 @@ public class SnsStoreCommentVO {
 	private String channelName;
 	private int memberNumber;
 	private String storeCommentDate;
-	
+	private String channelFileSystemName;
 	
 	public SnsStoreCommentVO() {
 		// TODO Auto-generated constructor stub
@@ -27,11 +27,6 @@ public class SnsStoreCommentVO {
 
 	public int getStoreNumber() {
 		return storeNumber;
-	}
-
-
-	public void setStoreNumber(int storeNumber) {
-		this.storeNumber = storeNumber;
 	}
 
 
@@ -95,14 +90,29 @@ public class SnsStoreCommentVO {
 	}
 
 
+	public String getChannelFileSystemName() {
+		return channelFileSystemName;
+	}
+
+
+	public void setChannelFileSystemName(String channelFileSystemName) {
+		this.channelFileSystemName = channelFileSystemName;
+	}
+
+
+	public void setStoreNumber(int storeNumber) {
+		this.storeNumber = storeNumber;
+	}
+
+
 	@Override
 	public String toString() {
 		return "SnsStoreCommentVO [storeNumber=" + storeNumber + ", storeCommentNumber=" + storeCommentNumber
 				+ ", storeCommentContent=" + storeCommentContent + ", memberNickname=" + memberNickname
 				+ ", channelName=" + channelName + ", memberNumber=" + memberNumber + ", storeCommentDate="
-				+ storeCommentDate + "]";
+				+ storeCommentDate + ", channelFileSystemName=" + channelFileSystemName + "]";
 	}
-	
+
 	
 	
 	

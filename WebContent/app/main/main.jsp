@@ -147,23 +147,8 @@
               </div>
             </div>
             <div class="post">
-             <!--  @@@@@@@@@ 모달 게시글 본문 @@@@@@@@@@ -->
-              <p>게시글 작성 테스중</p>
-              <p>게시글 작성 테스중</p>
-              <p>게시글 작성 테스중</p>
-              <img
-                src="https://cdn-bastani.stunning.kr/prod/portfolios/16da7ecc-6e99-4388-8825-14c6d4de5f83/contents/VymrA8ubdEQF5EoT.1201%E1%84%83%E1%85%A6%E1%84%87%E1%85%B1_%E1%84%82%E1%85%A1%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A1%E1%84%89%E1%85%AE-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5_%E1%84%80%E1%85%A1%E1%84%85%E1%85%A9_%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A9%E1%84%8C%E1%85%A2_s.jpg"
-                alt=""
-              />
-              <p>게시글 작성 테스중</p>
-              <p>게시글 작성 테스중</p>
-              <img
-                src="https://cdn-bastani.stunning.kr/prod/portfolios/16da7ecc-6e99-4388-8825-14c6d4de5f83/contents/VymrA8ubdEQF5EoT.1201%E1%84%83%E1%85%A6%E1%84%87%E1%85%B1_%E1%84%82%E1%85%A1%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A1%E1%84%89%E1%85%AE-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5_%E1%84%80%E1%85%A1%E1%84%85%E1%85%A9_%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A9%E1%84%8C%E1%85%A2_s.jpg"
-                alt=""
-              />
-              <p>게시글 작성 테스중</p>
-              <p>게시글 작성 테스중</p>
-              <!-- @@@@@@@@@ 모달 게시글 본문 끝 @@@@@@@@@@ -->
+            	<div class="post-img"></div>
+            	<div class="post-content"></div>
             </div>
             <div class="post-comment-box">
               <!-- @@@@@댓글 창@@@@@@@@@ -->
@@ -466,7 +451,7 @@
                <div class="store-nav-wrap tabs">
                   <span>판매글 :</span>
                   <ul>
-                     <li class="tab pandang-pick" data-tab-target="#tab1">판당 pick</li>
+                     <li class="tab pandang-pick" style="color:rgb(42, 197, 198);" data-tab-target="#tab1">판당 pick</li>
                      <li class="tab lastest" data-tab-target="#tab2">최신순</li>
                      <c:if test="${not empty sessionScope.memberNumber}">
                         <li class="tab following" data-tab-target="#tab3">팔로잉</li>

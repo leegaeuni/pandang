@@ -127,14 +127,15 @@ font {
 	height: 40px;
 	background-color: rgb(50, 50, 50);
 	border-radius: 30px;
-	display: none;
+	/* display: none; */
 	justify-content: center;
 	align-items: center;
 	color: white;
+	display: flex;
 }
 
 .my-page {
-	display: none;
+	/* display: none; */
 }
 
 /* 메인 */

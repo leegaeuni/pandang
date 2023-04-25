@@ -39,7 +39,6 @@ public class SnsListOkController implements Execute {
 		}
 		
 		Integer hostMemberNumber = Integer.parseInt(req.getParameter("hostMemberNumber"));
-		System.out.println(hostMemberNumber);
 		
 		SnsDAO snsDAO = new SnsDAO();
 		
