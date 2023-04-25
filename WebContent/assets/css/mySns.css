@@ -1546,8 +1546,12 @@ font {
   color: rgb(42, 197, 198);
 }
 
-.s-like-btn-color:hover {
+/*.s-like-btn-color:hover {
   color: rgb(255, 0, 0);
+}*/
+
+.liked{
+	color: rgb(255,0,0);
 }
 
 /* @@@@@ 모달 프로필 바로가기 버튼 @@@@@ */

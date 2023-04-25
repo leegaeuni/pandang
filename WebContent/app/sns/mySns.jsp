@@ -302,9 +302,9 @@
 			<!-- 수정하기 버튼  -->
 			<div class="modal-edit-btn-box modal-btn-box">
 				<form action="/sns/snsWrite.sn" method="post">
-				<input type="hidden" name="snsTitle" class="snsTitle">
-				<input type="hidden" name="snsContent" class="snsContent">
-				<input type="hidden" name="snsNumber" class="snsNumber">
+				<input type="hidden" name="snsTitle" class="formSnsTitle">
+				<input type="hidden" name="snsContent" class="formSnsContent">
+				<input type="hidden" name="snsNumber" class="formSnsNumber">
 				
 				<button type="submit" class="modal-edit-btn btn-color"
 					id="modal-btn">
@@ -352,14 +352,6 @@
 
 					
 						<c:forEach var="sns" items="${snsPostInfo}" varStatus="loopStatus">
-						
-							<c:if test="${sns.getSnsNumber() == 0}">
-
-								<div>
-									<h1>아직 등록된 게시글이 없습니다!</h1>
-								</div>
-
-							</c:if>
 							
 							
 							 <c:if test="${loopStatus.index % 3 == 0}">
@@ -566,29 +558,7 @@
               <!-- @@@@@@@@@ 댓글 리스트 끝  @@@@@@@@@@ -->
             </div>
             </div>
-            <!-- <div class="s-comment-list">
-              <a herf="#" class="s-comment-user-profile-shortcuts">
-                <div class="s-comment-user-profile-wrap">
-                  <img
-                    src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
-                    alt=""
-                  />
-                </div>
-              </a>
-              <div class="s-text-wrap">
-                <div class="s-comment-member-info">
-                  <a href="#" class="s-member-id">leeegaeun0923</a>
-                  <div class="s-box"></div>
-                  <div class="s-comment-date">4일 전</div>
-                </div>
-                <div class="s-height-box"></div>
-                <div class="s-comment">
-                  <span class="s-comment-content"
-                    >댓글 늘어나면 영역 늘어나는지 테스트중
-                  </span>
-                </div>
-              </div>
-            </div> -->
+           
             <!-- @@@@@@@@@ 댓글 작성 form 경로 처리 해야함 @@@@@@ -->
            
               <div class="s-write-area">
@@ -597,7 +567,7 @@
                   <div class="s-user-profile-wrap">
                     <img
                       class="s-user-profile-img"
-                      src="https://cdn-bastani.stunning.kr/prod/users/16da7ecc-6e99-4388-8825-14c6d4de5f83/avatar/klucystudio_face.jpg.small?q=60&t=crop&s=300x300"
+                      src="/upload/${sessionProfileImg}"
                       alt=""
                     />
                   </div>
@@ -661,7 +631,14 @@
         <div class="s-post-btn-box" id="s-like">
           <div class="s-modal-like-btn-wrap s-btn-wrap-flex">
             <button type="button" class="modal-like-btn s-like-btn-color">
-              <span class="material-symbols-outlined"> favorite </span>
+          	 <c:choose>
+            	<c:when test="${iLike == like}">
+            	 	  <span class="material-symbols-outlined liked">favorite</span>
+              	</c:when>
+              	<c:otherwise>
+              		<span class="material-symbols-outlined beforeLike">favorite</span> 
+            	 </c:otherwise>
+             </c:choose>
             </button>
             <span class="s-modal-btn-list">좋아요</span>
           </div>

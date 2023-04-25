@@ -291,7 +291,7 @@ function showSnsList(result) {
 							</div>
 
 		`);
-
+			
 
 			if (i % 3 == 2) {
 				$('.snsList').append(`
@@ -393,17 +393,16 @@ let storeNumber;
 
 $('.snsList').on('click', '.post-part', function() {
 	
-	
+	console.log($(this));
 	if($('#store').css('color') ==  'rgb(42, 197, 198)'){
 		
 	storeNumber = $(this).children('.storeNumber').val();
-	console.log(storeNumber);
+	
 	
 	}else{
-		
-	
-	snsNumber = $(this).children('.snsNumber').val();
 
+	snsNumber = $(this).children('.snsNumber').val();
+	
 	
 	console.log(snsNumber);
 	}
@@ -421,8 +420,6 @@ function showSnsLikeDate(result) {
 			if(result.likeTest === ""){
 			$('.modal-like-date').append(`
 			<div class="like-wrap">
-			
-			
 					
 						<img class="before-like-btn"
 							src="https://cdn.loud.kr/prod/LOUD_IMG/designer/new/heart-gray-fill.png"
@@ -474,7 +471,7 @@ function showPostContent(result) {
 							${result.list.snsContent}
 						
 				`);
-
+			
 		}
 	
 }
@@ -577,14 +574,14 @@ $('.snsList').on('click', function() {
 		type: 'get',
 		dataType: 'json',
 		data: { snsNumber: snsNumber,
-				memberNumber : memberNumber },
+				memberNumber : memberNumber,
+				},
 		success: function(result) {
 			showSnsLikeDate(result);
 			showPostContent(result);
-			$('.snsTitle').val(result.list.snsTitle);
-			$('.snsContent').val(result.list.snsContent);
-			$('.snsNumber').val(snsNumber);
-			
+			$('.formSnsTitle').val(result.list.snsTitle);
+			$('.formSnsContent').val(result.list.snsContent);
+			$('.formSnsNumber').val(snsNumber);
 		},
 		error: function(a, b, c) {
 			console.log(c);
@@ -637,9 +634,6 @@ $('.snsList').on('click', function() {
 
 
 $('.submit').on('click', function() {
-	console.log('@@@@@@@@@');
-	console.log($('#commentContent').val());
-	console.log($('.memberNumber').val());
 
 	$.ajax({
 
@@ -998,7 +992,7 @@ function showStoreComment(result){
               <a herf="#" class="s-comment-user-profile-shortcuts">
                 <div class="s-comment-user-profile-wrap">
                   <img
-                    src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
+                    src="/upload/${result.list[i].channelFileSystemName}"
                     alt=""
                   />
                 </div>
@@ -1179,7 +1173,7 @@ $('.report-btn').on('click', function(){
 });
 
 // @@@@@@@@@@@ 모달 창 좋아요 버튼 누를 시 하트색 변경 @@@@@@@@@@@@@
-$(".s-like-btn-color").on({
+/*$(".s-like-btn-color").on({
   mouseover: function () {
     $(this).css("color", "rgb(255, 0, 0)");
   },
@@ -1189,9 +1183,9 @@ $(".s-like-btn-color").on({
     }
   },
   click: function () {
-    if ($(this).data("clicked") !== true) {
+    if ($(this).css("color") !== 'rgb(0,0,0)') {
 	
-      $(this).css("color", "rgb(255, 0, 0)").data("clicked", true);
+      $(this).css("color", "rgb(255, 0, 0)");
 
 		$.ajax({
 			url: '/sns/snsStoreLikeOk.sn',
@@ -1244,7 +1238,70 @@ $(".s-like-btn-color").on({
 		
     }
   },
-});
+});*/
+
+$('.s-like-btn-color').on('click', '.beforeLike', function(){
+	
+	$('.s-like-btn-color').html('');
+	$('.s-like-btn-color').append(`<span class="material-symbols-outlined liked">favorite</span>`);
+		
+		$.ajax({
+			url: '/sns/snsStoreLikeOk.sn',
+			data: {
+				storeNumber: storeNumber,
+				memberNumber: memberNumber
+			},
+			success: function() {
+				$.ajax({
+					url: '/sns/snsStoreReadOk.sn',
+					type: 'get',
+					dataType: 'json',
+					data: { storeNumber: storeNumber },
+					success: function(result) {
+						showStorePost(result);
+					},
+					error: function(a, b, c) {
+						console.log(c);
+					}
+
+				});
+
+			}
+		});
+		
+		});
+		
+	$('.s-like-btn-color').on('click', '.liked',function(){
+	$('.s-like-btn-color').append(`<span class="material-symbols-outlined beforeLike">favorite</span>`);
+	
+	$(this).css("display", "none");
+	$('.beforeLike').css("display", "block");
+		
+		$.ajax({
+			url: '/sns/snsStoreLikeDeleteOk.sn',
+			data: {
+				storeNumber: storeNumber,
+				memberNumber: memberNumber
+			},
+			success: function() {
+				$.ajax({
+					url: '/sns/snsStoreReadOk.sn',
+					type: 'get',
+					dataType: 'json',
+					data: { storeNumber: storeNumber },
+					success: function(result) {
+						showStorePost(result);
+					},
+					error: function(a, b, c) {
+						console.log(c);
+					}
+
+				});
+
+			}
+		});
+	});
+	
 
 // @@@@@@@ 모달 팔로우 버튼 클릭 수정 @@@@@@@@
 $(".s-modal-follow-btn").on("click", '.add', function() {
