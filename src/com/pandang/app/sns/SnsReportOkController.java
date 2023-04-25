@@ -34,7 +34,6 @@ public class SnsReportOkController implements Execute {
 		reportSnsDTO.setReportTitle(req.getParameter("reportTitle"));
 		reportSnsDTO.setReportSnsNumber(Integer.parseInt(req.getParameter("reportNumber")));
 		
-		System.out.println(reportSnsDTO.toString());
 		
 		snsDAO.reportPost(reportSnsDTO);
 		

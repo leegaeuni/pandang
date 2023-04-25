@@ -30,8 +30,6 @@ public class StoreReportController implements Execute {
 		reportStoreDTO.setReportTitle(req.getParameter("reportTitle"));
 		reportStoreDTO.setReportStoreNumber(Integer.parseInt(req.getParameter("reportNumber")));
 		
-		System.out.println(reportStoreDTO.toString());
-		
 		snsDAO.reportStorePost(reportStoreDTO);
 		
 		 req.setAttribute("reportStore", reportStoreDTO);
