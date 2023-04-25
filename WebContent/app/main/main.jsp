@@ -466,7 +466,7 @@
                <div class="store-nav-wrap tabs">
                   <span>판매글 :</span>
                   <ul>
-                     <li class="tab pandang-pick" data-tab-target="#tab1">판당 pick</li>
+                     <li class="tab pandang-pick" style="color:rgb(42, 197, 198);" data-tab-target="#tab1">판당 pick</li>
                      <li class="tab lastest" data-tab-target="#tab2">최신순</li>
                      <c:if test="${not empty sessionScope.memberNumber}">
                         <li class="tab following" data-tab-target="#tab3">팔로잉</li>

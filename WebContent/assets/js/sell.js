@@ -7,7 +7,6 @@ function selectPost(ele) {
 	let $ele = $(ele);
 	let $buyPost = $ele.closest('.buy-post');
 
-	console.log($ele);
 	// '1'인 경우 직접입력
 	if ($ele.val() == "1") {
 		$buyPost.find('#post-select').attr("readonly", false);
@@ -28,6 +27,8 @@ $(".member-id").on("click", function() {
 	}
 });
 
+
+
 // 확인 버튼 클릭시 SellOkController로 req를 보낸다.
 $('.post-ok>button').on('click', function() {
 	let $boardList = $(this).closest('.board-list');
@@ -35,10 +36,12 @@ $('.post-ok>button').on('click', function() {
 	let buyPost = $boardList.find('#post-select').val();
 	let buyPostCode = $boardList.find('.buy-post-code > input').val();
 
-	console.log(buyNumber);
-	console.log(buyPost);
-	console.log(buyPostCode);
-
+	
+	if(buyPost == '' || buyPostCode == ''){
+		alert('택배사/운송장번호 모두 입력해주세요.');
+		return;
+	}
+	
 	$.ajax({
 		url: '/buy/sellOk.bu',
 		type: 'get',
@@ -47,10 +50,8 @@ $('.post-ok>button').on('click', function() {
 			buyPost: buyPost,
 			buyPostCode: buyPostCode
 		},
-		success: function() {
-			// data 요청을 보낸 후 input값 초기화.
-			$boardList.$("#post-select").val("");
-			$boardList.$(".buy-post-code > input").val("");
+		success: function(result) {
+			alert("배송정보 업데이트 완료.");
 		}
 	});
 });
