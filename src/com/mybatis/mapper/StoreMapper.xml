@@ -137,8 +137,7 @@
 		on tc.channel_number = cf.channel_number
 		join tbl_hashtag th 
 		on j2.hashtag_number = th.hashtag_number 
-        
-	</select>
+      	</select>
 
 	<select id="buy" parameterType="_int" resultType="BasketVO">
 		select sf.store_file_system_name , s.store_number , s.store_title , s.store_price 
@@ -178,8 +177,42 @@
 		where store_title like concat('%', #{searchInput}, '%')
 	</select>
 	
-	<delete id="delete" parameterType="_int">
-		delete from tbl_store where store_number = #{storeNumber}
+	<delete id="deleteStorePost" parameterType="_int">
+		delete from tbl_store
+		where store_number = #{storeNumber}
 	</delete>
+	
+	<delete id="deleteStoreLike" parameterType="_int">
+		delete from tbl_store_like
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<delete id="deleteStoreComment" parameterType="_int">
+		delete from tbl_store_comment
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<delete id="deleteStoreFile" parameterType="_int">
+		delete from tbl_store_file 
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<insert id="reportPost" parameterType="reportStoreDTO">
+		insert into tbl_report_sns
+		(report_title, report_content, report_member_number, report_store_number)
+		values(#{reportTitle}, #{reportContent}, #{reportMemberNumber}, #{reportStoreNumber})
+	</insert>
+	
+	<update id="updateStore" parameterType="storeDTO">
+		update tbl_store
+		set store_title=#{storeTitle}, store_content=#{storeContent}
+		where store_number=#{storeNumber}
+	</update>
+	
+	<insert id="reportStorePost" parameterType="reportStoreDTO">
+		insert into tbl_report_store
+		(report_title, report_content, report_member_number, report_store_number)
+		values(#{reportTitle}, #{reportContent}, #{reportMemberNumber}, #{reportStoreNumber})
+	</insert>
 	
 </mapper>

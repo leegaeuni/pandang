@@ -144,12 +144,12 @@
                 <h1>신고 사유를 작성해주세요.</h1>
               </div>
               <!-- @@@@@@@@ 신고 내용 폼 경로처리 @@@@@@ -->
-              <form action="" method="post">
+              <!-- <form action="" method="post"> -->
                 <div class="report-content-box">
-                  <div class="report-title">
+                  <div class="reportTitle">
                     <input
                       type="text"
-                      name="reportTitle"
+                      id="reportTitle"
                       placeholder="제목을 입력해주세요."
                     />
                   </div>
@@ -164,7 +164,7 @@
                     <button type="submit">작성 완료</button>
                   </div>
                 </div>
-              </form>
+              <!-- </form> -->
               <!-- @@@@@ 신고하기 영역 끝 @@@@@ -->
             </div>   
          	<div class="post-header-container">
@@ -176,7 +176,7 @@
                   <div class="post-date-categori-box">
                     <div class="post-date">${store.getStoreDate() }</div>
                     <div>l</div>
-                    <div class="post-categori">1</div>
+                    <div class="post-categori">디자인</div>
                   </div>
                   <!-- @@@@@@@@@ 모달 게시글 헤더 끝 @@@@@@@@@@ -->
                 </div>
@@ -219,78 +219,7 @@
             <div class="post-comment-box">
               <!-- @@@@@댓글 창@@@@@@@@@ -->
               <div class="comment-container">
-                <div class="comment-list">
-                  <!-- @@@@@@@@@ 댓글 list @@@@@@@@@@ -->
-                  <a herf="#" class="comment-user-profile-shortcuts">
-                    <div class="comment-user-profile-wrap">
-                      <img
-                        src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
-                        alt=""
-                      />
-                    </div>
-                  </a>
-                  <div class="text-wrap">
-                    <div class="comment-member-info">
-                      <a href="#" class="member-id">leeegaeun0923</a>
-                      <div class="box"></div>
-                      <div class="comment-date">4일 전</div>
-                      <!-- @@@@ 댓글 작성자와 로그인 한사람 일치할시 보여야함 @@@ 
-                      display : flex로 변경되게 해주세요 
-                    일단은 none 처리  -->
-                      <div class="comment-edit-delete-btn-box">
-                        <button class="comment-edit-btn">수정</button>
-
-                        <button class="comment-delete-btn">삭제</button>
-                      </div>
-                    </div>
-                    <div class="height-box"></div>
-                    <div class="comment">
-                      <span class="comment-content"
-                        >너무 마음에 드는 작품이에요~~~~
-                      </span>
-                      <!-- @@@@@@ 댓글 수정 form 경로처리 @@@@@@ -->
-                      <form action="" method="post">
-                        <div class="comment-edit-box">
-                          <textarea name="" id="comment-edit">
-                          <span class="comment-content">너무 마음에 드는 작품이에요~~~~
-                        </span>
-                      </textarea
-                          >
-                        </div>
-                        <div class="edit-btn-box">
-                          <button type="submit" class="edit-btn">
-                            수정 완료
-                          </button>
-                        </div>
-                      </form>
-                      <!-- 댓글 수정 form 영역 끝 -->
-                    </div>
-                  </div>
-                  <!-- @@@@@@@@@ 댓글 리스트 끝  @@@@@@@@@@ -->
-                </div>
-                <div class="comment-list">
-                  <a herf="#" class="comment-user-profile-shortcuts">
-                    <div class="comment-user-profile-wrap">
-                      <img
-                        src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
-                        alt=""
-                      />
-                    </div>
-                  </a>
-                  <div class="text-wrap">
-                    <div class="comment-member-info">
-                      <a href="#" class="member-id">leeegaeun0923</a>
-                      <div class="box"></div>
-                      <div class="comment-date">4일 전</div>
-                    </div>
-                    <div class="height-box"></div>
-                    <div class="comment">
-                      <span class="comment-content"
-                        >댓글 늘어나면 영역 늘어나는지 테스트중
-                      </span>
-                    </div>
-                  </div>
-                </div>
+ 
                 <!-- @@@@@@@@@ 댓글 작성 form 경로 처리 해야함 @@@@@@ -->
                 <form action="" method="post" id="comment-form">
                   <div class="write-area">
@@ -439,7 +368,7 @@
                   src="${pageContext.request.contextPath}/upload/${store.getStoreFileSystemName()}"
                   alt=""
                 />
-                <div class="post-img-back"></div>
+                <div class="post-img-back" data-num="1"></div>
                 <button type="button" class="like-btn">좋아요</button>
                 <div class="modal-background"></div>
                 <div class="modal-test"></div>

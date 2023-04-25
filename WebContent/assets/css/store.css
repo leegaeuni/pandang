@@ -1021,7 +1021,7 @@ font {
 /* @@@@@@@ 신고 모달 @@@@@@@@ */
 .report-path {
   width: 80%;
-  height: 350px;
+  height: 550px;
   padding: 20px;
   position: fixed;
   z-index: 2;
@@ -1055,7 +1055,7 @@ font {
   height: 100%;
 }
 
-.report-title {
+.reportTitle {
   width: 100%;
   height: 20%;
   display: flex;
@@ -1063,7 +1063,7 @@ font {
   justify-content: center;
 }
 
-.report-title input {
+.reportTitle input {
   width: 95%;
   height: 70%;
   border: 1px solid rgb(200, 200, 200);
