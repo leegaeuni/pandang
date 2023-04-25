@@ -743,3 +743,7 @@ li {
 }
 
 /* 모달 파트 끝 */
+
+.go-member-btn{
+	cursor : pointer;
+}

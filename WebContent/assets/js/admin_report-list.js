@@ -24,7 +24,7 @@ function showReport(result) {
 		          <div class="report-btn-wrap">
 					<input type="hidden" class="reportSnsNumber" value="${result.list[i].reportSnsNumber}">
 		            <!-- 클릭 시 해당 회원정보로 이동 -->
-		            <a href="#">${result.list[i].reportedMemberId}</a>
+		            <span class="go-member-btn">${result.list[i].reportedMemberId}</span>
 					
 		            <!-- 클릭 시 해당 게시물로 이동 -->
 		            <button class="go-post-btn">게시물 보기</button>
@@ -655,4 +655,21 @@ function showSnsFile(result) {
 
 }
 
-
+$('.report-list').on('click', '.go-member-btn', function(e) {
+	$('.change-page-member').click();
+	if($('.change-page-member').hasClass('find')){
+	$.ajax({
+			url: '/admin/findMemberOk.ad',
+			type: 'get',
+			data: { page: 1, input: $(e.target).text().trim() },
+			dataType: 'json',
+			success: function(result) {
+				showMember(result);
+				showPagination(result);
+			},
+			error: function(a, b, c) {
+				console.log(c);
+			}
+		});
+	}
+});

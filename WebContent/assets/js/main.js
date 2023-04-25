@@ -133,9 +133,9 @@ $('.store-wrap-sub').on('click', '.store-info', function(e){
       data : {storeNumber : storeNumber},
       dataType : 'json',
       success : function(result){
-         insertDataModal(result);
          getStoreComment();
          getStoreFile();
+         insertDataModal(result);
 
       }
    });
@@ -177,7 +177,7 @@ $('.store-wrap-sub').on('click', '.store-info', function(e){
                `;
             }
                
-            $('.post').append(text);
+            $('.post-img').append(text);
          }
       });
    }
@@ -356,7 +356,7 @@ function insertDataModal(result){
    $('.view-cnt').text(result.storeViewCnt);
    $('.p-like-cnt').text(result.likeCount);
    $('.comment-cnt').text(result.commentCount);
-   $('.post').text(result.storeContent);
+   $('.post-content').text(result.storeContent);
    //$('.author-profile-img').attr('src', '')
    $('.profile-modal-member > a').text(result.channelName);
 }
