@@ -91,8 +91,8 @@
           </thead>
 
           <tbody>
-          
-          	
+          <c:choose>
+          	<c:when test="${not empty basketList}">
            <c:forEach var="basket" items="${basketList}">
           <!-- items="${basketList}"는 BasketController에서 List<BasketVO>의 변수로 선언한 basketList임 -->
             <tr>
@@ -138,11 +138,15 @@
               
             </tr>
             </c:forEach> 
-    		
+    		</c:when>
   
+             <c:otherwise>
+                  <tr>
+                     <td colspan="8" align="center">장바구니에 담긴 상품이 없습니다.</td>
+                  </tr>
+               </c:otherwise>
             
-            
-            
+            </c:choose>
           </tbody>
         </table>
         
@@ -176,7 +180,7 @@
         </table>
         <div class="pay-box">
           <div class="pay-all">
-            <button type="submit">상품 주문</button>
+            <button type="submit" onclick="return check()">상품 주문</button>
           </div>
         </div>
 

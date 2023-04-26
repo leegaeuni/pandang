@@ -22,9 +22,9 @@ public class PaidOkController implements Execute {
 		BuyDAO buyDAO = new BuyDAO()	;
 		BuyDTO buyDTO = new BuyDTO();
 		HttpSession session = req.getSession();
-		/* Integer memberNumber = (Integer)session.getAttribute("memberNumber"); */
+		Integer memberNumber = (Integer)session.getAttribute("memberNumber"); 
 		// DB에 넣을 임시 memberNumber를 2로 페이지 연결해 사용 시 지워주세요
-		int memberNumber = 2;
+//		int memberNumber = 2;
 		req.setCharacterEncoding("utf-8");
 		
 

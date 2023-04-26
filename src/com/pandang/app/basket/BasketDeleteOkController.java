@@ -16,12 +16,12 @@ public class BasketDeleteOkController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+//		HttpSession session = req.getSession();
 		
 		BasketDAO basketDAO = new BasketDAO(); 
 		
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
-		int memberNumber = 1;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+//		int memberNumber = 1;
 		List<BasketVO> basketList = basketDAO.selectAll(memberNumber);
 
 //		String[] 배열로 req.getParameterValues("storeNumber")의 값 받아옴

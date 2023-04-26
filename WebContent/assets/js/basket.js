@@ -32,13 +32,13 @@ $(".minus-btn").on("click", function() {
 // 체크된 상품의 가격 합계를 구함
 $('input[type="checkbox"]').on('change', function() {
 	// 체크시 콘솔에 뜨는지 확인
-	if (this.checked) {
+	/*if (this.checked) {
 		console.log('체크됨');
 		
 	} else {
 		console.log('체크 해제됨');
 	
-	}
+	}*/
 	// 총 상품금액
 	let finalProductPay = $(".final-product-pay");
 	let checkedProductTotal = 0;
@@ -93,7 +93,7 @@ $('.basket-list').on('click', '.delete', function() {
 			memberNumber: $('.member-number').val()
 		},
 		success: function() {
-			console.log('ajax성공시 출력');
+			/*console.log('ajax성공시 출력');*/
 		},
 		error: function(a,b,c) {
 			console.log(c);
@@ -149,15 +149,16 @@ $('.check-all').click(function(){
 		}
 	});
 	
-	
-// 체크박스 선택 안 하면 알림창
-function check(){
-	let checkedBox = document.querySelectorAll('input=[name="basket-product"]:checked').length;
-	if(checkedBox=0){
-		alert('구매할 상품을 하나 이상 선택해라')
-		return false;
-	}
-	
-}
+// 체크박스 선택 안 하면 구매 페이지로 이동 불가	
+function check() {
+  let checkedBox = document.querySelectorAll('input[name="basket-product"]:checked').length;
 
+  console.log(checkedBox);
+  if (checkedBox === 0) {
+    alert('구매할 상품을 하나 이상 선택해주세요.');
+	document.querySelector('button[type="submit"]').disabled = true;
+    return false;
+	
+  }
+}
 

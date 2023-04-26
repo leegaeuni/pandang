@@ -25,7 +25,7 @@
          <!-- 헤더 영역 시작  -->
          <div class="start-container">
             <!-- 메인페이지 이동처리 -->
-            <a href="${pageContext.request.contextPath}/main"><img
+            <a href="${pageContext.request.contextPath}/main.main"><img
                src="${pageContext.request.contextPath}/assets/img/logo.jpg" alt=""
                class="logo-img" /></a>
             <!-- 판당 페이지 이동처리 -->
@@ -115,7 +115,7 @@
                   
                   <!-- img의 경로를 /upload/해줘야 DBMS에 저장됨  -->
                   <span class="image">
-                  <img src="/upload/${myPage.getChannelFileSystemName()}" 
+                  <img src="${pageContext.request.contextPath}/upload/${myPage.getChannelFileSystemName()}" 
                   
                   class="myProfileImg"
                   onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/assets/img/myPage/pandang.jpg';"
