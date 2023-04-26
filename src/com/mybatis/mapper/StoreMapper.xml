@@ -182,6 +182,7 @@
 		where store_number = #{storeNumber}
 	</delete>
 	
+
 	<delete id="deleteStoreLike" parameterType="_int">
 		delete from tbl_store_like
 		where store_number = #{storeNumber}
@@ -216,4 +217,13 @@
 		values(#{reportTitle}, #{reportContent}, #{reportMemberNumber}, #{reportStoreNumber})
 	</insert>
 	
+
+	<update id="updatePost" parameterType="storeDTO">
+		update tbl_store
+		set store_title=#{storeTitle}, store_content=#{storeContent},
+		store_price=#{storePrice}, hashtag_number=#{hashtagNumber}
+		where store_number=#{storeNumber}
+	</update>
+	
+
 </mapper>

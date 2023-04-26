@@ -106,6 +106,7 @@ public class StoreDAO {
 	public int searchGetTotal(String searchInput) {
 		return sqlSession.selectOne("store.searchGetTotal", searchInput);
 	}
+
 	
 	public void reportStorePost(ReportStoreDTO reportStoreDTO){
 		sqlSession.insert("store.reportStorePost", reportStoreDTO);
@@ -115,6 +116,9 @@ public class StoreDAO {
 		sqlSession.insert("store.reportPost", reportStoreDTO);
 	}
 	
+
+	// 가은이가 만들었음 
+
 	public void updatePost(StoreDTO storeDTO) {
 		sqlSession.update("store.updatePost", storeDTO);
 	}
