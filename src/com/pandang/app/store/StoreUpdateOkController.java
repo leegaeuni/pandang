@@ -42,10 +42,11 @@ public class StoreUpdateOkController implements Execute {
 	      storeDTO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
 	      storeDTO.setStoreNumber(storeNumber);
 	      
+	      storeDAO.updateStore(storeDTO);
+
 	      storeDAO.updatePost(storeDTO);
 
 	      storeDAO.storeWrite(storeDTO);
-
 	      
 	 
 	      Enumeration<String> fileNames = multipartRequest.getFileNames();

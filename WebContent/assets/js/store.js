@@ -542,27 +542,6 @@ $('.prev').on('click', function(){
   }
 });
 
-let $modifyBtn = $('.modal-edit-btn');
-let $deleteBtn = $('.modal-delete-btn');
-
-$modifyBtn.on('click', () => {
-	window.location.href = '/store/storeUpdate.st';
-});
-
-$('.modal-delete-btn').on('click', function() {
-	
-	$(".modal-box").css("display", "none");
-	
-	$.ajax({
-		url: '/store/storeDeleteOk.st',
-		type: 'get',
-		data: { storeNumber: storeNumber }
-	});
-
-});
-
-
-
 let storeNumber = 0;
 let memberNumber = $('.j-login-number').val();
 // @@@@@@ 이미지 클릭 했을 때 모달 창 띄우기 @@@@@@@@@
@@ -795,6 +774,8 @@ $('.comment-container').on('click', '.edit-btn', function() {
 /*=================================================*/
 
 function insertDataModal(result){
+   $('.storeNumber').val(result.storeNumber);
+   $('.memberNumber').val(result.memberNumber);
    $('.post-title').text(result.storeTitle);
    $('.post-price').text(result.storePrice);
    $('.post-date').text(result.storeDate);
@@ -867,6 +848,8 @@ $('.store-photo-img')(`<div class="post-box">
               <div class="post-header-box">
                 <div class="post-header">
                   <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
+ 				  <input type="hidden" value="" class="storeNumber">
+				  <input type="hidden" value="" class="memberNumber">
                   <div class="post-title">임시 게시글 제목</div>
 				   <div class="post-price-area">
                   <div class="post-price"></div><span>원</span>
@@ -1064,7 +1047,7 @@ $('.store-photo-img')(`<div class="post-box">
             @@@ 모달 픽시드 장바구니 버튼 내 글일시 안 보여야함 @@@ -->
             <div class="post-btn-box" id="basket">
               <div class="modal-basket-btn-wrap btn-wrap-flex">
-                <button type="button" class="modal-btn btn-color">
+                <button type="button" class="modal-basket-btn btn-color">
                   <span class="material-symbols-outlined">
                     shopping_basket
                   </span>
@@ -1139,11 +1122,50 @@ $('.report-btn').on('click', function(){
 			reportContent: $('#report-content').val()	
 		},
 	success: function(response) {
-			alert("신고가 성공적으로 접수되었습니다.");
+			alert("신고가 성공적으로 접수되었습니당.");
 			window.location.href = "/store/storeOk.st";
 		},
 		error: function() {
-			alert("오류가 발생했습니다. 다시 시도해주세요.");
+			alert("오류가 발생했습니당. 다시 시도해주세요.");
+		}
+	});
+	
+});
+
+$('.modal-basket-btn').on('click', function(){	
+	console.log($('.storeNumber').val());
+	$.ajax({
+		url: '/store/storeBasket.st',
+		type: 'get',
+		data: {		
+			storeNumber: $('.storeNumber').val()		
+		},
+	success: function(result) {
+			alert("물품을 장바구니에 추가하였습니당.");
+			window.location.href = "/store/storeOk.st";
+		},
+		error: function() {
+			alert("오류가 발생했습니당. 다시 시도해주세요.");
+		}
+	});
+	
+});
+
+$('.modal-delete-btn').on('click', function() {
+	
+	$(".modal-box").css("display", "none");
+	
+	$.ajax({
+		url: '/store/storeDeleteOk.st',
+		type: 'get',
+		data: { storeNumber: storeNumber 
+		},
+			success: function(result) {
+			alert("게시물을 성공적으로 삭제하였습니당.");
+			window.location.href = "/store/storeOk.st";
+		},
+		error: function() {
+			alert("오류가 발생했습니당. 다시 시도해주세요.");
 		}
 	});
 	
