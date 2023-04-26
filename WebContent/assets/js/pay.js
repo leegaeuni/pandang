@@ -163,7 +163,7 @@ $.ajax({
 			}
 });	
 			// 	console.log(rsp)로 결과 값 출력해봐야함
-			console.log('연결 성공했지 히히');
+			// console.log('연결 성공했지 히히');
 		} else {
 			console.log(rsp);
 		}

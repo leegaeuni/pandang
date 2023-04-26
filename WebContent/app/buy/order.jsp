@@ -97,6 +97,8 @@
 				<!-- 반품 모달 끝 -->
 
 				<tbody>
+				<c:choose>
+				<c:when test="${not empty buyList}">
 					<c:forEach var="buy" items="${buyList}">
 						<tr>
 							<td class="buy-date">${buy.getBuyDate()}</td>
@@ -125,6 +127,18 @@
 							</td>
 						</tr>
 					</c:forEach>
+					</c:when>
+					
+					
+					<c:otherwise>
+                  <tr>
+                     <td colspan="12" align="center">구매한 상품이 없습니다.</td>
+                  </tr>
+               </c:otherwise>
+					
+					
+					
+					</c:choose>
 				</tbody>
 
 

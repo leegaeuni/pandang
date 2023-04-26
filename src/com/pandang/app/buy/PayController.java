@@ -27,8 +27,8 @@ public class PayController implements Execute {
 		MemberDAO memberDAO = new MemberDAO();
 		StoreDAO storeDAO = new StoreDAO();
 		List<BasketVO> payList = new ArrayList<BasketVO>();
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
-		int memberNumber = 2;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+//		int memberNumber = 2;
 		MemberDTO payMember = memberDAO.payMember(memberNumber);
 		
 		String email = payMember.getMemberEmail();

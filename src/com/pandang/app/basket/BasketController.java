@@ -18,8 +18,8 @@ public class BasketController implements Execute {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		BasketDAO basketDAO = new BasketDAO();
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
-		int memberNumber = 1;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+//		int memberNumber = 1;
 		
 		
 				
