@@ -125,7 +125,6 @@ let memberNumber = $('.j-login-number').val();
 $('.store-wrap-sub').on('click', '.store-info', function(e){
    $(".post-modal").css("display", "flex");
     $(".modal-background").css("display", "inline-block");
-   console.log($(e.target).parent().parent().data('storenumber'));
    storeNumber = $(e.target).parent().parent().data('storenumber');
    $.ajax({
       url : '/store/storeUpdateViewCntOk.st',
@@ -139,7 +138,7 @@ $('.store-wrap-sub').on('click', '.store-info', function(e){
 
       }
    });
-   
+
    /*밖에다가 댓글과 게시물이미지 ajax를 만들것*/
    
    function getStoreComment(){

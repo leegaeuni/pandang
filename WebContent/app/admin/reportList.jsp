@@ -14,13 +14,15 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
+    <link rel="stylesheet"
+   		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
   <body>
     <!-- Header -->
     <header>
       <!-- 로고 이미지 -->
       <div class="logo-wrap">
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/admin.ad">
           <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" />
         </a>
       </div>
@@ -224,6 +226,167 @@
 		</div>
 		
 	</div>
+	
+	<!-- store 모달 -->
+	
+	<div class="s-post-modal-background"></div>
+	
+	<div class="s-post-modal">
+		<div class="s-post-box">
+            <div class="s-post-header-container">
+              <div class="s-post-header-box">
+                <div class="s-post-header">
+                  <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
+                  <div class="s-post-title">임시 게시글 제목</div>
+                  <div class="s-post-date-categori-box">
+                    <div class="s-post-date">2023.3.23</div>
+                    <div>l</div>
+                    <div class="s-post-categori">패션</div>
+                  </div>
+                 <!--  @@@@@@@@@ 모달 게시글 헤더 끝 @@@@@@@@@@ -->
+                </div>
+                <div class="s-post-information">
+                  <!-- @@@@@@@@@ 게시글 조회, 좋아요, 댓글 수 @@@@@@@@@@ -->
+                  <div class="s-post-view-cnt">
+                    <span class="material-symbols-outlined"> visibility </span>
+                    <div class="s-view-cnt">32</div>
+                  </div>
+                  <div class="s-post-like-cnt">
+                    <span class="material-symbols-outlined"> favorite </span>
+                    <div class="s-p-like-cnt">77</div>
+                  </div>
+                  <div class="s-post-comment-cnt">
+                    <span class="material-symbols-outlined"> chat_bubble </span>
+                    <div class="s-comment-cnt">33</div>
+                  </div>
+                  <!-- @@@@@@@@@ 모달 조회,좋아요,댓글 수 끝 @@@@@@@@@@ -->
+                </div>
+              </div>
+            </div>
+            <div class="s-post">
+            	<div class="s-post-img"></div>
+            	<div class="s-post-content"></div>
+            </div>
+            <div class="s-post-comment-box">
+              <!-- @@@@@댓글 창@@@@@@@@@ -->
+              <div class="s-comment-container">
+              <div class="s-commentL">
+                <!-- <div class="s-comment-list">
+                 @@@@@@@@@ 댓글 list @@@@@@@@@@
+                  <a herf="#" class="s-comment-user-profile-shortcuts">
+                    <div class="s-comment-user-profile-wrap">
+                      <img
+                        src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
+                        alt=""
+                      />
+                    </div>
+                  </a>
+                  <div class="s-text-wrap">
+                    <div class="s-comment-member-info">
+                      <a href="#" class="s-member-id">leeegaeun0923</a>
+                      <div class="s-box"></div>
+                      <div class="s-comment-date">4일 전</div>
+                      @@@@ 댓글 작성자와 로그인 한사람 일치할시 보여야함 @@@ 
+                      display : flex로 변경되게 해주세요 
+                    일단은 none 처리 
+                      <div class="s-comment-edit-delete-btn-box">
+                        <button class="s-comment-edit-btn">수정</button>
+
+                        <button class="s-comment-delete-btn">삭제</button>
+                      </div>
+                      <div class="s-edit-btn-box">
+                      <button type="submit" class="s-edit-btn">
+                        수정 완료
+                      </button>
+                  </div>
+                    </div>
+                    <div class="s-height-box"></div>
+                    <div class="s-comment">
+                      <span class="s-comment-content"
+                        >너무 마음에 드는 작품이에요~~~~
+                      </span>
+                      @@@@@@ 댓글 수정 form 경로처리 @@@@@@
+                      <form action="" method="post">
+                        <div class="s-comment-edit-box">
+                          <textarea name="" id="comment-edit">
+                          <span class="comment-content"
+                          >너무 마음에 드는 작품이에요~~~~
+                        </span>
+                      </textarea
+                          >
+                        </div>
+                        <div class="s-edit-btn-box">
+                          <button type="submit" class="s-edit-btn">
+                            수정 완료
+                          </button>
+                        </div>
+                      </form>
+                      댓글 수정 form 영역 끝
+                    </div>
+                  </div>
+                  @@@@@@@@@ 댓글 리스트 끝  @@@@@@@@@@
+                </div> -->
+                <!-- <div class="s-comment-list">
+                  <a herf="#" class="s-comment-user-profile-shortcuts">
+                    <div class="s-comment-user-profile-wrap">
+                      <img
+                        src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
+                        alt=""
+                      />
+                    </div>
+                  </a>
+                  <div class="s-text-wrap">
+                    <div class="s-comment-member-info">
+                      <a href="#" class="s-member-id">leeegaeun0923</a>
+                      <div class="s-box"></div>
+                      <div class="s-comment-date">4일 전</div>
+                    </div>
+                    <div class="s-height-box"></div>
+                    <div class="s-comment">
+                      <span class="s-comment-content"
+                        >댓글 늘어나면 영역 늘어나는지 테스트중
+                      </span>
+                    </div>
+                  </div>
+                </div> -->
+                </div>
+              <!--   @@@@@@@@@ 댓글 작성 form 경로 처리 해야함 @@@@@@ -->
+                <!-- <form action="" method="post" id="comment-form">
+                  <div class="write-area">
+                    @@@@@@@@@ 댓글 작성 공간 @@@@@@@@@@
+                    <div class="comment-profile-container">
+                      <div class="user-profile-wrap">
+                        <img
+                          class="user-profile-img"
+                          src="https://cdn-bastani.stunning.kr/prod/users/16da7ecc-6e99-4388-8825-14c6d4de5f83/avatar/klucystudio_face.jpg.small?q=60&t=crop&s=300x300"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <label class="comment-input-box">
+                      <textarea
+                        class="comment-input-area"
+                        placeholder="이 창작물에 대한 댓글을 남겨주세요."
+                      ></textarea>
+                    </label>
+                    @@@@@@@@@ 댓글 작성 공간 끝 @@@@@@@@@@
+                  </div>
+                  <div class="submit-btn-box">
+                    @@@@@@@@@ 댓글 작성 버튼 @@@@@@@@@@
+                    <button class="comment-submit-btn" type="submit">
+                      댓글 작성
+                    </button>
+                    @@@@@@@@@ 버튼 끝 @@@@@@@@@@
+                  </div>
+                </form> -->
+              
+             </div>
+              <!-- @@@@@@@@@ 댓글창 끝 @@@@@@@@@@ -->
+            </div>
+            <!-- @@@@@@@@@ post 영역 끝 @@@@@@@@@@ -->
+          </div>
+	</div>
+		
     <!-- Footer -->
     <div class="footer-container">
       <!-- 푸터 영역 시작 -->
