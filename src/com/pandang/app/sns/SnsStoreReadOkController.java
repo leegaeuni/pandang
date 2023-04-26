@@ -31,10 +31,6 @@ public class SnsStoreReadOkController implements Execute {
 		
 		SnsDAO snsDAO = new SnsDAO();
 		SnsStoreVO snsStoreVO = new SnsStoreVO();
-		SnsStoreVO liked = new SnsStoreVO();
-		
-		
-		
 		 
 	      
 		 snsDAO.updateStoreViewCnt(Integer.parseInt(req.getParameter("storeNumber")));
@@ -49,29 +45,35 @@ public class SnsStoreReadOkController implements Execute {
 	      gson.toJson(snsStoreVO);
 	      JsonParser.parseString(gson.toJson(snsStoreVO));
 	      
+	    
+	      
 	   //  좋아요
-			String iLike = "";
-			Map<String, Integer> map = new HashMap<>();
+//			String iLike = "";
+//			Map<String, Integer> map = new HashMap<>();
+//			
+//			
+//			map.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
+//			map.put("storeNumber", Integer.parseInt(req.getParameter("storeNumber")));
+//			
+//			
+//			if(snsDAO.ifLiked(map) != 0) {
+//		    	   iLike = "like";
+//		      } 
 			
-			
-			map.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
-			map.put("storeNumber", Integer.parseInt(req.getParameter("storeNumber")));
-			
-			
-			if(snsDAO.ifLiked(map) != 0) {
-		    	   iLike = "like";
-		      } 
-			
-			 
-		    System.out.println(iLike);
+//			 
+//		    System.out.println(iLike);
+//		    
+//		    req.setAttribute("iLike", iLike);
 		    
-		    req.setAttribute("iLike", iLike);
+		    	JsonObject result = new JsonObject();
+		      result.add("list", JsonParser.parseString(gson.toJson(snsStoreVO)));
 		    
+		      System.out.println(result.toString());
 		    
 	      resp.setContentType("application/json; charSet=utf-8");
 	      
 	      PrintWriter out = resp.getWriter();
-	      out.print(JsonParser.parseString(gson.toJson(snsStoreVO)).toString());
+	      out.print(result.toString());
 	      out.close();
 	      
 

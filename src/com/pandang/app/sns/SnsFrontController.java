@@ -54,6 +54,10 @@ public class SnsFrontController extends HttpServlet{
 		case "/sns/snsPostDeleteOk.sn" : 
 			new SnsPostDeleteOkController().execute(req, resp);
 			break;
+			
+		case "/sns/storePostDeleteOk.sn" : 
+			new StorePostDeleteOkController().execute(req, resp);
+			break;
 	
 		case "/sns/snsFollowOk.sn" :
 			new SnsFollowOkController().execute(req, resp);
@@ -73,6 +77,10 @@ public class SnsFrontController extends HttpServlet{
 			
 		case "/sns/snsStoreReadOk.sn" :
 			new SnsStoreReadOkController().execute(req, resp);
+			break;
+			
+		case "/sns/snsStoreFileReadOk.sn" :
+			new SnsStoreFileReadOkController().execute(req, resp);
 			break;
 			
 		case "/sns/snsStoreLikeCommentCntOk.sn" :

@@ -38,7 +38,7 @@ public class SnsUpdateOkController implements Execute {
       MultipartRequest multipartRequest = new MultipartRequest(req, uploadPath, fileSize, "utf-8", new DefaultFileRenamePolicy());
       
       snsNumber = Integer.parseInt(multipartRequest.getParameter("snsNumber"));
-      System.out.println(snsNumber);
+     
       snsDTO.setSnsTitle(multipartRequest.getParameter("snsTitle"));
       snsDTO.setSnsContent(multipartRequest.getParameter("snsContent"));
       snsDTO.setSnsNumber(snsNumber);

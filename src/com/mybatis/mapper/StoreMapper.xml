@@ -182,4 +182,11 @@
 		delete from tbl_store where store_number = #{storeNumber}
 	</delete>
 	
+	<update id="updatePost" parameterType="storeDTO">
+		update tbl_store
+		set store_title=#{storeTitle}, store_content=#{storeContent},
+		store_price=#{storePrice}, hashtag_number=#{hashtagNumber}
+		where store_number=#{storeNumber}
+	</update>
+	
 </mapper>

@@ -93,4 +93,8 @@ public class StoreDAO {
 	public int searchGetTotal(String searchInput) {
 		return sqlSession.selectOne("store.searchGetTotal", searchInput);
 	}
+	// 가은이가 만들었음 
+	public void updatePost(StoreDTO storeDTO) {
+		sqlSession.update("store.updatePost", storeDTO);
+	}
 }
