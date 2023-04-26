@@ -259,7 +259,8 @@
 	
 	<delete id="deleteStoreBasket" parameterType="_int">
 		delete from tbl_basket
-
+	</delete>
+	
 	<delete id="deleteStoreLike" parameterType="_int">
 		delete from tbl_store_like
 		where store_number = #{storeNumber}
