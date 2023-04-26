@@ -91,12 +91,26 @@
 
     <!-- Main -->
     <div class="main-container">
+    <c:choose>
+            <c:when test="${storeTitle != null}">
+      <form
+        id="write-form"
+        action="${pagetContext.request.contextPath}/sns/snsOk.sn"
+        method="post"
+        enctype="multipart/form-data"
+      >
+      <input type="hidden" name="storeNumber" value="${storeNumber}">
+            	</c:when>
+            	<c:otherwise>
       <form
         id="write-form"
         action="${pagetContext.request.contextPath}/store/storeWriteOk.st"
         method="post"
         enctype="multipart/form-data"
       >
+      </c:otherwise>
+      </c:choose>
+      
         <div class="write-wrap">
           <div class="title">
             <!-- 카테고리 설정 -->
@@ -143,6 +157,7 @@
                 name="storeTitle"
                 placeholder="상품명을 입력하세요"
                 required
+                value="${storeTitle}"
               />
             </div>
             <!-- 상품 입력 -->
@@ -264,7 +279,7 @@
                   cols="30"
                   rows="10"
                   placeholder="문구 입력..."
-                ></textarea>
+                >${storeContent}</textarea>
               </div>
             </div>
           </div>

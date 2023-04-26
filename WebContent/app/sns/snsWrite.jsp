@@ -188,7 +188,7 @@
             <!-- 게시글 작성 시 경로 작성 -->
             <c:choose>
             	<c:when test="${snsTitle != null}">
-            	 	<form action="${pageContext.request.contextPath}/sns/snsUpdateOk.sn" class="sns-content-area" method='post' enctype="multipart/form-data">
+            	 	<form action="${pageContext.request.contextPath}/sns/snsOk.sn" class="sns-content-area" method='post' enctype="multipart/form-data">
             	 	<input type="hidden" name="snsNumber" value="${snsNumber}">
             	</c:when>
            
