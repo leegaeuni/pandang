@@ -26,22 +26,27 @@ public class StoreUpdateOkController implements Execute {
 		StoreFileDAO storefileDAO = new StoreFileDAO();
 		StoreFileDTO storefileDTO = new StoreFileDTO();
 		int storeNumber = 0;
-		req.getSession().setAttribute("memberNumber", 1);
 
 		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload/";
 		int fileSize = 1024 * 1024 * 10;
 
 		MultipartRequest multipartRequest = new MultipartRequest(req, uploadPath, fileSize, "utf-8", new DefaultFileRenamePolicy());
-	     		
-		storeNumber = Integer.parseInt(multipartRequest.getParameter("storeNumber"));
+
+		storeNumber =  Integer.parseInt(multipartRequest.getParameter("storeNumber"));
+
 		
 	      storeDTO.setStoreTitle(multipartRequest.getParameter("storeTitle"));
 	      storeDTO.setStoreContent(multipartRequest.getParameter("storeContent"));
 	      storeDTO.setStorePrice(Integer.parseInt(multipartRequest.getParameter("storePrice")));
 	      storeDTO.setHashtagNumber(Integer.parseInt(multipartRequest.getParameter("hashtagNumber")));
 	      storeDTO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
+	      storeDTO.setStoreNumber(storeNumber);
 	      
 	      storeDAO.updateStore(storeDTO);
+
+	      storeDAO.updatePost(storeDTO);
+
+	      storeDAO.storeWrite(storeDTO);
 	      
 	 
 	      Enumeration<String> fileNames = multipartRequest.getFileNames();
@@ -61,7 +66,7 @@ public class StoreUpdateOkController implements Execute {
 	         storefileDTO.setStoreFileOriginalName(fileOriginalName);
 	         storefileDTO.setStoreNumber(storeNumber);
 	         
-	         storefileDAO.storeWrite(storefileDTO);;
+	         storefileDAO.storeWrite(storefileDTO);
 	         
 	         List<StoreFileDTO> files = storefileDAO.selectAll(storeNumber);
 	          
@@ -74,7 +79,7 @@ public class StoreUpdateOkController implements Execute {
 	      }
       
 
-		resp.sendRedirect("/store/storeOk.st");
+		resp.sendRedirect("/sns/snsOk.sn");
 	}
 
 }

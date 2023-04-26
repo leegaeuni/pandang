@@ -259,6 +259,9 @@
 	
 	<delete id="deleteStoreBasket" parameterType="_int">
 		delete from tbl_basket
+
+	<delete id="deleteStoreLike" parameterType="_int">
+		delete from tbl_store_like
 		where store_number = #{storeNumber}
 	</delete>
 	
@@ -317,5 +320,13 @@
 		(basket_cnt, store_number, member_number)
 		values(1, #{storeNumber}, #{memberNumber})
 	</insert>
+
+	<update id="updatePost" parameterType="storeDTO">
+		update tbl_store
+		set store_title=#{storeTitle}, store_content=#{storeContent},
+		store_price=#{storePrice}, hashtag_number=#{hashtagNumber}
+		where store_number=#{storeNumber}
+	</update>
+
 
 </mapper>

@@ -6,6 +6,8 @@ let memberNumber = $('.memberNumber').val();
 let memberNumberFrom = $('.memberNumberFrom').val();
 let memberNumberTo = $('.memberNumberTo').val();
 let hostMemberNumber = $('#hostMemberNumber').val();
+let snsNumber;
+let storeNumber;
 
 
 
@@ -387,8 +389,7 @@ $('.prev').on('click', function() {
 
 // ajax에서 .post-part 클릭시  snsNumber가져오는 이벤트 
 
-let snsNumber;
-let storeNumber;
+
 
 
 $('.snsList').on('click', '.post-part', function() {
@@ -475,6 +476,22 @@ function showPostContent(result) {
 		}
 	
 }
+function showStoreContent(result) {
+	$('.s-post-content').html('');
+	
+		if (storeNumber == result.list.storeNumber) {
+
+			$('.s-post-content').append(`
+					
+					<sapn>
+							${result.list.storeContent}
+						
+					</span>
+				`);
+			
+		}
+	
+}
 
 // 모달 게시글 댓글 함수
 
@@ -551,21 +568,39 @@ function showPostComment(result) {
 
 
 $('.snsList').on('click', function() {
+	
 	if($('#store').css('color') ==  'rgb(42, 197, 198)'){
+		console.log(storeNumber);
 		$.ajax({
-		url: '/sns/snsStoreReadOk.sn',
+		url: "/sns/snsStoreReadOk.sn",
 		type: 'get',
 		dataType: 'json',
 		data: { storeNumber: storeNumber },
 		success: function(result) {
 			showStorePost(result);
-			
+			showStoreContent(result);
+			$('.formStoreTitle').val(result.list.storeTitle);
+			$('.formStoreContent').val(result.list.storeContent);
+			$('.formStoreNumber').val(storeNumber);
 		},
 		error: function(a, b, c) {
 			console.log(c);
 		}
 
 	});
+	$.ajax({
+		url: '/sns/snsStoreFileReadOk.sn',
+		type: 'get',
+		dataType: 'json',
+		data: { storeNumber : storeNumber },
+		success: function(result) {
+			showStoreFile(result);
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+		});
 	
 	} else {
 		currentIdx = 0;
@@ -588,6 +623,20 @@ $('.snsList').on('click', function() {
 		}
 
 	});
+	
+	$.ajax({
+		url: '/sns/snsFileReadOk.sn',
+		type: 'get',
+		dataType: 'json',
+		data: { snsNumber : snsNumber },
+		success: function(result) {
+			showSnsFile(result);
+		},
+		error: function(a, b, c) {
+			console.log(c);
+		}
+
+		});
 	}
 });
 
@@ -760,6 +809,20 @@ $('.modal-delete-btn-box').on('click', function() {
 
 });
 
+$('.s-modal-delete-btn').on('click', function() {
+	console.log('!!?!!?!?!?!??!');
+	
+	$(".s-post-modal").css("display", "none");
+	$(".s-modal-background").css("display", "none");
+		
+	$.ajax({
+		url: '/sns/storePostDeleteOk.sn',
+		type: 'get',
+		data: { storeNumber: storeNumber }
+	});
+
+});
+
 
 $('#store').on('click',function(){
 	$(this).css('color', ' rgb(42, 197, 198)');
@@ -858,7 +921,7 @@ $(".post-img-prev").on("click", function() {
 }
 
 
-$('.snsList').on('click', function(){
+/*$('.snsList').on('click', function(){
 		$.ajax({
 		url: '/sns/snsFileReadOk.sn',
 		type: 'get',
@@ -871,9 +934,11 @@ $('.snsList').on('click', function(){
 			console.log(c);
 		}
 
-	});
+		});
 	
-});
+	
+	
+});*/
 
 
 
@@ -944,32 +1009,32 @@ function showStoreList(result){
 function showStorePost(result){
 	$('.s-post-header-box').html('');
 	
-		if (storeNumber == result.storeNumber) {
+		if (storeNumber == result.list.storeNumber) {
 			$('.s-post-header-box').append(`
 				<div class="s-post-header">
               <div class="s-post-title">
-					${result.storeTitle}
+					${result.list.storeTitle}
 				</div>
               <div class="s-post-date-categori-box">
                 <div class="s-post-date">
-					${result.storeDate}
+					${result.list.storeDate}
 				</div>
                 <div>l</div>
-                <div class="s-post-categori">${result.hashtagName}</div>
+                <div class="s-post-categori">${result.list.hashtagName}</div>
               </div>
             </div>
             <div class="s-post-information">
               <div class="s-post-view-cnt">
                 <span class="material-symbols-outlined"> visibility </span>
-                <div class="s-view-cnt">${result.storeViewCnt}</div>
+                <div class="s-view-cnt">${result.list.storeViewCnt}</div>
               </div>
               <div class="s-post-like-cnt">
                 <span class="material-symbols-outlined"> favorite </span>
-                <div class="s-p-like-cnt">${result.likeCnt}</div>
+                <div class="s-p-like-cnt">${result.list.likeCnt}</div>
               </div>
               <div class="s-post-comment-cnt">
                 <span class="material-symbols-outlined"> chat_bubble </span>
-                <div class="s-comment-cnt">${result.storeCommentCnt}</div>
+                <div class="s-comment-cnt">${result.list.storeCommentCnt}</div>
               </div>
             </div>
 			
@@ -1468,3 +1533,13 @@ $('.s-report-btn').on('click', function(){
 });
 
 
+function showStoreFile(result){
+	$('.s-post-img').html('');
+	for (let i = 0; i < result.length; i++) {
+		$('.s-post-img').append(`
+			<li>
+				<img src="/upload/${result[i]}"/>
+			</li>
+		`);
+	}
+}

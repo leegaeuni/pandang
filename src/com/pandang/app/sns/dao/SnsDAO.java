@@ -106,6 +106,38 @@ public class SnsDAO {
 		sqlSession.delete("sns.deleteSnsCommentFromHost", snsNumber);
 	}
 	
+	public void deleteSnsReportFromHost(int snsNumber) {
+		sqlSession.delete("sns.deleteSnsReportFromHost", snsNumber);
+	}
+	
+	public void deleteStorePost(int storeNumber) {
+		sqlSession.delete("sns.deleteStorePost", storeNumber);
+	}
+	
+	public void deleteStoreLikeFromHost(int storeNumber) {
+		sqlSession.delete("sns.deleteStoreLikeFromHost", storeNumber);
+	}
+	
+	public void deleteStoreFileFromHost(int storeNumber) {
+		sqlSession.delete("sns.deleteStoreFileFromHost", storeNumber);
+	}
+	
+	public void deleteStoreCommentFromHost(int storeNumber) {
+		sqlSession.delete("sns.deleteStoreCommentFromHost", storeNumber);
+	}
+	
+	public void deleteStoreBasketFromHost(int storeNumber) {
+		sqlSession.delete("sns.deleteStoreBasketFromHost", storeNumber);
+	}
+	
+	public void deleteStoreBuyFromHost(int storeNumber) {
+		sqlSession.delete("sns.deleteStoreBuyFromHost", storeNumber);
+	}
+	
+	public void deleteStoreReportFromHost(int storeNumber) {
+		sqlSession.delete("sns.deleteStoreReportFromHost", storeNumber);
+	}
+	
 	public void snsCommentInsert(SnsCommentVO snsCommentVO){
 		sqlSession.insert("sns.snsCommentInsert", snsCommentVO);
 	}
@@ -120,6 +152,10 @@ public class SnsDAO {
 	
 	public List<String> snsFile(int snsNumber) {
 		return sqlSession.selectList("sns.snsFile", snsNumber);
+	}
+	
+	public List<String> storeFile(int storeNumber) {
+		return sqlSession.selectList("sns.storeFile", storeNumber);
 	}
 	
 	public int getStoreTotal(int memberNumber) {

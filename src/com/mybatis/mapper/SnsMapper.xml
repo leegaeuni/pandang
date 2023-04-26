@@ -149,6 +149,47 @@
 		delete from tbl_sns_file 
 		where sns_number = #{snsNumber}
 	</delete>
+	
+	<delete id="deleteSnsReportFromHost" parameterType="_int">
+		delete from tbl_report_sns
+		where report_sns_number = #{snsNumber}
+	</delete>
+	
+	<!-- 스토어 게시글 삭제 -->
+	<delete id="deleteStorePost" parameterType="_int">
+		delete from tbl_store
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<delete id="deleteStoreLikeFromHost" parameterType="_int">
+		delete from tbl_store_like
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<delete id="deleteStoreCommentFromHost" parameterType="_int">
+		delete from tbl_store_comment
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<delete id="deleteStoreFileFromHost" parameterType="_int">
+		delete from tbl_store_file 
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<delete id="deleteStoreBasketFromHost" parameterType="_int">
+		delete from tbl_basket 
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<delete id="deleteStoreBuyFromHost" parameterType="_int">
+		delete from tbl_buy
+		where store_number = #{storeNumber}
+	</delete>
+	
+	<delete id="deleteStoreReportFromHost" parameterType="_int">
+		delete from tbl_report_store
+		where report_store_number = #{storeNumber}
+	</delete>
 
 	
 	<!-- 게시글 불러오기 -->
@@ -232,6 +273,10 @@
 		where sns_number = #{snsNumber}
 	</select>
 	
+	<select id="storeFile" parameterType="_int" resultType="string">
+		select store_file_system_name, store_number from tbl_store_file 
+		where store_number = #{storeNumber}
+	</select>
 	
 	<!-- 전체 store 게시글 수  -->
 	<select id="getStoreTotal" resultType="_int" parameterType="_int">
@@ -260,7 +305,7 @@
 	
 	<!-- sns store탭 게시글 1개 읽어오기 -->
 	<select id="showStoreInfo" parameterType="_int" resultType="snsStoreVO">
-		select ts.store_title, ts.store_number,
+		select ts.store_title, ts.store_number, ts.store_content,
 		ts.store_date, th.hashtag_name, ts.store_view_cnt from tbl_store ts 
 		join tbl_hashtag th 
 		on ts.hashtag_number = th.hashtag_number

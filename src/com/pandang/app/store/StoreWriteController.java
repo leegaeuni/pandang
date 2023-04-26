@@ -25,7 +25,15 @@ public class StoreWriteController implements Execute {
 			path = "/app/store/storeWrite.jsp";
 			req.setAttribute("memberId", memberDAO.getMemberNickname(memberNumber));
 		}
-
+		
+		
+		if(req.getParameter("storeTitle") != null) {
+			req.setAttribute("storeTitle", req.getParameter("storeTitle"));
+			req.setAttribute("storeContent", req.getParameter("storeContent"));
+			req.setAttribute("storeNumber", Integer.parseInt(req.getParameter("storeNumber")));
+			}
+		
+		
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 

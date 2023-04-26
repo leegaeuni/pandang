@@ -29,7 +29,6 @@ public class StoreWriteOkController implements Execute {
 		StoreFileDAO storefileDAO = new StoreFileDAO();
 		StoreFileDTO storefileDTO = new StoreFileDTO();
 		int storeNumber = 0;
-		req.getSession().setAttribute("memberNumber", 1);
 
 		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload/";
 		int fileSize = 1024 * 1024 * 10;
