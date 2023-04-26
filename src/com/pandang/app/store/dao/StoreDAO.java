@@ -10,6 +10,8 @@ import com.mybatis.config.MyBatisConfig;
 import com.pandang.app.store.dto.StoreDTO;
 import com.pandang.app.store.vo.StoreVO;
 import com.pandang.app.basket.vo.BasketVO;
+import com.pandang.app.report.sns.dto.ReportSnsDTO;
+import com.pandang.app.report.store.dto.ReportStoreDTO;
 import com.pandang.app.sns.dto.SnsDTO;
 import com.pandang.app.basket.vo.BasketVO;
 import com.pandang.app.store.vo.StoreUpdateVO;
@@ -64,8 +66,19 @@ public class StoreDAO {
 		sqlSession.update("store.updateViewCount", storeNumber);
 	}
 
-	public void delete(int storeNumber) {
-		sqlSession.delete("store.delete", storeNumber);
+	public void deleteStorePost(int storeNumber) {
+		sqlSession.delete("store.deleteStorePost", storeNumber);
+	}
+	
+	public void deleteStoreLike(int storeNumber) {
+		sqlSession.delete("store.deleteStoreLike", storeNumber);
+	}
+	public void deleteStoreFile(int storeNumber) {
+		sqlSession.delete("store.deleteStoreFile", storeNumber);
+	}
+	
+	public void deleteStoreComment(int storeNumber) {
+		sqlSession.delete("store.deleteStoreComment", storeNumber);
 	}
 
 	public void update(StoreDTO storeDTO) {
@@ -92,5 +105,17 @@ public class StoreDAO {
 	
 	public int searchGetTotal(String searchInput) {
 		return sqlSession.selectOne("store.searchGetTotal", searchInput);
+	}
+	
+	public void reportStorePost(ReportStoreDTO reportStoreDTO){
+		sqlSession.insert("store.reportStorePost", reportStoreDTO);
+	}
+	
+	public void reportPost(ReportStoreDTO reportStoreDTO){
+		sqlSession.insert("store.reportPost", reportStoreDTO);
+	}
+	
+	public void updatePost(StoreDTO storeDTO) {
+		sqlSession.update("store.updatePost", storeDTO);
 	}
 }

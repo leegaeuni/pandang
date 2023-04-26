@@ -11,10 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.oreilly.servlet.multipart.FilePart;
-import com.oreilly.servlet.multipart.MultipartParser;
-import com.oreilly.servlet.multipart.ParamPart;
-import com.oreilly.servlet.multipart.Part;
 import com.pandang.app.Execute;
 import com.pandang.app.store.dao.StoreDAO;
 import com.pandang.app.store.dto.StoreDTO;
@@ -36,7 +32,9 @@ public class StoreUpdateOkController implements Execute {
 		int fileSize = 1024 * 1024 * 10;
 
 		MultipartRequest multipartRequest = new MultipartRequest(req, uploadPath, fileSize, "utf-8", new DefaultFileRenamePolicy());
-	      
+	     		
+		storeNumber = Integer.parseInt(multipartRequest.getParameter("storeNumber"));
+		
 	      storeDTO.setStoreTitle(multipartRequest.getParameter("storeTitle"));
 	      storeDTO.setStoreContent(multipartRequest.getParameter("storeContent"));
 	      storeDTO.setStorePrice(Integer.parseInt(multipartRequest.getParameter("storePrice")));
@@ -44,10 +42,11 @@ public class StoreUpdateOkController implements Execute {
 	      storeDTO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
 	      
 	      storeDAO.storeWrite(storeDTO);
-	      storeNumber = storeDAO.getSequence();
 	      
 	 
 	      Enumeration<String> fileNames = multipartRequest.getFileNames();
+	      
+	      storefileDAO.delete(storeNumber);
 	      
 	      while(fileNames.hasMoreElements()) {
 

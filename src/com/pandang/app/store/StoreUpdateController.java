@@ -7,18 +7,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pandang.app.Execute;
-import com.pandang.app.store.dao.StoreDAO;
 
 public class StoreUpdateController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int storeNumber = Integer.valueOf(req.getParameter("storeNumber"));
-		StoreDAO storeDAO = new StoreDAO();
+		req.getParameter("storeTitle");
+		req.getParameter("storeContent");
+		req.getParameter("storePrice");
+		req.getParameter("hashtagNumber");
+		req.getParameter("memberNumber");
+		
+		
+		req.setAttribute("storeTitle", req.getParameter("storeTitle"));
+		
+		req.getRequestDispatcher("/app/store/storeWrite.jsp").forward(req, resp);
 
-		req.setAttribute("store", storeDAO.select(storeNumber));
-
-		req.getRequestDispatcher("/app/store/storeUpdate.jsp").forward(req, resp);
 	}
 
 }
+
