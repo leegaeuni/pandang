@@ -34,6 +34,39 @@ function showReport(result) {
 	}
 };
 
+function showReportStore(result) {
+	$(".report-list").html('');
+	for (let i = 0; i < result.list.length; i++) {
+
+		$('.report-list').append(`<div class="board-list">
+		          <div class="board-list-number">${result.list[i].reportNumber}</div>
+					
+		          <!-- 게시물 제목 클릭하면 밑에 신고 상세내용 보이게 한다. -->
+		          <a href="#" class="board-list-title">${result.list[i].reportTitle}</a>
+		          <div class="board-list-author">${result.list[i].memberId}</div>
+		          <div class="board-list-date">${result.list[i].reportDate}</div>
+		        </div>
+		
+		        <!-- 게시물 제목 클릭 시 신고내용이 보여진다. -->
+		        <div class="report-contents-wrap">
+		          <div class="report-content">
+		            <p>
+		              ${result.list[i].reportContent}
+		            </p>
+		          </div>
+		          <div class="report-btn-wrap">
+					<input type="hidden" class="reportStoreNumber" value="${result.list[i].reportStoreNumber}">
+		            <!-- 클릭 시 해당 회원정보로 이동 -->
+		            <span class="go-member-btn">${result.list[i].reportedMemberId}</span>
+					
+		            <!-- 클릭 시 해당 게시물로 이동 -->
+		            <button class="go-post-btn">게시물 보기</button>
+		          </div>
+		        </div>`)
+
+	}
+};
+
 function showPagination(result) {
 	$('.pagination').html('');
 	$('.pagination').append(`<input class="startPage" type="hidden" name="startPage" value="${result.startPage}">`)
@@ -225,7 +258,7 @@ $(".change-store").on('click', function() {
 		data: { page: 1 },
 		dataType: 'json',
 		success: function(result) {
-			showReport(result);
+			showReportStore(result);
 			showPagination(result);
 		},
 		error: function(a, b, c) {
@@ -242,6 +275,9 @@ $('.pagination').on('click', '.number-btn', function(e) {
 	e.preventDefault();
 	$('.number-btn').removeClass('active');
 	$(e.target).addClass('active');
+	if($('.change-store').hasClass('click')){
+		params.success = showReportStore;
+	}
 	params.data = { page: $(e.target).text().trim() };
 	$.ajax(params);
 });
@@ -249,32 +285,58 @@ $('.pagination').on('click', '.number-btn', function(e) {
 $(".pagination").on('click', '.next', function(e) {
 	e.preventDefault();
 	params.data = { page: Number($('.endPage').val()) + 1 };
-	$.ajax({
-		url: params.url,
-		data: params.data,
-		type: 'get',
-		dataType: 'json',
-		success: function(result) {
-			showReport(result);
-			showPagination(result);
-		}
-	});
+	if($('.change-store').hasClass('click')){
+		$.ajax({
+			url: params.url,
+			data: params.data,
+			type: 'get',
+			dataType: 'json',
+			success: function(result) {
+				showReportStore(result);
+				showPagination(result);
+			}
+		});
+	}else{
+		$.ajax({
+			url: params.url,
+			data: params.data,
+			type: 'get',
+			dataType: 'json',
+			success: function(result) {
+				showReport(result);
+				showPagination(result);
+			}
+		});
+	}
 });
 
 $(".pagination").on('click', '.prev', function(e) {
 	e.preventDefault();
 	console.log($('.endPage').val());
 	params.data = { page: Number($('.startPage').val()) - 1 };
-	$.ajax({
-		url: params.url,
-		data: params.data,
-		type: 'get',
-		dataType: 'json',
-		success: function(result) {
-			showReport(result);
-			showPagination(result);
-		}
-	});
+	if($('.change-store').hasClass('click')){
+		$.ajax({
+			url: params.url,
+			data: params.data,
+			type: 'get',
+			dataType: 'json',
+			success: function(result) {
+				showReportStore(result);
+				showPagination(result);
+			}
+		});
+	}else{
+		$.ajax({
+			url: params.url,
+			data: params.data,
+			type: 'get',
+			dataType: 'json',
+			success: function(result) {
+				showReport(result);
+				showPagination(result);
+			}
+		});
+	}
 });
 
 $('.report-list').on('click', '.control-btn', function(e) {
@@ -347,7 +409,7 @@ $('.search-btn').on('click', function() {
 			data: { page: 1, input: $('.search-input').val().trim() },
 			dataType: 'json',
 			success: function(result) {
-				showReport(result);
+				showReportStore(result);
 				showPagination(result);
 				$('.search-input').val('');
 			},
@@ -373,74 +435,95 @@ let hostMemberNumber = $('#hostMemberNumber').val();
 
 // @@@@@@ 이미지 클릭 했을 때 모달 창 띄우기 @@@@@@@@@
 $('.report-list').on('click', '.go-post-btn', function(e) {
+	if($('.change-sns').hasClass('click')){
+		
+		 reportSnsNumber = $(e.target).prev().prev().val();
+		 reportMemberId = $(e.target).prev().text();
+		
 	
- reportSnsNumber = $(e.target).prev().prev().val();
- reportMemberId = $(e.target).prev().text();
+		$(".modal-box").css("display", "flex");
 	
-
-	$(".modal-box").css("display", "flex");
-
-	$(".modal-background").css("display", "inline-block");
-
+		$(".modal-background").css("display", "inline-block");
 	
-
-	$.ajax({
-		url: '/sns/snsFileReadOk.sn',
-		type: 'get',
-		dataType: 'json',
-		data: { snsNumber: reportSnsNumber },
-		success: function(result) {
-			showSnsFile(result);
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
-
-	});
-
-
-	currentIdx = 0;
-	$.ajax({
-		url: '/sns/snsReadOk.sn',
-		type: 'get',
-		dataType: 'json',
-		data: {
-			snsNumber: reportSnsNumber,
-			memberNumber: memberNumber,
-			memberId : reportMemberId
-		},
-		success: function(result) {
-			showSnsLikeDate(result);
-			showPostContent(result);
-			showSnsHost();
-			$('.host-profile-img').attr('src', `/upload/${result.list.channelFileSystemName}`);
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
-
-	});
+		
 	
-	$.ajax({
-		url: '/sns/snsCommentOk.snc',
-		type: 'get',
-		dataType: 'json',
-		data: { snsNumber: reportSnsNumber },
-		success: function(result) {
-			showPostComment(result);
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
+		$.ajax({
+			url: '/sns/snsFileReadOk.sn',
+			type: 'get',
+			dataType: 'json',
+			data: { snsNumber: reportSnsNumber },
+			success: function(result) {
+				showSnsFile(result);
+			},
+			error: function(a, b, c) {
+				console.log(c);
+			}
+	
+		});
+	
+	
+		currentIdx = 0;
+		$.ajax({
+			url: '/sns/snsReadOk.sn',
+			type: 'get',
+			dataType: 'json',
+			data: {
+				snsNumber: reportSnsNumber,
+				memberNumber: memberNumber,
+				memberId : reportMemberId
+			},
+			success: function(result) {
+				showSnsLikeDate(result);
+				showPostContent(result);
+				showSnsHost();
+				$('.host-profile-img').attr('src', `/upload/${result.list.channelFileSystemName}`);
+			},
+			error: function(a, b, c) {
+				console.log(c);
+			}
+	
+		});
+		
+		$.ajax({
+			url: '/sns/snsCommentOk.snc',
+			type: 'get',
+			dataType: 'json',
+			data: { snsNumber: reportSnsNumber },
+			success: function(result) {
+				showPostComment(result);
+			},
+			error: function(a, b, c) {
+				console.log(c);
+			}
+	
+		});
+	}else{
+		$(".s-post-modal").css("display", "flex");
+    	$(".s-post-modal-background").css("display", "inline-block");
+   		reportStoreNumber = $(e.target).prev().prev().val();
+   		$.ajax({
+	      url : '/store/storeUpdateViewCntOk.st',
+	      type : 'get',
+	      data : {storeNumber : reportStoreNumber},
+	      dataType : 'json',
+	      success : function(result){
+	         getStoreComment();
+	         getStoreFile();
+	         insertDataModal(result);
 
-	});
-
+	      }
+	   });
+	}
 });
 // @@@@@@@ 모달 영역 밖으로 클릭하면 모달 창 없애기 @@@@@@@
 
 $(".modal-background").on("click", function() {
 	$(".modal-box").css("display", "none");
+	$(this).css("display", "none");
+});
 
+$(".s-post-modal-background").on("click", function() {
+	$(".s-post-modal").css("display", "none");
 	$(this).css("display", "none");
 });
 
@@ -657,19 +740,131 @@ function showSnsFile(result) {
 
 $('.report-list').on('click', '.go-member-btn', function(e) {
 	$('.change-page-member').click();
-	if($('.change-page-member').hasClass('find')){
-	$.ajax({
-			url: '/admin/findMemberOk.ad',
-			type: 'get',
-			data: { page: 1, input: $(e.target).text().trim() },
-			dataType: 'json',
-			success: function(result) {
-				showMember(result);
-				showPagination(result);
-			},
-			error: function(a, b, c) {
-				console.log(c);
-			}
-		});
+	while(true){
+			if($('.change-page-member').hasClass('find')){
+			$.ajax({
+					url: '/admin/findMemberOk.ad',
+					type: 'get',
+					data: { page: 1, input: $(e.target).text().trim() },
+					dataType: 'json',
+					success: function(result) {
+						showMember(result);
+						showPagination(result);
+					},
+					error: function(a, b, c) {
+						console.log(c);
+					}
+				});
+			break;
+		}
 	}
 });
+
+function getStoreComment(){
+      $.ajax({
+            url: '/storeComment/storeCommentListOk.stc',
+            type: 'get',
+            dataType: 'json',
+            data: { storeNumber: storeNumber },
+            success: function(result) {
+               showStoreComment(result);
+            },
+            error: function(a, b, c) {
+               console.log(c);
+            }
+
+         });
+};
+   
+   function getStoreFile(){
+      $.ajax({
+         url:'/file/storeFileOk.stf',
+         type:'get',
+         dataType:'json',
+         data: {storeNumber : storeNumber},
+         success: function(result){
+            
+            let text = '';
+            
+            for(let i=0; i<result.length; i++){
+               text += `
+                  <img
+                         src="/upload/${result[i].storeFileSystemName}"
+                         alt=""
+                       />
+               `;
+            }
+               
+            $('.s-post-img').append(text);
+         }
+      });
+   };
+
+function insertDataModal(result){
+   $('.s-post-title').text(result.storeTitle);
+   $('.s-post-date').text(result.storeDate);
+   $('.s-post-categori').text(result.hashtagName);
+   $('.s-view-cnt').text(result.storeViewCnt);
+   $('.s-p-like-cnt').text(result.likeCount);
+   $('.s-comment-cnt').text(result.commentCount);
+   $('.s-post-content').text(result.storeContent);
+   //$('.author-profile-img').attr('src', '')
+   $('.s-profile-modal-member > a').text(result.channelName);
+};
+
+   function showStoreComment(result){
+   $('.s-commentL').html('');
+   let text = '';
+   for (let i = 0; i < result.length; i++) {
+      if (storeNumber == result[i].storeNumber && result[i].storeCommentNumber != 0) {
+         
+         text += `<div class="s-comment-list">
+              <!-- @@@@@@@@@ 댓글 list @@@@@@@@@@ -->
+              <a herf="#" class="s-comment-user-profile-shortcuts">
+                <div class="s-comment-user-profile-wrap">
+                  <img
+                    src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
+                    alt=""
+                  />
+                </div>
+              </a>
+              <div class="s-text-wrap">
+                <div class="s-comment-member-info">
+                  <a href="#" class="s-member-id">${result[i].memberNickname}</a>
+                  <div class="s-box"></div>
+                  <div class="s-comment-date">${result[i].storeCommentDate}</div>
+                  `
+
+            if(memberNumber == result[i].memberNumber){
+               text += `
+               
+               <div class="s-comment-edit-delete-btn-box">
+                    <button class="s-comment-edit-btn" data-number="${result[i].storeCommentNumber}">수정</button>
+
+                    <button class="s-comment-delete-btn"  data-number="${result[i].storeCommentNumber}">삭제</button>
+                  </div>
+
+                <div class="s-edit-btn-box">
+                      <button type="submit" class="s-edit-btn" data-number="${result[i].storeCommentNumber}">
+                        수정 완료
+                      </button>
+                  </div>`
+            }
+            
+            text += `
+               </div>
+            <div class="s-height-box"></div>
+                <div class="s-comment">
+                  <span class="s-comment-content">
+               ${result[i].storeCommentContent}
+                  </span>
+                 
+                  
+                </div>
+              </div>
+              <!-- @@@@@@@@@ 댓글 리스트 끝  @@@@@@@@@@ -->
+            </div>`;
+      }
+   }
+   $('.s-commentL').html(text);
+}
