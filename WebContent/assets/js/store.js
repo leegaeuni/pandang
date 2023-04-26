@@ -205,7 +205,6 @@ $(document).ready(function(){
 });
 
 function showStore(result) {
-	console.log(result.list)
 	$('.post-container').html('');
 			for(let i=0; i<result.list.length; i++){	
 				if(isEmpty(result.list[i].storeFileSystemName)){
@@ -297,7 +296,7 @@ function showStore(result) {
 		                </a>
 		              </div>
 		              <div class="writer-box">
-		                <a href="" class="writer-name">${result.list[i].memberNickname}</a>
+		                <a href="" class="writer-name">${result.list[i].channelName}</a>
 		              </div>
 		              <font>·</font>
 		              <div class="follow-btn-box">
@@ -550,8 +549,16 @@ $modifyBtn.on('click', () => {
 	window.location.href = '/store/storeUpdate.st';
 });
 
-$deleteBtn.on('click', () => {
-	window.location.href = '/store/storeDeleteOk.st'
+$('.modal-delete-btn').on('click', function() {
+	
+	$(".modal-box").css("display", "none");
+	
+	$.ajax({
+		url: '/store/storeDeleteOk.st',
+		type: 'get',
+		data: { storeNumber: storeNumber }
+	});
+
 });
 
 
@@ -564,8 +571,6 @@ $('.post-container').on('click', '.post-img-back', function(e){
 	$(".post-modal").css("display", "flex");
     $(this).closest('.post-img-box-wrap').find(".modal-background").css("display", "inline-block");
   	
-
-	console.log($(e.target).data('num'));
    storeNumber = $(e.target).data('num');
    $.ajax({
       url : '/store/storeModalOk.st',
@@ -791,6 +796,7 @@ $('.comment-container').on('click', '.edit-btn', function() {
 
 function insertDataModal(result){
    $('.post-title').text(result.storeTitle);
+   $('.post-price').text(result.storePrice);
    $('.post-date').text(result.storeDate);
    $('.post-categori').text(result.hashtagName);
    $('.view-cnt').text(result.storeViewCnt);
@@ -862,6 +868,9 @@ $('.store-photo-img')(`<div class="post-box">
                 <div class="post-header">
                   <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
                   <div class="post-title">임시 게시글 제목</div>
+				   <div class="post-price-area">
+                  <div class="post-price"></div><span>원</span>
+                  </div>
                   <div class="post-date-categori-box">
                     <div class="post-date">2023.3.23</div>
                     <div>l</div>

@@ -173,6 +173,9 @@
                 <div class="post-header">
                   <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
                   <div class="post-title">${store.getStoreTitle() }</div>
+                  <div class="post-price-area">
+                  <div class="post-price"></div><span>원</span>
+                  </div>
                   <div class="post-date-categori-box">
                     <div class="post-date">${store.getStoreDate() }</div>
                     <div>l</div>
@@ -271,6 +274,7 @@
               </div>
             </div>
             <!-- @@@ 모달 픽시드 팔로우 버튼 내 글일시 안 보여야함 @@@ -->
+              <c:if test="${sessionScope.memberNumber == storeMemberInfo.getMemberNumber()}">
             <div class="post-btn-box" id="follow">
               <div class="modal-follow-btn-wrap btn-wrap-flex">
                 <button type="button" class="modal-follow-btn btn-color">
@@ -326,13 +330,20 @@
                 <span class="modal-btn-list">신고하기</span>
               </div>
             </div>
+            </c:if>
             <!-- @@@ 수정하기 영역 끝 @@@ -->
             <!-- @@@ 모달 픽시드 수정하기 버튼 내 글일시  보여야함 @@@ -->
+            <c:if test="${sessionScope.memberNumber == storeMemberInfo.getMemberNumber()}">
             <div class="post-btn-box" id="edit">
               <div class="modal-edit-btn-wrap btn-wrap-flex">
+              <form action="/store/storeWrite.st" method="post">
+				<input type="hidden" name="storeTitle" class="formStoreTitle">
+				<input type="hidden" name="storeContent" class="formStoreContent">
+				<input type="hidden" name="storeNumber" class="formStoreNumber">
                 <button type="button" class="modal-edit-btn btn-color">
                   <span class="material-symbols-outlined"> edit </span>
                 </button>
+                </form>
                 <span class="modal-btn-list">수정하기</span>
               </div>
             </div>
@@ -346,9 +357,10 @@
                 <span class="modal-btn-list">삭제하기</span>
               </div>
             </div>
+              </c:if>
           </div>
         </div>
-
+      
         <!-- 모달창 작업 종료  -->
 
 

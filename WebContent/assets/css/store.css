@@ -515,6 +515,10 @@ font {
   word-break: break-all;
 }
 
+.post-price-area{
+  display: flex;
+}
+
 .post-date-categori-box {
   width: 60%;
   height: 32px;

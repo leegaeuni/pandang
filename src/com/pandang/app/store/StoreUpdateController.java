@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pandang.app.Execute;
-import com.pandang.app.store.dao.StoreDAO;
 
 public class StoreUpdateController implements Execute {
 
@@ -15,6 +14,10 @@ public class StoreUpdateController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getParameter("storeTitle");
 		req.getParameter("storeContent");
+		req.getParameter("storePrice");
+		req.getParameter("hashtagNumber");
+		req.getParameter("memberNumber");
+		
 		
 		req.setAttribute("storeTitle", req.getParameter("storeTitle"));
 		
