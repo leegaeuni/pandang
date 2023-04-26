@@ -115,7 +115,7 @@
                   
                   <!-- img의 경로를 /upload/해줘야 DBMS에 저장됨  -->
                   <span class="image">
-                  <img src="/upload/${myPage.getChannelFileSystemName()}" 
+                  <img src="${pageContext.request.contextPath}/upload/${myPage.getChannelFileSystemName()}" 
                   
                   class="myProfileImg"
                   onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/assets/img/myPage/pandang.jpg';"

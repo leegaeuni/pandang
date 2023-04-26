@@ -15,9 +15,9 @@ public class buyCancelOkController implements Execute {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+//		HttpSession session = req.getSession();
 		BuyDAO buyDAO = new BuyDAO();
-		BuyDTO buyDTO = new BuyDTO();	
+//		BuyDTO buyDTO = new BuyDTO();	
 		
 		/* System.out.println(req.getParameter("buyNumber")); */
 		 int buyNumber = Integer.parseInt(req.getParameter("buyNumber")); 

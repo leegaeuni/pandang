@@ -56,18 +56,14 @@ var sWidth = window.innerWidth;
 });
 
 
-
-
-
-
-
-
+// 반품신청 후 해당 화면 새로고침
 $('.change-status').on('click', function(){
 	$.ajax({
 		url: '/buy/buyCancelOk.bu',
 		data: { buyNumber : $('.send-buy-number').val() },
 		type: 'get',
 		success: function(result) {
+			
 			window.location.href = window.location.href;	
 				}
 	});		
