@@ -3,18 +3,15 @@ package com.pandang.app.store.dao;
 import java.util.List;
 import java.util.Map;
 
-
-
 import org.apache.ibatis.session.SqlSession;
+
 import com.mybatis.config.MyBatisConfig;
-import com.pandang.app.store.dto.StoreDTO;
-import com.pandang.app.store.vo.StoreVO;
+import com.pandang.app.basket.dto.BasketDTO;
 import com.pandang.app.basket.vo.BasketVO;
-import com.pandang.app.report.sns.dto.ReportSnsDTO;
 import com.pandang.app.report.store.dto.ReportStoreDTO;
-import com.pandang.app.sns.dto.SnsDTO;
-import com.pandang.app.basket.vo.BasketVO;
+import com.pandang.app.store.dto.StoreDTO;
 import com.pandang.app.store.vo.StoreUpdateVO;
+import com.pandang.app.store.vo.StoreVO;
 
 
 
@@ -70,6 +67,14 @@ public class StoreDAO {
 		sqlSession.delete("store.deleteStorePost", storeNumber);
 	}
 	
+	public void deleteStoreBasket(int storeNumber) {
+		sqlSession.delete("store.deleteStoreBasket", storeNumber);
+	}
+	
+	public void deleteStoreReport(int storeNumber) {
+		sqlSession.delete("store.deleteStoreReport", storeNumber);
+	}
+	
 	public void deleteStoreLike(int storeNumber) {
 		sqlSession.delete("store.deleteStoreLike", storeNumber);
 	}
@@ -81,8 +86,8 @@ public class StoreDAO {
 		sqlSession.delete("store.deleteStoreComment", storeNumber);
 	}
 
-	public void update(StoreDTO storeDTO) {
-		sqlSession.update("store.update", storeDTO);
+	public void updateStore(StoreDTO storeDTO) {
+		sqlSession.update("store.updateStore", storeDTO);
 	}
 	
 	public void updateViewCnt(int storeNumber) {
@@ -109,7 +114,7 @@ public class StoreDAO {
 	
 	public void reportStorePost(ReportStoreDTO reportStoreDTO){
 		sqlSession.insert("store.reportStorePost", reportStoreDTO);
-	}
+	}	
 	
 	public void reportPost(ReportStoreDTO reportStoreDTO){
 		sqlSession.insert("store.reportPost", reportStoreDTO);
@@ -117,5 +122,9 @@ public class StoreDAO {
 	
 	public void updatePost(StoreDTO storeDTO) {
 		sqlSession.update("store.updatePost", storeDTO);
+	}
+	
+	public void insertBasket(BasketDTO basketDTO) {
+		   sqlSession.insert("store.insertBasket", basketDTO);
 	}
 }

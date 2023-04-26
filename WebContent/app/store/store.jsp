@@ -171,6 +171,8 @@
          	
               <div class="post-header-box">
                 <div class="post-header">
+                  <input type="hidden" value="" class="storeNumber">
+                   <input type="hidden" value="" class="memberNumber">
                   <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
                   <div class="post-title">${store.getStoreTitle() }</div>
                   <div class="post-price-area">
@@ -179,7 +181,7 @@
                   <div class="post-date-categori-box">
                     <div class="post-date">${store.getStoreDate() }</div>
                     <div>l</div>
-                    <div class="post-categori">디자인</div>
+                    <div class="post-categori"></div>
                   </div>
                   <!-- @@@@@@@@@ 모달 게시글 헤더 끝 @@@@@@@@@@ -->
                 </div>
@@ -297,7 +299,7 @@
             <!-- @@@ 모달 픽시드 장바구니 버튼 내 글일시 안 보여야함 @@@ -->
             <div class="post-btn-box" id="basket">
               <div class="modal-basket-btn-wrap btn-wrap-flex">
-                <button type="button" class="modal-btn btn-color">
+                <button type="button" class="modal-basket-btn btn-color">
                   <span class="material-symbols-outlined">
                     shopping_basket
                   </span>
@@ -333,7 +335,7 @@
             </c:if>
             <!-- @@@ 수정하기 영역 끝 @@@ -->
             <!-- @@@ 모달 픽시드 수정하기 버튼 내 글일시  보여야함 @@@ -->
-            <c:if test="${sessionScope.memberNumber == storeMemberInfo.getMemberNumber()}">
+            <c:if test="${sessionScope.memberNumber != storeMemberInfo.getMemberNumber()}">
             <div class="post-btn-box" id="edit">
               <div class="modal-edit-btn-wrap btn-wrap-flex">
               <form action="/store/storeWrite.st" method="post">

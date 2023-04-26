@@ -15,10 +15,12 @@ public class StoreDeleteOkController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		StoreDAO storeDAO = new StoreDAO();
 		
-		storeDAO.deleteStorePost(Integer.parseInt(req.getParameter("storeNumber")));
+		
+		storeDAO.deleteStoreReport(Integer.parseInt(req.getParameter("storeNumber")));
+		storeDAO.deleteStoreBasket(Integer.parseInt(req.getParameter("storeNumber")));
 		storeDAO.deleteStoreFile(Integer.parseInt(req.getParameter("storeNumber")));
 		storeDAO.deleteStoreLike(Integer.parseInt(req.getParameter("storeNumber")));
 		storeDAO.deleteStoreComment(Integer.parseInt(req.getParameter("storeNumber")));
-		
+		storeDAO.deleteStorePost(Integer.parseInt(req.getParameter("storeNumber")));
 	}
 }

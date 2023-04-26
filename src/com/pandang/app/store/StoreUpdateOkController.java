@@ -41,7 +41,7 @@ public class StoreUpdateOkController implements Execute {
 	      storeDTO.setHashtagNumber(Integer.parseInt(multipartRequest.getParameter("hashtagNumber")));
 	      storeDTO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
 	      
-	      storeDAO.storeWrite(storeDTO);
+	      storeDAO.updateStore(storeDTO);
 	      
 	 
 	      Enumeration<String> fileNames = multipartRequest.getFileNames();

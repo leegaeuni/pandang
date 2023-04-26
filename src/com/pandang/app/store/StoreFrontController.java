@@ -70,6 +70,9 @@ public class StoreFrontController extends HttpServlet {
 		case "/store/storeReportOk.st":
 			new StoreReportOkController().execute(req, resp);
 			break;
+		case "/store/storeBasket.st":
+			new StoreBasketController().execute(req, resp);
+			break;			
 		}
 	}
 }
