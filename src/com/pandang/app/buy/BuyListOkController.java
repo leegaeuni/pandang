@@ -19,8 +19,8 @@ public class BuyListOkController implements Execute {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		BuyDAO buyDAO = new BuyDAO();
 		
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
-		int memberNumber = 2;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+//		int memberNumber = 2;
 		int total = buyDAO.getTotal(memberNumber);
 		/* System.out.println(total); */					
 		String temp = req.getParameter("page");

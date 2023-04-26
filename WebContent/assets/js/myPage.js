@@ -19,17 +19,18 @@ window.onload = function () {
 let $fileInput = $('#avatarImage');
 let $fileProfile = $('.myProfileImg');
 
-console.log($fileInput);
+/*console.log($fileInput);*/
 
 // 파일을 변경 시 원래 선택된 파일 미리보기 제거하기
 $fileProfile.html('');
 
-console.log('aaa')
-console.log($fileProfile.prop('src'))
+/*console.log('aaa')
+console.log($fileProfile.prop('src'))*/
 
+// 바꾼 이미지 화면에 보여주기
 $fileInput.on('change', function(){
 	let files = this.files;
-	console.log(this.files)
+	/*console.log(this.files)*/
 	
 	let src = URL.createObjectURL(files[0]);
 	$fileProfile.prop('src', src)

@@ -20,7 +20,7 @@ public class MemberFrontController extends HttpServlet{
 	
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String target = req.getRequestURI().substring(req.getContextPath().length());
-		System.out.println(target);
+//		System.out.println(target);
 		switch(target) {
 		// 해당 케이스의 url로 요청이 들어오면 기능별 Controller를 실행시킨다.
 		case "/member/join.me":
