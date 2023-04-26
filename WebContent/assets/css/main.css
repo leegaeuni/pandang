@@ -868,6 +868,7 @@ img.after-like-btn {
   border: 1px solid rgb(228, 232, 232);
   color: rgb(44, 48, 48);
   cursor: pointer;
+  text-align : center;
 }
 
 /* @@@@@@@ 모달창 프로필 hover시 나오는 모달@@@@@@@@ */
@@ -1161,4 +1162,21 @@ img.after-like-btn {
   border: 1px solid rgb(200, 200, 200);
   color: rgb(44, 48, 48);
   cursor: pointer;
+}
+
+.post-img{
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items : center;
+}
+
+.post-img img{
+	margin : 20px 0;
+}
+
+.post-content {
+	text-align : center;
+	margin-top : 100px;
+	margin-bottom : 80px;
 }
