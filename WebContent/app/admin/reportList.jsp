@@ -22,7 +22,7 @@
     <header>
       <!-- 로고 이미지 -->
       <div class="logo-wrap">
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/admin.ad">
           <img src="${pageContext.request.contextPath}/assets/img/logo.jpg" />
         </a>
       </div>

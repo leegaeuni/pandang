@@ -765,7 +765,7 @@ function getStoreComment(){
             url: '/storeComment/storeCommentListOk.stc',
             type: 'get',
             dataType: 'json',
-            data: { storeNumber: storeNumber },
+            data: { storeNumber: reportStoreNumber },
             success: function(result) {
                showStoreComment(result);
             },
@@ -777,13 +777,13 @@ function getStoreComment(){
 };
    
    function getStoreFile(){
+	$('.s-post-img').html('');
       $.ajax({
          url:'/file/storeFileOk.stf',
          type:'get',
          dataType:'json',
-         data: {storeNumber : storeNumber},
+         data: {storeNumber : reportStoreNumber},
          success: function(result){
-            
             let text = '';
             
             for(let i=0; i<result.length; i++){
