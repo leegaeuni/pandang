@@ -107,37 +107,11 @@
           </div>
         </div>
         <input type="hidden" value="${realEndPage}" class="realEndPage">
-        
-        
-        
-        
+         <input type="hidden" value="${sessionScope.memberNumber}" class="memberNumber">
+          
         <!-- 모달창 작업 -->
         <div class="post-modal">
           <div class="post-box">
-            <div class="profile-path">
-              <div class="profile-modal-img-box">
-                <a href="#" id="modal-img-box">
-                  <img
-                    class="profile-modal-img"
-                    src="https://cdn-bastani.stunning.kr/prod/users/f4852320-5cea-4a09-9b2f-7e496b710e43/avatar/ah7M8e7fB5v6Dbif.414_2unday.png.small?q=60&t=crop&s=300x300"
-                    alt=""
-                  />
-                  <div class="modal-img-background"></div>
-                </a>
-              </div>
-              <div class="profile-modal-member">
-                <a href="#">leegaeun0923</a>
-              </div>
-              <div class="profile-modal-follow-btn-box">
-                <button class="profile-modal-follow-btn" type="button">
-                  팔로우
-                </button>
-                <button class="profile-modal-following-btn" type="button">
-                  <span class="material-symbols-outlined">done</span>
-                  <span id="#following">팔로잉</span>
-                </button>
-              </div>
-            </div>
             <div class="report-path">
               <!-- @@@@ 신고하기  @@@@@ -->
               <div class="report-msg">
@@ -206,20 +180,9 @@
               </div>
               
             </div>
-            <div class="post">
-              <!-- @@@@@@@@@ 모달 게시글 본문 @@@@@@@@@@ -->
-              <p>${store.getStoreContent() }</p>
-              <img
-                src="https://cdn-bastani.stunning.kr/prod/portfolios/16da7ecc-6e99-4388-8825-14c6d4de5f83/contents/VymrA8ubdEQF5EoT.1201%E1%84%83%E1%85%A6%E1%84%87%E1%85%B1_%E1%84%82%E1%85%A1%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A1%E1%84%89%E1%85%AE-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5_%E1%84%80%E1%85%A1%E1%84%85%E1%85%A9_%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A9%E1%84%8C%E1%85%A2_s.jpg"
-                alt=""
-              />
-              <p>${store.getStoreContent() }</p>
-              <img
-                src="https://cdn-bastani.stunning.kr/prod/portfolios/16da7ecc-6e99-4388-8825-14c6d4de5f83/contents/VymrA8ubdEQF5EoT.1201%E1%84%83%E1%85%A6%E1%84%87%E1%85%B1_%E1%84%82%E1%85%A1%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A1%E1%84%89%E1%85%AE-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5_%E1%84%80%E1%85%A1%E1%84%85%E1%85%A9_%E1%84%8E%E1%85%AC%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%89%E1%85%A9%E1%84%8C%E1%85%A2_s.jpg"
-                alt=""
-              />
-              <p>${store.getStoreContent() }</p>
-              <!-- @@@@@@@@@ 모달 게시글 본문 끝 @@@@@@@@@@ -->
+           <div class="post">
+            	<div class="s-post-img"></div>
+            	<div class="post-content"></div>
             </div>
             <div class="post-comment-box">
               <!-- @@@@@댓글 창@@@@@@@@@ -->
@@ -262,7 +225,7 @@
           <div class="post-btn-box-wrap">
             <div class="post-btn-box" id="profile">
               <div class="modal-profile-btn btn-wrap-flex">
-                <a href="#" class="author-info">
+                <a href="/sns/snsOk.sn?memberNumber=${snsMemberInfo.getMemberNumber()}" class="author-info">
                   <div class="author-img-back"></div>
                   <div class="author-profile">
                     <img
@@ -276,6 +239,8 @@
               </div>
             </div>
             <!-- @@@ 모달 픽시드 팔로우 버튼 내 글일시 안 보여야함 @@@ -->
+
+  
               <%-- <c:if test="${sessionScope.memberNumber == storeMemberInfo.getMemberNumber()}"> --%>
             <div class="post-btn-box" id="follow">
               <div class="modal-follow-btn-wrap btn-wrap-flex">
@@ -332,10 +297,12 @@
                 <span class="modal-btn-list">신고하기</span>
               </div>
             </div>
-            <%-- </c:if> --%>
+           <%--  </c:if> --%>
+
+
             <!-- @@@ 수정하기 영역 끝 @@@ -->
             <!-- @@@ 모달 픽시드 수정하기 버튼 내 글일시  보여야함 @@@ -->
-            <c:if test="${sessionScope.memberNumber != storeMemberInfo.getMemberNumber()}">
+            <%-- <c:if test="${sessionScope.memberNumber != storeMemberInfo.getMemberNumber()}"> --%>
             <div class="post-btn-box" id="edit">
               <div class="modal-edit-btn-wrap btn-wrap-flex">
               <form action="/store/storeWrite.st" method="post">
@@ -359,7 +326,7 @@
                 <span class="modal-btn-list">삭제하기</span>
               </div>
             </div>
-              </c:if>
+           <%--    </c:if> --%>
           </div>
         </div>
       

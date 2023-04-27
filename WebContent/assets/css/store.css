@@ -574,18 +574,24 @@ font {
   margin-top: 10px;
 }
 
-.post {
-  width: 100%;
-  height: max-content;
-  /* border: 1px solid black; */
-  padding: 30px 0;
+.s-post-img {
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items : center;
 }
 
-.post > img {
-  /* post안에 들어가는 img 최대 크기 설정 */
-  max-width: 100%;
-  max-height: 100%;
+.s-post-img img{
+	margin : 20px 0;
+	max-width : 95%
 }
+
+.post-content {
+	text-align : center;
+	margin-top : 100px;
+	margin-bottom : 80px;
+}
+
 .post-comment-box {
   width: 100%;
   height: max-content;
