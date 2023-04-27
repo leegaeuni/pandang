@@ -92,10 +92,10 @@
     <!-- Main -->
     <div class="main-container">
     <c:choose>
-            <c:when test="${storeTitle != null}">
+            <c:when test="${storePrice != null}">
       <form
         id="write-form"
-        action="${pagetContext.request.contextPath}/sns/snsOk.sn"
+        action="${pagetContext.request.contextPath}/store/storeUpdateOk.st"
         method="post"
         enctype="multipart/form-data"
       >
@@ -115,11 +115,21 @@
           <div class="title">
             <!-- 카테고리 설정 -->
             <div class="write-category">
-              <button class="dropdown-btn" type="button">카테고리</button>
+            <c:choose>
+            	<c:when test="${hashtagName != null}">
+            		 <button class="dropdown-btn" type="button">
+            		 	${hashtagName}
+            		 </button>
+            	</c:when>
+            	<c:otherwise>
+            		 <button class="dropdown-btn" type="button">카테고리</button>
+            	</c:otherwise>
+            </c:choose>
+             
               <input
                 type="hidden"
                 name="hashtagNumber"
-                value="0"
+                value="${hashtagNumber}"
                 class="hashtag-number"
               />
               <ul class="menu-list">
@@ -167,6 +177,7 @@
                 name="storePrice"
                 placeholder="가격"
                 required
+                value="${storePrice}"
               />
               <span>원</span>
             </div>
@@ -202,13 +213,7 @@
                     ></path>
                   </svg>
                   <button class="img-select" type="button">사진 선택</button>
-                  <input
-                    type="file"
-                    name="file-input"
-                    class="file-input"
-                    accept=".jpg, .jpeg, .png"
-                    multiple
-                  />
+                 
                   <div class="input-container">
 	                <input type="file" name="file1" id="" class="input" /><br />
 	                <input type="file" name="file2" id="" class="input" /><br />
@@ -302,6 +307,13 @@
           </div>
         </div>
       </form>
+       <input
+                    type="file"
+                    name="file-input"
+                    class="file-input"
+                    accept=".jpg, .jpeg, .png"
+                    multiple
+                  />
     </div>
 
     <!-- @@@@푸터@@@@ -->

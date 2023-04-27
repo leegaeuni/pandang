@@ -254,10 +254,11 @@
 		where store_number = #{storeNumber}
 	</delete>
 	
+
 	<delete id="deleteStoreBasket" parameterType="_int">
 		delete from tbl_basket
 		where store_number = #{storeNumber}
-	</delete>
+	</delete> 
 	
 	
 	<delete id="deleteStoreReport" parameterType="_int">
