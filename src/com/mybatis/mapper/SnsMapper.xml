@@ -305,8 +305,8 @@
 	
 	<!-- sns store탭 게시글 1개 읽어오기 -->
 	<select id="showStoreInfo" parameterType="_int" resultType="snsStoreVO">
-		select ts.store_title, ts.store_number, ts.store_content,
-		ts.store_date, th.hashtag_name, ts.store_view_cnt from tbl_store ts 
+		select ts.store_title, ts.store_number, ts.store_content, ts.store_price,
+		ts.store_date, th.hashtag_name,  th.hashtag_number, ts.store_view_cnt from tbl_store ts 
 		join tbl_hashtag th 
 		on ts.hashtag_number = th.hashtag_number
 		where ts.store_number = #{storeNumber}

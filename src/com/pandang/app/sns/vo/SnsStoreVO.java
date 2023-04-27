@@ -24,6 +24,8 @@ public class SnsStoreVO {
 	private String channelName;
 	private String channelFileSystemName;
 	private String hashtagName;
+	private String storePrice;
+	private int hashtagNumber;
 	
 	
 	
@@ -177,21 +179,42 @@ public class SnsStoreVO {
 
 
 
+	public String getStorePrice() {
+		return storePrice;
+	}
+
+
+
+	public void setStorePrice(String storePrice) {
+		this.storePrice = storePrice;
+	}
+
+
+
+	public int getHashtagNumber() {
+		return hashtagNumber;
+	}
+
+
+
+	public void setHashtagNumber(int hashtagNumber) {
+		this.hashtagNumber = hashtagNumber;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "SnsStoreVO [storeNumber=" + storeNumber + ", storeTitle=" + storeTitle + ", storeDate=" + storeDate
 				+ ", storeViewCnt=" + storeViewCnt + ", likeCnt=" + likeCnt + ", memberNumber=" + memberNumber
 				+ ", storeContent=" + storeContent + ", storeCommentCnt=" + storeCommentCnt + ", storeFileSystemName="
 				+ storeFileSystemName + ", channelName=" + channelName + ", channelFileSystemName="
-				+ channelFileSystemName + ", hashtagName=" + hashtagName + "]";
+				+ channelFileSystemName + ", hashtagName=" + hashtagName + ", storePrice=" + storePrice
+				+ ", hashtagNumber=" + hashtagNumber + "]";
 	}
 
 
 
-	
-
-	
-	
 	
 	
 }

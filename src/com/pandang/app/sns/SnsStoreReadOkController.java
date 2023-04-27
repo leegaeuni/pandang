@@ -48,27 +48,24 @@ public class SnsStoreReadOkController implements Execute {
 	    
 	      
 	   //  좋아요
-//			String iLike = "";
-//			Map<String, Integer> map = new HashMap<>();
-//			
-//			
-//			map.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
-//			map.put("storeNumber", Integer.parseInt(req.getParameter("storeNumber")));
-//			
-//			
-//			if(snsDAO.ifLiked(map) != 0) {
-//		    	   iLike = "like";
-//		      } 
-			
-//			 
-//		    System.out.println(iLike);
-//		    
-//		    req.setAttribute("iLike", iLike);
+	      Map<String, Integer> map = new HashMap<>();
+	      map.put("storeNumber", Integer.parseInt(req.getParameter("storeNumber")));
+	      map.put("memberNumber", (Integer)session.getAttribute("memberNumber"));
+		  String ifLiked = "";
+		  
+	      if(snsDAO.ifLiked(map) != 0) {
+	    	   ifLiked = "like";
+	      }
+	      
+	     
+	      
+	      
+		    JsonObject result = new JsonObject();
+		    result.add("list", JsonParser.parseString(gson.toJson(snsStoreVO)));
+		    result.addProperty("likeTest", ifLiked);
 		    
-		    	JsonObject result = new JsonObject();
-		      result.add("list", JsonParser.parseString(gson.toJson(snsStoreVO)));
 		    
-		      System.out.println(result.toString());
+		    System.out.println(result.toString());
 		    
 	      resp.setContentType("application/json; charSet=utf-8");
 	      

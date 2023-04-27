@@ -862,6 +862,7 @@ li {
   margin-left: 10px;
   font-size: 13px;
   font-weight: 400;
+  margin-bottom: 10px;
 }
 
 /* @@@@@@ 댓글 영역 끝 @@@@@@@@@ */
@@ -1404,6 +1405,7 @@ font {
   line-height: 1.53;
   letter-spacing: -0.5px;
   outline-style: none;
+  resize:none;
   /* border: 1px solid rgb(219, 222, 226); */
 }
 
@@ -1476,7 +1478,7 @@ font {
   position: fixed;
   right: 20px;
 }
-.s-author-info:hover .author-img-back {
+.s-author-info:hover .s-author-img-back {
   display: block;
 }
 
@@ -1546,9 +1548,9 @@ font {
   color: rgb(42, 197, 198);
 }
 
-/*.s-like-btn-color:hover {
+.s-like-btn-color:hover {
   color: rgb(255, 0, 0);
-}*/
+}
 
 .liked{
 	color: rgb(255,0,0);
@@ -1775,3 +1777,35 @@ font {
    .s-post-img img{
    	max-width: 100%;
    }
+   
+   .post-price-area{
+   	display: flex;
+   }
+   
+   
+.s-post-img{
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items : center;
+}
+
+.s-post-img img{
+	margin : 20px 0;
+}
+
+.s-post-content {
+	text-align : center;
+	margin-top : 100px;
+	margin-bottom : 80px;
+}
+
+.modify-content{
+	width: 99.5%;
+    height: 50px;
+    resize: none;
+    border: 1px solid rgb(240, 245, 245);
+    border-radius: 10px;
+     outline-style: none;
+}
+
