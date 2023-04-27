@@ -17,6 +17,7 @@ public class StoreWriteController implements Execute {
 		MemberDAO memberDAO = new MemberDAO();
 		HttpSession session = req.getSession();
 		Integer memberNumber = (Integer) session.getAttribute("memberNumber");
+		req.setCharacterEncoding("utf-8");
 		String path = null;
 
 		if (memberNumber == null) {
@@ -26,11 +27,13 @@ public class StoreWriteController implements Execute {
 			req.setAttribute("memberId", memberDAO.getMemberNickname(memberNumber));
 		}
 		
-		
 		if(req.getParameter("storeTitle") != null) {
 			req.setAttribute("storeTitle", req.getParameter("storeTitle"));
 			req.setAttribute("storeContent", req.getParameter("storeContent"));
 			req.setAttribute("storeNumber", Integer.parseInt(req.getParameter("storeNumber")));
+			req.setAttribute("storePrice", Integer.parseInt(req.getParameter("storePrice")));
+			req.setAttribute("hashtagName", req.getParameter("hashtagName"));
+			req.setAttribute("hashtagNumber", Integer.parseInt(req.getParameter("hashtagNumber")));
 			}
 		
 		

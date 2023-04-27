@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.config.MyBatisConfig;
-import com.pandang.app.main.dto.MainDTO;
 import com.pandang.app.main.vo.MainFollowVO;
 import com.pandang.app.main.vo.MainFollowingVO;
 import com.pandang.app.main.vo.MainLikeViewVO;

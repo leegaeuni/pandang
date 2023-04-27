@@ -9,6 +9,7 @@ public class StoreDTO {
 	private int storeViewCnt;
 	private int hashtagNumber;
 	private int memberNumber;
+	private String hashtagName;
 	
 	public StoreDTO() {}
 
@@ -76,13 +77,24 @@ public class StoreDTO {
 		this.memberNumber = memberNumber;
 	}
 
+	
+	public String getHashtagName() {
+		return hashtagName;
+	}
+
+	public void setHashtagName(String hashtagName) {
+		this.hashtagName = hashtagName;
+	}
+
 	@Override
 	public String toString() {
 		return "StoreDTO [storeNumber=" + storeNumber + ", storeTitle=" + storeTitle + ", storeContent=" + storeContent
 				+ ", storeDate=" + storeDate + ", storePrice=" + storePrice + ", storeViewCnt=" + storeViewCnt
-				+ ", hashtagNumber=" + hashtagNumber + ", memberNumber=" + memberNumber + "]";
+				+ ", hashtagNumber=" + hashtagNumber + ", memberNumber=" + memberNumber + ", hashtagName=" + hashtagName
+				+ "]";
 	}
 
+	
 	
 	
 }

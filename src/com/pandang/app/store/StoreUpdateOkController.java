@@ -39,15 +39,11 @@ public class StoreUpdateOkController implements Execute {
 	      storeDTO.setStoreContent(multipartRequest.getParameter("storeContent"));
 	      storeDTO.setStorePrice(Integer.parseInt(multipartRequest.getParameter("storePrice")));
 	      storeDTO.setHashtagNumber(Integer.parseInt(multipartRequest.getParameter("hashtagNumber")));
+	      storeDTO.setHashtagName(multipartRequest.getParameter("hashtagName"));
 	      storeDTO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
 	      storeDTO.setStoreNumber(storeNumber);
 	      
-	      storeDAO.updateStore(storeDTO);
-
 	      storeDAO.updatePost(storeDTO);
-
-	      storeDAO.storeWrite(storeDTO);
-	      
 	 
 	      Enumeration<String> fileNames = multipartRequest.getFileNames();
 	      
@@ -68,14 +64,15 @@ public class StoreUpdateOkController implements Execute {
 	         
 	         storefileDAO.storeWrite(storefileDTO);
 	         
-	         List<StoreFileDTO> files = storefileDAO.selectAll(storeNumber);
-	          
-	          files.stream().map(file -> file.getStoreFileSystemName())
-	          .map(fileName -> new File(uploadPath, name))
-	          .filter(tmp -> tmp.exists())
-	          .forEach(tmp -> tmp.delete());
-	          
-	          storefileDAO.delete(storeNumber);
+				/*
+				 * List<StoreFileDTO> files = storefileDAO.selectAll(storeNumber);
+				 * 
+				 * files.stream().map(file -> file.getStoreFileSystemName()) .map(fileName ->
+				 * new File(uploadPath, name)) .filter(tmp -> tmp.exists()) .forEach(tmp ->
+				 * tmp.delete());
+				 * 
+				 * storefileDAO.delete(storeNumber);
+				 */
 	      }
       
 
