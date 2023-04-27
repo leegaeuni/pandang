@@ -12,6 +12,7 @@ public class MainFollowVO {
 	private int likeCnt;
 	private int memberNumberTo;
 	private int memberNumberFrom;
+	private int isLike;
 	
 	public MainFollowVO() {}
 
@@ -94,14 +95,25 @@ public class MainFollowVO {
 	public void setMemberNumberFrom(int memberNumberFrom) {
 		this.memberNumberFrom = memberNumberFrom;
 	}
+	
+
+	public int getIsLike() {
+		return isLike;
+	}
+
+	public void setIsLike(int isLike) {
+		this.isLike = isLike;
+	}
 
 	@Override
 	public String toString() {
 		return "MainFollowVO [storeNumber=" + storeNumber + ", storeTitle=" + storeTitle + ", storeViewCnt="
 				+ storeViewCnt + ", storeFileSystemName=" + storeFileSystemName + ", channelName=" + channelName
 				+ ", channelNumber=" + channelNumber + ", memberNumber=" + memberNumber + ", likeCnt=" + likeCnt
-				+ ", memberNumberTo=" + memberNumberTo + ", memberNumberFrom=" + memberNumberFrom + "]";
+				+ ", memberNumberTo=" + memberNumberTo + ", memberNumberFrom=" + memberNumberFrom + ", isLike=" + isLike
+				+ "]";
 	}
+
 	
 	
 }

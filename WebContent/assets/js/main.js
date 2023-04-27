@@ -67,7 +67,6 @@ function getStoreList(result){
                                        alt="heart" />`;
             }
             
-            console.log(img)
             $('.store-wrap-sub').append(`<div class="store-photo">
                         <div class="store-photo-img" data-storeNumber="${result[i].storeNumber}">
                            <img
@@ -241,7 +240,6 @@ $('.store-wrap-sub').on('click', '.store-info', function(e){
 
 /* store 모달 댓글 작성 */
 $('.comment-submit-btn').on('click', function() {
-   
    $.ajax({
 
       url: "/storeComment/storeCommentWriteOk.stc",
@@ -873,16 +871,28 @@ function toggleImg(target, src) {
 }
 
 // @@@@@핫크리에이터의 profil-follow-btn 누르면 민트색으로 변경
-$(".profil-follow-btn").on("click", function () {
-  if (
-    $(this).children().children("span").css("color") == "rgb(124, 132, 132)"
-  ) {
-    $(this).children().children("span").css("color", "rgb(42, 197, 198)");
-  } else {
-    $(this).children().children("span").css("color", "rgb(124, 132, 132)");
-  }
+$(".follow-span").on("click", function () {
+	let followNumber = $(this).data('num');
+	
+	updateFollow(followNumber, this);
 });
 
+function updateFollow(followNumber, target){
+   $.ajax({
+		url : '/main/mainFollowOk.main',
+		type : 'get',
+		data : {
+			followNumber : followNumber
+		},
+		success : function(result){
+			if(result == 'insert'){
+				$(target).css("color", "rgb(42, 197, 198)");
+			}else{
+				$(target).css("color", "rgb(124, 132, 132)");
+			}
+		}
+	});
+}
 
 /*// @@@@@스토어의 탭 전환
 const tabs = document.querySelectorAll("[data-tab-target]");
@@ -990,7 +1000,8 @@ $('.following').on('click', function(){
       dataType : 'json',
       success : function(result){
          console.log('일단 이거라도 가져오자');
-         getStoreList(result)
+		console.log(result);
+         getStoreList(result);
       }
    });
 });
