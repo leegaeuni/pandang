@@ -68,7 +68,7 @@ public class StoreWriteOkController implements Execute {
 	      }
 	      
 
-		resp.sendRedirect("/store/storeOk.st");
+		resp.sendRedirect("/sns/snsOk.sn");
 	}
 
 }

@@ -56,6 +56,7 @@ tabs.forEach((tab) => {
 
 function getStoreList(result){
    $(".store-wrap-sub").html('');
+	console.log(result);
          for(let i=0; i<result.length; i++){
             let img = '';
             if(result[i].isLike == 0){
@@ -67,7 +68,6 @@ function getStoreList(result){
                                        alt="heart" />`;
             }
             
-            console.log(img)
             $('.store-wrap-sub').append(`<div class="store-photo">
                         <div class="store-photo-img" data-storeNumber="${result[i].storeNumber}">
                            <img
@@ -959,7 +959,6 @@ $('.lastest').on('click',function(){
          type : 'get',
          dataType : 'json',
          success : function(result){
-   console.log('정연재 ㅄ');
             getStoreList(result);
          }
       });
