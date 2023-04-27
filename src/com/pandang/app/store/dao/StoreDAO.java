@@ -10,6 +10,7 @@ import com.pandang.app.basket.dto.BasketDTO;
 import com.pandang.app.basket.vo.BasketVO;
 import com.pandang.app.report.store.dto.ReportStoreDTO;
 import com.pandang.app.store.dto.StoreDTO;
+import com.pandang.app.store.vo.StoreFollowVO;
 import com.pandang.app.store.vo.StoreUpdateVO;
 import com.pandang.app.store.vo.StoreVO;
 
@@ -121,7 +122,26 @@ public class StoreDAO {
 		sqlSession.insert("store.reportPost", reportStoreDTO);
 	}
 	
-
+	public int StoreLike(Map<String,Integer> map) {
+		return sqlSession.selectOne("store.StoreLike", map);
+	}
+	
+	public void updateStoreLikeCnt(StoreVO storeVO) {
+		sqlSession.insert("store.updateStoreLikeCnt", storeVO);
+	}
+	
+	public void deleteStoreLikeCnt(StoreVO StoreVO) {
+		sqlSession.delete("store.deleteStoreLikeCnt", StoreVO);
+	}
+	
+	public void updateStoreFollow(StoreFollowVO storeFollowVO) {
+		sqlSession.insert("store.updateStoreFollow", storeFollowVO);
+	}
+	
+	public void deleteStoreFollow(StoreFollowVO storeFollowVO) {
+		sqlSession.delete("store.deleteStoreFollow", storeFollowVO);
+	}
+	
 	// 가은이가 만들었음 
 
 	public void updatePost(StoreDTO storeDTO) {
