@@ -20,6 +20,7 @@ public class MainVO {
 	private int channelNumber;
 	private String channelName;
 	private String channelFileSystemName;
+	private int isFollow;
 
 	public MainVO() {}
 
@@ -87,13 +88,23 @@ public class MainVO {
 		this.channelFileSystemName = channelFileSystemName;
 	}
 
+	public int getIsFollow() {
+		return isFollow;
+	}
+
+	public void setIsFollow(int isFollow) {
+		this.isFollow= isFollow;
+	}
+
 	@Override
 	public String toString() {
 		return "MainVO [memberNumber=" + memberNumber + ", memberNickname=" + memberNickname + ", memberNumberTo="
 				+ memberNumberTo + ", memberNumberFrom=" + memberNumberFrom + ", channelComment=" + channelComment
 				+ ", channelNumber=" + channelNumber + ", channelName=" + channelName + ", channelFileSystemName="
-				+ channelFileSystemName + "]";
+				+ channelFileSystemName + ", isFollow=" + isFollow + "]";
 	}
+	
+	
 
 	
 	

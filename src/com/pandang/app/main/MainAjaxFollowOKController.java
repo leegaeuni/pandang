@@ -26,15 +26,23 @@ public class MainAjaxFollowOKController implements Execute{
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MainDAO mainDAO = new MainDAO();
 		MainFollowVO mainFollowVO = new MainFollowVO();
-		List<MainFollowVO> storeList = mainDAO.selectFollow();
+		
+		int memberNumber = 0;
+		
+		if(req.getSession().getAttribute("memberNumber") != null) {
+			memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+		}
+		
+		
+		List<MainFollowVO> storeList = mainDAO.selectFollow(memberNumber);
 		Gson gson = new Gson();
 		System.out.println("=======================");
-		mainDAO.selectFollow();
+//		mainDAO.selectFollow();
 		
 		resp.setContentType("application/json; charset=utf-8");
 		
 		PrintWriter out = resp.getWriter();
-		JsonElement json = JsonParser.parseString(gson.toJson(mainDAO.selectFollow()));
+		JsonElement json = JsonParser.parseString(gson.toJson(mainDAO.selectFollow(memberNumber)));
 		out.print(json.toString());
 		out.close();
 	}
