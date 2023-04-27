@@ -21,7 +21,6 @@ public class StoreCommentWriteOkController implements Execute {
 		storeCommentDTO.setStoreNumber(Integer.valueOf(req.getParameter("storeNumber")));
 		storeCommentDTO.setMemberNumber(Integer.valueOf(req.getParameter("memberNumber")));
 		storeCommentDTO.setStoreCommentContent(req.getParameter("storeCommentContent"));
-		
 		new StoreCommentDAO().insert(storeCommentDTO);
 	}
 

@@ -234,7 +234,7 @@
                 </div>
                 </div>
               <!--   @@@@@@@@@ 댓글 작성 form 경로 처리 해야함 @@@@@@ -->
-                <form action="" method="post" id="comment-form">
+                <div id="comment-form">
                   <div class="write-area">
                     <!-- @@@@@@@@@ 댓글 작성 공간 @@@@@@@@@@ -->
                     <div class="comment-profile-container">
@@ -256,12 +256,12 @@
                   </div>
                   <div class="submit-btn-box">
                     <!-- @@@@@@@@@ 댓글 작성 버튼 @@@@@@@@@@ -->
-                    <button class="comment-submit-btn" type="submit">
+                    <button class="comment-submit-btn" type="button">
                       댓글 작성
                     </button>
                     <!-- @@@@@@@@@ 버튼 끝 @@@@@@@@@@ -->
                   </div>
-                </form>
+                </div>
               
              </div>
               <!-- @@@@@@@@@ 댓글창 끝 @@@@@@@@@@ -->
@@ -406,10 +406,22 @@
                                           <c:out value="${profil.getChannelName()}" />
                                        </div>
                                        <div class="profil-follow-btn">
-                                          <button>
-                                             <span class="material-symbols-outlined profil-follow-btn">
-                                                person_add </span>
-                                          </button>
+                                       	<c:if test="${not empty sessionScope.memberNumber }">
+                                       		<c:choose>
+                                       			<c:when test="${profil.getIsFollow() == 0 }">
+			                                        <button>
+					                                             <span class="material-symbols-outlined profil-follow-btn follow-span" data-num="${profil.getMemberNumber()}">
+					                                                person_add </span>
+			                                         </button>
+                                       			</c:when>
+                                       			<c:otherwise>
+			                                        <button>
+					                                             <span class="material-symbols-outlined profil-follow-btn follow-span" data-num="${profil.getMemberNumber()}" style="color:rgb(42, 197, 198)">
+					                                                person_add </span>
+			                                         </button>
+                                       			</c:otherwise>
+                                       		</c:choose>
+                                          </c:if>
                                        </div>
                                     </div>
                                  </div>

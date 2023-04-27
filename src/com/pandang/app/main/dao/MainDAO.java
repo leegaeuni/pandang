@@ -9,9 +9,11 @@ import org.apache.ibatis.session.SqlSession;
 import com.mybatis.config.MyBatisConfig;
 import com.pandang.app.main.dto.MainDTO;
 import com.pandang.app.main.vo.MainFollowVO;
+import com.pandang.app.main.vo.MainFollowingVO;
 import com.pandang.app.main.vo.MainLikeViewVO;
 import com.pandang.app.main.vo.MainVO;
 import com.pandang.app.sns.vo.SnsFollowVO;
+import com.pandang.app.store.like.dto.StoreLikeDTO;
 
 public class MainDAO {
 	public SqlSession sqlSession;
@@ -32,16 +34,20 @@ public class MainDAO {
 		return sqlSession.selectList("main.selectLastest", memberNumber);
 	}
 	
-	public List<MainFollowVO> selectFollow() {
-		return sqlSession.selectList("main.selectFollow");
+	public List<MainFollowVO> selectFollow(int memberNumber) {
+		return sqlSession.selectList("main.selectFollow", memberNumber);
 	}
 	
-	public void updateFollow(MainFollowVO mainFollowVO) {
-		sqlSession.insert("main.updateFollow", mainFollowVO);
+	public int selectFollowing(MainFollowingVO mainFollowingVO) {
+		return sqlSession.selectOne("main.selectFollowing", mainFollowingVO);
 	}
 	
-	public void deleteFollow(MainFollowVO mainFollowVO) {
-		sqlSession.delete("main.deleteFollow", mainFollowVO);
+	public void insertFollow(MainFollowingVO mainFollowingVO) {
+		sqlSession.insert("main.insertFollow", mainFollowingVO);
+	}
+	
+	public void deleteFollow(MainFollowingVO mainFollowingVO) {
+		sqlSession.delete("main.deleteFollow", mainFollowingVO);
 	}
 	
 
