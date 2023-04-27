@@ -63,30 +63,6 @@
          
       <div class="post-modal">
           <div class="post-box">
-            <div class="profile-path">
-              <div class="profile-modal-img-box">
-                <a href="#" id="modal-img-box">
-                  <img
-                    class="profile-modal-img"
-                    src="https://cdn-bastani.stunning.kr/prod/users/f4852320-5cea-4a09-9b2f-7e496b710e43/avatar/ah7M8e7fB5v6Dbif.414_2unday.png.small?q=60&t=crop&s=300x300"
-                    alt=""
-                  />
-                  <div class="modal-img-background"></div>
-                </a>
-              </div>
-              <div class="profile-modal-member">
-                <a href="#">leegaeun0923</a>
-              </div>
-              <div class="profile-modal-follow-btn-box">
-                <button class="profile-modal-follow-btn" type="button">
-                  팔로우
-                </button>
-                <button class="profile-modal-following-btn" type="button">
-                  <span class="material-symbols-outlined">done</span>
-                  <span id="#following">팔로잉</span>
-                </button>
-              </div>
-            </div>
             <div class="report-path">
               @@@@ 신고하기  @@@@@
               <div class="report-msg">
@@ -119,6 +95,8 @@
             <div class="post-header-container">
               <div class="post-header-box">
                 <div class="post-header">
+<!--                 <input type="hidden" value="" class="storeNumber">
+                <input type="hidden" value="" class="memberNumber"> -->
                   <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
                   <div class="post-title">임시 게시글 제목</div>
                   <div class="post-date-categori-box">

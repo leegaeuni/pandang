@@ -348,6 +348,8 @@ $('.comment-container').on('click', '.edit-btn', function() {
 /*=================================================*/
 
 function insertDataModal(result){
+   $('.storeNumber').text(result.storeNumber);
+   $('.memberNumber').text(result.memberNumber);
    $('.post-title').text(result.storeTitle);
    $('.post-date').text(result.storeDate);
    $('.post-categori').text(result.hashtagName);
@@ -418,6 +420,8 @@ $('.store-photo-img')(`<div class="post-box">
             <div class="post-header-container">
               <div class="post-header-box">
                 <div class="post-header">
+/* 				<input type="hidden" value="" class="storeNumber">
+                <input type="hidden" value="" class="memberNumber">*/
                   <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
                   <div class="post-title">임시 게시글 제목</div>
                   <div class="post-date-categori-box">
@@ -1000,3 +1004,137 @@ $('.following').on('click', function(){
    });
 });
 
+$('.report-btn').on('click', function(){   
+   
+   $.ajax({
+      url: '/store/storeReportOk.st',
+      type: 'get',
+      data: {
+         reportNumber: storeNumber,
+         reportTitle: $('#reportTitle').val(),
+         reportContent: $('#report-content').val()   
+      },
+   success: function(response) {
+         alert("신고가 성공적으로 접수되었습니당.");
+         window.location.href = "/store/storeOk.st";
+      },
+      error: function() {
+         alert("오류가 발생했습니당. 다시 시도해주세요.");
+      }
+   });
+   
+});
+
+$('.modal-basket-btn').on('click', function(){   
+   console.log($('.storeNumber').val());
+   $.ajax({
+      url: '/store/storeBasket.st',
+      type: 'get',
+      data: {      
+         storeNumber: $('.storeNumber').val()      
+      },
+   success: function(result) {
+         alert("물품을 장바구니에 추가하였습니당.");
+         window.location.href = "/store/storeOk.st";
+      },
+      error: function() {
+         alert("오류가 발생했습니당. 다시 시도해주세요.");
+      }
+   });
+   
+});
+
+$('.modal-delete-btn').on('click', function() {
+   
+   $(".modal-box").css("display", "none");
+   
+   $.ajax({
+      url: '/store/storeDeleteOk.st',
+      type: 'get',
+      data: { storeNumber: storeNumber 
+      },
+         success: function(result) {
+         alert("게시물을 성공적으로 삭제하였습니당.");
+         window.location.href = "/store/storeOk.st";
+      },
+      error: function() {
+         alert("오류가 발생했습니당. 다시 시도해주세요.");
+      }
+   });
+   
+});
+
+$('.modal-like-btn').on('click', function() {
+   
+  if ($('.like-btn-color').data("clicked") !== true) {
+    $('.like-btn-color').css("color", "rgb(255, 0, 0)").data("clicked", true);
+    $('.p-like-cnt').text(Number($('.p-like-cnt').text())+1);
+    $.ajax({
+      url: '/store/storeLikeOk.st',
+      data: {
+        storeNumber: $('.storeNumber').val(),
+      },
+      success: function() {
+   
+      }
+    });
+  }
+  else {
+    $('.like-btn-color').css("color", "rgb(0, 0, 0)").data("clicked", false);
+    $('.p-like-cnt').text(Number($('.p-like-cnt').text())-1);
+    $.ajax({
+      url: '/store/storeLikeDelete.st',
+      data: {
+        storeNumber: $('.storeNumber').val(),
+      },
+      success: function() {
+      }
+    });
+  }
+});
+
+
+$(".modal-follow-btn").on("click", '.add', function() {
+   $('.modal-follow-btn').html('');
+   $('.modal-follow-btn').append(`<span class="material-symbols-outlined done"> done </span>`);
+   
+      $(this).css("display", "none");
+      $('.done').css("display", "block");
+      
+      $.ajax({
+      url: '/store/storeFollowOk.st',
+      type: 'get',
+      data: {       
+               memberNumberTo : $('.memberNumber').val()
+             },
+      success: function() {
+      },
+      error: function(a, b, c) {
+         console.log(c);
+      }
+
+      });
+      
+   
+});
+
+$('.modal-follow-btn').on('click', '.done',function(){
+   $('.modal-follow-btn').append(`<span class="material-symbols-outlined add"> add </span>`);
+   
+   $(this).css("display", "none");
+   $('.add').css("display", "block");
+   
+   $.ajax({
+      url: '/store/storeFollowDeleteOk.st',
+      type: 'get',
+      data: {    
+            memberNumberTo : $('.memberNumber').val()
+             },
+      success: function() {
+      },
+      error: function(a, b, c) {
+         console.log(c);
+      }
+
+      });
+});
