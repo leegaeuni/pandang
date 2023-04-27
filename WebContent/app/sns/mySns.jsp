@@ -411,32 +411,6 @@
 	<div class="s-modal-background"></div>
 	<div class="s-post-modal">
       <div class="s-post-box">
-        <div class="s-profile-path">
-          <div class="s-profile-modal-img-box">
-            <a href="#" id="s-modal-img-box">
-              <img
-                class="s-profile-modal-img"
-                src="/upload/${snsMemberInfo.getChannelFileSystemName()}"
-                alt=""
-              />
-              <div class="s-modal-img-background"></div>
-            </a>
-          </div>
-          <div class="s-profile-modal-member">
-            <a href="#" class="hostChannelName">${snsMemberInfo.getChannelName()}</a>
-          </div>
-          <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
-          <div class="s-profile-modal-follow-btn-box">
-            <button class="s-profile-modal-follow-btn" type="button">
-              팔로우
-            </button>
-            <button class="s-profile-modal-following-btn" type="button">
-              <span class="material-symbols-outlined">done</span>
-              <span id="#s-following">팔로잉</span>
-            </button>
-          </div>
-          </c:if>
-        </div>
         <div class="s-report-path">
           <!-- @@@@ 신고하기  @@@@@ -->
           <div class="s-report-msg">
@@ -472,6 +446,9 @@
             <div class="s-post-header">
               <!-- @@@@@ 모달 게시글 헤더 @@@@@@@@@ -->
               <div class="s-post-title">임시 게시글 제목</div>
+             	 <div class="post-price-area">
+                  <div class="post-price"></div><span>원</span>
+                  </div>
               <div class="s-post-date-categori-box">
                 <div class="s-post-date">2023.3.23</div>
                 <div>l</div>
@@ -502,8 +479,6 @@
           <!-- @@@@@@@@@ 모달 게시글 본문 @@@@@@@@@@ -->
         	</div>
           <div class="s-post-content">
-         	 <p>게시글 작성 테스중</p>
-         	 <p>게시글 작성 테스중</p>
           </div>
           <!-- @@@@@@@@@ 모달 게시글 본문 끝 @@@@@@@@@@ -->
         </div>
@@ -622,14 +597,11 @@
         <div class="s-post-btn-box" id="s-like">
           <div class="s-modal-like-btn-wrap s-btn-wrap-flex">
             <button type="button" class="modal-like-btn s-like-btn-color">
-          	 <c:choose>
-            	<c:when test="${iLike == like}">
-            	 	  <span class="material-symbols-outlined liked">favorite</span>
-              	</c:when>
-              	<c:otherwise>
-              		<span class="material-symbols-outlined beforeLike">favorite</span> 
-            	 </c:otherwise>
-             </c:choose>
+          	 
+            	 	<!--   <span class="material-symbols-outlined liked">favorite</span>
+              
+              		<span class="material-symbols-outlined beforeLike">favorite</span>  -->
+            	
             </button>
             <span class="s-modal-btn-list">좋아요</span>
           </div>
@@ -648,7 +620,7 @@
         </c:if>
         <!-- @@@ 장바구니 영역 끝 @@@ -->
         <!-- @@@ 모달 픽시드 구매하기 버튼 내 글일시 안 보여야함 @@@ -->
-        <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
+        <%-- <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
         <div class="s-post-btn-box" id="s-buy">
           <div class="s-modal-buy-btn-wrap s-btn-wrap-flex">
             <!-- @@@@@ 구매하기 페이지 경로 이동 처리 해야함 @@@@@ -->
@@ -660,7 +632,7 @@
             <span class="s-modal-btn-list">구매하기</span>
           </div>
         </div>
-        </c:if>
+        </c:if> --%>
         <!-- @@@ 신고하기 영역 끝 @@@ -->
         <!-- @@@ 모달 픽시드 신고하기 버튼 내 글일시 안 보여야함 @@@ -->
         <c:if test="${sessionScope.memberNumber != snsMemberInfo.getMemberNumber()}">
@@ -673,7 +645,7 @@
           </div>
         </div>
         </c:if>
-        <!-- @@@ 수정하기 영역 끝 @@@ -->
+        <!-- @@@ 신고하기 영역 끝 @@@ -->
         <!-- @@@ 모달 픽시드 수정하기 버튼 내 글일시  보여야함 @@@ -->
         <c:if test="${sessionScope.memberNumber == snsMemberInfo.getMemberNumber()}">
         <div class="s-post-btn-box" id="s-edit">
@@ -682,6 +654,9 @@
 				<input type="hidden" name="storeTitle" class="formStoreTitle">
 				<input type="hidden" name="storeContent" class="formStoreContent">
 				<input type="hidden" name="storeNumber" class="formStoreNumber">
+				<input type="hidden" name="storePrice" class="formStorePrice">
+				<input type="hidden" name="hashtagName" class="hashtagName">
+				<input type="hidden" name="hashtagNumber" class="hashtagNumber">
             <button type="submit" class="s-modal-edit-btn s-btn-color">
               <span class="material-symbols-outlined"> edit </span>
             </button>

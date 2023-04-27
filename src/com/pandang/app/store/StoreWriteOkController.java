@@ -61,14 +61,14 @@ public class StoreWriteOkController implements Execute {
 	         if(fileSystemName == null) {continue;}
 	         
 	         storefileDTO.setStoreFileSystemName(fileSystemName);
-	         storefileDTO.setStoreFileOriginalName(fileOriginalName);
+//	         storefileDTO.setStoreFileOriginalName(fileOriginalName);
 	         storefileDTO.setStoreNumber(storeNumber);
 	         
-	         storefileDAO.storeWrite(storefileDTO);;
+	         storefileDAO.storeWrite(storefileDTO);
 	      }
 	      
 
-		resp.sendRedirect("/store/storeOk.st");
+		resp.sendRedirect("/sns/snsOk.sn");
 	}
 
 }

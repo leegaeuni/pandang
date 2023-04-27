@@ -579,9 +579,15 @@ $('.snsList').on('click', function() {
 		success: function(result) {
 			showStorePost(result);
 			showStoreContent(result);
+			showLike(result);
 			$('.formStoreTitle').val(result.list.storeTitle);
 			$('.formStoreContent').val(result.list.storeContent);
 			$('.formStoreNumber').val(storeNumber);
+			$('.formStorePrice').val(result.list.storePrice);
+			$('.hashtagName').val(result.list.hashtagName);
+			$('.hashtagNumber').val(result.list.hashtagNumber);
+			console.log(result.list.hashtagName);
+			console.log(result.list.hashtagNumber);
 		},
 		error: function(a, b, c) {
 			console.log(c);
@@ -761,7 +767,7 @@ $('.comment').on('click', '.comment-edit', function() {
 	let $content = $(this).parent().parent().next().children();
 	console.log($content);
 
-	$content.replaceWith(`<textarea class='modify-content'> </textarea>`);
+	$content.replaceWith(`<textarea class='modify-content' id="comment-modify"> </textarea>`);
 
 });
 
@@ -1015,6 +1021,9 @@ function showStorePost(result){
               <div class="s-post-title">
 					${result.list.storeTitle}
 				</div>
+				 <div class="post-price-area">
+                  <div class="post-price">${result.list.storePrice}</div><span>원</span>
+                  </div>
               <div class="s-post-date-categori-box">
                 <div class="s-post-date">
 					${result.list.storeDate}
@@ -1186,7 +1195,7 @@ $('.s-comment-container').on('click', '.s-comment-edit-btn', function() {
 	let $content = $(this).closest('.s-comment-list').find('.s-comment-content');
 	console.log($content);
 
-	$content.replaceWith(`<textarea class='modify-content'> </textarea>`);
+	$content.replaceWith(`<textarea class='modify-content' id="s-comment-modify"> </textarea>`);
 
 });
 
@@ -1237,108 +1246,24 @@ $('.report-btn').on('click', function(){
 	
 });
 
-// @@@@@@@@@@@ 모달 창 좋아요 버튼 누를 시 하트색 변경 @@@@@@@@@@@@@
-/*$(".s-like-btn-color").on({
-  mouseover: function () {
-    $(this).css("color", "rgb(255, 0, 0)");
-  },
-  mouseout: function () {
-    if ($(this).data("clicked") !== true) {
-      $(this).css("color", "rgb(0, 0, 0)");
-    }
-  },
-  click: function () {
-    if ($(this).css("color") !== 'rgb(0,0,0)') {
-	
-      $(this).css("color", "rgb(255, 0, 0)");
-
-		$.ajax({
-			url: '/sns/snsStoreLikeOk.sn',
-			data: {
-				storeNumber: storeNumber,
-				memberNumber: memberNumber
-			},
-			success: function() {
-				$.ajax({
-					url: '/sns/snsStoreReadOk.sn',
-					type: 'get',
-					dataType: 'json',
-					data: { storeNumber: storeNumber },
-					success: function(result) {
-						showStorePost(result);
-					},
-					error: function(a, b, c) {
-						console.log(c);
-					}
-
-				});
-
-			}
-		});
-    } else {
-      $(this).css("color", "rgb(0, 0, 0)").data("clicked", false);
-		$.ajax({
-			url: '/sns/snsStoreLikeDeleteOk.sn',
-			data: {
-				storeNumber: storeNumber,
-				memberNumber: memberNumber
-			},
-			success: function() {
-				$.ajax({
-					url: '/sns/snsStoreReadOk.sn',
-					type: 'get',
-					dataType: 'json',
-					data: { storeNumber: storeNumber },
-					success: function(result) {
-						showStorePost(result);
-					},
-					error: function(a, b, c) {
-						console.log(c);
-					}
-
-				});
-
-			}
-		});
-		
-    }
-  },
-});*/
-
 $('.s-like-btn-color').on('click', '.beforeLike', function(){
 	
 	$('.s-like-btn-color').html('');
 	$('.s-like-btn-color').append(`<span class="material-symbols-outlined liked">favorite</span>`);
-		
+	$('.s-p-like-cnt').text($('.s-p-like-cnt').val()+1);
 		$.ajax({
 			url: '/sns/snsStoreLikeOk.sn',
 			data: {
 				storeNumber: storeNumber,
 				memberNumber: memberNumber
-			},
-			success: function() {
-				$.ajax({
-					url: '/sns/snsStoreReadOk.sn',
-					type: 'get',
-					dataType: 'json',
-					data: { storeNumber: storeNumber },
-					success: function(result) {
-						showStorePost(result);
-					},
-					error: function(a, b, c) {
-						console.log(c);
 					}
-
 				});
-
-			}
-		});
 		
-		});
+	});
 		
 	$('.s-like-btn-color').on('click', '.liked',function(){
 	$('.s-like-btn-color').append(`<span class="material-symbols-outlined beforeLike">favorite</span>`);
-	
+	$('.s-p-like-cnt').text($('.s-p-like-cnt').text()-1);
 	$(this).css("display", "none");
 	$('.beforeLike').css("display", "block");
 		
@@ -1347,22 +1272,6 @@ $('.s-like-btn-color').on('click', '.beforeLike', function(){
 			data: {
 				storeNumber: storeNumber,
 				memberNumber: memberNumber
-			},
-			success: function() {
-				$.ajax({
-					url: '/sns/snsStoreReadOk.sn',
-					type: 'get',
-					dataType: 'json',
-					data: { storeNumber: storeNumber },
-					success: function(result) {
-						showStorePost(result);
-					},
-					error: function(a, b, c) {
-						console.log(c);
-					}
-
-				});
-
 			}
 		});
 	});
@@ -1382,14 +1291,7 @@ $(".s-modal-follow-btn").on("click", '.add', function() {
 		data: { 
 				memberNumberFrom : memberNumberFrom,
 				memberNumberTo : memberNumberTo
-				 },
-		success: function() {
-			console.log('gegege');
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
-
+				 }
 		});
 		
 	
@@ -1416,73 +1318,6 @@ $('.s-modal-follow-btn').on('click', '.done',function(){
 		}
 
 		});
-});
-
-
-
-// @@@@@ 모달 프로필 hover 시에 나오는 모달 @@@@@@
-$("#s-profile").on("mouseover", function () {
-  $(this).css("width", "100%");
-  $(".s-profile-path").css("display", "block");
-});
-
-$(".s-profile-path").on("mouseleave", function () {
-  $(".s-profile-path").css("display", "none");
-});
-
-// @@@@@ 모달 프로필 이미지 백그라운드 @@@@@
-$("#s-modal-img-box").on({
-  mouseover: function () {
-    $(".s-modal-img-background").css("display", "block");
-  },
-  mouseout: function () {
-    $(".s-modal-img-background").css("display", "none");
-  },
-});
-
-//@@@@@ 모달 안에 모달 팔로우 버튼 @@@@@@
-$(".s-profile-modal-follow-btn").on("click", function () {
-  if ($(this).css("display") === "block") {
-    $(this).css("display", "none");
-    $(".s-profile-modal-following-btn").css("display", "flex");
-		$.ajax({
-		url: '/sns/snsFollowOk.sn',
-		type: 'get',
-		data: { 
-				memberNumberFrom : memberNumberFrom,
-				memberNumberTo : memberNumberTo
-				 },
-		success: function() {
-			console.log('gegege');
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
-
-		});
-  }
-
-  $(".s-profile-modal-following-btn").on("click", function () {
-    if ($(this).css("display") === "flex") {
-      $(this).css("display", "none");
-      $(".s-profile-modal-follow-btn").css("display", "block");
-		$.ajax({
-		url: '/sns/snsFollowDeleteOk.sn',
-		type: 'get',
-		data: { 
-				memberNumberFrom : memberNumberFrom,
-				memberNumberTo : memberNumberTo
-				 },
-		success: function() {
-			console.log('~~~~');
-		},
-		error: function(a, b, c) {
-			console.log(c);
-		}
-
-		});
-    }
-  });
 });
 
 
@@ -1543,3 +1378,38 @@ function showStoreFile(result){
 		`);
 	}
 }
+
+function showLike(result){
+	$('.modal-like-btn').html('');
+	if (storeNumber == result.list.storeNumber) {
+		if(result.likeTest === ""){
+			$('.modal-like-btn').append(`
+			<span class="material-symbols-outlined beforeLike">favorite</span> 
+			`);
+		} else {
+			$('.modal-like-btn').append(`
+			<span class="material-symbols-outlined liked">favorite</span>
+			`);
+			}
+		}
+
+	}
+	
+	$('.s-modal-btn').on('click', function(){	
+	
+	$.ajax({
+		url: '/store/storeBasket.st',
+		type: 'get',
+		data: {		
+			storeNumber: storeNumber	
+		},
+	success: function() {
+			alert("물품을 장바구니에 추가하였습니당.");
+			window.location.href = "/sns/snsOk.sn";
+		},
+		error: function() {
+			alert("오류가 발생했습니당. 다시 시도해주세요.");
+		}
+	});
+	
+});
