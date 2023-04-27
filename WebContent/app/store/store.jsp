@@ -276,7 +276,7 @@
               </div>
             </div>
             <!-- @@@ 모달 픽시드 팔로우 버튼 내 글일시 안 보여야함 @@@ -->
-              <c:if test="${sessionScope.memberNumber == storeMemberInfo.getMemberNumber()}">
+              <%-- <c:if test="${sessionScope.memberNumber == storeMemberInfo.getMemberNumber()}"> --%>
             <div class="post-btn-box" id="follow">
               <div class="modal-follow-btn-wrap btn-wrap-flex">
                 <button type="button" class="modal-follow-btn btn-color">
@@ -332,7 +332,7 @@
                 <span class="modal-btn-list">신고하기</span>
               </div>
             </div>
-            </c:if>
+            <%-- </c:if> --%>
             <!-- @@@ 수정하기 영역 끝 @@@ -->
             <!-- @@@ 모달 픽시드 수정하기 버튼 내 글일시  보여야함 @@@ -->
             <c:if test="${sessionScope.memberNumber != storeMemberInfo.getMemberNumber()}">

@@ -910,7 +910,7 @@ let $slideImg = $(".slide-img");
 // 슬라이드 이미지 인덱스번호
 let currentIdx = 0;
 // 슬라이드 박스 너비
-let slideWidth = 1320;
+let slideWidth = 1100;
 //  총 슬라이드 이미지 수
 let slideCnt = $slideImg.length;
 
