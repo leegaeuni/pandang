@@ -145,7 +145,8 @@ font {
 }
 
 .hot-creater-title-wrap {
-  margin: 20px;
+  margin-left: 20px;
+  min-width: 172px;
 }
 
 .hot-creater-title {
@@ -175,8 +176,8 @@ font {
   filter: brightness(1);
   border: 1px solid #ccc;
   /* flex-wrap: wrap; */
-  min-width: 300px;
-  min-height: 300px;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 .profil-photo img:hover {
@@ -233,13 +234,13 @@ button {
 
 .hot-creater-profil-all {
   display: flex;
-  width: 1320px;
+  width: 1100px;
   align-items: center;
   justify-content: center;
 }
 
 .slides-wrap {
-  width: 1320px;
+  width: 1100px;
   height: 330px;
   /* border: 1px solid black; */
   /* z-index: 10; */
@@ -252,7 +253,7 @@ li {
 }
 
 .slide-img {
-  width: 1320px;
+  width: 1100px;
   height: 330px;
 }
 

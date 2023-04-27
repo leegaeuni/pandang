@@ -104,8 +104,7 @@
 							<td class="buy-date">${buy.getBuyDate()}</td>
 							<td class="buy-number">${buy.getBuyNumber()}</td>
 							<td class="buy-img"><img
-								src="/upload/${buy.getStoreFileSystemName()} alt="
-								" 
+								src="${pageContext.request.contextPath}/upload/${buy.getStoreFileSystemName()}" alt="" 
                   name="storeFileSystemName" /></td>
 							<td class="store-title">${buy.getStoreTitle()}</td>
 							<td class="store-price">${buy.getStorePrice()}</td>
