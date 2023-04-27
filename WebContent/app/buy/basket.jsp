@@ -107,7 +107,7 @@
                 </label>
               </td>
               <td class="basket-img">
-                  <img src="/upload/${basket.getStoreFileSystemName()} alt="" 
+                  <img src="${pagetContext.request.contextPath}/upload/${basket.getStoreFileSystemName()}"  
                   name="storeFileSystemName"
                   />
                 

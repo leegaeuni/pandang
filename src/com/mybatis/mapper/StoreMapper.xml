@@ -194,13 +194,11 @@
 	</select>
 
 	<select id="buy" parameterType="_int" resultType="BasketVO">
-		select
-		sf.store_file_system_name , s.store_number , s.store_title ,
-		s.store_price
-		from tbl_store s
-		join tbl_store_file sf
-		on s.store_number =
-		sf.store_number and s.store_number = #{storeNumber}
+		select ts.store_number , ts.store_title , ts.store_price,
+	(select store_file_system_name  from tbl_store_file tsf
+  	 where tsf.store_number= ts.store_number
+  	 limit 0, 1) store_file_system_name  from tbl_store ts 
+  	 where ts.store_number = #{storeNumber}
 	</select>
 
 	<insert id="storeWrite" parameterType="StoreDTO">

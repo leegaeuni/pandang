@@ -35,7 +35,7 @@ public class PaidOkController implements Execute {
 		JsonElement json = (JsonElement)JsonParser.parseString(req.getParameter("buyArray"));
 		// 배열에 get으로 받아오기
 		arr = json.getAsJsonArray();
-		System.out.println(arr.toString());
+//		System.out.println(arr.toString());
 									
 		for(int i =0; i<arr.size(); i++) {
 			System.out.println(arr.get(i));

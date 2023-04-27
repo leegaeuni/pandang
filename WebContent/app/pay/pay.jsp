@@ -87,7 +87,8 @@
 		                    <tr>
 		                      <td class="basket-img">
 	 	                        <input type="hidden" class="store-number" name="storeNumber" value="${pay.getStoreNumber() }">
-		                        <img src="${pageContext.request.contextPath}/upload/${pay.getStoreFileSystemName()}" alt="" />
+		                        <img src="${pageContext.request.contextPath}/upload/${pay.getStoreFileSystemName()}" alt="" 
+		                        name="storeFileSystemName"/>
 		                      </td>
 		                      <td class="title">${pay.getStoreTitle() }</td>
 		                      <td class="price">${pay.getStorePrice() }</td>
