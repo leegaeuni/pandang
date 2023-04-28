@@ -74,6 +74,7 @@
                     <input
                       type="text"
                       name="reportTitle"
+                      id="reportTitle"
                       placeholder="제목을 입력해주세요."
                     />
                   </div>
