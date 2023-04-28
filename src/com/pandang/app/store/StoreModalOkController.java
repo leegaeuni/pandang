@@ -21,7 +21,6 @@ public class StoreModalOkController implements Execute {
 		StoreDAO storeDAO = new StoreDAO();
 
 		int storeNumber = Integer.parseInt(req.getParameter("storeNumber"));
-		System.out.println("2");
 		StoreUpdateVO storeUpdateVO = new StoreUpdateVO();
 		Gson gson = new Gson();
 		

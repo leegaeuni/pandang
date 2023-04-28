@@ -674,7 +674,6 @@ font {
   font-size: 12px;
   line-height: 14px;
   color: rgb(124, 132, 132);
-  width: 50px;
   display: flex;
   align-items: center;
 }
@@ -1105,10 +1104,10 @@ font {
 }
 
 .report-btn {
-  width: 100%;
-  height: max-content;
-  display: flex;
-  justify-content: flex-end;
+     width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
 }
 
 .report-btn button {
@@ -1152,4 +1151,7 @@ font {
   font-size: 10px;
 }
 
+.post-comment-list{
+	width: 100%;
+}
 /*  @@@@@@@@ 푸터 영역 끝 @@@@@@@  */

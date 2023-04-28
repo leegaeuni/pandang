@@ -76,7 +76,7 @@ public class StoreUpdateOkController implements Execute {
 	      }
       
 
-		resp.sendRedirect("/sns/snsOk.sn");
+		resp.sendRedirect("/store/storeOk.st");
 	}
 
 }

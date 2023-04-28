@@ -187,7 +187,63 @@
             <div class="post-comment-box">
               <!-- @@@@@댓글 창@@@@@@@@@ -->
               <div class="comment-container">
- 
+              	 <div class="post-comment-list">
+ 				 <div class="comment-list">
+                 <!-- @@@@@@@@@ 댓글 list @@@@@@@@@@ -->
+                  <a herf="#" class="comment-user-profile-shortcuts">
+                    <div class="comment-user-profile-wrap">
+                      <img
+                        src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
+                        alt=""
+                      />
+                    </div>
+                  </a>
+                  <div class="text-wrap">
+                    <div class="comment-member-info">
+                      <a href="#" class="member-id">leeegaeun0923</a>
+                      <div class="box"></div>
+                      <div class="comment-date">4일 전</div>
+<!--                       @@@@ 댓글 작성자와 로그인 한사람 일치할시 보여야함 @@@ 
+                      display : flex로 변경되게 해주세요  -->
+                    일단은 none 처리 
+                      <div class="comment-edit-delete-btn-box">
+                        <button class="comment-edit-btn">수정</button>
+
+                        <button class="comment-delete-btn">삭제</button>
+                      </div>
+                      <div class="s-edit-btn-box">
+                      <button type="submit" class="s-edit-btn">
+                        수정 완료
+                      </button>
+                  </div>
+                    </div>
+                    <div class="height-box"></div>
+                    <div class="comment">
+                      <span class="comment-content"
+                        >너무 마음에 드는 작품이에요~~~~
+                      </span>
+                     <!--  @@@@@@ 댓글 수정 form 경로처리 @@@@@@ -->
+                      <form action="" method="post">
+                        <div class="comment-edit-box">
+                          <textarea name="" id="comment-edit">
+                          <span class="comment-content"
+                          >너무 마음에 드는 작품이에요~~~~
+                        </span>
+                      </textarea
+                          >
+                        </div>
+                        <div class="edit-btn-box">
+                          <button type="submit" class="edit-btn">
+                            수정 완료
+                          </button>
+                        </div>
+                      </form>
+                      댓글 수정 form 영역 끝
+                    </div>
+                  </div>
+                 <!--  @@@@@@@@@ 댓글 리스트 끝  @@@@@@@@@@ -->
+                </div>
+                </div>
                 <!-- @@@@@@@@@ 댓글 작성 form 경로 처리 해야함 @@@@@@ -->
                 <form action="" method="post" id="comment-form">
                   <div class="write-area">
@@ -225,7 +281,7 @@
           <div class="post-btn-box-wrap">
             <div class="post-btn-box" id="profile">
               <div class="modal-profile-btn btn-wrap-flex">
-                <a href="/sns/snsOk.sn?memberNumber=${snsMemberInfo.getMemberNumber()}" class="author-info">
+                <a href="/sns/snsOk.sn?memberNumber=${sessionScope.memberNumber}" class="memberNumber">
                   <div class="author-img-back"></div>
                   <div class="author-profile">
                     <img
@@ -241,7 +297,7 @@
             <!-- @@@ 모달 픽시드 팔로우 버튼 내 글일시 안 보여야함 @@@ -->
 
   
-              <%-- <c:if test="${sessionScope.memberNumber == storeMemberInfo.getMemberNumber()}"> --%>
+       
             <div class="post-btn-box" id="follow">
               <div class="modal-follow-btn-wrap btn-wrap-flex">
                 <button type="button" class="modal-follow-btn btn-color">
@@ -274,19 +330,6 @@
             </div>
             <!-- @@@ 장바구니 영역 끝 @@@ -->
             <!-- @@@ 모달 픽시드 구매하기 버튼 내 글일시 안 보여야함 @@@ -->
-            <div class="post-btn-box" id="buy">
-              <div class="modal-buy-btn-wrap btn-wrap-flex">
-                <!-- @@@@@ 구매하기 페이지 경로 이동 처리 해야함 @@@@@ -->
-                <a href="#">
-                  <button type="button" class="modal-buy-btn btn-color">
-                    <span class="material-symbols-outlined">
-                      attach_money
-                    </span>
-                  </button>
-                </a>
-                <span class="modal-btn-list">구매하기</span>
-              </div>
-            </div>
             <!-- @@@ 신고하기 영역 끝 @@@ -->
             <!-- @@@ 모달 픽시드 신고하기 버튼 내 글일시 안 보여야함 @@@ -->
             <div class="post-btn-box" id="report">
@@ -297,12 +340,12 @@
                 <span class="modal-btn-list">신고하기</span>
               </div>
             </div>
-           <%--  </c:if> --%>
+         
 
 
             <!-- @@@ 수정하기 영역 끝 @@@ -->
             <!-- @@@ 모달 픽시드 수정하기 버튼 내 글일시  보여야함 @@@ -->
-            <%-- <c:if test="${sessionScope.memberNumber != storeMemberInfo.getMemberNumber()}"> --%>
+          
             <div class="post-btn-box" id="edit">
               <div class="modal-edit-btn-wrap btn-wrap-flex">
               <form action="/store/storeWrite.st" method="post">
@@ -326,7 +369,7 @@
                 <span class="modal-btn-list">삭제하기</span>
               </div>
             </div>
-           <%--    </c:if> --%>
+           
           </div>
         </div>
       
