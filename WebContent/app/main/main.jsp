@@ -64,7 +64,6 @@
       <div class="post-modal">
           <div class="post-box">
             <div class="report-path">
-              @@@@ 신고하기  @@@@@
               <div class="report-msg">
                 <h1>신고 사유를 작성해주세요.</h1>
               </div>
@@ -247,42 +246,7 @@
             <!-- @@@@@@@@@ post 영역 끝 @@@@@@@@@@ -->
           </div>
           <div class="post-btn-box-wrap">
-            <div class="post-btn-box" id="profile">
-              <div class="modal-profile-btn btn-wrap-flex">
-                <a href="#" class="author-info">
-                  <div class="author-img-back"></div>
-                  <div class="author-profile">
-                    <img
-                      class="author-profile-img"
-                      src="https://cdn-bastani.stunning.kr/prod/users/3dbbdc56-858d-4d0e-b467-1463957476e3/avatar/ZQdoCULUEydS7bnM.image.jpg.small?q=60&t=crop&s=300x300"
-                      alt=""
-                    />
-                  </div>
-                </a>
-                <span class="modal-btn-list">프로필</span>
-              </div>
-            </div>
-            <!-- @@@ 모달 픽시드 팔로우 버튼 내 글일시 안 보여야함 @@@ -->
-            <div class="post-btn-box" id="follow">
-              <div class="modal-follow-btn-wrap btn-wrap-flex">
-                <button type="button" class="modal-follow-btn btn-color">
-                  <span class="material-symbols-outlined add"> add </span>
-                  <span class="material-symbols-outlined done"> done </span>
-                </button>
-                <span class="modal-btn-list">팔로우</span>
-              </div>
-            </div>
-            <!-- @@@ 팔로우 영역 끝 @@@ -->
-            <div class="post-btn-box" id="'like">
-              <div class="modal-like-btn-wrap btn-wrap-flex">
-                <button type="button" class="modal-like-btn like-btn-color">
-                  <span class="material-symbols-outlined"> favorite </span>
-                </button>
-                <span class="modal-btn-list">좋아요</span>
-              </div>
-            </div>
-<!--             @@@ 좋아요 영역 끝 @@@
-            @@@ 모달 픽시드 장바구니 버튼 내 글일시 안 보여야함 @@@ -->
+<!-- @@@ 모달 픽시드 장바구니 버튼 내 글일시 안 보여야함 @@@ -->
             <div class="post-btn-box" id="basket">
               <div class="modal-basket-btn-wrap btn-wrap-flex">
                 <button type="button" class="modal-btn btn-color">
@@ -294,20 +258,6 @@
               </div>
             </div>
 <!--             @@@ 장바구니 영역 끝 @@@
-            @@@ 모달 픽시드 구매하기 버튼 내 글일시 안 보여야함 @@@ -->
-            <div class="post-btn-box" id="buy">
-              <div class="modal-buy-btn-wrap btn-wrap-flex">
-                <!-- @@@@@ 구매하기 페이지 경로 이동 처리 해야함 @@@@@ -->
-                <a href="#">
-                  <button type="button" class="modal-buy-btn btn-color">
-                    <span class="material-symbols-outlined">
-                      attach_money
-                    </span>
-                  </button>
-                </a>
-                <span class="modal-btn-list">구매하기</span>
-              </div>
-            </div>
 <!--             @@@ 신고하기 영역 끝 @@@
             @@@ 모달 픽시드 신고하기 버튼 내 글일시 안 보여야함 @@@ -->
             <div class="post-btn-box" id="report">
@@ -316,26 +266,6 @@
                   <span class="material-symbols-outlined"> error </span>
                 </button>
                 <span class="modal-btn-list">신고하기</span>
-              </div>
-            </div>
-<!--             @@@ 수정하기 영역 끝 @@@
-            @@@ 모달 픽시드 수정하기 버튼 내 글일시  보여야함 @@@ -->
-            <div class="post-btn-box" id="edit">
-              <div class="modal-edit-btn-wrap btn-wrap-flex">
-                <button type="button" class="modal-edit-btn btn-color">
-                  <span class="material-symbols-outlined"> edit </span>
-                </button>
-                <span class="modal-btn-list">수정하기</span>
-              </div>
-            </div>
-<!--             @@@ 삭제하기 영역 끝 @@@
-            @@@ 모달 픽시드 삭제하기 버튼 내 글일시  보여야함 @@@ -->
-            <div class="post-btn-box" id="delete">
-              <div class="modal-delete-btn-wrap btn-wrap-flex">
-                <button type="button" class="modal-delete-btn btn-color">
-                  <span class="material-symbols-outlined"> delete </span>
-                </button>
-                <span class="modal-btn-list">삭제하기</span>
               </div>
             </div>
           </div>
