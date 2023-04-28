@@ -19,7 +19,14 @@ public class StoreCommentWriteOkController implements Execute {
 		req.setCharacterEncoding("UTF-8");
 		
 		storeCommentDTO.setStoreNumber(Integer.valueOf(req.getParameter("storeNumber")));
-		storeCommentDTO.setMemberNumber(Integer.valueOf(req.getParameter("memberNumber")));
+		String memberNumberParam = req.getParameter("memberNumber");
+
+if (memberNumberParam == null || memberNumberParam.equals("")) {
+    resp.sendRedirect("/member/login.me");
+} else {
+    int memberNumber = Integer.parseInt(memberNumberParam);
+    storeCommentDTO.setMemberNumber(memberNumber);
+}
 		storeCommentDTO.setStoreCommentContent(req.getParameter("storeCommentContent"));
 		new StoreCommentDAO().insert(storeCommentDTO);
 	}
