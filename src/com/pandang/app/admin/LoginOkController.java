@@ -30,6 +30,8 @@ public class LoginOkController implements Execute {
 		memberDTO.setMemberId(memberId);
 		memberDTO.setMemberPassword(memberPassword);
 		
+		System.out.println(memberDTO);
+		
 		try {
 			memberNumber = adminDAO.login(memberDTO);
 			path = "/admin/reportSnsListOk.ad";
