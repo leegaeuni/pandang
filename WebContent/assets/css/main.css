@@ -1072,6 +1072,11 @@ img.after-like-btn {
 }
 
 /* 신고하기 버튼 클릭 시 신고접수 창. */
+.modal-report-btn:hover {
+  color: red;
+}
+
+
 .report-path {
   width: 80%;
   height: 350px;
@@ -1148,10 +1153,11 @@ img.after-like-btn {
 }
 
 .report-btn {
-  width: 100%;
+  width: 97%;
   height: max-content;
   display: flex;
   justify-content: flex-end;
+  margin: 10px;
 }
 
 .report-btn button {
@@ -1164,6 +1170,7 @@ img.after-like-btn {
   border: 1px solid rgb(200, 200, 200);
   color: rgb(44, 48, 48);
   cursor: pointer;
+  text-align: center;
 }
 
 .post-img{
@@ -1175,6 +1182,7 @@ img.after-like-btn {
 
 .post-img img{
 	margin : 20px 0;
+	max-width : 95%;
 }
 
 .post-content {
