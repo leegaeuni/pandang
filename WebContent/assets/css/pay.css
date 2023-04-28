@@ -146,13 +146,13 @@ font {
 
 .inner-wrap{
     max-width: 1200px;
-    width: 95%;
+    width: 100%;
     margin: 0px auto;
     padding-top: 24px;
     /* height: 1733px; */
     /* height: 1590px; */
     /* height: 1300px; */
-    height: 1500px;
+   /*  height: 1500px; */
   }
 
 /* ================================================================= */
@@ -337,7 +337,7 @@ font {
   .pay-table {
     border-top: 1px solid #aaa;
     border-bottom: 1px solid #aaa;
-    position: absolute;
+    /* position: absolute; */
     top: 550px;
     width: 1200px;
     height: 65px;
@@ -397,7 +397,7 @@ font {
     padding: 0px;
     width: 1200px;
     height: 440px;
-    position: absolute;
+    /* position: absolute; */
     top: 680px;
   }
 
@@ -796,7 +796,7 @@ font {
     /* width: 300px; */
     width: 1200px;
     height: 150px;
-    position: absolute;
+    /* position: absolute; */
     display: flex;
     top: 1150px;
     justify-content: center;
@@ -809,12 +809,12 @@ font {
   .second-payarea{
     width: 300px;
     height: 150px;
-    margin: 10px;
+    /* margin: 10px; */
     padding: 0px;
     text-align: center;
     border: 1px solid #ddd;
     background-color: #f2f2f260;
-    margin-top: 100px;
+    margin-top: 30px; 
   }
 
   .final-pay-message{
@@ -878,6 +878,7 @@ font {
    .footer-container {
     width: 100%;
     height: 200px;
+    margin-top: 100px;
     /* background-color: ; */
   }
   
