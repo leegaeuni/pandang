@@ -34,13 +34,13 @@ JAVA, JavaScript, JSP, MySQL
 <img width="1045" alt="페이지흐름도" src="https://github.com/pandang-project/pandang/assets/126428434/6a3e1399-1b79-433b-b211-3280a10d2cfd">
 
 ## 페이지 미리보기
-<img width="489" alt="메인페이지" src="https://github.com/pandang-project/pandang/assets/126428434/82f88933-4704-4955-a326-ef4ad1bea7aa">
-<img width="491" alt="SNS페이지" src="https://github.com/pandang-project/pandang/assets/126428434/55e4755b-5beb-4d5f-bf3e-7d0c6dc1cf89">
-<img width="638" alt="SNS게시글상세보기" src="https://github.com/pandang-project/pandang/assets/126428434/6eda3cbd-abd5-40fa-b6ac-21ae65764a8f">
-<img width="746" alt="스토어게시글상세1" src="https://github.com/pandang-project/pandang/assets/126428434/9e4cb7de-9fb7-46bf-8563-aeb14103364a">
-<img width="774" alt="스토어게시글상세2" src="https://github.com/pandang-project/pandang/assets/126428434/546e3897-2143-4068-b02b-d4ebadbbe45f">
-<img width="469" alt="마이페이지" src="https://github.com/pandang-project/pandang/assets/126428434/2ea279ce-a34a-415e-a040-edfc2eae5c49">
-<img width="719" alt="구메페이지" src="https://github.com/pandang-project/pandang/assets/126428434/03889b0d-c82c-4d92-9a03-ea329249e339">
+<img width="100" alt="메인페이지" src="https://github.com/pandang-project/pandang/assets/126428434/82f88933-4704-4955-a326-ef4ad1bea7aa">
+<img width="100" alt="SNS페이지" src="https://github.com/pandang-project/pandang/assets/126428434/55e4755b-5beb-4d5f-bf3e-7d0c6dc1cf89">
+<img width="100" alt="SNS게시글상세보기" src="https://github.com/pandang-project/pandang/assets/126428434/6eda3cbd-abd5-40fa-b6ac-21ae65764a8f">
+<img width="100" alt="스토어게시글상세1" src="https://github.com/pandang-project/pandang/assets/126428434/9e4cb7de-9fb7-46bf-8563-aeb14103364a">
+<img width="100" alt="스토어게시글상세2" src="https://github.com/pandang-project/pandang/assets/126428434/546e3897-2143-4068-b02b-d4ebadbbe45f">
+<img width="100" alt="마이페이지" src="https://github.com/pandang-project/pandang/assets/126428434/2ea279ce-a34a-415e-a040-edfc2eae5c49">
+<img width="100" alt="구메페이지" src="https://github.com/pandang-project/pandang/assets/126428434/03889b0d-c82c-4d92-9a03-ea329249e339">
 
 
 
