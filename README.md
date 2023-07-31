@@ -25,7 +25,12 @@
  검색 기능을 통하여 원하는 상품을 쉽게 찾을 수 있습니다.
 
  ## 사용 기술
-JAVA, JavaScript, JSP, MySQL
+Java 11
+JDK 11.x.x
+IDE : eclipse
+Web : Apach Tomcat
+Database : MySQL
+ORM : Mybatis
 
 ## ERD
 <img width="1035" alt="ERD" src="https://github.com/pandang-project/pandang/assets/126428434/e4f116bd-97c2-4a81-b26c-a6d8c8685296">
