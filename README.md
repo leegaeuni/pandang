@@ -34,6 +34,10 @@ JAVA, JavaScript, JSP, MySQL
 <img width="1045" alt="페이지흐름도" src="https://github.com/pandang-project/pandang/assets/126428434/6a3e1399-1b79-433b-b211-3280a10d2cfd">
 
 ## 페이지 미리보기
+|메인페이지|SNS페이지|SNS상세보기|스토어게시글상세|스토어게시글상세|마이페이지|구매페이지|
+|------|---|---|----|----|----|----|
+|테스트1|테스트2|테스트3|테스트1|테스트2|테스트3|테스트4|
+
 <img width="100" alt="메인페이지" src="https://github.com/pandang-project/pandang/assets/126428434/82f88933-4704-4955-a326-ef4ad1bea7aa">
 <img width="100" alt="SNS페이지" src="https://github.com/pandang-project/pandang/assets/126428434/55e4755b-5beb-4d5f-bf3e-7d0c6dc1cf89">
 <img width="100" alt="SNS게시글상세보기" src="https://github.com/pandang-project/pandang/assets/126428434/6eda3cbd-abd5-40fa-b6ac-21ae65764a8f">
