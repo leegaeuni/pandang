@@ -26,7 +26,7 @@
 JAVA, JavaScript, JSP, MySQL
 
 ## 페이지 미리보기
-<img src=/Users/leegaeun/Desktop/img/메인페이지.png>
+<img src=img/메인페이지.png>
 
 
 
