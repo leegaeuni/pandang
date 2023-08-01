@@ -46,9 +46,9 @@ FrameWork : Mybatis
 |채널추천,상품추천|개인SNS페이지|게시글 수정,삭제(본인게시글) 좋아요,팔로우(타인게시글)|게시글 상세 보기|상품 구매 및 신고기능|내 정보 수정 가능|api연결을 통한 상품 구매|
 
 ## 🙌🏻담당 페이지
-# SNS 페이지 [WIKI 이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(SNS-%ED%8E%98%EC%9D%B4%EC%A7%80)) <br>
-# SNS 게시글 상세보기 [WIKI-이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(SNS-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%83%81%EC%84%B8%EB%B3%B4%EA%B8%B0)) <br/>
-# 스토어 게시글 상세보기 [WIKI-이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EC%8A%A4%ED%86%A0%EC%96%B4-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%83%81%EC%84%B8%EB%B3%B4%EA%B8%B0)) <br/>
+- SNS 페이지 [WIKI 이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(SNS-%ED%8E%98%EC%9D%B4%EC%A7%80)) <br>
+- SNS 게시글 상세보기 [WIKI-이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(SNS-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%83%81%EC%84%B8%EB%B3%B4%EA%B8%B0)) <br/>
+- 스토어 게시글 상세보기 [WIKI-이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EC%8A%A4%ED%86%A0%EC%96%B4-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%83%81%EC%84%B8%EB%B3%B4%EA%B8%B0)) <br/>
 
 
 
