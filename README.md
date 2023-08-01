@@ -42,12 +42,7 @@ FrameWork : Mybatis
 ## 페이지 미리보기
 |메인페이지|SNS페이지|SNS상세보기|스토어게시글상세|상품 목록|마이페이지|구매페이지|
 |------|---|---|----|----|----|----|
-|<img width="100" alt="메인페이지" src="https://github.com/pandang-project/pandang/assets/126428434/82f88933-4704-4955-a326-ef4ad1bea7aa">|
-<img width="100" alt="SNS페이지" src="https://github.com/pandang-project/pandang/assets/126428434/55e4755b-5beb-4d5f-bf3e-7d0c6dc1cf89">|
-<img width="100" alt="SNS게시글상세보기" src="https://github.com/pandang-project/pandang/assets/126428434/6eda3cbd-abd5-40fa-b6ac-21ae65764a8f">|<img width="100" alt="스토어게시글상세" src="https://github.com/pandang-project/pandang/assets/126428434/9e4cb7de-9fb7-46bf-8563-aeb14103364a">|
-<img width="100" alt="상품목록" src="https://github.com/pandang-test/jspProject02/assets/126428434/3c316d94-af77-49c8-b884-f3fe4b3274f8">|
-<img width="100" alt="마이페이지" src="https://github.com/pandang-project/pandang/assets/126428434/2ea279ce-a34a-415e-a040-edfc2eae5c49">|
-<img width="100" alt="구메페이지" src="https://github.com/pandang-project/pandang/assets/126428434/03889b0d-c82c-4d92-9a03-ea329249e339">|
+|<img width="100" alt="메인페이지" src="https://github.com/pandang-project/pandang/assets/126428434/82f88933-4704-4955-a326-ef4ad1bea7aa">|<img width="100" alt="SNS페이지" src="https://github.com/pandang-project/pandang/assets/126428434/55e4755b-5beb-4d5f-bf3e-7d0c6dc1cf89">|<img width="100" alt="SNS게시글상세보기" src="https://github.com/pandang-project/pandang/assets/126428434/6eda3cbd-abd5-40fa-b6ac-21ae65764a8f">|<img width="100" alt="스토어게시글상세" src="https://github.com/pandang-project/pandang/assets/126428434/9e4cb7de-9fb7-46bf-8563-aeb14103364a">|<img width="954" alt="상품목록" src="https://github.com/pandang-test/jspProject02/assets/126428434/527d220e-6fc8-4a01-b07a-389076608166">|<img width="100" alt="마이페이지" src="https://github.com/pandang-project/pandang/assets/126428434/2ea279ce-a34a-415e-a040-edfc2eae5c49">|<img width="100" alt="구메페이지" src="https://github.com/pandang-project/pandang/assets/126428434/03889b0d-c82c-4d92-9a03-ea329249e339">|
 |채널추천,상품추천|개인SNS페이지|게시글 수정,삭제(본인게시글) 좋아요,팔로우(타인게시글)|게시글 상세 보기|카테고리별 상품 조회, 추천순 정렬|내 정보 수정 가능|api연결을 통한 상품 구매|
 
 ## 🙌🏻 담당 페이지
