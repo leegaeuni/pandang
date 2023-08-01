@@ -45,10 +45,10 @@ FrameWork : Mybatis
 |<img width="100" alt="메인페이지" src="https://github.com/pandang-project/pandang/assets/126428434/82f88933-4704-4955-a326-ef4ad1bea7aa">|<img width="100" alt="SNS페이지" src="https://github.com/pandang-project/pandang/assets/126428434/55e4755b-5beb-4d5f-bf3e-7d0c6dc1cf89">|<img width="100" alt="SNS게시글상세보기" src="https://github.com/pandang-project/pandang/assets/126428434/6eda3cbd-abd5-40fa-b6ac-21ae65764a8f">|<img width="100" alt="스토어게시글상세1" src="https://github.com/pandang-project/pandang/assets/126428434/9e4cb7de-9fb7-46bf-8563-aeb14103364a">|<img width="100" alt="스토어게시글상세2" src="https://github.com/pandang-project/pandang/assets/126428434/546e3897-2143-4068-b02b-d4ebadbbe45f">|<img width="100" alt="마이페이지" src="https://github.com/pandang-project/pandang/assets/126428434/2ea279ce-a34a-415e-a040-edfc2eae5c49">|<img width="100" alt="구메페이지" src="https://github.com/pandang-project/pandang/assets/126428434/03889b0d-c82c-4d92-9a03-ea329249e339">|
 |채널추천,상품추천|개인SNS페이지|게시글 수정,삭제(본인게시글) 좋아요,팔로우(타인게시글)|게시글 상세 보기|상품 구매 및 신고기능|내 정보 수정 가능|api연결을 통한 상품 구매|
 
-## 담당 페이지
-### SNS 페이지 [WIKI 이동](#https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(SNS-%ED%8E%98%EC%9D%B4%EC%A7%80)) <br>
-### SNS 게시글 상세보기 [WIKI-이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(SNS-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%83%81%EC%84%B8%EB%B3%B4%EA%B8%B0)) <br/>
-### 스토어 게시글 상세보기 [WIKI-이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EC%8A%A4%ED%86%A0%EC%96%B4-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%83%81%EC%84%B8%EB%B3%B4%EA%B8%B0)) <br/>
+## 🙌🏻담당 페이지
+# SNS 페이지 [WIKI 이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(SNS-%ED%8E%98%EC%9D%B4%EC%A7%80)) <br>
+# SNS 게시글 상세보기 [WIKI-이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(SNS-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%83%81%EC%84%B8%EB%B3%B4%EA%B8%B0)) <br/>
+# 스토어 게시글 상세보기 [WIKI-이동](https://github.com/leegaeuni/pandang/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EC%8A%A4%ED%86%A0%EC%96%B4-%EA%B2%8C%EC%8B%9C%EA%B8%80-%EC%83%81%EC%84%B8%EB%B3%B4%EA%B8%B0)) <br/>
 
 
 
