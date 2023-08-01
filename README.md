@@ -27,7 +27,7 @@
 
  ## 사용 기술
 Java 11 <br>
-JDK 11.x.x <br>
+JDK 11.0.16 <br>
 IDE : eclipse <br>
 Web : Apach Tomcat <br>
 Database : MySQL <br>
